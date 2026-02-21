@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeoMarkets EU — Geolocalización y redirección para Shopify Markets | Enviox</title>
+  <meta name="description" content="Detecta el país de tus visitantes y redirígelos al mercado correcto de Shopify Markets automáticamente. Selector de país, idioma y moneda integrado. Alternativa a la app de Geolocation eliminada por Shopify. Desde 9,99€/mes.">
+  <meta name="keywords" content="shopify geolocation alternativa, shopify markets redirect, country redirect shopify, selector país shopify, geolocalización shopify, geolocation app replacement, geomarkets eu">
+  <link rel="canonical" href="https://enviox.es/geomarkets-eu">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/product-page.css">
+  <link rel="icon" type="image/png" href="/assets/caja.png">
+  <meta property="og:title" content="GeoMarkets EU — Geolocalización para Shopify Markets">
+  <meta property="og:description" content="Shopify eliminó su app de Geolocation. GeoMarkets EU es la alternativa: detecta el país del visitante en <100ms y lo redirige al mercado correcto.">
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="https://enviox.es/geomarkets-eu">
+  <style>
+    .geo-gradient { background: linear-gradient(135deg, #2563EB 0%, #3B82F6 50%, #06B6D4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-badge-geo { background: rgba(37,99,235,0.1); border: 1px solid rgba(37,99,235,0.2); color: #2563EB; }
+    .geo-selector-demo {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+      max-width: 420px; margin: 0 auto;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
+    }
+    .geo-map-header { background: linear-gradient(135deg, rgba(37,99,235,0.15), rgba(6,182,212,0.1)); padding: 24px; text-align: center; border-bottom: 1px solid var(--border); }
+    .geo-map-title { font-size: 14px; font-weight: 700; color: #3B82F6; text-transform: uppercase; letter-spacing: 1px; }
+    .geo-map-flags { font-size: 28px; margin-top: 12px; letter-spacing: 6px; }
+    .geo-demo-body { padding: 20px; }
+    .geo-demo-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-radius: 10px; margin-bottom: 8px; transition: all 0.3s; font-size: 14px; }
+    .geo-demo-row:hover { background: rgba(37,99,235,0.06); }
+    .geo-demo-flag { font-size: 22px; margin-right: 10px; }
+    .geo-demo-country { font-weight: 600; color: var(--text); }
+    .geo-demo-url { color: var(--text-muted); font-size: 12px; font-family: monospace; }
+    .geo-demo-status { color: var(--green); font-weight: 700; font-size: 12px; }
+    .geo-demo-active { background: rgba(37,99,235,0.08); border: 1px solid rgba(37,99,235,0.2); }
+    .opportunity-card {
+      background: linear-gradient(135deg, rgba(37,99,235,0.08), rgba(6,182,212,0.05));
+      border: 1px solid rgba(37,99,235,0.2);
+      border-radius: 16px; padding: 32px; text-align: center; margin-top: 40px; max-width: 700px; margin-left: auto; margin-right: auto;
+    }
+    .opportunity-card h3 { color: #3B82F6; font-size: 20px; margin-bottom: 12px; }
+    .opportunity-card p { color: var(--text-sub); font-size: 15px; line-height: 1.6; }
+    .opportunity-card .highlight { color: var(--green); font-weight: 700; }
+    .who-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px; margin-top: 32px; }
+    .who-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; text-align: center; }
+    .who-icon { font-size: 40px; margin-bottom: 12px; }
+    .who-card h4 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+    .who-card p { font-size: 14px; color: var(--text-sub); line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="/" class="nav-logo"><img src="/assets/texto.png" alt="Enviox" class="nav-logo-img"></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#productos">Productos</a></li>
+        <li><a href="/#precios">Precios</a></li>
+        <li><a href="#pricing" class="nav-cta">Empezar gratis</a></li>
+      </ul>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+    </div>
+  </nav>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="product-hero">
+    <div class="hero-bg">
+      <div class="hero-orb hero-orb--green" style="background:radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%);"></div>
+      <div class="hero-orb hero-orb--blue" style="background:radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%);"></div>
+    </div>
+    <div class="container product-hero-inner">
+      <div class="product-hero-text">
+        <div class="hero-badge hero-badge-geo">🌍 Shopify eliminó su app de Geolocation — esta es tu alternativa</div>
+        <h1 class="hero-title" style="text-align:left;">
+          Tu tienda, adaptada<br>
+          <span class="geo-gradient">al país de cada visitante</span>
+        </h1>
+        <p class="hero-subtitle" style="text-align:left;margin-left:0;">
+          GeoMarkets EU detecta el país de tus visitantes por IP y los redirige automáticamente al mercado correcto de <strong>Shopify Markets</strong> — idioma, moneda y URL. Sin parpadeo. <100ms. RGPD compliant.
+        </p>
+        <div class="hero-buttons" style="justify-content:flex-start;">
+          <a href="#pricing" class="btn-primary" style="background:linear-gradient(135deg, #2563EB, #06B6D4);">Instalar en Shopify — 14 días gratis →</a>
+          <a href="#oportunidad" class="btn-secondary">¿Por qué ahora?</a>
+        </div>
+        <div class="hero-trust" style="justify-content:flex-start;">
+          <span>✅ <100ms latencia</span>
+          <span>✅ No almacena IPs</span>
+          <span>✅ Compatible con todos los temas</span>
+        </div>
+      </div>
+      <div class="product-hero-visual">
+        <img src="hero-dashboard.png" alt="GeoMarkets EU — Dashboard de geolocalización para Shopify Markets" class="hero-mockup-img" style="width:100%;max-width:520px;border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);" onmouseover="this.style.transform='translateY(-8px) scale(1.02)'" onmouseout="this.style.transform='none'">
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ OPORTUNIDAD ══════════ -->
+  <section id="oportunidad" class="problem-section" style="background:linear-gradient(180deg, var(--bg-deep) 0%, rgba(37,99,235,0.03) 50%, var(--bg-deep) 100%);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" style="color:#2563EB;">La oportunidad</span>
+        <h2 class="section-title">Shopify eliminó su app de Geolocation</h2>
+        <p class="section-subtitle">Febrero 2025: Shopify dejó de ofrecerla. Marzo 2025: desinstalada de TODAS las tiendas. Miles de merchants sin solución.</p>
+      </div>
+      <div class="who-grid reveal">
+        <div class="who-card">
+          <div class="who-icon">❌</div>
+          <h4>Geolocation eliminada</h4>
+          <p>La app oficial de Shopify dejó de funcionar. No se puede instalar ni usar desde marzo 2025.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-icon">💸</div>
+          <h4>Alternativas caras</h4>
+          <p>Weglot cuesta $15-79/mes. Langify $17.50/mes. Y la mayoría solo traducen, no geolocalizan.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-icon">🌍</div>
+          <h4>GeoMarkets EU</h4>
+          <p>Desde <strong>9,99€/mes</strong>. Detección Edge, redirect inteligente, selector de país, analytics geográficos.</p>
+        </div>
+      </div>
+      <div class="opportunity-card reveal">
+        <h3>¿Por qué es tan urgente?</h3>
+        <p>Si tu tienda vende a varios países europeos y no tiene geolocalización, tus visitantes de Francia ven precios en USD, idioma inglés y se van. <span class="highlight">Cada día sin redirect es dinero perdido.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ FEATURES ══════════ -->
+  <section id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Funcionalidades</span>
+        <h2 class="section-title">Geolocalización inteligente para Shopify Markets</h2>
+        <p class="section-subtitle">Cada feature está diseñada para ser rápida, ligera y respetuosa con la privacidad</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card reveal"><div class="feature-icon">🌐</div><h3>Detección Edge (&lt;100ms)</h3><p>Cloudflare Workers detectan el país por IP antes de que la página cargue. Sin parpadeo, sin CLS, sin useEffect.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon">🔄</div><h3>Redirect inteligente</h3><p>Redirige al mercado correcto de Shopify Markets (subdominio, subcarpeta o dominio). Automático o con banner de confirmación.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon">🏳️</div><h3>Selector de país</h3><p>Widget flotante, integrado en header o footer. Banderas SVG, nombre del país, moneda. Responsive y personalizable.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon">🤖</div><h3>SEO protegido</h3><p>NUNCA redirige a bots de Google/Bing. Los crawlers ven la página original. Tu SEO no sufre.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon">📊</div><h3>Analytics geográficos</h3><p>Dashboard con visitantes por país, redirecciones por día, tasa de aceptación y países sin mercado configurado.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon">🔒</div><h3>RGPD compliant</h3><p>No almacenamos la IP del visitante. Se procesa en el Edge, se obtiene el país y se descarta. Privacy by Design.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon">🧩</div><h3>Shopify Markets nativo</h3><p>Lee automáticamente tus mercados configurados via GraphQL. Sincronización cada 6 horas. No necesitas configurar nada extra.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon">🍪</div><h3>Respeta la elección</h3><p>Si un usuario cambia de país manualmente, se guarda en cookie 30 días. No vuelve a redirigir.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ COMPARATIVA ══════════ -->
+  <section class="compare-section" id="comparativa">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Comparativa</span>
+        <h2 class="section-title">GeoMarkets EU vs la competencia</h2>
+      </div>
+      <div class="compare-table-wrapper reveal">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Funcionalidad</th>
+              <th class="compare-highlight">GeoMarkets EU ✨</th>
+              <th>Shopify Geolocation</th>
+              <th>Weglot</th>
+              <th>Langify</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Detección geográfica</td><td class="compare-highlight"><span class="check">✓</span> Edge</td><td><span class="cross">✗</span> Eliminada</td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
+            <tr><td>Redirect automático</td><td class="compare-highlight"><span class="check">✓</span> &lt;100ms</td><td><span class="cross">✗</span> Eliminada</td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
+            <tr><td>Selector país/idioma</td><td class="compare-highlight"><span class="check">✓</span></td><td><span class="cross">✗</span> Eliminada</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Shopify Markets nativo</td><td class="compare-highlight"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span> Propio</td><td><span class="cross">✗</span></td></tr>
+            <tr><td>SEO protegido (no redirect bots)</td><td class="compare-highlight"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Analytics geográficos</td><td class="compare-highlight"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td>Básico</td><td><span class="cross">✗</span></td></tr>
+            <tr><td>RGPD compliant</td><td class="compare-highlight"><span class="check">✓</span> No IP</td><td>?</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Precio desde</td><td class="compare-highlight"><strong>9,99€/mes</strong></td><td>Gratis*</td><td><strong>$15/mes</strong></td><td><strong>$17.50/mes</strong></td></tr>
+          </tbody>
+        </table>
+        <p class="compare-note">* Shopify Geolocation fue gratuita pero ha sido completamente eliminada en marzo 2025.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ PRICING ══════════ -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Precios</span>
+        <h2 class="section-title">Elige tu plan GeoMarkets EU</h2>
+        <p class="section-subtitle">14 días de prueba gratuita. Sin tarjeta.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card reveal">
+          <h3 class="pricing-name">Basic</h3>
+          <div class="pricing-price">9,99€<span>/mes</span></div>
+          <p class="pricing-desc">Para tiendas con pocos mercados</p>
+          <ul class="pricing-features">
+            <li>3 mercados EU</li>
+            <li>Redirect automático</li>
+            <li>Selector básico</li>
+            <li>Exclusión bots SEO</li>
+            <li class="no">Analytics de tráfico</li>
+            <li class="no">CSS personalizable</li>
+          </ul>
+          <a href="#" class="pricing-btn pricing-btn-secondary">Empezar gratis</a>
+        </div>
+        <div class="pricing-card featured reveal">
+          <div class="pricing-popular">Popular</div>
+          <h3 class="pricing-name">Pro</h3>
+          <div class="pricing-price">19,99€<span>/mes</span></div>
+          <p class="pricing-desc">Mercados ilimitados + analytics</p>
+          <ul class="pricing-features">
+            <li>Mercados ilimitados</li>
+            <li>Redirect + banner confirmación</li>
+            <li>CSS personalizable</li>
+            <li>Analytics geográficos</li>
+            <li>Banderas custom</li>
+            <li>Soporte prioritario</li>
+          </ul>
+          <a href="#" class="pricing-btn pricing-btn-primary" style="background:linear-gradient(135deg, #2563EB, #06B6D4);">Empezar gratis</a>
+        </div>
+        <div class="pricing-card reveal">
+          <h3 class="pricing-name">Agency</h3>
+          <div class="pricing-price">29,99€<span>/mes</span></div>
+          <p class="pricing-desc">Para agencias Shopify</p>
+          <ul class="pricing-features">
+            <li>Todo lo del Pro</li>
+            <li>Multi-tienda</li>
+            <li>API access</li>
+            <li>White-label</li>
+            <li>Soporte dedicado</li>
+            <li>SLA 99.9%</li>
+          </ul>
+          <a href="mailto:hola@enviox.es" class="pricing-btn pricing-btn-secondary">Contactar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ FAQ ══════════ -->
+  <section id="faq-geomarkets">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title">Preguntas sobre GeoMarkets EU</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item active">
+          <div class="faq-question"><span>¿Afecta a mi SEO la redirección?</span><span class="faq-toggle">+</span></div>
+          <div class="faq-answer" style="max-height:200px;"><div class="faq-answer-inner">No. GeoMarkets nunca redirige a los bots de buscadores (Googlebot, Bingbot, etc.). Los rastreadores siempre ven tu página original. Usamos redirects 302 temporales que no transfieren PageRank.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><span>¿Es compatible con RGPD?</span><span class="faq-toggle">+</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">Sí. No almacenamos la IP del visitante. El proceso es: IP entra al Worker → se detecta el país → la IP se descarta. Solo guardamos el código de país (dato no personal) para analytics. Cumple RGPD Art. 25 (Privacy by Design).</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><span>¿Funciona con todos los temas de Shopify?</span><span class="faq-toggle">+</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">Sí. El selector de país es un App Block de Shopify 2.0 — funciona con cualquier tema compatible. El script de detección se inyecta en el &lt;head&gt; y funciona independientemente del tema.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><span>¿Qué pasa si un visitante no quiere ser redirigido?</span><span class="faq-toggle">+</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">Si el visitante cambia de mercado manualmente (usando el selector), se guarda una cookie por 30 días. GeoMarkets no lo redirige de nuevo. También puedes activar el banner de confirmación para preguntar antes de redirigir.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><span>¿Necesito Shopify Markets configurado?</span><span class="faq-toggle">+</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">Sí. GeoMarkets lee tus mercados configurados en Shopify Markets y redirige visitantes al correcto. Necesitas al menos 2 mercados configurados. Si no los tienes, la app te guía para crearlos.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ CTA ══════════ -->
+  <section class="cta-section">
+    <div class="cta-glow" style="background:radial-gradient(circle at 50% 50%, rgba(37,99,235,0.06) 0%, rgba(6,182,212,0.04) 40%, transparent 70%);"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <h2 class="cta-title reveal">Adapta tu tienda <span class="geo-gradient">al mundo</span></h2>
+      <p class="cta-subtitle reveal">14 días gratis. Sin tarjeta. Tus visitantes europeos te lo agradecerán.</p>
+      <div class="reveal"><a href="#" class="btn-primary" style="font-size:18px;padding:18px 48px;background:linear-gradient(135deg, #2563EB, #06B6D4);">Instalar GeoMarkets EU →</a></div>
+      <p class="cta-email reveal">o escríbenos a <a href="mailto:hola@enviox.es">hola@enviox.es</a></p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="/"><img src="/assets/texto.png" alt="Enviox" class="footer-logo-img"></a>
+          <p class="footer-brand-desc">La suite de ecommerce para España.</p>
+          <a href="mailto:hola@enviox.es" class="footer-email">hola@enviox.es</a>
+        </div>
+        <div class="footer-col">
+          <h4>Productos</h4>
+          <a href="/mrw-pro">MRW Pro</a>
+          <a href="/correos-pro">Correos Pro</a>
+          <a href="/dhl-pro">DHL Pro</a>
+          <a href="/geomarkets-eu">GeoMarkets EU</a>
+          <a href="/smart-preorders">Smart Preorders</a>
+          <a href="/shopify-re">Shopify RE</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="/privacidad">Privacidad</a>
+          <a href="/terminos">Términos</a>
+          <a href="/contacto">Contacto</a>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 Enviox. Hecho con 💚 en España.</div>
+    </div>
+  </footer>
+  <!-- COOKIE BANNER -->
+  <div class="cookie-banner" id="cookieBanner">
+    <div class="container">
+      <p class="cookie-text">🍪 Utilizamos cookies para mejorar tu experiencia. Solo usamos cookies esenciales y analíticas anonimizadas. <a href="/privacidad#cookies">Más información</a></p>
+      <div class="cookie-buttons">
+        <button class="cookie-btn cookie-btn-reject" id="cookieReject">Solo necesarias</button>
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Aceptar todas</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/script.js"></script>
+</body>
+</html>

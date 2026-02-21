@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qué es el Recargo de Equivalencia y cómo gestionarlo en Shopify | Enviox Blog</title>
+  <meta name="description" content="Guía completa sobre el Recargo de Equivalencia para comerciantes minoristas en España. Qué es, quién debe aplicarlo, tipos impositivos y cómo automatizarlo en Shopify.">
+  <meta name="keywords" content="recargo de equivalencia, recargo equivalencia shopify, RE shopify, iva recargo equivalencia, minorista recargo equivalencia, shopify impuestos españa">
+  <link rel="canonical" href="https://enviox.es/blog/que-es-recargo-equivalencia-shopify" />
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" type="image/png" href="/assets/caja.png">
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://enviox.es/blog/que-es-recargo-equivalencia-shopify" />
+  <meta property="og:title" content="Qué es el Recargo de Equivalencia y cómo gestionarlo en Shopify" />
+  <meta property="og:description" content="Guía fiscal para comerciantes minoristas sobre el RE en España y Shopify." />
+  <meta property="og:image" content="https://enviox.es/assets/texto.png" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:site_name" content="Enviox" />
+  <meta property="article:published_time" content="2026-02-20T10:00:00+01:00" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Qué es el Recargo de Equivalencia y cómo gestionarlo en Shopify",
+    "description": "Guía completa sobre el Recargo de Equivalencia para minoristas en España",
+    "datePublished": "2026-02-20",
+    "dateModified": "2026-02-20",
+    "author": { "@type": "Organization", "name": "Enviox", "url": "https://enviox.es" },
+    "publisher": { "@type": "Organization", "name": "Enviox", "url": "https://enviox.es", "logo": { "@type": "ImageObject", "url": "https://enviox.es/assets/texto.png" } },
+    "mainEntityOfPage": "https://enviox.es/blog/que-es-recargo-equivalencia-shopify"
+  }
+  </script>
+
+  <style>
+    .article-hero { padding: 80px 0 40px; background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%); color: white; }
+    .article-hero .container { max-width: 800px; }
+    .article-hero h1 { font-size: 2.4rem; line-height: 1.3; margin-bottom: 16px; }
+    .article-meta { color: #94A3B8; font-size: 0.9rem; display: flex; gap: 16px; flex-wrap: wrap; }
+    .article-content { max-width: 800px; margin: 0 auto; padding: 48px 20px 80px; }
+    .article-content h2 { font-size: 1.6rem; margin: 40px 0 16px; color: #0F172A; border-bottom: 2px solid #E2E8F0; padding-bottom: 8px; }
+    .article-content h3 { font-size: 1.25rem; margin: 28px 0 12px; color: #1E293B; }
+    .article-content p { color: #334155; line-height: 1.8; margin: 0 0 16px; font-size: 1.05rem; }
+    .article-content ul, .article-content ol { color: #334155; line-height: 1.8; margin: 0 0 20px; padding-left: 24px; }
+    .article-content li { margin-bottom: 8px; }
+    .tax-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.95rem; }
+    .tax-table th { background: #0F172A; color: white; padding: 12px 16px; text-align: left; font-weight: 600; }
+    .tax-table td { padding: 12px 16px; border-bottom: 1px solid #E2E8F0; }
+    .tax-table tr:hover { background: #F8FAFC; }
+    .highlight-box { background: #EFF6FF; border-left: 4px solid #3B82F6; padding: 20px 24px; border-radius: 0 12px 12px 0; margin: 24px 0; }
+    .highlight-box p { margin: 0; color: #1E40AF; }
+    .warning-box { background: #FEF3C7; border-left: 4px solid #F59E0B; padding: 20px 24px; border-radius: 0 12px 12px 0; margin: 24px 0; }
+    .warning-box p { margin: 0; color: #92400E; }
+    .success-box { background: #D1FAE5; border-left: 4px solid #10B981; padding: 20px 24px; border-radius: 0 12px 12px 0; margin: 24px 0; }
+    .success-box p { margin: 0; color: #065F46; }
+    .cta-box { background: linear-gradient(135deg, #10B981, #059669); color: white; padding: 32px; border-radius: 16px; text-align: center; margin: 40px 0; }
+    .cta-box h3 { color: white; margin: 0 0 8px; font-size: 1.4rem; }
+    .cta-box p { color: rgba(255,255,255,0.85); margin: 0 0 20px; }
+    .cta-box a { background: white; color: #059669; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-block; }
+    .breadcrumb { padding: 12px 0; font-size: 0.85rem; color: #94A3B8; }
+    .breadcrumb a { color: #94A3B8; text-decoration: none; }
+    .breadcrumb a:hover { color: #3B82F6; }
+    @media (max-width: 768px) { .article-hero h1 { font-size: 1.8rem; } }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="/" class="nav-logo"><img src="/assets/texto.png" alt="Enviox" class="nav-logo-img"></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#productos">Productos</a></li>
+        <li><a href="/blog" class="active">Blog</a></li>
+        <li><a href="/contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="article-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="/">Inicio</a> › <a href="/blog">Blog</a> › Guía fiscal</div>
+      <h1>Qué es el Recargo de Equivalencia y cómo gestionarlo en Shopify</h1>
+      <div class="article-meta">
+        <span>📅 20 febrero 2026</span>
+        <span>⏱️ 10 min lectura</span>
+        <span>✍️ Equipo Enviox</span>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-content">
+
+    <p>Si eres <strong>comerciante minorista en España</strong> y vendes online con Shopify, probablemente te hayas encontrado con un problema: <strong>el Recargo de Equivalencia (RE)</strong>. Shopify no lo gestiona nativamente, y configurarlo manualmente es un infierno de tipos impositivos.</p>
+
+    <p>En esta guía te explicamos todo lo que necesitas saber: qué es, quién debe aplicarlo, cuánto se paga y cómo automatizarlo en tu tienda.</p>
+
+    <h2>📋 ¿Qué es el Recargo de Equivalencia?</h2>
+
+    <p>El <strong>Recargo de Equivalencia</strong> es un régimen especial de IVA que aplica a los <strong>comerciantes minoristas personas físicas</strong> (autónomos) que venden productos sin transformarlos. Es decir, si compras productos y los revendes tal cual, probablemente te aplique el RE.</p>
+
+    <div class="highlight-box">
+      <p><strong>💡 En resumen:</strong> El RE es un "extra" que pagas encima del IVA cuando compras mercancía a tu proveedor. A cambio, no tienes que presentar declaraciones de IVA trimestrales (modelo 303). Hacienda ya recauda tu IVA a través del recargo.</p>
+    </div>
+
+    <h2>👤 ¿A quién aplica el Recargo de Equivalencia?</h2>
+
+    <p>El RE aplica si cumples TODAS estas condiciones:</p>
+
+    <ol>
+      <li>Eres <strong>persona física</strong> (autónomo) o comunidad de bienes</li>
+      <li>Eres <strong>comerciante minorista</strong> (vendes al consumidor final)</li>
+      <li>Vendes <strong>productos sin transformar</strong> (no fabricas ni procesas)</li>
+      <li>Al menos el <strong>80% de tus ventas</strong> son a consumidores finales (no a empresas)</li>
+    </ol>
+
+    <div class="warning-box">
+      <p>⚠️ <strong>No aplica si:</strong> eres una Sociedad Limitada (SL), vendes servicios (no productos físicos), fabricas o transformas los productos que vendes, o la mayoría de tus ventas son B2B.</p>
+    </div>
+
+    <h2>💰 Tipos impositivos del Recargo de Equivalencia (2026)</h2>
+
+    <table class="tax-table">
+      <thead>
+        <tr>
+          <th>Tipo de producto</th>
+          <th>IVA</th>
+          <th>Recargo de Equivalencia</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>General</strong> — La mayoría de productos</td>
+          <td>21%</td>
+          <td>5,2%</td>
+          <td>26,2%</td>
+        </tr>
+        <tr>
+          <td><strong>Reducido</strong> — Alimentos, gafas, etc.</td>
+          <td>10%</td>
+          <td>1,4%</td>
+          <td>11,4%</td>
+        </tr>
+        <tr>
+          <td><strong>Superreducido</strong> — Pan, leche, libros</td>
+          <td>4%</td>
+          <td>0,5%</td>
+          <td>4,5%</td>
+        </tr>
+        <tr>
+          <td><strong>Tabaco</strong></td>
+          <td>21%</td>
+          <td>1,75%</td>
+          <td>22,75%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>🛒 El problema del RE en Shopify</h2>
+
+    <p>Shopify fue diseñado para el mercado anglosajón, donde no existe nada parecido al Recargo de Equivalencia. Esto genera varios problemas:</p>
+
+    <ul>
+      <li><strong>No hay opción nativa</strong> — Shopify no tiene un campo para "Recargo de Equivalencia"</li>
+      <li><strong>Configuración manual complejísima</strong> — Deberías crear grupos de impuestos manuales para cada tipo de producto</li>
+      <li><strong>Facturas incorrectas</strong> — Las facturas generadas por Shopify no desglosan el RE correctamente</li>
+      <li><strong>Riesgo fiscal</strong> — Si no lo aplicas correctamente, puedes tener problemas con Hacienda</li>
+    </ul>
+
+    <h2>✅ Cómo solucionar el RE en Shopify</h2>
+
+    <h3>Opción 1: Configuración manual (no recomendado)</h3>
+
+    <p>Puedes crear grupos de impuestos en Shopify → Configuración → Impuestos → España y añadir el RE como un impuesto adicional. Pero:</p>
+
+    <ul>
+      <li>Es propenso a errores</li>
+      <li>No se actualiza si cambian los tipos</li>
+      <li>Las facturas no desglosan correctamente</li>
+      <li>Requiere mantenimiento constante</li>
+    </ul>
+
+    <h3>Opción 2: Shopify RE (Enviox) — Automático ✨</h3>
+
+    <p><strong>Shopify RE</strong> es la app que estamos desarrollando en Enviox para resolver este problema de raíz. Automatiza completamente la gestión del RE:</p>
+
+    <ul>
+      <li>✅ Detecta automáticamente qué productos están sujetos a RE</li>
+      <li>✅ Aplica el tipo correcto (5,2%, 1,4% o 0,5%) según la categoría</li>
+      <li>✅ Genera facturas con desglose correcto de IVA + RE</li>
+      <li>✅ Se actualiza automáticamente si cambian los tipos</li>
+      <li>✅ Compatible con los requisitos de Hacienda española</li>
+    </ul>
+
+    <div class="success-box">
+      <p>✅ <strong>Shopify RE</strong> está actualmente en desarrollo. Cuando lo lancemos, será la forma más sencilla de cumplir con el Recargo de Equivalencia en Shopify.</p>
+    </div>
+
+    <h2>📝 Preguntas frecuentes sobre el RE</h2>
+
+    <h3>¿Tengo que cobrar el RE a mis clientes?</h3>
+    <p>No directamente. El RE lo pagas tú a tu proveedor cuando compras la mercancía. Tus precios de venta al público ya incluyen el IVA "normal". El RE es un mecanismo entre tú y Hacienda que simplifica tus obligaciones fiscales.</p>
+
+    <h3>¿Qué pasa si no aplico el RE?</h3>
+    <p>Si estás obligado al RE y no lo aplicas, Hacienda puede sancionarte. Además, estarías presentando declaraciones de IVA innecesarias, lo que genera más trabajo y posibles discrepancias.</p>
+
+    <h3>¿Puedo deducirme el IVA soportado si estoy en RE?</h3>
+    <p>No. Al estar en el régimen de RE, no presentas modelo 303 y por tanto no puedes deducirte el IVA de tus compras. El RE "sustituye" la obligación de declarar IVA trimestral.</p>
+
+    <h3>¿El RE aplica a ventas online?</h3>
+    <p>Sí. Si eres autónomo minorista y vendes por internet, el RE te aplica igual que si vendieras en tienda física. No importa si vendes por Shopify, WooCommerce o cualquier otro canal.</p>
+
+    <h2>🏆 Conclusión</h2>
+
+    <p>El Recargo de Equivalencia es una obligación fiscal española que <strong>Shopify no gestiona nativamente</strong>. Si eres autónomo minorista, necesitas una solución que automatice este proceso para evitar errores y sanciones.</p>
+
+    <p><strong>Shopify RE de Enviox</strong> será esa solución. Mientras tanto, asegúrate de consultar con tu asesor fiscal para confirmar si el RE te aplica y qué tipos debes utilizar.</p>
+
+    <div class="cta-box">
+      <h3>¿Quieres que te avisemos cuando Shopify RE esté disponible?</h3>
+      <p>Déjanos tu email y serás el primero en probar la app.</p>
+      <a href="/shopify-re">Quiero que me avisen →</a>
+    </div>
+  </article>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col"><img src="/assets/texto.png" alt="Enviox" style="height: 28px; margin-bottom: 12px;"><p style="color: #94A3B8; font-size: 0.9rem;">La suite de ecommerce para España.</p></div>
+        <div class="footer-col"><h4>Productos</h4><a href="/mrw-pro">MRW Pro</a><a href="/correos-pro">Correos Pro</a></div>
+        <div class="footer-col"><h4>Recursos</h4><a href="/blog">Blog</a><a href="/contacto">Contacto</a></div>
+        <div class="footer-col"><h4>Legal</h4><a href="/privacidad">Privacidad</a><a href="/terminos">Términos</a></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 Enviox. Todos los derechos reservados.</p></div>
+    </div>
+  </footer>
+  <script src="/script.js"></script>
+</body>
+</html>

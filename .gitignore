@@ -1,0 +1,54 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Build artifacts
+dist/
+build/
+*.map
+
+# Logs
+*.log
+logs/
+
+# Temp
+tmp/
+temp/
+*.tmp
+
+# SSL/Certs (never commit)
+*.pem
+*.key
+*.crt
+
+# Shopify CLI
+.shopify/
+
+# MRW Pro app (se gestiona por separado si se necesita)
+# Descomentar si se incluye en este repo:
+# mrw-pro-app/node_modules/
+# mrw-pro-app/.env
+
+# Images generated (keep only optimized)
+# *.psd
+# *.ai

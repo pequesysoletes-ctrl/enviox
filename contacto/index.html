@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto — Enviox</title>
+  <meta name="description" content="Contacta con el equipo de Enviox. Soporte técnico, demos y consultas comerciales. Somos un equipo 100% español.">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/product-page.css">
+  <link rel="icon" type="image/png" href="/assets/caja.png">
+  <style>
+    .contact-section { padding: 160px 0 80px; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 48px; }
+    .contact-form-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 40px;
+    }
+    .contact-form label {
+      display: block; font-size: 13px; font-weight: 600;
+      color: var(--text-sub); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .contact-form input, .contact-form textarea, .contact-form select {
+      width: 100%; padding: 14px 16px; border-radius: 10px;
+      border: 1px solid var(--border); background: var(--bg-dark);
+      color: var(--text); font-family: inherit; font-size: 15px;
+      margin-bottom: 20px; transition: border-color 0.3s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus {
+      outline: none; border-color: var(--green);
+    }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+    .contact-form button {
+      background: var(--gradient); color: white; border: none;
+      padding: 16px 40px; border-radius: 50px; font-size: 16px;
+      font-weight: 700; cursor: pointer; transition: all 0.3s;
+      width: 100%;
+    }
+    .contact-form button:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(16,185,129,0.3); }
+    .contact-info-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 40px;
+    }
+    .contact-method { margin-bottom: 32px; }
+    .contact-method-icon { font-size: 28px; margin-bottom: 8px; }
+    .contact-method h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+    .contact-method p { font-size: 14px; color: var(--text-sub); line-height: 1.6; }
+    .contact-method a { color: var(--green); text-decoration: none; font-weight: 600; }
+    .contact-method a:hover { text-decoration: underline; }
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="/" class="nav-logo"><img src="/assets/texto.png" alt="Enviox" class="nav-logo-img"></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#productos">Productos</a></li>
+        <li><a href="/#precios">Precios</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="/contacto" class="nav-cta">Contacto</a></li>
+      </ul>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+    </div>
+  </nav>
+
+  <section class="contact-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Contacto</span>
+        <h1 class="section-title">¿Cómo podemos ayudarte?</h1>
+        <p class="section-subtitle">Somos un equipo 100% español. Respondemos en menos de 24h (normalmente en minutos).</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-form-card">
+          <form class="contact-form" action="https://formspree.io/f/placeholder" method="POST">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="tu@empresa.com" required>
+            <label for="subject">Asunto</label>
+            <select id="subject" name="subject">
+              <option value="soporte">Soporte técnico</option>
+              <option value="comercial">Consulta comercial</option>
+              <option value="demo">Solicitar demo</option>
+              <option value="partnership">Partnership / integraciones</option>
+              <option value="otro">Otro</option>
+            </select>
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" placeholder="Cuéntanos en qué podemos ayudarte..." required></textarea>
+            <button type="submit">Enviar mensaje →</button>
+          </form>
+        </div>
+        <div class="contact-info-card">
+          <div class="contact-method">
+            <div class="contact-method-icon">📧</div>
+            <h3>Email</h3>
+            <p>Para soporte y consultas</p>
+            <a href="mailto:hola@enviox.es">hola@enviox.es</a>
+          </div>
+          <div class="contact-method">
+            <div class="contact-method-icon">💬</div>
+            <h3>Soporte técnico</h3>
+            <p>¿Problema con tu app? Escríbenos directamente</p>
+            <a href="mailto:soporte@enviox.es">soporte@enviox.es</a>
+          </div>
+          <div class="contact-method">
+            <div class="contact-method-icon">🤝</div>
+            <h3>Partnerships</h3>
+            <p>Agencias, integradores y partners tecnológicos</p>
+            <a href="mailto:partners@enviox.es">partners@enviox.es</a>
+          </div>
+          <div class="contact-method">
+            <div class="contact-method-icon">⏱️</div>
+            <h3>Horario de soporte</h3>
+            <p>Lunes a Viernes<br>9:00 — 18:00 (CET)<br>Respuesta media: &lt;2h</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">© 2026 Enviox. Todos los derechos reservados. Hecho con 💚 en España.</div>
+    </div>
+  </footer>
+  <!-- COOKIE BANNER -->
+  <div class="cookie-banner" id="cookieBanner">
+    <div class="container">
+      <p class="cookie-text">🍪 Utilizamos cookies para mejorar tu experiencia. Solo usamos cookies esenciales y analíticas anonimizadas. <a href="/privacidad#cookies">Más información</a></p>
+      <div class="cookie-buttons">
+        <button class="cookie-btn cookie-btn-reject" id="cookieReject">Solo necesarias</button>
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Aceptar todas</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Correos Pro para Shopify — Correos Standard + Express en una sola app | Enviox</title>
+  <meta name="description" content="Integra Correos Standard y Correos Express en tu tienda Shopify. Enrutamiento inteligente, etiquetas PDF, tracking, recogidas y devoluciones. Usa TU contrato Correos.">
+  <meta name="keywords" content="correos shopify, envios correos shopify, modulo correos shopify, correos express shopify, correos ecommerce, app correos shopify">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/product-page.css">
+  <link rel="icon" type="image/png" href="/assets/caja.png">
+  <style>
+    /* Correos-specific overrides */
+    .correos-gradient { background: linear-gradient(135deg, #D4351C 0%, #1C4F8A 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-badge-correos { background: rgba(212,53,28,0.1); border: 1px solid rgba(212,53,28,0.2); color: #D4351C; }
+    .carrier-split { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+    .carrier-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 28px; position: relative; overflow: hidden; text-align: center;
+    }
+    .carrier-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    }
+    .carrier-card.standard::before { background: #D4351C; }
+    .carrier-card.express::before { background: #1C4F8A; }
+    .carrier-card h4 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+    .carrier-card .carrier-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
+    .carrier-card .carrier-services { list-style: none; text-align: left; }
+    .carrier-card .carrier-services li {
+      font-size: 14px; color: var(--text-sub); padding: 6px 0;
+      border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px;
+    }
+    .carrier-card .carrier-services li:last-child { border-bottom: none; }
+    .carrier-badge-std { display: inline-block; padding: 2px 8px; border-radius: 50px; font-size: 10px; font-weight: 700; background: rgba(212,53,28,0.12); color: #D4351C; text-transform: uppercase; letter-spacing: 0.5px; }
+    .carrier-badge-exp { display: inline-block; padding: 2px 8px; border-radius: 50px; font-size: 10px; font-weight: 700; background: rgba(28,79,138,0.12); color: #1C4F8A; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    /* Routing hero */
+    .routing-visual {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 32px; margin-top: 32px;
+    }
+    .routing-flow {
+      display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;
+    }
+    .routing-node {
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px 24px; text-align: center; min-width: 140px;
+    }
+    .routing-node-icon { font-size: 28px; margin-bottom: 6px; }
+    .routing-node-label { font-size: 13px; font-weight: 600; }
+    .routing-node-sub { font-size: 11px; color: var(--text-muted); }
+    .routing-arrow { font-size: 24px; color: var(--text-muted); }
+    .routing-branch {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .routing-result {
+      padding: 12px 20px; border-radius: 10px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px;
+    }
+    .routing-result.standard { background: rgba(212,53,28,0.08); border: 1px solid rgba(212,53,28,0.2); color: #ff6b56; }
+    .routing-result.express { background: rgba(28,79,138,0.08); border: 1px solid rgba(28,79,138,0.3); color: #5b9bd5; }
+
+    @media (max-width: 768px) {
+      .carrier-split { grid-template-columns: 1fr; }
+      .routing-flow { flex-direction: column; }
+      .routing-arrow { transform: rotate(90deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════ NAVBAR ══════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="/" class="nav-logo"><img src="/assets/texto.png" alt="Enviox" class="nav-logo-img"></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#productos">Productos</a></li>
+        <li><a href="/#plataformas">Plataformas</a></li>
+        <li><a href="/#precios">Precios</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="#pricing" class="nav-cta">Empezar gratis</a></li>
+      </ul>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+    </div>
+  </nav>
+
+  <!-- ══════════ PRODUCT HERO ══════════ -->
+  <section class="product-hero">
+    <div class="hero-bg">
+      <div class="hero-orb hero-orb--green" style="background: radial-gradient(circle, rgba(212,53,28,0.12) 0%, transparent 70%);"></div>
+      <div class="hero-orb hero-orb--blue" style="background: radial-gradient(circle, rgba(28,79,138,0.12) 0%, transparent 70%);"></div>
+    </div>
+    <div class="container product-hero-inner">
+      <div class="product-hero-text">
+        <div class="hero-badge hero-badge-correos">📮 Dual Carrier — Correos Standard + Express</div>
+        <h1 class="hero-title" style="text-align:left;">
+          Dos Correos,<br>
+          <span class="correos-gradient">una sola app</span>
+        </h1>
+        <p class="hero-subtitle" style="text-align:left;margin-left:0;">
+          Integra <strong>Correos Standard</strong> y <strong>Correos Express</strong> en tu panel de Shopify. 
+          El motor de reglas decide automáticamente cuál usar según peso, destino o importe. 
+          Usa <strong>tu propio contrato Correos</strong>.
+        </p>
+        <div class="hero-buttons" style="justify-content:flex-start;">
+          <a href="#pricing" class="btn-primary" style="background:linear-gradient(135deg, #D4351C, #1C4F8A);">Instalar en Shopify — 14 días gratis →</a>
+          <a href="#dual-carrier" class="btn-secondary">¿Qué es Dual Carrier?</a>
+        </div>
+        <div class="hero-trust" style="justify-content:flex-start;">
+          <span>✅ Tu contrato Correos</span>
+          <span>✅ Standard + Express</span>
+          <span>✅ Enrutamiento IA</span>
+        </div>
+      </div>
+      <div class="product-hero-visual">
+        <div class="product-mockup-frame">
+          <div class="mockup-topbar">
+            <span class="mockup-dot" style="background:#ef4444;"></span>
+            <span class="mockup-dot" style="background:#eab308;"></span>
+            <span class="mockup-dot" style="background:#22c55e;"></span>
+            <span class="mockup-title">Correos Pro — Routing Engine</span>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-kpi-row">
+              <div class="mockup-kpi"><span class="mockup-kpi-val" style="color:#D4351C;">203</span><span class="mockup-kpi-label">Standard</span></div>
+              <div class="mockup-kpi"><span class="mockup-kpi-val" style="color:#1C4F8A;">87</span><span class="mockup-kpi-label">Express</span></div>
+              <div class="mockup-kpi"><span class="mockup-kpi-val" style="color:var(--green);">99.1%</span><span class="mockup-kpi-label">Entregas OK</span></div>
+            </div>
+            <!-- Routing table mockup -->
+            <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:12px;padding:12px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:12px;">
+                <span style="color:var(--text-sub);">Pedido #4521 — Madrid</span>
+                <span class="carrier-badge-std">Standard</span>
+                <span style="color:var(--text-muted);font-size:11px;">48-72h</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:12px;">
+                <span style="color:var(--text-sub);">Pedido #4522 — Barcelona</span>
+                <span class="carrier-badge-exp">Express</span>
+                <span style="color:var(--text-muted);font-size:11px;">24h</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:12px;">
+                <span style="color:var(--text-sub);">Pedido #4523 — Sevilla</span>
+                <span class="carrier-badge-std">Standard</span>
+                <span style="color:var(--text-muted);font-size:11px;">48-72h</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;font-size:12px;">
+                <span style="color:var(--text-sub);">Pedido #4524 — Bilbao</span>
+                <span class="carrier-badge-exp">Express</span>
+                <span style="color:var(--text-muted);font-size:11px;">24h</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ DUAL CARRIER ══════════ -->
+  <section id="dual-carrier">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" style="color:#D4351C;">Dual Carrier</span>
+        <h2 class="section-title">¿Por qué necesitas los dos?</h2>
+        <p class="section-subtitle">Correos Standard para envíos económicos. Correos Express para urgentes. Decide automáticamente.</p>
+      </div>
+      <div class="carrier-split">
+        <div class="carrier-card standard">
+          <h4 style="color:#D4351C;">📮 Correos Standard</h4>
+          <p class="carrier-sub">Correos Ecommerce — Entregas 48-72h</p>
+          <ul class="carrier-services">
+            <li><span style="color:var(--green);">✓</span> Paq Premium nacional</li>
+            <li><span style="color:var(--green);">✓</span> Paq Estándar nacional</li>
+            <li><span style="color:var(--green);">✓</span> Paq Business</li>
+            <li><span style="color:var(--green);">✓</span> Envíos internacionales</li>
+            <li><span style="color:var(--green);">✓</span> Puntos de entrega</li>
+          </ul>
+        </div>
+        <div class="carrier-card express">
+          <h4 style="color:#1C4F8A;">⚡ Correos Express</h4>
+          <p class="carrier-sub">Entregas urgentes — 24h peninsular</p>
+          <ul class="carrier-services">
+            <li><span style="color:var(--green);">✓</span> Paq 10 (antes de las 10h)</li>
+            <li><span style="color:var(--green);">✓</span> Paq 14 (antes de las 14h)</li>
+            <li><span style="color:var(--green);">✓</span> Paq 24 (24h garantizadas)</li>
+            <li><span style="color:var(--green);">✓</span> ePaq 24 (ecommerce 24h)</li>
+            <li><span style="color:var(--green);">✓</span> Entrega en sábado</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ ROUTING ENGINE ══════════ -->
+  <section id="routing" class="problem-section" style="background:linear-gradient(180deg, var(--bg-deep) 0%, rgba(28,79,138,0.03) 50%, var(--bg-deep) 100%);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" style="color:#1C4F8A;">Motor de reglas</span>
+        <h2 class="section-title">Enrutamiento inteligente</h2>
+        <p class="section-subtitle">Configura reglas y el sistema decide automáticamente qué carrier usar para cada pedido</p>
+      </div>
+      <div class="routing-visual reveal">
+        <div class="routing-flow">
+          <div class="routing-node">
+            <div class="routing-node-icon">🛒</div>
+            <div class="routing-node-label">Pedido nuevo</div>
+            <div class="routing-node-sub">desde Shopify</div>
+          </div>
+          <span class="routing-arrow">→</span>
+          <div class="routing-node" style="border-color:rgba(16,185,129,0.3);">
+            <div class="routing-node-icon">🧠</div>
+            <div class="routing-node-label" style="color:var(--green);">Motor de reglas</div>
+            <div class="routing-node-sub">peso · destino · precio</div>
+          </div>
+          <span class="routing-arrow">→</span>
+          <div class="routing-branch">
+            <div class="routing-result standard">
+              📮 Correos Standard — pedidos &lt;30€, &lt;5kg
+            </div>
+            <div class="routing-result express">
+              ⚡ Correos Express — pedidos &gt;30€, urgente
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:24px;">
+          <p style="font-size:14px;color:var(--text-muted);">Ejemplo: envíos económicos via Standard, pedidos urgentes o de alto valor via Express. Todo automático.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ FEATURES ══════════ -->
+  <section id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Funcionalidades</span>
+        <h2 class="section-title">Automatización de principio a fin</h2>
+        <p class="section-subtitle">Todo lo que necesitas para gestionar tus envíos Correos desde Shopify</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon">🧠</div>
+          <h3>Enrutamiento automático</h3>
+          <p>Configura reglas por peso, destino, precio del pedido o etiqueta de producto. El sistema elige Standard o Express automáticamente.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">📦</div>
+          <h3>Envíos en 1 clic</h3>
+          <p>Cada pedido genera un envío automáticamente en el carrier correcto. Sin copiar direcciones, sin errores de transcripción.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">🏷️</div>
+          <h3>Etiquetas PDF + batch</h3>
+          <p>Descarga etiquetas individuales o en lote. PDF combinado o ZIP. Compatible con impresoras de etiquetas 10x15cm.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">📍</div>
+          <h3>Tracking unificado</h3>
+          <p>Standard y Express en un solo dashboard. El tracking se sincroniza con Shopify. Tus clientes reciben notificaciones automáticas.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">📊</div>
+          <h3>Analytics dual carrier</h3>
+          <p>Dashboard con métricas separadas: envíos Standard vs Express, costes por carrier, tasa de entrega, tiempos medios y distribución geográfica.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">🔄</div>
+          <h3>Devoluciones integradas</h3>
+          <p>Genera etiquetas de devolución en cualquiera de los dos carriers. El cliente la recibe por email del carrier elegido.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">📅</div>
+          <h3>Recogidas programadas</h3>
+          <p>Solicita recogidas tanto de Correos Standard como de Correos Express desde la misma app. Calendario visual integrado.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">🔧</div>
+          <h3>Tu contrato, tus tarifas</h3>
+          <p>Conecta tus credenciales API de Correos Ecommerce y/o Correos Express. Los envíos se facturan a tu tarifa negociada directamente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ COMPARATIVA ══════════ -->
+  <section class="compare-section" id="comparativa">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Comparativa</span>
+        <h2 class="section-title">Correos Pro vs la competencia</h2>
+      </div>
+      <div class="compare-table-wrapper reveal">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Funcionalidad</th>
+              <th class="compare-highlight">Correos Pro ✨</th>
+              <th>App oficial Correos</th>
+              <th>Packlink PRO</th>
+              <th>Outvio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Dual carrier (Standard + Express)</td><td class="compare-highlight"><span class="check">✓</span></td><td><span class="cross">✗</span> Solo Standard</td><td>Ambos (separados)</td><td><span class="check">✓</span></td></tr>
+            <tr><td>Motor de reglas / enrutamiento</td><td class="compare-highlight"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td>Básico</td><td><span class="check">✓</span></td></tr>
+            <tr><td>Crear envíos automáticos</td><td class="compare-highlight"><span class="check">✓</span></td><td>Manual</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Etiquetas PDF nativas</td><td class="compare-highlight"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Tracking sincronizado</td><td class="compare-highlight"><span class="check">✓</span></td><td>Parcial</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Dashboard analytics</td><td class="compare-highlight"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td>Básico</td><td><span class="check">✓</span></td></tr>
+            <tr><td>Devoluciones integradas</td><td class="compare-highlight"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Recogidas programadas</td><td class="compare-highlight"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+            <tr><td>Usa TU contrato Correos</td><td class="compare-highlight"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span> Sus tarifas</td><td><span class="cross">✗</span> Sus tarifas</td></tr>
+            <tr><td>Soporte en español</td><td class="compare-highlight"><span class="check">✓</span></td><td>Lento</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Precio desde</td><td class="compare-highlight"><strong>29€/mes</strong></td><td>Gratuito*</td><td>Gratuito*</td><td>29€/mes</td></tr>
+          </tbody>
+        </table>
+        <p class="compare-note">* Gratuito pero con funcionalidad muy limitada o usando tarifas intermediarias más caras que las tuyas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ PRICING ══════════ -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Precios</span>
+        <h2 class="section-title">Elige tu plan Correos Pro</h2>
+        <p class="section-subtitle">Todos incluyen 14 días de prueba gratuita. Sin tarjeta de crédito.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card reveal">
+          <h3 class="pricing-name">Starter</h3>
+          <div class="pricing-price">29€<span>/mes</span></div>
+          <p class="pricing-desc">Para tiendas que empiezan con Correos</p>
+          <ul class="pricing-features">
+            <li>200 envíos/mes</li>
+            <li>1 carrier (Standard <strong>o</strong> Express)</li>
+            <li>Etiquetas + tracking</li>
+            <li>Soporte email</li>
+            <li class="no">Motor de reglas</li>
+            <li class="no">Dashboard analytics</li>
+          </ul>
+          <a href="#" class="pricing-btn pricing-btn-secondary">Empezar gratis</a>
+        </div>
+        <div class="pricing-card featured reveal">
+          <div class="pricing-popular">Popular</div>
+          <h3 class="pricing-name">Pro</h3>
+          <div class="pricing-price">49€<span>/mes</span></div>
+          <p class="pricing-desc">Dual carrier con enrutamiento</p>
+          <ul class="pricing-features">
+            <li>Envíos ilimitados</li>
+            <li>Standard + Express</li>
+            <li>Motor de reglas avanzado</li>
+            <li>Dashboard analytics</li>
+            <li>Devoluciones</li>
+            <li>Soporte prioritario</li>
+          </ul>
+          <a href="#" class="pricing-btn pricing-btn-primary" style="background:linear-gradient(135deg, #D4351C, #1C4F8A);">Empezar gratis</a>
+        </div>
+        <div class="pricing-card reveal">
+          <h3 class="pricing-name">Business</h3>
+          <div class="pricing-price">99€<span>/mes</span></div>
+          <p class="pricing-desc">Alto volumen + multi-tienda</p>
+          <ul class="pricing-features">
+            <li>Todo lo del Pro</li>
+            <li>API access completo</li>
+            <li>Multi-tienda</li>
+            <li>Soporte dedicado</li>
+            <li>SLA garantizado</li>
+            <li>Onboarding 1:1</li>
+          </ul>
+          <a href="mailto:hola@enviox.es" class="pricing-btn pricing-btn-secondary">Contactar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ FAQ ══════════ -->
+  <section id="faq-correos">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title">Preguntas sobre Correos Pro</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item active">
+          <div class="faq-question">
+            <span>¿Necesito contratos con Correos Standard y Express?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer" style="max-height:200px;">
+            <div class="faq-answer-inner">Necesitas al menos uno. El plan Starter funciona con un solo carrier. Para el plan Pro (dual carrier), necesitas credenciales API de ambos: Correos Ecommerce (Standard) y Correos Express. Si solo tienes uno, puedes conectar ese y añadir el otro cuando lo contrates.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>¿Cómo funciona el motor de reglas?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Configuras condiciones (peso, destino, importe del pedido, etiquetas de producto) y el sistema asigna automáticamente Standard o Express. Ejemplo: pedidos &gt;30€ van por Express, el resto por Standard. Las reglas son flexibles y se evalúan en orden de prioridad.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>¿Qué servicios de Correos soporta exactamente?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner"><strong>Correos Standard:</strong> Paq Premium, Paq Estándar, Paq Business, envíos internacionales y puntos de entrega CityPaq.<br><strong>Correos Express:</strong> Paq 10, Paq 14, Paq 24, ePaq 24, entrega en sábado y franjas horarias.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>¿Puedo usar solo Correos Standard o solo Express?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Sí. El plan Starter está diseñado exactamente para eso. Puedes conectar solo Standard o solo Express y usar la app con un único carrier. Si más adelante quieres añadir el segundo, actualiza al plan Pro.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>¿Qué diferencia hay con Packlink o Outvio?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Correos Pro usa <strong>tu contrato directo</strong> con Correos — tus tarifas negociadas, sin intermediario. Packlink y Outvio usan sus propias tarifas (normalmente más caras) y se llevan un margen en cada envío. Además, nuestro motor de reglas de enrutamiento es más avanzado.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>¿Funciona con envíos internacionales?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Sí. Correos Standard soporta envíos internacionales (Paq Premium Internacional). Para envíos urgentes internacionales, Correos Express ofrece servicio a la UE y destinos principales. La app configura automáticamente los datos aduaneros necesarios.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ CTA FINAL ══════════ -->
+  <section class="cta-section" id="cta">
+    <div class="cta-glow" style="background:radial-gradient(circle at 50% 50%, rgba(212,53,28,0.08) 0%, rgba(28,79,138,0.05) 40%, transparent 70%);"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <h2 class="cta-title reveal">Automatiza Correos Standard + Express <span class="correos-gradient">hoy</span></h2>
+      <p class="cta-subtitle reveal">14 días gratis. Sin tarjeta. Cancela cuando quieras.</p>
+      <div class="reveal"><a href="#" class="btn-primary" style="font-size:18px;padding:18px 48px;background:linear-gradient(135deg, #D4351C, #1C4F8A);">Instalar Correos Pro →</a></div>
+      <p class="cta-email reveal">o escríbenos a <a href="mailto:hola@enviox.es">hola@enviox.es</a></p>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="/"><img src="/assets/texto.png" alt="Enviox" class="footer-logo-img"></a>
+          <p class="footer-brand-desc">La suite de ecommerce para España. Envíos y fiscalidad en piloto automático.</p>
+          <a href="mailto:hola@enviox.es" class="footer-email">hola@enviox.es</a>
+        </div>
+        <div class="footer-col">
+          <h4>Productos</h4>
+          <a href="/mrw-pro">MRW Pro</a>
+          <a href="/correos-pro">Correos Pro</a>
+          <a href="/dhl-pro">DHL Pro</a>
+          <a href="/bundler">BundlerPro</a>
+          <a href="/woocommerce-re">WooCommerce RE</a>
+          <a href="/shopify-re">Shopify RE</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="/privacidad">Política de privacidad</a>
+          <a href="/terminos">Términos de servicio</a>
+          <a href="/contacto">Contacto</a>
+        </div>
+      </div>
+      <p class="footer-disclaimer">Los logos y marcas comerciales de Correos, Correos Express, MRW, DHL y Shopify pertenecen a sus respectivos propietarios. Enviox no está afiliado oficialmente con ninguno de ellos.</p>
+      <div class="footer-bottom">© 2026 Enviox. Todos los derechos reservados. Hecho con 💚 en España.</div>
+    </div>
+  </footer>
+  <!-- COOKIE BANNER -->
+  <div class="cookie-banner" id="cookieBanner">
+    <div class="container">
+      <p class="cookie-text">🍪 Utilizamos cookies para mejorar tu experiencia. Solo usamos cookies esenciales y analíticas anonimizadas. <a href="/privacidad#cookies">Más información</a></p>
+      <div class="cookie-buttons">
+        <button class="cookie-btn cookie-btn-reject" id="cookieReject">Solo necesarias</button>
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Aceptar todas</button>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="/script.js"></script>
+</body>
+</html>
