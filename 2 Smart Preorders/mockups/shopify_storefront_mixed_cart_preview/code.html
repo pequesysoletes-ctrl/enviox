@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shopify Storefront Mixed Cart Preview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "amber-light": "#FEF3C7",
+                        "amber-border": "#F59E0B",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for webkit browsers */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex flex-col">
+<!-- TopNavBar Component -->
+<div class="relative flex w-full flex-col bg-[#f8fcfa] border-b border-[#e7f3ef]">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1">
+<header class="flex items-center justify-between whitespace-nowrap px-4 md:px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-[#0d1b17]">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined text-4xl">storefront</span>
+</div>
+<h2 class="text-[#0d1b17] text-xl font-bold leading-tight tracking-[-0.015em]">Shopify Store</h2>
+</div>
+<div class="hidden md:flex items-center gap-9">
+<a class="text-[#0d1b17] text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Inicio</a>
+<a class="text-[#0d1b17] text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Catálogo</a>
+<a class="text-[#0d1b17] text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Contacto</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-4 md:gap-8">
+<label class="hidden sm:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full border border-gray-200 bg-white">
+<div class="text-[#4c9a80] flex bg-transparent items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d1b17] focus:outline-0 focus:ring-0 border-none bg-transparent focus:border-none h-full placeholder:text-gray-400 px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Buscar producto..." value=""/>
+</div>
+</label>
+<button class="relative flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-[#e7f3ef] hover:bg-[#d5ebe5] transition-colors text-[#0d1b17]">
+<span class="material-symbols-outlined text-[24px]">shopping_cart</span>
+<span class="absolute top-1.5 right-1.5 flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+</span>
+</button>
+</div>
+</header>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<main class="flex-grow flex justify-center w-full px-4 md:px-10 lg:px-40 py-8 md:py-12">
+<div class="max-w-[1200px] w-full flex flex-col lg:flex-row gap-8 lg:gap-16">
+<!-- Left Column: Cart Items & Warnings -->
+<div class="flex-1 flex flex-col gap-6">
+<div class="flex items-baseline justify-between">
+<h1 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Tu Carrito</h1>
+<span class="text-sm text-slate-500 font-medium">2 artículos</span>
+</div>
+<!-- Warning Banner -->
+<div class="rounded-lg border border-amber-border bg-amber-light p-5 shadow-sm">
+<div class="flex gap-3 mb-4">
+<span class="material-symbols-outlined text-amber-600 shrink-0 mt-0.5">warning</span>
+<div class="flex flex-col gap-1">
+<h3 class="font-bold text-amber-900 text-lg">Tu pedido se enviará en 2 partes</h3>
+<p class="text-amber-800 text-sm leading-relaxed">Debido a la disponibilidad de stock mixto, recibirás tus productos en dos envíos separados.</p>
+</div>
+</div>
+<!-- Mini Timeline inside banner -->
+<div class="relative pl-3 ml-2 border-l-2 border-amber-300 space-y-4 py-1">
+<div class="relative pl-4">
+<span class="absolute -left-[21px] top-1 h-3 w-3 rounded-full bg-primary border-2 border-amber-light ring-2 ring-primary/30"></span>
+<p class="text-sm text-amber-900 font-medium">
+<span class="font-bold">Parte 1:</span> Camiseta algodón orgánico <span class="material-symbols-outlined align-bottom text-[18px] mx-1">arrow_right_alt</span> Envío inmediato
+                            </p>
+</div>
+<div class="relative pl-4">
+<span class="absolute -left-[21px] top-1 h-3 w-3 rounded-full bg-purple-600 border-2 border-amber-light ring-2 ring-purple-600/30"></span>
+<p class="text-sm text-amber-900 font-medium">
+<span class="font-bold">Parte 2:</span> Zapatillas Ltd Ed <span class="material-symbols-outlined align-bottom text-[18px] mx-1">arrow_right_alt</span> Envío est. 15/04/2026
+                            </p>
+</div>
+</div>
+</div>
+<!-- Cart Items List -->
+<div class="flex flex-col gap-4 mt-2">
+<!-- Item 1 -->
+<div class="group relative flex flex-col sm:flex-row gap-4 sm:gap-6 p-4 sm:p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm transition-shadow hover:shadow-md">
+<div class="relative aspect-square sm:w-32 sm:h-32 shrink-0 overflow-hidden rounded-lg bg-slate-100">
+<!-- Image placeholder -->
+<div class="w-full h-full bg-slate-200 flex items-center justify-center text-slate-400" data-alt="White organic cotton t-shirt flat lay">
+<span class="material-symbols-outlined text-4xl">checkroom</span>
+</div>
+</div>
+<div class="flex flex-1 flex-col justify-between">
+<div class="flex justify-between items-start gap-4">
+<div>
+<div class="mb-2 inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary ring-1 ring-inset ring-primary/20">
+<span class="material-symbols-outlined text-[14px]">local_shipping</span>
+                                        Envío inmediato
+                                    </div>
+<h3 class="text-base font-semibold text-slate-900 dark:text-white">Camiseta algodón orgánico</h3>
+<p class="mt-1 text-sm text-slate-500">Talla: M | Color: Blanco</p>
+</div>
+<p class="text-lg font-bold text-slate-900 dark:text-white">25,00€</p>
+</div>
+<div class="mt-4 flex items-center justify-between sm:mt-0 sm:block sm:w-full">
+<div class="flex items-center justify-between w-full mt-4">
+<!-- Quantity -->
+<div class="flex items-center rounded-lg border border-slate-200 dark:border-slate-600">
+<button class="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-l-lg transition-colors">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<input class="w-10 border-0 bg-transparent p-0 text-center text-sm font-medium text-slate-900 focus:ring-0 dark:text-white" readonly="" type="text" value="1"/>
+<button class="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-r-lg transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+<!-- Remove -->
+<button class="text-sm font-medium text-slate-400 hover:text-red-500 transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+<span class="hidden sm:inline">Eliminar</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group relative flex flex-col sm:flex-row gap-4 sm:gap-6 p-4 sm:p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm transition-shadow hover:shadow-md">
+<div class="relative aspect-square sm:w-32 sm:h-32 shrink-0 overflow-hidden rounded-lg bg-slate-100">
+<!-- Image placeholder -->
+<div class="w-full h-full bg-slate-200 flex items-center justify-center text-slate-400" data-alt="Limited edition sneakers side view studio shot">
+<span class="material-symbols-outlined text-4xl">steps</span>
+</div>
+</div>
+<div class="flex flex-1 flex-col justify-between">
+<div class="flex justify-between items-start gap-4">
+<div>
+<div class="mb-2 inline-flex items-center gap-1.5 rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-semibold text-purple-700 ring-1 ring-inset ring-purple-700/10">
+<span class="material-symbols-outlined text-[14px]">hourglass_top</span>
+                                        Preventa — est. 15/04/2026
+                                    </div>
+<h3 class="text-base font-semibold text-slate-900 dark:text-white">Zapatillas Ltd Ed</h3>
+<p class="mt-1 text-sm text-slate-500">Talla: 42 | Edición: Coleccionista</p>
+</div>
+<p class="text-lg font-bold text-slate-900 dark:text-white">89,00€</p>
+</div>
+<div class="mt-4 flex items-center justify-between sm:mt-0 sm:block sm:w-full">
+<div class="flex items-center justify-between w-full mt-4">
+<!-- Quantity -->
+<div class="flex items-center rounded-lg border border-slate-200 dark:border-slate-600">
+<button class="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-l-lg transition-colors">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<input class="w-10 border-0 bg-transparent p-0 text-center text-sm font-medium text-slate-900 focus:ring-0 dark:text-white" readonly="" type="text" value="1"/>
+<button class="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-r-lg transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+<!-- Remove -->
+<button class="text-sm font-medium text-slate-400 hover:text-red-500 transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+<span class="hidden sm:inline">Eliminar</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Summary -->
+<div class="lg:w-[380px] shrink-0">
+<div class="sticky top-8 flex flex-col gap-6">
+<div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+<h2 class="text-lg font-bold text-slate-900 dark:text-white mb-6">Resumen del pedido</h2>
+<dl class="space-y-4 text-sm text-slate-600 dark:text-slate-300">
+<div class="flex justify-between">
+<dt>Subtotal</dt>
+<dd class="font-medium text-slate-900 dark:text-white">114,00€</dd>
+</div>
+<div class="flex justify-between">
+<dt>Envío</dt>
+<dd class="font-medium text-slate-900 dark:text-white">5,95€</dd>
+</div>
+<div class="flex justify-between items-center bg-amber-50 -mx-2 px-2 py-1 rounded border border-amber-100 dark:bg-amber-900/20 dark:border-amber-900/30">
+<dt class="flex items-center gap-1.5 text-amber-800 dark:text-amber-200 font-medium">
+                                    Envío dividido
+                                    <div class="group relative flex cursor-help">
+<span class="material-symbols-outlined text-[16px] text-amber-600/70 hover:text-amber-700">info</span>
+<span class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 w-max rounded bg-slate-900 px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100 z-10">
+                                            Coste adicional por segundo envío
+                                        </span>
+</div>
+</dt>
+<dd class="font-bold text-amber-800 dark:text-amber-200">+6,00€</dd>
+</div>
+<div class="border-t border-slate-200 pt-4 dark:border-slate-700 mt-4">
+<div class="flex justify-between items-baseline">
+<dt class="text-base font-bold text-slate-900 dark:text-white">Total</dt>
+<dd class="text-2xl font-bold text-slate-900 dark:text-white">125,95€</dd>
+</div>
+<p class="mt-1 text-xs text-slate-400 text-right">Impuestos incluidos</p>
+</div>
+</dl>
+<button class="mt-6 w-full rounded-lg bg-primary py-3 px-4 text-base font-bold text-white shadow-sm hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all">
+                            Finalizar compra
+                        </button>
+<div class="mt-6 flex justify-center gap-3 opacity-60 grayscale transition-all hover:grayscale-0 hover:opacity-100">
+<!-- Payment Icons Placeholders -->
+<div class="h-6 w-10 bg-slate-200 rounded" title="Visa"></div>
+<div class="h-6 w-10 bg-slate-200 rounded" title="Mastercard"></div>
+<div class="h-6 w-10 bg-slate-200 rounded" title="PayPal"></div>
+<div class="h-6 w-10 bg-slate-200 rounded" title="Apple Pay"></div>
+</div>
+<p class="mt-4 text-center text-xs text-slate-400">
+                            Transacción segura y encriptada
+                        </p>
+</div>
+<!-- Need Help Block -->
+<div class="rounded-xl border border-dashed border-slate-300 bg-transparent p-4 text-center dark:border-slate-600">
+<p class="text-sm font-medium text-slate-900 dark:text-white">¿Necesitas ayuda?</p>
+<p class="mt-1 text-xs text-slate-500">Llámanos al <a class="text-primary hover:underline font-medium" href="#">+34 900 000 000</a> o escríbenos por chat.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

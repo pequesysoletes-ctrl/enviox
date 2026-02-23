@@ -1,0 +1,226 @@
+// ═══════════════════════════════════════════════════════════════
+// GeoMarkets EU — Prisma Schema
+// Complete data model for geolocation, markets, analytics, billing
+// ═══════════════════════════════════════════════════════════════
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:dev.sqlite"
+}
+
+// ─── Shopify Session (required by @shopify/shopify-app-session-storage-prisma)
+model Session {
+  id                  String    @id
+  shop                String
+  state               String
+  isOnline            Boolean   @default(false)
+  scope               String?
+  expires             DateTime?
+  accessToken         String
+  userId              BigInt?
+  firstName           String?
+  lastName            String?
+  email               String?
+  accountOwner        Boolean   @default(false)
+  locale              String?
+  collaborator        Boolean?  @default(false)
+  emailVerified       Boolean?  @default(false)
+  refreshToken        String?
+  refreshTokenExpires DateTime?
+}
+
+// ─── Shop Settings ─────────────────────────────────────────────
+// Core config per shop: redirect mode, plan, onboarding state
+model Shop {
+  id                  String    @id @default(cuid())
+  shopDomain          String    @unique // myshop.myshopify.com
+  
+  // Onboarding state
+  onboardingCompleted Boolean   @default(false)
+  onboardingStep      Int       @default(0) // 0=not started, 1-3=wizard steps
+  
+  // Redirect behavior
+  redirectMode        String    @default("auto") // "auto" | "banner" | "manual"
+  
+  // Bot exclusions
+  excludeBots         Boolean   @default(true)
+  excludeCheckout     Boolean   @default(true)
+  respectUserChoice   Boolean   @default(true)  // honor cookie 30 days
+  excludedUrls        String    @default("")     // newline-separated paths
+  
+  // Worker config
+  workerUrl           String    @default("") // Cloudflare Worker endpoint
+  
+  // Billing
+  plan                String    @default("free")   // "free" | "basic" | "pro" | "agency"
+  planActivatedAt     DateTime?
+  trialEndsAt         DateTime?
+  billingId           String?   // Shopify recurring charge ID
+  
+  // Sync state
+  lastMarketSync      DateTime?
+  marketSyncError     String?
+  
+  // Timestamps
+  installedAt         DateTime  @default(now())
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  // Relations
+  markets             Market[]
+  selectorConfig      SelectorConfig?
+  bannerConfig        BannerConfig?
+  geoEvents           GeoEvent[]
+}
+
+// ─── Market ────────────────────────────────────────────────────
+// Mirrors a Shopify Market — synced via GraphQL
+model Market {
+  id                  String    @id @default(cuid())
+  shopId              String
+  shopifyMarketId     String    // gid://shopify/Market/123
+  
+  name                String    // "France", "Alemania"
+  enabled             Boolean   @default(true)
+  primary             Boolean   @default(false) // Is the primary (home) market
+  
+  // Countries served (JSON array of ISO alpha-2 codes: ["FR","MC","RE"])
+  countryCodes        String    @default("[]")
+  
+  // Web presence
+  defaultLocale       String    @default("en") // "fr", "de", "es"
+  rootUrl             String    @default("/")  // "/fr/", "/de/", subdomain, etc.
+  currency            String    @default("EUR")
+  
+  // Status
+  hasTranslation      Boolean   @default(true)
+  translationWarning  String?   // null = OK, otherwise warning text
+  
+  // Timestamps
+  lastSyncedAt        DateTime  @default(now())
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  shop                Shop      @relation(fields: [shopId], references: [id], onDelete: Cascade)
+
+  @@unique([shopId, shopifyMarketId])
+  @@index([shopId])
+  @@index([shopId, enabled])
+}
+
+// ─── Selector Config ───────────────────────────────────────────
+// How the country selector widget looks on the storefront
+model SelectorConfig {
+  id                  String    @id @default(cuid())
+  shopId              String    @unique
+  
+  // Position
+  position            String    @default("floating") // "floating" | "header" | "footer" | "hidden"
+  
+  // Content toggles
+  showFlags           Boolean   @default(true)
+  showCountryName     Boolean   @default(true)
+  showCurrency        Boolean   @default(true)
+  showLanguage        Boolean   @default(false)
+  
+  // Design
+  bgColor             String    @default("#FFFFFF")
+  textColor           String    @default("#111827")
+  borderColor         String    @default("#E5E5E5")
+  hoverColor          String    @default("#F9FAFB")
+  accentColor         String    @default("#2563EB")
+  borderRadius        String    @default("8px") // "0px"|"4px"|"8px"|"12px"|"9999px"
+  size                String    @default("normal") // "compact"|"normal"|"large"
+  shadow              Boolean   @default(true)
+  
+  // Custom CSS (Pro plan only)
+  customCss           String    @default("")
+  
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  shop                Shop      @relation(fields: [shopId], references: [id], onDelete: Cascade)
+}
+
+// ─── Banner Config ─────────────────────────────────────────────
+// Redirect confirmation banner (only used when redirectMode = "banner")
+model BannerConfig {
+  id                  String    @id @default(cuid())
+  shopId              String    @unique
+  
+  // Banner text templates (JSON: {"fr":"Il semble que vous...","de":"Es sieht so aus..."})
+  textTemplates       String    @default("{}")
+  
+  // Button labels (JSON: {"fr":{"accept":"Oui","reject":"Non"},...})
+  buttonLabels        String    @default("{}")
+  
+  // Design
+  bgColor             String    @default("#FFFFFF")
+  textColor           String    @default("#111827")
+  acceptBtnColor      String    @default("#008060") // Shopify green
+  rejectBtnStyle      String    @default("outlined") // "outlined"|"text"|"subtle"
+  bannerPosition      String    @default("top") // "top"|"bottom"|"modal"
+  showFlag            Boolean   @default(true)
+  showDismiss         Boolean   @default(true)
+  
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  shop                Shop      @relation(fields: [shopId], references: [id], onDelete: Cascade)
+}
+
+// ─── Geo Events (Analytics) ────────────────────────────────────
+// Each redirect/detection event logged for analytics
+model GeoEvent {
+  id                  String    @id @default(cuid())
+  shopId              String
+  
+  // Event data
+  eventType           String    // "redirect" | "banner_shown" | "banner_accept" | "banner_reject" | "selector_change"
+  countryCode         String    // ISO alpha-2: "FR", "DE"
+  fromPath            String    @default("/") // Original path visitor was on
+  toPath              String?   // Redirect target (null if rejected)
+  
+  // Context
+  userAgent           String    @default("")
+  isBot               Boolean   @default(false)
+  
+  // Timestamp — we use this for time-series queries
+  occurredAt          DateTime  @default(now())
+
+  shop                Shop      @relation(fields: [shopId], references: [id], onDelete: Cascade)
+
+  @@index([shopId])
+  @@index([shopId, occurredAt])
+  @@index([shopId, countryCode])
+  @@index([shopId, eventType])
+  @@index([occurredAt]) // For global analytics
+}
+
+// ─── Daily Stats (Aggregated) ──────────────────────────────────
+// Pre-aggregated daily stats per country per shop for fast dashboard queries
+model DailyStat {
+  id                  String    @id @default(cuid())
+  shopId              String
+  date                DateTime  // Start of day (UTC)
+  countryCode         String    // ISO alpha-2
+  
+  // Counters
+  visitors            Int       @default(0)
+  redirects           Int       @default(0)
+  bannerShown         Int       @default(0)
+  bannerAccepted      Int       @default(0)
+  bannerRejected      Int       @default(0)
+  selectorChanges     Int       @default(0)
+  
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  @@unique([shopId, date, countryCode])
+  @@index([shopId, date])
+  @@index([shopId, countryCode])
+}

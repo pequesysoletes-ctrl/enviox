@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#d5361a",
+                "express-blue": "#1C4F8A",
+                "background-light": "#F6F6F7",
+                "background-dark": "#211311",
+              },
+              fontFamily: {
+                "display": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<title>Correos Pro - Facturación</title>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">local_post_office</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">Correos Pro</h2>
+</div>
+<nav class="flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Envíos</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Seguimiento</a>
+<a class="text-primary text-sm font-semibold border-b-2 border-primary pb-1" href="#">Facturación</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="h-8 w-px bg-slate-200 dark:bg-slate-700 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-xs font-bold text-slate-900 dark:text-white">Admin User</p>
+<p class="text-[10px] text-slate-500">ID: CP-9421</p>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-slate-100 dark:border-slate-800" data-alt="User profile avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAG1DCHKg8fRPVTUY9XX6UcOegnNsoMrV0IyB8vyB74RscaEuaMWA4NCQyuFFt8XE1AKY-gvOl5qE3g-9jSQJsMqwUqGYQ_D7HqeV39iAw-SvPewuM0C69cWgRK4hKe9m8EiIa0wHInbw_b0varbh51HpvoZ0pX2qQ4eEVcnZpTpK9Wf57VUUhWFGnN-Il74RDK_0dHqX2QhS0ln0Q0n6QXBFqXuasV8p38diUfWZGh-AMIZMCNOxtZXffXOTyfCLX84CpgDU5B4lmc");'></div>
+</div>
+</div>
+</header>
+<main class="flex flex-1 justify-center py-8">
+<div class="layout-content-container flex flex-col max-w-[1024px] flex-1 px-6 lg:px-10">
+<!-- Header Section -->
+<div class="flex flex-wrap justify-between items-end gap-3 mb-8">
+<div class="flex flex-col gap-1">
+<h1 class="text-slate-900 dark:text-white text-3xl font-black leading-tight tracking-tight">Facturación y plan</h1>
+<p class="text-slate-500 dark:text-slate-400 text-base font-normal">Gestiona tu suscripción, métodos de pago y descarga tus facturas.</p>
+</div>
+<button class="flex items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-sm font-bold gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+                            Descargar historial completo
+                        </button>
+</div>
+<!-- Top Card: Current Plan -->
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden mb-8">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Tu plan actual</h3>
+<div class="flex items-center gap-3">
+<h2 class="text-slate-900 dark:text-white text-2xl font-bold">Plan Profesional</h2>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                            Activo
+                                        </span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 mt-2 font-medium">49,00€/mes</p>
+</div>
+<div class="text-right">
+<p class="text-xs text-slate-500 mb-1">Próxima renovación</p>
+<p class="text-sm font-bold text-slate-900 dark:text-white">01/03/2026</p>
+</div>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Envíos ilimitados + Motor de reglas + Soporte prioritario</p>
+</div>
+<div class="p-6 bg-slate-50/50 dark:bg-slate-900/50">
+<div class="flex justify-between items-center mb-4">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white">Uso de envíos este mes: <span class="text-primary">342 total</span></h4>
+</div>
+<!-- Progress Bar -->
+<div class="space-y-4">
+<div class="w-full h-4 bg-slate-200 dark:bg-slate-700 rounded-full flex overflow-hidden">
+<div class="h-full bg-primary" style="width: 72%;"></div>
+<div class="h-full bg-express-blue" style="width: 28%;"></div>
+</div>
+<div class="flex flex-wrap gap-6">
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-sm bg-primary"></div>
+<p class="text-xs text-slate-600 dark:text-slate-400 font-medium">Correos Standard: <span class="font-bold text-slate-900 dark:text-white">245 envíos (72%)</span></p>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-sm bg-express-blue"></div>
+<p class="text-xs text-slate-600 dark:text-slate-400 font-medium">Correos Express: <span class="font-bold text-slate-900 dark:text-white">97 envíos (28%)</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 px-6 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center">
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-sm font-bold rounded-lg hover:bg-slate-200 transition-colors">
+                                    Cambiar plan
+                                </button>
+<button class="px-4 py-2 text-primary hover:text-primary/80 text-sm font-bold rounded-lg transition-colors">
+                                    Cancelar suscripción
+                                </button>
+</div>
+<p class="text-xs text-slate-400">ID de suscripción: SUB-992-KLA-12</p>
+</div>
+</section>
+<!-- Middle Section: Pricing Comparison -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<!-- Starter Card -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Starter</h3>
+<p class="text-2xl font-black text-slate-900 dark:text-white mb-4">29,00€<span class="text-sm font-normal text-slate-500">/mes</span></p>
+<ul class="space-y-3 mb-8 flex-1">
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                    200 envíos / mes
+                                </li>
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                    Reglas básicas
+                                </li>
+<li class="flex items-center gap-2 text-sm text-slate-400 line-through">
+<span class="material-symbols-outlined text-slate-300 text-lg">cancel</span>
+                                    Soporte prioritario
+                                </li>
+</ul>
+<button class="w-full py-2.5 border-2 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold rounded-lg text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                                Downgrade
+                            </button>
+</div>
+<!-- Professional Card (Featured) -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border-2 border-primary ring-4 ring-primary/10 relative flex flex-col shadow-lg">
+<span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wider">Plan actual</span>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Profesional</h3>
+<p class="text-2xl font-black text-slate-900 dark:text-white mb-4">49,00€<span class="text-sm font-normal text-slate-500">/mes</span></p>
+<ul class="space-y-3 mb-8 flex-1">
+<li class="flex items-center gap-2 text-sm text-slate-900 dark:text-slate-200 font-medium">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                    Envíos ilimitados
+                                </li>
+<li class="flex items-center gap-2 text-sm text-slate-900 dark:text-slate-200 font-medium">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                    Motor de reglas completo
+                                </li>
+<li class="flex items-center gap-2 text-sm text-slate-900 dark:text-slate-200 font-medium">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                    Soporte prioritario
+                                </li>
+</ul>
+<div class="w-full py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-500 font-bold rounded-lg text-sm text-center cursor-default">
+                                Seleccionado
+                            </div>
+</div>
+<!-- Business Card -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Business</h3>
+<p class="text-2xl font-black text-slate-900 dark:text-white mb-4">99,00€<span class="text-sm font-normal text-slate-500">/mes</span></p>
+<ul class="space-y-3 mb-8 flex-1">
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                    Envíos ilimitados
+                                </li>
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                    Reglas avanzadas
+                                </li>
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                    Multi-cuenta &amp; Soporte dedicado
+                                </li>
+</ul>
+<button class="w-full py-2.5 bg-primary text-white font-bold rounded-lg text-sm hover:opacity-90 transition-opacity">
+                                Upgrade
+                            </button>
+</div>
+</div>
+<!-- Bottom Card: Billing History -->
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800">
+<h2 class="text-lg font-bold text-slate-900 dark:text-white">Historial de facturación</h2>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-950 text-slate-500 text-xs font-bold uppercase tracking-wider">
+<tr>
+<th class="px-6 py-4">Fecha</th>
+<th class="px-6 py-4">Concepto</th>
+<th class="px-6 py-4">Importe</th>
+<th class="px-6 py-4">Estado</th>
+<th class="px-6 py-4 text-right">Factura</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-300">01/02/2026</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">Plan Profesional</td>
+<td class="px-6 py-4 text-sm text-slate-900 dark:text-white font-bold">49,00€</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                                Pagado
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:text-primary/80 flex items-center gap-1 justify-end ml-auto text-sm font-bold">
+<span class="material-symbols-outlined text-base">picture_as_pdf</span>
+                                                Descargar
+                                            </button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-300">01/01/2026</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">Plan Profesional</td>
+<td class="px-6 py-4 text-sm text-slate-900 dark:text-white font-bold">49,00€</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                                Pagado
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:text-primary/80 flex items-center gap-1 justify-end ml-auto text-sm font-bold">
+<span class="material-symbols-outlined text-base">picture_as_pdf</span>
+                                                Descargar
+                                            </button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-300">01/12/2025</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">Plan Starter</td>
+<td class="px-6 py-4 text-sm text-slate-900 dark:text-white font-bold">29,00€</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                                Pagado
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:text-primary/80 flex items-center gap-1 justify-end ml-auto text-sm font-bold">
+<span class="material-symbols-outlined text-base">picture_as_pdf</span>
+                                                Descargar
+                                            </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-slate-100 dark:border-slate-800 flex justify-center">
+<button class="text-xs font-bold text-slate-500 hover:text-primary transition-colors">Ver facturas de años anteriores</button>
+</div>
+</section>
+<!-- Footer Help -->
+<div class="mt-12 mb-8 p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="p-3 bg-white dark:bg-slate-900 rounded-full border border-slate-100 dark:border-slate-800 text-primary">
+<span class="material-symbols-outlined">help_center</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-900 dark:text-white">¿Necesitas ayuda con tu facturación?</h4>
+<p class="text-xs text-slate-500">Consulta nuestras guías o contacta con soporte prioritario.</p>
+</div>
+</div>
+<button class="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold rounded-lg shadow-sm">Contactar Soporte</button>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

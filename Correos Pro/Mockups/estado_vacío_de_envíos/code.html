@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Correos Pro - Envíos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d4371c",
+                        "background-light": "#f6f6f7",
+                        "background-dark": "#211311",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex min-h-screen flex-col overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-zinc-900 px-6 py-3 lg:px-10">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined text-2xl">local_post_office</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Correos Pro</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-semibold text-primary border-b-2 border-primary pb-1" href="#">Envíos</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">Pedidos</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">Almacén</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">Configuración</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="h-10 w-64 rounded-lg border-slate-200 bg-slate-50 pl-10 text-sm focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white" placeholder="Buscar envíos..." type="text"/>
+</div>
+<button class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-10 w-10 overflow-hidden rounded-full border border-slate-200 dark:border-slate-700">
+<img alt="Usuario" data-alt="Profile picture of an administrator user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-zDDVagvgPwqlwTt8volNqGBsp3ugZhe7ah0VXOfCq4djv2T_qF31ofi1-c1Aktp-OQsm0OGiqz1caAPr2e8HCM3LofyBqlGYQ6vLlgXCThUA1yIpfPqNV5rq5fQ1PQ4EbjRZv5eIoVJHAg9fVMpxjT7rSKh5D4ZNMbmqfzXU4PARhfKWZ1XYXeo9mRLeM-prXyjjtAh1wBtc79Qgaef9Etwn3wjRlrWNq5NmHTnJWTqxgtHQeMAKHt1WEw37qd5deVnpSKBW9cSW"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex flex-1 flex-col p-6 lg:p-10 max-w-7xl mx-auto w-full">
+<!-- Page Header -->
+<div class="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<h1 class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">Envíos</h1>
+</div>
+<!-- Empty State Container -->
+<div class="flex flex-1 items-center justify-center py-12 lg:py-24">
+<div class="max-w-lg w-full text-center flex flex-col items-center">
+<!-- Line Illustration / Icon -->
+<div class="mb-8 relative">
+<div class="absolute inset-0 scale-150 blur-3xl opacity-10 bg-primary rounded-full"></div>
+<div class="relative flex h-40 w-40 items-center justify-center rounded-full bg-white dark:bg-zinc-900 shadow-sm border border-slate-100 dark:border-zinc-800">
+<span class="material-symbols-outlined text-7xl text-primary/80">package_2</span>
+<div class="absolute bottom-6 right-6 flex h-10 w-10 items-center justify-center rounded-full bg-background-light dark:bg-background-dark border-2 border-white dark:border-zinc-900">
+<span class="material-symbols-outlined text-xl text-slate-400">inventory_2</span>
+</div>
+</div>
+</div>
+<!-- Empty State Text -->
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Aún no tienes envíos</h2>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-10 max-w-md">
+                        Cuando se complete un pedido en tu tienda, los envíos se crearán automáticamente según tus reglas de enrutamiento. También puedes crear uno manualmente.
+                    </p>
+<!-- Primary Action -->
+<div class="flex flex-col items-center gap-6 w-full">
+<button class="group flex items-center justify-center gap-2 h-12 px-8 bg-primary hover:bg-primary/90 text-white font-bold rounded-lg shadow-lg shadow-primary/20 transition-all active:scale-95 w-full sm:w-auto">
+<span class="material-symbols-outlined text-xl">add_circle</span>
+<span>Crear envío manual</span>
+</button>
+<!-- Secondary Link -->
+<a class="group flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors underline underline-offset-4 decoration-primary/30 hover:decoration-primary" href="#">
+<span class="material-symbols-outlined text-lg">settings_suggest</span>
+                            Configurar reglas de enrutamiento
+                        </a>
+</div>
+</div>
+</div>
+<!-- Footer Stats Hint (Optional subtle addition for completeness) -->
+<div class="mt-auto pt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 opacity-40">
+<div class="rounded-xl border border-dashed border-slate-300 dark:border-slate-700 p-4 flex flex-col items-center">
+<span class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Pendientes</span>
+<span class="text-2xl font-bold text-slate-400">0</span>
+</div>
+<div class="rounded-xl border border-dashed border-slate-300 dark:border-slate-700 p-4 flex flex-col items-center">
+<span class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">En Tránsito</span>
+<span class="text-2xl font-bold text-slate-400">0</span>
+</div>
+<div class="rounded-xl border border-dashed border-slate-300 dark:border-slate-700 p-4 flex flex-col items-center">
+<span class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Entregados</span>
+<span class="text-2xl font-bold text-slate-400">0</span>
+</div>
+</div>
+</main>
+</div>
+</body></html>

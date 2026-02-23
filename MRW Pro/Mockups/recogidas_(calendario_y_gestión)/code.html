@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MRW Pro - Gestión de Recogidas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0369a0",
+                        "success": "#059669",
+                        "warning": "#D97706",
+                        "background-light": "#f6f6f7",
+                        "background-dark": "#0f1c23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 bg-white px-6 py-3 lg:px-10">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+<h2 class="text-[#0c171c] text-xl font-bold leading-tight tracking-tight">MRW Pro</h2>
+</div>
+<label class="hidden md:flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-400 flex border-none bg-slate-100 items-center justify-center pl-4 rounded-l-lg" data-icon="MagnifyingGlass">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-slate-100 focus:ring-0 h-full placeholder:text-slate-400 px-4 rounded-r-lg text-sm font-normal" placeholder="Buscar envíos o recogidas..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-slate-600 hover:text-primary text-sm font-medium transition-colors" href="#">Dashboard</a>
+<a class="text-slate-600 hover:text-primary text-sm font-medium transition-colors" href="#">Envíos</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary py-4" href="#">Recogidas</a>
+<a class="text-slate-600 hover:text-primary text-sm font-medium transition-colors" href="#">Clientes</a>
+</nav>
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full bg-slate-200 overflow-hidden border border-slate-300">
+<img alt="Avatar de usuario" class="w-full h-full object-cover" data-alt="Portrait of a male professional business manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzv1gjG9MTkiqhKwBYbYAMun6CUB561mKV9WFQ7q__uCBPTBe2wx2qoC7IJZegbw6xKvOyECgT0mknXiR8fR95zcx-rL6nk9-xoUBz9WDHr1hEZUyTTeUFFCKxWDI29ykpX_mAHWS-6X0boZI94V9LsUfSfVB-2HKukijOu0qckKwmW6AytUtByrwIc3HJxsfi6SRenn2S-XC8w8sLFf7rf57s07VjGbIHNHa6XKWTTnJBCvZrcKAU_DDtxReGDaBmYktsFACbfeo"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex flex-col flex-1 px-4 lg:px-10 py-8 max-w-[1440px] mx-auto w-full">
+<!-- Header Section -->
+<div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+<div>
+<h1 class="text-[#0c171c] text-3xl font-black leading-tight tracking-tight">Recogidas</h1>
+<p class="text-slate-500 text-sm mt-1">Gestiona tus programaciones y solicita nuevos servicios.</p>
+</div>
+<button class="flex min-w-[140px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-11 px-6 bg-primary text-white text-sm font-bold shadow-md hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+<span>Nueva recogida</span>
+</button>
+</div>
+<div class="flex flex-col lg:flex-row gap-8 items-start">
+<!-- LEFT COLUMN: Calendar (60%) -->
+<div class="w-full lg:w-[60%] flex flex-col gap-6">
+<div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+<div class="flex items-center justify-between p-6 border-b border-slate-100">
+<div class="flex items-center gap-4">
+<h3 class="text-lg font-bold text-slate-800">Febrero 2026</h3>
+<div class="flex bg-slate-100 rounded-lg p-1">
+<button class="p-1 hover:text-primary"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="p-1 hover:text-primary"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+<div class="flex items-center gap-4 text-xs font-medium text-slate-500 uppercase tracking-wider">
+<span class="flex items-center gap-1.5"><span class="size-2 rounded-full bg-primary"></span> Programada</span>
+<span class="flex items-center gap-1.5"><span class="size-2 rounded-full border border-primary bg-primary/10"></span> Hoy</span>
+</div>
+</div>
+<div class="p-4">
+<!-- Calendar Grid -->
+<div class="grid grid-cols-7 border-b border-slate-100 mb-2">
+<div class="h-10 flex items-center justify-center text-xs font-bold text-slate-400 uppercase">Lun</div>
+<div class="h-10 flex items-center justify-center text-xs font-bold text-slate-400 uppercase">Mar</div>
+<div class="h-10 flex items-center justify-center text-xs font-bold text-slate-400 uppercase">Mié</div>
+<div class="h-10 flex items-center justify-center text-xs font-bold text-slate-400 uppercase">Jue</div>
+<div class="h-10 flex items-center justify-center text-xs font-bold text-slate-400 uppercase">Vie</div>
+<div class="h-10 flex items-center justify-center text-xs font-bold text-slate-400 uppercase">Sáb</div>
+<div class="h-10 flex items-center justify-center text-xs font-bold text-slate-400 uppercase">Dom</div>
+</div>
+<div class="grid grid-cols-7 gap-px bg-slate-50 border border-slate-100 rounded-lg overflow-hidden">
+<!-- Empty space for Jan -->
+<div class="h-24 bg-white opacity-40"></div>
+<div class="h-24 bg-white opacity-40"></div>
+<div class="h-24 bg-white opacity-40"></div>
+<div class="h-24 bg-white opacity-40"></div>
+<div class="h-24 bg-white opacity-40"></div>
+<div class="h-24 bg-white opacity-40"></div>
+<!-- Feb 1 (Sun) -->
+<div class="h-24 bg-white p-2">
+<span class="text-sm font-medium text-slate-400">1</span>
+</div>
+<!-- Row 2 -->
+<div class="h-24 bg-white p-2 flex flex-col items-center">
+<span class="text-sm font-medium text-slate-600">2</span>
+</div>
+<div class="h-24 bg-white p-2 flex flex-col items-center">
+<span class="text-sm font-medium text-slate-600">3</span>
+</div>
+<div class="h-24 bg-white p-2 flex flex-col items-center">
+<span class="text-sm font-medium text-slate-600">4</span>
+</div>
+<div class="h-24 bg-white p-2 flex flex-col items-center">
+<span class="text-sm font-medium text-slate-600">5</span>
+</div>
+<div class="h-24 bg-white p-2 flex flex-col items-center">
+<span class="text-sm font-medium text-slate-600">6</span>
+</div>
+<div class="h-24 bg-white p-2 flex flex-col items-center">
+<span class="text-sm font-medium text-slate-600">7</span>
+</div>
+<div class="h-24 bg-white p-2 flex flex-col items-center">
+<span class="text-sm font-medium text-slate-600">8</span>
+</div>
+<!-- Row 3 -->
+<div class="h-24 bg-white p-2 flex flex-col items-center"><span class="text-sm font-medium text-slate-600">9</span></div>
+<div class="h-24 bg-white p-2 flex flex-col items-center"><span class="text-sm font-medium text-slate-600">10</span></div>
+<div class="h-24 bg-white p-2 flex flex-col items-center"><span class="text-sm font-medium text-slate-600">11</span></div>
+<div class="h-24 bg-white p-2 flex flex-col items-center"><span class="text-sm font-medium text-slate-600">12</span></div>
+<div class="h-24 bg-white p-2 flex flex-col items-center"><span class="text-sm font-medium text-slate-600">13</span></div>
+<div class="h-24 bg-white p-2 flex flex-col items-center"><span class="text-sm font-medium text-slate-600">14</span></div>
+<div class="h-24 bg-white p-2 flex flex-col items-center"><span class="text-sm font-medium text-slate-600">15</span></div>
+<!-- Row 4 -->
+<div class="h-24 bg-white p-2 flex flex-col items-center"><span class="text-sm font-medium text-slate-600">16</span></div>
+<!-- TODAY: 17 -->
+<div class="h-24 bg-blue-50/30 p-2 flex flex-col items-center relative">
+<div class="size-8 rounded-full bg-primary flex items-center justify-center text-white text-sm font-bold">17</div>
+</div>
+<!-- Scheduled 18 -->
+<div class="h-24 bg-white p-2 flex flex-col items-center group cursor-pointer hover:bg-slate-50">
+<span class="text-sm font-medium text-slate-600">18</span>
+<div class="mt-auto mb-2 size-2 rounded-full bg-primary shadow-sm shadow-primary/40"></div>
+</div>
+<div class="h-24 bg-white p-2 flex flex-col items-center"><span class="text-sm font-medium text-slate-600">19</span></div>
+<!-- Scheduled 20 -->
+<div class="h-24 bg-white p-2 flex flex-col items-center group cursor-pointer hover:bg-slate-50">
+<span class="text-sm font-medium text-slate-600">20</span>
+<div class="mt-auto mb-2 size-2 rounded-full bg-primary shadow-sm shadow-primary/40"></div>
+</div>
+<div class="h-24 bg-white p-2 flex flex-col items-center"><span class="text-sm font-medium text-slate-600">21</span></div>
+<!-- Scheduled 22 -->
+<div class="h-24 bg-white p-2 flex flex-col items-center group cursor-pointer hover:bg-slate-50">
+<span class="text-sm font-medium text-slate-600">22</span>
+<div class="mt-auto mb-2 size-2 rounded-full bg-primary shadow-sm shadow-primary/40"></div>
+</div>
+<!-- Row 5 (Partial) -->
+<div class="h-24 bg-white p-2 flex flex-col items-center"><span class="text-sm font-medium text-slate-600">23</span></div>
+<div class="h-24 bg-white p-2 flex flex-col items-center"><span class="text-sm font-medium text-slate-600">24</span></div>
+<div class="h-24 bg-white p-2 flex flex-col items-center"><span class="text-sm font-medium text-slate-600">25</span></div>
+<div class="h-24 bg-white p-2 flex flex-col items-center"><span class="text-sm font-medium text-slate-600">26</span></div>
+<div class="h-24 bg-white p-2 flex flex-col items-center"><span class="text-sm font-medium text-slate-600">27</span></div>
+<div class="h-24 bg-white p-2 flex flex-col items-center"><span class="text-sm font-medium text-slate-600">28</span></div>
+<div class="h-24 bg-white opacity-40"></div>
+</div>
+</div>
+</div>
+<!-- Info Card (Supplementary) -->
+<div class="bg-primary/5 border border-primary/20 rounded-xl p-6 flex gap-4 items-start">
+<span class="material-symbols-outlined text-primary">info</span>
+<div class="text-sm text-primary leading-relaxed">
+<p class="font-bold">Información de servicio</p>
+<p>Las recogidas solicitadas antes de las 11:00 AM pueden programarse para el mismo día en la franja de tarde. El mensajero contactará por teléfono antes de la llegada.</p>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN (40%) -->
+<div class="w-full lg:w-[40%] flex flex-col gap-8">
+<!-- Upcoming Pickups -->
+<div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+<div class="p-5 border-b border-slate-100 flex items-center justify-between">
+<h2 class="text-lg font-bold text-slate-800 tracking-tight">Próximas recogidas</h2>
+<span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded-full font-bold">3 activas</span>
+</div>
+<div class="divide-y divide-slate-100">
+<!-- Pickup 1 -->
+<div class="p-5 hover:bg-slate-50 transition-colors">
+<div class="flex justify-between items-start mb-2">
+<div class="flex flex-col">
+<span class="text-base font-bold text-slate-800">18/02/2026</span>
+<span class="text-sm text-slate-500 font-medium">10:00 - 14:00</span>
+</div>
+<span class="px-3 py-1 bg-success/10 text-success text-xs font-bold rounded-full border border-success/20 uppercase tracking-wider">Confirmada</span>
+</div>
+<div class="flex items-center gap-4 mt-3">
+<div class="flex items-center gap-1.5 text-xs font-medium text-slate-600">
+<span class="material-symbols-outlined text-lg">package_2</span>
+                                            5 paquetes
+                                        </div>
+<button class="text-primary text-xs font-bold hover:underline flex items-center gap-1 ml-auto">
+                                            Detalles <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Pickup 2 -->
+<div class="p-5 hover:bg-slate-50 transition-colors">
+<div class="flex justify-between items-start mb-2">
+<div class="flex flex-col">
+<span class="text-base font-bold text-slate-800">20/02/2026</span>
+<span class="text-sm text-slate-500 font-medium">09:00 - 13:00</span>
+</div>
+<span class="px-3 py-1 bg-warning/10 text-warning text-xs font-bold rounded-full border border-warning/20 uppercase tracking-wider">Pendiente</span>
+</div>
+<div class="flex items-center gap-4 mt-3">
+<div class="flex items-center gap-1.5 text-xs font-medium text-slate-600">
+<span class="material-symbols-outlined text-lg">package_2</span>
+                                            3 paquetes
+                                        </div>
+<button class="text-primary text-xs font-bold hover:underline flex items-center gap-1 ml-auto">
+                                            Detalles <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Pickup 3 -->
+<div class="p-5 hover:bg-slate-50 transition-colors">
+<div class="flex justify-between items-start mb-2">
+<div class="flex flex-col">
+<span class="text-base font-bold text-slate-800">22/02/2026</span>
+<span class="text-sm text-slate-500 font-medium">10:00 - 14:00</span>
+</div>
+<span class="px-3 py-1 bg-warning/10 text-warning text-xs font-bold rounded-full border border-warning/20 uppercase tracking-wider">Pendiente</span>
+</div>
+<div class="flex items-center gap-4 mt-3">
+<div class="flex items-center gap-1.5 text-xs font-medium text-slate-600">
+<span class="material-symbols-outlined text-lg">package_2</span>
+                                            8 paquetes
+                                        </div>
+<button class="text-primary text-xs font-bold hover:underline flex items-center gap-1 ml-auto">
+                                            Detalles <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- New Pickup Form -->
+<div class="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden">
+<div class="p-5 border-b border-slate-100 bg-slate-50/50">
+<h2 class="text-lg font-bold text-slate-800 tracking-tight">Nueva solicitud</h2>
+</div>
+<div class="p-6 flex flex-col gap-5">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700">Fecha de recogida</label>
+<div class="relative">
+<input class="w-full rounded-lg border-slate-200 text-sm focus:border-primary focus:ring-primary h-11" type="date" value="2026-02-17"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700">Franja horaria</label>
+<select class="w-full rounded-lg border-slate-200 text-sm focus:border-primary focus:ring-primary h-11">
+<option>Seleccionar horario...</option>
+<option>09:00 - 13:00</option>
+<option selected="">10:00 - 14:00</option>
+<option>14:00 - 18:00</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700">Número de paquetes</label>
+<div class="relative">
+<span class="absolute left-3 top-3 text-slate-400 material-symbols-outlined">inventory_2</span>
+<input class="w-full pl-10 rounded-lg border-slate-200 text-sm focus:border-primary focus:ring-primary h-11" placeholder="Ej: 5" type="number"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700">Notas para el mensajero (opcional)</label>
+<textarea class="w-full rounded-lg border-slate-200 text-sm focus:border-primary focus:ring-primary p-3 h-24" placeholder="Ej: Llamar al timbre de recepción, código de portal 1234..."></textarea>
+</div>
+<button class="w-full bg-primary text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-primary/90 transition-all active:scale-[0.98] mt-2 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">schedule_send</span>
+                                    Solicitar recogida
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Section -->
+<footer class="mt-auto border-t border-slate-200 bg-white p-6 text-center">
+<p class="text-slate-400 text-xs">© 2026 MRW Pro - Sistema de Logística Inteligente. Todos los derechos reservados.</p>
+</footer>
+</div>
+</div>
+</body></html>

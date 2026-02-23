@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Correos Pickup Scheduling Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d4341c",
+                        "correos-express": "#1C4F8A",
+                        "prestashop-bg": "#EBEFF4",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211311",
+                        "slate-850": "#1d2939",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Open Sans", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-prestashop-bg dark:bg-background-dark min-h-screen flex text-slate-900 dark:text-slate-100">
+<!-- Sidebar (from components list, adapted) -->
+<aside class="w-64 bg-white dark:bg-[#2c2423] shadow-sm hidden lg:flex flex-col flex-shrink-0 z-20">
+<div class="flex h-full flex-col justify-between p-4">
+<div class="flex flex-col gap-6">
+<!-- Brand -->
+<div class="flex gap-3 items-center px-2">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 shadow-sm border border-gray-100" data-alt="PrestaShop Logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAxE7o2yDcHUwD-ZxxCOKrLorAOc8SxzncEm0_UhNfP6sAb1xUSr8IhclCEkfaR6dhWlBSBvdaEH6KCPMk7ltkGzdq-BjmFN-Xacn95RX4sS61w0pXwUP9IbMZR3s_0I-Zq1njVLtQGN9ceSeO_wlENCIQvPmBlc66edBQA1RpFxUayODJJtLonID91K04UiWFFLDTmPD0fSH7nBb2bktMhju8baO4sJjMV9X35Q4QX_YF3QrQd_qKaYxx99grYyK7KJiMs69KGHUvJ");'></div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-base font-bold leading-none">PrestaShop</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-normal mt-1">Back Office</p>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<p class="text-sm font-medium">Inicio</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+<p class="text-sm font-medium">Pedidos</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+<p class="text-sm font-medium">Catálogo</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<p class="text-sm font-medium">Clientes</p>
+</a>
+<div class="mt-2">
+<p class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Configuración</p>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary dark:text-primary-light" href="#">
+<span class="material-symbols-outlined text-[20px] fill-current">local_shipping</span>
+<p class="text-sm font-bold">Recogidas</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">extension</span>
+<p class="text-sm font-medium">Módulos</p>
+</a>
+</div>
+</nav>
+</div>
+<!-- User Profile -->
+<div class="border-t border-gray-100 dark:border-white/10 pt-4 px-2">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-600 text-xs font-bold">
+                        JD
+                    </div>
+<div class="flex flex-col">
+<p class="text-sm font-medium text-slate-900 dark:text-white">John Doe</p>
+<p class="text-xs text-slate-500">Administrador</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto h-screen relative flex flex-col">
+<!-- Top Header -->
+<header class="bg-white dark:bg-[#2c2423] shadow-sm sticky top-0 z-10 px-6 py-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<button class="lg:hidden p-2 text-slate-600">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-3">
+<h2 class="text-xl font-bold text-slate-800 dark:text-white tracking-tight">Recogidas</h2>
+<span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+<span class="size-1.5 rounded-full bg-green-600 mr-1.5"></span>
+                            PRO
+                        </span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400">Gestión de recogidas Correos</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 bg-primary hover:bg-red-700 text-white px-4 py-2 rounded-md shadow-sm transition-colors text-sm font-semibold">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                    Nueva recogida
+                </button>
+</div>
+</header>
+<!-- Page Content -->
+<div class="flex-1 p-6 max-w-7xl mx-auto w-full flex flex-col gap-6">
+<!-- Tabs -->
+<div class="border-b border-gray-200 dark:border-white/10">
+<nav aria-label="Tabs" class="-mb-px flex space-x-8">
+<a aria-current="page" class="border-primary text-primary whitespace-nowrap border-b-[3px] py-4 px-1 text-sm font-bold flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[18px]">local_post_office</span>
+                        Correos Standard
+                    </a>
+<a class="border-transparent text-slate-500 hover:border-gray-300 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 whitespace-nowrap border-b-[3px] py-4 px-1 text-sm font-medium flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[18px]">rocket_launch</span>
+                        Correos Express
+                    </a>
+</nav>
+</div>
+<!-- Two Column Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Calendar (60% approx -> 7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<div class="bg-white dark:bg-[#2c2423] rounded-lg shadow-sm border border-gray-100 dark:border-white/5 overflow-hidden">
+<!-- Calendar Header -->
+<div class="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-white/5">
+<h3 class="text-lg font-bold text-slate-800 dark:text-white">Calendario de Recogidas</h3>
+<div class="flex items-center bg-gray-50 dark:bg-white/5 rounded-md p-1">
+<button class="p-1 hover:bg-white dark:hover:bg-white/10 rounded-md text-slate-500 transition-shadow shadow-sm">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<span class="px-4 text-sm font-semibold text-slate-700 dark:text-slate-200 min-w-[120px] text-center">Febrero 2026</span>
+<button class="p-1 hover:bg-white dark:hover:bg-white/10 rounded-md text-slate-500 transition-shadow shadow-sm">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Calendar Grid -->
+<div class="p-6">
+<div class="grid grid-cols-7 gap-y-6 text-center">
+<div class="text-xs font-semibold text-slate-400 uppercase tracking-wide">Lun</div>
+<div class="text-xs font-semibold text-slate-400 uppercase tracking-wide">Mar</div>
+<div class="text-xs font-semibold text-slate-400 uppercase tracking-wide">Mié</div>
+<div class="text-xs font-semibold text-slate-400 uppercase tracking-wide">Jue</div>
+<div class="text-xs font-semibold text-slate-400 uppercase tracking-wide">Vie</div>
+<div class="text-xs font-semibold text-slate-400 uppercase tracking-wide">Sáb</div>
+<div class="text-xs font-semibold text-slate-400 uppercase tracking-wide">Dom</div>
+<!-- Empty Days -->
+<div class="h-10"></div>
+<div class="h-10"></div>
+<div class="h-10"></div>
+<!-- Days -->
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-700 hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-white/10">1</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-700 hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-white/10">2</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-700 hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-white/10">3</span>
+<span class="absolute bottom-1 size-1.5 rounded-full bg-primary"></span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-700 hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-white/10">4</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-700 hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-white/10">5</span>
+<div class="absolute bottom-1 flex gap-0.5">
+<span class="size-1.5 rounded-full bg-primary"></span>
+<span class="size-1.5 rounded-full bg-correos-express"></span>
+</div>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-400 bg-gray-50 dark:text-slate-500 dark:bg-white/5">6</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-400 bg-gray-50 dark:text-slate-500 dark:bg-white/5">7</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-700 hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-white/10">8</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-700 hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-white/10">9</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-700 hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-white/10">10</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-bold text-white bg-primary shadow-sm shadow-primary/30">11</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-700 hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-white/10">12</span>
+<span class="absolute bottom-1 size-1.5 rounded-full bg-correos-express"></span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-400 bg-gray-50 dark:text-slate-500 dark:bg-white/5">13</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-400 bg-gray-50 dark:text-slate-500 dark:bg-white/5">14</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-700 hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-white/10">15</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-700 hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-white/10">16</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-700 hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-white/10">17</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-700 hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-white/10">18</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-700 hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-white/10">19</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-400 bg-gray-50 dark:text-slate-500 dark:bg-white/5">20</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-400 bg-gray-50 dark:text-slate-500 dark:bg-white/5">21</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-700 hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-white/10">22</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-700 hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-white/10">23</span>
+<span class="absolute bottom-1 size-1.5 rounded-full bg-primary"></span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-700 hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-white/10">24</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-700 hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-white/10">25</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-700 hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-white/10">26</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-400 bg-gray-50 dark:text-slate-500 dark:bg-white/5">27</span>
+</button>
+<button class="h-10 w-full flex flex-col items-center justify-start group relative">
+<span class="flex size-8 items-center justify-center rounded-full text-sm font-medium text-slate-400 bg-gray-50 dark:text-slate-500 dark:bg-white/5">28</span>
+</button>
+</div>
+<div class="mt-6 flex items-center justify-center gap-4 text-xs">
+<div class="flex items-center gap-2">
+<span class="size-2.5 rounded-full bg-primary"></span>
+<span class="text-slate-600 dark:text-slate-400">Correos Standard</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-2.5 rounded-full bg-correos-express"></span>
+<span class="text-slate-600 dark:text-slate-400">Correos Express</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Nueva Recogida Form (Mobile/Desktop stacked) -->
+<div class="bg-white dark:bg-[#2c2423] rounded-lg shadow-sm border border-gray-100 dark:border-white/5 p-6">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">add_circle</span>
+                                Solicitar nueva recogida
+                            </h3>
+</div>
+<form class="space-y-6">
+<!-- Service Selection -->
+<div>
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300 mb-3 block">Servicio</label>
+<div class="grid grid-cols-2 gap-4">
+<label class="cursor-pointer relative">
+<input checked="" class="peer sr-only" name="service" type="radio"/>
+<div class="rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-4 flex flex-col items-center gap-2 hover:bg-white peer-checked:border-primary peer-checked:bg-primary/5 peer-checked:ring-1 peer-checked:ring-primary transition-all">
+<div class="text-primary font-bold text-sm">Correos Standard</div>
+<span class="material-symbols-outlined text-primary text-[24px]">local_shipping</span>
+</div>
+</label>
+<label class="cursor-pointer relative">
+<input class="peer sr-only" name="service" type="radio"/>
+<div class="rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-4 flex flex-col items-center gap-2 hover:bg-white peer-checked:border-correos-express peer-checked:bg-correos-express/5 peer-checked:ring-1 peer-checked:ring-correos-express transition-all">
+<div class="text-correos-express font-bold text-sm">Correos Express</div>
+<span class="material-symbols-outlined text-correos-express text-[24px]">rocket_launch</span>
+</div>
+</label>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Date Picker -->
+<div>
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5 block">Fecha de recogida</label>
+<div class="relative">
+<input class="w-full rounded-md border-gray-300 dark:border-white/20 bg-white dark:bg-black/20 text-slate-900 dark:text-white shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5" type="date" value="2026-02-11"/>
+</div>
+</div>
+<!-- Time Slot -->
+<div>
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5 block">Franja horaria</label>
+<select class="w-full rounded-md border-gray-300 dark:border-white/20 bg-white dark:bg-black/20 text-slate-900 dark:text-white shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5">
+<option>Mañana (09:00 - 14:00)</option>
+<option>Tarde (15:00 - 19:00)</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Number of Packages -->
+<div>
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5 block">Número de bultos</label>
+<input class="w-full rounded-md border-gray-300 dark:border-white/20 bg-white dark:bg-black/20 text-slate-900 dark:text-white shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5" min="1" type="number" value="1"/>
+</div>
+<!-- Notes (Full width on mobile, half on desktop in this grid) -->
+<div class="md:col-span-2 lg:col-span-1 lg:col-start-2">
+<!-- This is a spacer or can be used for extra info -->
+</div>
+</div>
+<!-- Notes -->
+<div>
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5 block">Notas y Observaciones</label>
+<textarea class="w-full rounded-md border-gray-300 dark:border-white/20 bg-white dark:bg-black/20 text-slate-900 dark:text-white shadow-sm focus:border-primary focus:ring-primary sm:text-sm p-2.5" placeholder="Instrucciones para el conductor..." rows="3"></textarea>
+</div>
+<!-- Action -->
+<div class="flex justify-end pt-2">
+<button class="w-full sm:w-auto bg-primary hover:bg-red-700 text-white font-bold py-2.5 px-6 rounded-md shadow-sm transition-colors flex items-center justify-center gap-2" type="button">
+<span>Solicitar recogida</span>
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Right Column: Agenda List (40% approx -> 5 cols) -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div class="bg-white dark:bg-[#2c2423] rounded-lg shadow-sm border border-gray-100 dark:border-white/5 flex flex-col h-full max-h-[800px]">
+<div class="px-6 py-4 border-b border-gray-100 dark:border-white/5 flex items-center justify-between">
+<h3 class="text-lg font-bold text-slate-800 dark:text-white">Próximas recogidas</h3>
+<button class="text-primary text-sm font-semibold hover:underline">Ver todas</button>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-3">
+<!-- Card Item -->
+<div class="flex items-center gap-4 p-4 rounded-lg bg-white dark:bg-white/5 border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
+<div class="flex flex-col items-center justify-center min-w-[50px] bg-slate-50 dark:bg-white/10 rounded-md py-2 px-1 text-slate-700 dark:text-slate-300">
+<span class="text-xs font-bold uppercase">Feb</span>
+<span class="text-xl font-bold leading-none">11</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="inline-flex items-center rounded-sm bg-red-50 px-1.5 py-0.5 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">Standard</span>
+<span class="inline-flex items-center rounded-full bg-green-50 px-2 py-0.5 text-[10px] font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Confirmada</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 truncate">14:00 - 18:00 • 3 Bultos</p>
+</div>
+<div class="text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+<!-- Card Item -->
+<div class="flex items-center gap-4 p-4 rounded-lg bg-white dark:bg-white/5 border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
+<div class="flex flex-col items-center justify-center min-w-[50px] bg-slate-50 dark:bg-white/10 rounded-md py-2 px-1 text-slate-700 dark:text-slate-300">
+<span class="text-xs font-bold uppercase">Feb</span>
+<span class="text-xl font-bold leading-none">12</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="inline-flex items-center rounded-sm bg-blue-50 px-1.5 py-0.5 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">Express</span>
+<span class="inline-flex items-center rounded-full bg-yellow-50 px-2 py-0.5 text-[10px] font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">Pendiente</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 truncate">09:00 - 14:00 • 1 Bulto</p>
+</div>
+<div class="text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+<!-- Card Item -->
+<div class="flex items-center gap-4 p-4 rounded-lg bg-white dark:bg-white/5 border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
+<div class="flex flex-col items-center justify-center min-w-[50px] bg-slate-50 dark:bg-white/10 rounded-md py-2 px-1 text-slate-700 dark:text-slate-300">
+<span class="text-xs font-bold uppercase">Feb</span>
+<span class="text-xl font-bold leading-none">23</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="inline-flex items-center rounded-sm bg-red-50 px-1.5 py-0.5 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">Standard</span>
+<span class="inline-flex items-center rounded-full bg-gray-50 px-2 py-0.5 text-[10px] font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">Programada</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 truncate">Mañana • 12 Bultos</p>
+</div>
+<div class="text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+<!-- Empty State Placeholder to fill space -->
+<div class="flex flex-col items-center justify-center py-8 text-center opacity-60">
+<div class="bg-gray-50 dark:bg-white/5 rounded-full p-3 mb-2">
+<span class="material-symbols-outlined text-slate-400">event_busy</span>
+</div>
+<p class="text-sm text-slate-500">No hay más recogidas este mes</p>
+</div>
+</div>
+</div>
+<!-- Ad / Info Card -->
+<div class="bg-gradient-to-br from-[#1C4F8A] to-[#143d6e] rounded-lg shadow-sm p-6 text-white relative overflow-hidden">
+<div class="absolute right-[-20px] top-[-20px] opacity-10 rotate-12">
+<span class="material-symbols-outlined text-[150px]">rocket_launch</span>
+</div>
+<div class="relative z-10">
+<h4 class="text-lg font-bold mb-2">¿Necesitas envíos urgentes?</h4>
+<p class="text-blue-100 text-sm mb-4">Prueba Correos Express para entregas en 24h con seguimiento en tiempo real.</p>
+<button class="bg-white text-[#1C4F8A] px-4 py-2 rounded-md text-sm font-bold hover:bg-blue-50 transition-colors">Saber más</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

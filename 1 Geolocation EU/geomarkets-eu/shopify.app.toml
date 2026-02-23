@@ -1,0 +1,38 @@
+name = "GeoMarkets EU"
+client_id = "491ab980ec59ff1d3cf46c14c5329107"
+application_url = "https://geomarkets.enviox.es"
+embedded = true
+
+[access_scopes]
+scopes = "read_markets,read_locales,read_themes,write_themes,read_content"
+
+[auth]
+redirect_urls = [ "https://geomarkets.enviox.es/auth/callback" ]
+
+[webhooks]
+api_version = "2025-01"
+
+  [[webhooks.subscriptions]]
+  topics = ["app/uninstalled"]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = ["app/scopes_update"]
+  uri = "/webhooks/app/scopes_update"
+
+  [[webhooks.subscriptions]]
+  topics = ["markets/create"]
+  uri = "/webhooks/markets/create"
+
+  [[webhooks.subscriptions]]
+  topics = ["markets/update"]
+  uri = "/webhooks/markets/update"
+
+  [[webhooks.subscriptions]]
+  topics = ["markets/delete"]
+  uri = "/webhooks/markets/delete"
+
+[app_proxy]
+url = "https://geomarkets.enviox.es/proxy"
+subpath = "geo"
+prefix = "apps"

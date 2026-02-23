@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0369a1",
+                        "background-light": "#f6f6f7",
+                        "background-dark": "#0f1c23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<title>Facturación y plan - MRW Pro</title>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Navigation -->
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-1.5 rounded-lg text-white">
+<span class="material-symbols-outlined block">local_shipping</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-primary">MRW Pro</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary" href="#">Dashboard</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary" href="#">Envíos</a>
+<a class="text-sm font-medium text-primary border-b-2 border-primary py-5" href="#">Facturación</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary" href="#">Configuración</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden border border-slate-300 dark:border-slate-600">
+<img alt="Avatar de usuario" class="w-full h-full object-cover" data-alt="Avatar circular de un usuario profesional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeSLWI0x07mQmxycZnmGCzgruJ1_pQdKLL4AdbLE5xFei6Q_iGpQh6QtmRt1Ynoqnk6XwZQ4APEsOmtQ5bkjITwrvePToFZI1avfMQQN7EQ8E_bAnARD_CC2guRcn8lgxmQWaDCZD6zHE1nkEEQaNVunfoW_VDcC3SfHnFu3nTSCBZ1IS8uTyFVZhXEEzq5NixRwX6uM406_7uP841CmDkEQ0W9JB07gBV0rQ_oN_g1oekjnX76x7HX9zq3bYfjmKKaoZQlsDpPd4"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-5xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+<!-- Page Title -->
+<div class="mb-8">
+<h1 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Facturación y plan</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Gestiona tu suscripción, métodos de pago y descarga tus facturas.</p>
+</div>
+<!-- TOP CARD: Current Plan -->
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden mb-8">
+<div class="p-6 sm:p-8">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+<div class="space-y-4 flex-1">
+<div>
+<span class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1 block">Tu plan actual</span>
+<div class="flex items-center gap-3">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Plan Profesional</h2>
+<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary/10 text-primary border border-primary/20">Activo</span>
+</div>
+<p class="text-3xl font-black text-slate-900 dark:text-white mt-2">29,99€<span class="text-base font-normal text-slate-400">/mes</span></p>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-lg border border-slate-100 dark:border-slate-800">
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Envíos este mes: 342 / 500</span>
+<span class="text-sm font-bold text-primary">68%</span>
+</div>
+<div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5">
+<div class="bg-primary h-2.5 rounded-full" style="width: 68%"></div>
+</div>
+<div class="flex items-center gap-1.5 mt-3 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-sm">info</span>
+<p class="text-xs">Te quedan 158 envíos (renueva 01/03/2026)</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 min-w-[200px]">
+<button class="w-full py-2.5 px-4 bg-primary hover:bg-primary/90 text-white rounded-lg font-bold text-sm transition-colors shadow-sm">
+                            Cambiar plan
+                        </button>
+<button class="w-full py-2.5 px-4 bg-transparent hover:bg-red-50 text-red-600 dark:text-red-400 dark:hover:bg-red-900/20 rounded-lg font-bold text-sm transition-colors">
+                            Cancelar suscripción
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- MIDDLE: Pricing Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<!-- Básico -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 flex flex-col hover:shadow-md transition-shadow">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Básico</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4">Para pequeños envíos ocasionales.</p>
+<div class="mb-6">
+<span class="text-2xl font-bold text-slate-900 dark:text-white">9,99€</span>
+<span class="text-slate-400 text-sm">/mes</span>
+</div>
+<ul class="space-y-3 mb-8 flex-1">
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        100 envíos mensuales
+                    </li>
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Soporte estándar
+                    </li>
+</ul>
+<button class="w-full py-2 px-4 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 rounded-lg font-bold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                    Downgrade
+                </button>
+</div>
+<!-- Profesional (Highlighted) -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border-2 border-primary p-6 flex flex-col shadow-lg relative transform scale-105 z-10">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
+                    Plan actual
+                </div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Profesional</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4">La solución ideal para eCommerce en crecimiento.</p>
+<div class="mb-6">
+<span class="text-2xl font-bold text-slate-900 dark:text-white">29,99€</span>
+<span class="text-slate-400 text-sm">/mes</span>
+</div>
+<ul class="space-y-3 mb-8 flex-1">
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        500 envíos mensuales
+                    </li>
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Soporte prioritario
+                    </li>
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Integraciones API
+                    </li>
+</ul>
+<div class="w-full py-2 px-4 bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 rounded-lg font-bold text-sm text-center cursor-default">
+                    Plan Seleccionado
+                </div>
+</div>
+<!-- Enterprise -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 flex flex-col hover:shadow-md transition-shadow">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Enterprise</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4">Para grandes volúmenes y logística compleja.</p>
+<div class="mb-6">
+<span class="text-2xl font-bold text-slate-900 dark:text-white">79,99€</span>
+<span class="text-slate-400 text-sm">/mes</span>
+</div>
+<ul class="space-y-3 mb-8 flex-1">
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Envíos ilimitados
+                    </li>
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Account Manager dedicado
+                    </li>
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        SLA garantizado
+                    </li>
+</ul>
+<button class="w-full py-2 px-4 bg-primary hover:bg-primary/90 text-white rounded-lg font-bold text-sm transition-colors shadow-sm">
+                    Upgrade
+                </button>
+</div>
+</div>
+<!-- BOTTOM CARD: Billing History -->
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-5 border-b border-slate-200 dark:border-slate-800">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Historial de facturación</h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50">
+<th class="px-6 py-3 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Fecha</th>
+<th class="px-6 py-3 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Concepto</th>
+<th class="px-6 py-3 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Importe</th>
+<th class="px-6 py-3 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Estado</th>
+<th class="px-6 py-3 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 text-right">Factura</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Invoice 1 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-300">01/02/2026</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">Plan Profesional</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-300">29,99€</td>
+<td class="px-6 py-4 text-sm">
+<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 border border-green-200 dark:border-green-800">Pagado</span>
+</td>
+<td class="px-6 py-4 text-sm text-right">
+<a class="text-primary hover:text-primary/80 font-medium inline-flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-sm">download</span>
+                                    Descargar
+                                </a>
+</td>
+</tr>
+<!-- Invoice 2 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-300">01/01/2026</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">Plan Profesional</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-300">29,99€</td>
+<td class="px-6 py-4 text-sm">
+<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 border border-green-200 dark:border-green-800">Pagado</span>
+</td>
+<td class="px-6 py-4 text-sm text-right">
+<a class="text-primary hover:text-primary/80 font-medium inline-flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-sm">download</span>
+                                    Descargar
+                                </a>
+</td>
+</tr>
+<!-- Invoice 3 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-300">01/12/2025</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">Plan Básico</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-300">9,99€</td>
+<td class="px-6 py-4 text-sm">
+<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 border border-green-200 dark:border-green-800">Pagado</span>
+</td>
+<td class="px-6 py-4 text-sm text-right">
+<a class="text-primary hover:text-primary/80 font-medium inline-flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-sm">download</span>
+                                    Descargar
+                                </a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 bg-slate-50 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800 text-center">
+<button class="text-sm font-bold text-slate-500 hover:text-primary transition-colors">Ver todas las facturas</button>
+</div>
+</div>
+</main>
+<footer class="max-w-5xl mx-auto px-4 py-12 text-center">
+<p class="text-slate-400 text-xs">© 2026 MRW Pro Shipping SaaS. Todos los derechos reservados.</p>
+<div class="flex justify-center gap-6 mt-4">
+<a class="text-xs text-slate-500 hover:text-primary" href="#">Términos de servicio</a>
+<a class="text-xs text-slate-500 hover:text-primary" href="#">Privacidad</a>
+<a class="text-xs text-slate-500 hover:text-primary" href="#">Soporte</a>
+</div>
+</footer>
+</body></html>

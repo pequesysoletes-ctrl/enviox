@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Impresión Lote DHL Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#dc1b09",
+                        "primary-dark": "#b01607",
+                        "dhl-yellow": "#FFCC00",
+                        "background-light": "#f6f6f7",
+                        "background-dark": "#221110",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased selection:bg-primary/20">
+<!-- Mobile Container -->
+<div class="mx-auto flex min-h-screen w-full max-w-md flex-col overflow-x-hidden bg-background-light dark:bg-background-dark shadow-2xl relative">
+<!-- Header -->
+<header class="sticky top-0 z-50 flex items-center justify-between bg-white px-4 py-3 shadow-sm dark:bg-[#1a1a1a]">
+<button class="flex h-10 w-10 items-center justify-center rounded-full text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:text-slate-400 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="flex-1 text-center text-lg font-bold tracking-tight text-slate-900 dark:text-white">Impresión de etiquetas</h1>
+<div class="w-10"></div> <!-- Spacer for alignment -->
+</header>
+<!-- Main Content -->
+<main class="flex flex-col gap-4 p-4 pb-32">
+<!-- Context Bar -->
+<div class="flex items-center justify-between rounded-lg bg-primary/10 px-4 py-3 text-sm text-primary-dark ring-1 ring-inset ring-primary/20 dark:bg-primary/20 dark:text-red-200">
+<span class="font-medium">4 envíos seleccionados</span>
+<span class="text-xs opacity-80">(2 Express + 2 eCommerce)</span>
+</div>
+<!-- List/Table Section -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between px-1">
+<h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Pendientes (6)</h2>
+<button class="text-sm font-medium text-primary hover:underline">Seleccionar todos</button>
+</div>
+<div class="flex flex-col gap-px overflow-hidden rounded-xl border border-slate-200 bg-slate-200 shadow-sm dark:border-slate-700 dark:bg-slate-700">
+<!-- Item 1 (Selected, Express) -->
+<div class="flex items-center gap-3 bg-white p-3 dark:bg-[#1e1e1e]">
+<input checked="" class="h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary dark:border-slate-600 dark:bg-slate-800" type="checkbox"/>
+<div class="flex min-w-0 flex-1 flex-col gap-1">
+<div class="flex items-center justify-between gap-2">
+<span class="truncate font-semibold text-slate-900 dark:text-white">Pedido #1234</span>
+<span class="inline-flex items-center rounded-full bg-[#FFCC00] px-2 py-0.5 text-[10px] font-bold uppercase text-black tracking-wide">
+                                    Express
+                                </span>
+</div>
+<div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+<span class="truncate">John Doe • Madrid</span>
+<span>12 Oct</span>
+</div>
+</div>
+</div>
+<!-- Item 2 (Selected, eCommerce) -->
+<div class="flex items-center gap-3 bg-white p-3 dark:bg-[#1e1e1e]">
+<input checked="" class="h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary dark:border-slate-600 dark:bg-slate-800" type="checkbox"/>
+<div class="flex min-w-0 flex-1 flex-col gap-1">
+<div class="flex items-center justify-between gap-2">
+<span class="truncate font-semibold text-slate-900 dark:text-white">Pedido #1235</span>
+<span class="inline-flex items-center rounded-full bg-primary px-2 py-0.5 text-[10px] font-bold uppercase text-white tracking-wide">
+                                    eCommerce
+                                </span>
+</div>
+<div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+<span class="truncate">Maria Garcia • Barcelona</span>
+<span>12 Oct</span>
+</div>
+</div>
+</div>
+<!-- Item 3 (Selected, Express) -->
+<div class="flex items-center gap-3 bg-white p-3 dark:bg-[#1e1e1e]">
+<input checked="" class="h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary dark:border-slate-600 dark:bg-slate-800" type="checkbox"/>
+<div class="flex min-w-0 flex-1 flex-col gap-1">
+<div class="flex items-center justify-between gap-2">
+<span class="truncate font-semibold text-slate-900 dark:text-white">Pedido #1236</span>
+<span class="inline-flex items-center rounded-full bg-[#FFCC00] px-2 py-0.5 text-[10px] font-bold uppercase text-black tracking-wide">
+                                    Express
+                                </span>
+</div>
+<div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+<span class="truncate">Tech Solutions • Valencia</span>
+<span>11 Oct</span>
+</div>
+</div>
+</div>
+<!-- Item 4 (Selected, eCommerce) -->
+<div class="flex items-center gap-3 bg-white p-3 dark:bg-[#1e1e1e]">
+<input checked="" class="h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary dark:border-slate-600 dark:bg-slate-800" type="checkbox"/>
+<div class="flex min-w-0 flex-1 flex-col gap-1">
+<div class="flex items-center justify-between gap-2">
+<span class="truncate font-semibold text-slate-900 dark:text-white">Pedido #1237</span>
+<span class="inline-flex items-center rounded-full bg-primary px-2 py-0.5 text-[10px] font-bold uppercase text-white tracking-wide">
+                                    eCommerce
+                                </span>
+</div>
+<div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+<span class="truncate">Ana Lopez • Sevilla</span>
+<span>11 Oct</span>
+</div>
+</div>
+</div>
+<!-- Item 5 (Not Selected) -->
+<div class="flex items-center gap-3 bg-slate-50 p-3 opacity-60 dark:bg-[#252525]">
+<input class="h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary dark:border-slate-600 dark:bg-slate-800" type="checkbox"/>
+<div class="flex min-w-0 flex-1 flex-col gap-1">
+<div class="flex items-center justify-between gap-2">
+<span class="truncate font-medium text-slate-900 dark:text-white">Pedido #1238</span>
+<span class="inline-flex items-center rounded-full bg-slate-200 px-2 py-0.5 text-[10px] font-bold uppercase text-slate-600 tracking-wide dark:bg-slate-600 dark:text-slate-300">
+                                    Standard
+                                </span>
+</div>
+<div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+<span class="truncate">Carlos Ruiz • Bilbao</span>
+<span>10 Oct</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Configuration Options -->
+<div class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-[#1e1e1e]">
+<h3 class="mb-3 text-sm font-semibold text-slate-900 dark:text-white">Opciones de Impresión</h3>
+<div class="flex flex-col gap-3">
+<label class="flex items-start gap-3">
+<input checked="" class="mt-0.5 h-4 w-4 border-slate-300 text-primary focus:ring-primary" name="print_type" type="radio"/>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900 dark:text-white">Separar por servicio</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Un PDF para Express + un PDF para eCommerce</span>
+</div>
+</label>
+<label class="flex items-start gap-3">
+<input class="mt-0.5 h-4 w-4 border-slate-300 text-primary focus:ring-primary" name="print_type" type="radio"/>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900 dark:text-white">PDF combinado</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Todas las etiquetas en un solo archivo</span>
+</div>
+</label>
+<label class="flex items-start gap-3">
+<input class="mt-0.5 h-4 w-4 border-slate-300 text-primary focus:ring-primary" name="print_type" type="radio"/>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900 dark:text-white">ZIP individual</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Un archivo por etiqueta comprimido</span>
+</div>
+</label>
+<div class="my-2 h-px bg-slate-100 dark:bg-slate-700"></div>
+<div class="grid grid-cols-2 gap-4">
+<div class="col-span-1">
+<label class="mb-1 block text-xs font-medium text-slate-700 dark:text-slate-300">Formato</label>
+<div class="relative">
+<select class="w-full appearance-none rounded-lg border border-slate-200 bg-slate-50 py-2 pl-3 pr-8 text-sm text-slate-900 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-slate-600 dark:bg-slate-800 dark:text-white">
+<option selected="">A4 (Estándar)</option>
+<option>4x6 (Térmica)</option>
+<option>A5</option>
+</select>
+<span class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-slate-500">
+<span class="material-symbols-outlined text-lg">expand_more</span>
+</span>
+</div>
+</div>
+<div class="col-span-1 flex items-end">
+<label class="flex items-center gap-2 pb-2">
+<input class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-xs leading-tight text-slate-600 dark:text-slate-300">Incluir factura comercial</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Preview Area -->
+<div class="flex flex-col gap-3">
+<h3 class="px-1 text-sm font-semibold uppercase tracking-wider text-slate-500">Vista Previa</h3>
+<div class="grid grid-cols-2 gap-3">
+<!-- Express Preview Column -->
+<div class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-[#1e1e1e]">
+<div class="bg-[#FFCC00] px-3 py-2">
+<h4 class="flex items-center gap-1 text-xs font-bold text-black uppercase tracking-wide">
+<span class="material-symbols-outlined text-sm">local_shipping</span>
+                                DHL Express (2)
+                            </h4>
+</div>
+<div class="flex flex-col gap-2 p-3">
+<!-- Paper Sheet Mockup -->
+<div class="aspect-[3/4] w-full rounded border border-slate-200 bg-white shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-2 bg-[#FFCC00]"></div>
+<div class="p-2 space-y-2 opacity-30">
+<div class="h-2 w-1/3 bg-slate-900 rounded"></div>
+<div class="h-16 w-full bg-slate-200 rounded"></div>
+<div class="space-y-1">
+<div class="h-1.5 w-full bg-slate-200 rounded"></div>
+<div class="h-1.5 w-5/6 bg-slate-200 rounded"></div>
+<div class="h-1.5 w-4/6 bg-slate-200 rounded"></div>
+</div>
+<div class="h-8 w-full bg-slate-900 rounded mt-4"></div>
+</div>
+<!-- Abstract Barcode Overlay -->
+<div class="absolute bottom-4 left-4 right-4 h-8 bg-[repeating-linear-gradient(90deg,transparent,transparent_2px,#000_2px,#000_4px)] opacity-20"></div>
+</div>
+<div class="text-center text-[10px] text-slate-400">Pág 1 de 2</div>
+</div>
+</div>
+<!-- eCommerce Preview Column -->
+<div class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-[#1e1e1e]">
+<div class="bg-primary px-3 py-2">
+<h4 class="flex items-center gap-1 text-xs font-bold text-white uppercase tracking-wide">
+<span class="material-symbols-outlined text-sm">shopping_bag</span>
+                                eCommerce (2)
+                            </h4>
+</div>
+<div class="flex flex-col gap-2 p-3">
+<!-- Paper Sheet Mockup -->
+<div class="aspect-[3/4] w-full rounded border border-slate-200 bg-white shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-2 bg-primary"></div>
+<div class="p-2 space-y-2 opacity-30">
+<div class="h-2 w-1/3 bg-slate-900 rounded"></div>
+<div class="h-16 w-full bg-slate-200 rounded"></div>
+<div class="space-y-1">
+<div class="h-1.5 w-full bg-slate-200 rounded"></div>
+<div class="h-1.5 w-5/6 bg-slate-200 rounded"></div>
+</div>
+<div class="flex gap-2 mt-4">
+<div class="h-10 w-10 bg-slate-200 rounded"></div>
+<div class="flex-1 space-y-1">
+<div class="h-1.5 w-full bg-slate-200 rounded"></div>
+<div class="h-1.5 w-full bg-slate-200 rounded"></div>
+</div>
+</div>
+</div>
+<!-- Abstract Barcode Overlay -->
+<div class="absolute bottom-4 left-4 right-4 h-8 bg-[repeating-linear-gradient(90deg,transparent,transparent_2px,#000_2px,#000_4px)] opacity-20"></div>
+</div>
+<div class="text-center text-[10px] text-slate-400">Pág 1 de 2</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Footer -->
+<footer class="fixed bottom-0 z-40 w-full max-w-md border-t border-slate-200 bg-white p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] dark:border-slate-700 dark:bg-[#1a1a1a]">
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+<span>Tamaño estimado: 1.2 MB</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-green-600">check_circle</span>
+                        Listo para imprimir
+                    </span>
+</div>
+<button class="flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3.5 text-sm font-bold text-white shadow-lg shadow-primary/30 transition-all hover:bg-primary-dark active:scale-[0.98]">
+<span class="material-symbols-outlined">download</span>
+                    Descargar 4 etiquetas
+                </button>
+</div>
+</footer>
+</div>
+</body></html>

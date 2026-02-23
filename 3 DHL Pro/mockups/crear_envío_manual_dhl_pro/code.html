@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Crear Envío Manual DHL Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d42111", // DHL Red
+                        "primary-dark": "#b01b0e",
+                        "dhl-yellow": "#FFCC00",
+                        "background-light": "#F6F6F7",
+                        "background-dark": "#221210",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* iOS-like smooth scrolling */
+        body {
+            -webkit-overflow-scrolling: touch;
+        }
+        /* Hide scrollbar for clean look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Top App Bar -->
+<header class="bg-white dark:bg-slate-800 sticky top-0 z-50 border-b border-slate-200 dark:border-slate-700 shadow-sm">
+<div class="flex items-center justify-between px-4 h-14">
+<button class="flex items-center justify-center w-10 h-10 -ml-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold text-slate-900 dark:text-white truncate">Crear envío manual</h1>
+<div class="w-8"></div> <!-- Spacer for center alignment -->
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 p-4 pb-24 space-y-4 max-w-lg mx-auto w-full">
+<!-- Card 1: Seleccionar pedido -->
+<section class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 border border-slate-100 dark:border-slate-700">
+<div class="flex items-center space-x-2 mb-4">
+<span class="material-symbols-outlined text-primary">shopping_bag</span>
+<h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Seleccionar pedido</h2>
+</div>
+<div class="relative mb-4">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2.5 border border-slate-300 dark:border-slate-600 rounded-lg leading-5 bg-white dark:bg-slate-700 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out" placeholder="Buscar pedido por número o cliente..." type="text"/>
+</div>
+<!-- Selected Order Summary -->
+<div class="flex items-start gap-4 p-3 bg-slate-50 dark:bg-slate-700/50 rounded-lg border border-slate-100 dark:border-slate-600">
+<div class="h-12 w-12 flex-shrink-0 bg-slate-200 rounded-md overflow-hidden bg-cover bg-center" data-alt="Product thumbnail shoes" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBYpFxEwyZcizNykRIgF5p_rRqPllvZSFy2LSDZkEOQ8jiw8EL7k97OPdt9ksQmc2tsi8dm91Hx4746Swk7iDUUpP3LKyXrQOrGfKKaONs2IjnUZMHO4GvJRkm5kXxp0ML6wMRAp1UnE7tKsQyZIau-9iTCqwoHYz-0u8RM3AQ3VfmoEJdUSzUbtvdcTF7WETGp4LrFX_cjN6TBAVThqyGpGvZRTEgZdXzF_BRvs-cgdApcGtsNVDm36Wt4qr48ED4e4kATHSCKsQ');"></div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold text-slate-900 dark:text-white truncate">#2047 — Sophie Laurent</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">1 producto — 85,00€</p>
+<div class="flex items-center mt-1 text-xs text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-[14px] mr-1">location_on</span>
+                        París, Francia
+                    </div>
+</div>
+<button class="text-primary hover:text-primary-dark p-1">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+</section>
+<!-- Card 2: Servicio DHL -->
+<section class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 border border-slate-100 dark:border-slate-700">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+<h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Servicio DHL</h2>
+</div>
+</div>
+<!-- Auto Rule Info -->
+<div class="bg-slate-100 dark:bg-slate-700 rounded-lg p-3 mb-4 flex items-start gap-3">
+<span class="material-symbols-outlined text-slate-500 mt-0.5">alt_route</span>
+<div class="flex-1">
+<p class="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">Regla aplicada</p>
+<p class="text-sm text-slate-600 dark:text-slate-400">País ≠ España → <span class="font-medium text-slate-800 dark:text-slate-200">DHL Express — Express Worldwide</span></p>
+</div>
+</div>
+<!-- Override Toggle -->
+<label class="flex items-center space-x-3 mb-4 cursor-pointer group">
+<input class="form-checkbox h-4 w-4 text-primary border-slate-300 rounded focus:ring-primary transition duration-150 ease-in-out" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white">Cambiar servicio manualmente (override)</span>
+</label>
+<!-- Service Options (Disabled visual state implied, assuming toggle is off initially, but rendering active for demo) -->
+<div class="space-y-3 opacity-100"> <!-- Add opacity-50 pointer-events-none if toggle is unchecked logic via JS -->
+<!-- DHL Express Option -->
+<div class="border border-primary/30 bg-primary/5 rounded-lg p-3 relative overflow-hidden ring-1 ring-primary ring-opacity-50">
+<div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-transparent to-dhl-yellow/10 rounded-bl-3xl pointer-events-none"></div>
+<div class="flex items-start gap-3">
+<input checked="" class="mt-1 h-4 w-4 text-primary border-slate-300 focus:ring-primary" name="service_type" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="inline-block w-2 h-2 rounded-full bg-[#FFCC00]"></span> <!-- DHL Yellow dot -->
+<span class="font-semibold text-slate-900 dark:text-white">DHL Express</span>
+</div>
+<select class="block w-full pl-3 pr-10 py-1.5 text-sm border-gray-300 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm rounded-md bg-white dark:bg-slate-700 dark:border-slate-600">
+<option>Express Worldwide</option>
+<option>Economy Select</option>
+</select>
+</div>
+</div>
+</div>
+<!-- eCommerce Iberica Option -->
+<div class="border border-slate-200 dark:border-slate-600 rounded-lg p-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<div class="flex items-start gap-3">
+<input class="mt-1 h-4 w-4 text-primary border-slate-300 focus:ring-primary" name="service_type" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="inline-block w-2 h-2 rounded-full bg-[#D32011]"></span> <!-- DHL Red dot -->
+<span class="font-semibold text-slate-900 dark:text-white">eCommerce Ibérica</span>
+</div>
+<select class="block w-full pl-3 pr-10 py-1.5 text-sm border-gray-300 text-gray-400 bg-gray-50 rounded-md cursor-not-allowed dark:bg-slate-800 dark:border-slate-700" disabled="">
+<option>Seleccionar servicio...</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Card 3: Peso y dimensiones -->
+<section class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 border border-slate-100 dark:border-slate-700">
+<div class="flex items-center space-x-2 mb-4">
+<span class="material-symbols-outlined text-primary">straighten</span>
+<h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Peso y dimensiones</h2>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Peso total (kg)</label>
+<input class="block w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm focus:border-primary focus:ring-primary sm:text-sm p-2.5" step="0.1" type="number" value="1.8"/>
+</div>
+<div class="grid grid-cols-3 gap-3">
+<div>
+<label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Largo (cm)</label>
+<input class="block w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm focus:border-primary focus:ring-primary sm:text-sm p-2.5" placeholder="0" type="number"/>
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Ancho (cm)</label>
+<input class="block w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm focus:border-primary focus:ring-primary sm:text-sm p-2.5" placeholder="0" type="number"/>
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Alto (cm)</label>
+<input class="block w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm focus:border-primary focus:ring-primary sm:text-sm p-2.5" placeholder="0" type="number"/>
+</div>
+</div>
+<div class="pt-2 border-t border-slate-100 dark:border-slate-700">
+<label class="flex items-center space-x-3 cursor-pointer group">
+<input checked="" class="form-checkbox h-4 w-4 text-primary border-slate-300 rounded focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-300">Usar peso del producto de Shopify</span>
+</label>
+</div>
+</div>
+</section>
+<!-- Card 4: Dirección de destino -->
+<section class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 border border-slate-100 dark:border-slate-700">
+<div class="flex items-center space-x-2 mb-4">
+<span class="material-symbols-outlined text-primary">place</span>
+<h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Dirección de destino</h2>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<div>
+<label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Nombre completo</label>
+<input class="block w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm focus:border-primary focus:ring-primary sm:text-sm p-2.5" type="text" value="Sophie Laurent"/>
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Dirección</label>
+<input class="block w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm focus:border-primary focus:ring-primary sm:text-sm p-2.5" type="text" value="12 Rue de Rivoli"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Ciudad</label>
+<input class="block w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm focus:border-primary focus:ring-primary sm:text-sm p-2.5" type="text" value="París"/>
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">CP</label>
+<input class="block w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm focus:border-primary focus:ring-primary sm:text-sm p-2.5" type="text" value="75001"/>
+</div>
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">País</label>
+<select class="block w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm focus:border-primary focus:ring-primary sm:text-sm p-2.5">
+<option selected="" value="FR">Francia</option>
+<option value="ES">España</option>
+<option value="DE">Alemania</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Card 5: Datos de aduanas -->
+<section class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 border border-slate-100 dark:border-slate-700 overflow-hidden relative">
+<!-- Conditional Warning Banner -->
+<div class="bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-400 p-3 -mx-4 -mt-4 mb-4 flex gap-3">
+<span class="material-symbols-outlined text-amber-500">info</span>
+<p class="text-xs text-amber-800 dark:text-amber-200 leading-relaxed">
+<span class="font-bold">Aduanas:</span> Este envío requiere datos de aduanas (destino fuera de España).
+                 </p>
+</div>
+<div class="flex items-center space-x-2 mb-4">
+<span class="material-symbols-outlined text-primary">globe_uk</span>
+<h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Datos de aduanas</h2>
+</div>
+<div class="space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">HS Code</label>
+<input class="block w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm focus:border-primary focus:ring-primary sm:text-sm p-2.5" type="text" value="6403.99"/>
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Valor (€)</label>
+<input class="block w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm focus:border-primary focus:ring-primary sm:text-sm p-2.5" type="number" value="85.00"/>
+</div>
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Descripción mercancía</label>
+<input class="block w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm focus:border-primary focus:ring-primary sm:text-sm p-2.5" type="text" value="Zapatillas de deporte de cuero"/>
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Incoterms</label>
+<select class="block w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm focus:border-primary focus:ring-primary sm:text-sm p-2.5">
+<option selected="" value="DAP">DAP (Delivered at Place)</option>
+<option value="DDP">DDP (Delivered Duty Paid)</option>
+</select>
+</div>
+<div class="pt-2 border-t border-slate-100 dark:border-slate-700">
+<label class="flex items-start space-x-3 cursor-pointer group">
+<input checked="" class="mt-1 form-checkbox h-4 w-4 text-primary border-slate-300 rounded focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-300 leading-tight">Usar datos de aduanas por defecto de configuración</span>
+</label>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Action Bar -->
+<footer class="fixed bottom-0 left-0 right-0 p-4 bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 z-40 safe-area-pb">
+<div class="max-w-lg mx-auto flex flex-col gap-3">
+<button class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3.5 px-4 rounded-lg shadow-lg shadow-primary/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+<span>Crear envío</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+<button class="w-full bg-transparent hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 font-medium py-3 px-4 rounded-lg border border-slate-300 dark:border-slate-600 transition-colors">
+                Cancelar
+            </button>
+</div>
+</footer>
+<!-- Safe area padding helper for bottom -->
+<style>
+        .safe-area-pb {
+            padding-bottom: env(safe-area-inset-bottom, 20px);
+        }
+    </style>
+</body></html>

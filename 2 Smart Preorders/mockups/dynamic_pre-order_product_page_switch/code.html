@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dynamic Pre-order Product Page Switch</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7c3bed",
+                        "secondary": "#008060",
+                        "background-light": "#ffffff",
+                        "background-dark": "#171121",
+                        "text-primary": "#130e1b",
+                        "text-secondary": "#6b7280",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-[#f9f8fc] dark:bg-background-dark min-h-screen flex flex-col">
+<!-- Header reused from components list -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#ece7f3] bg-background-light dark:bg-background-dark px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-text-primary dark:text-white">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined !text-[32px]">local_mall</span>
+</div>
+<h2 class="text-text-primary dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Shopify Store</h2>
+</div>
+<div class="hidden md:flex items-center gap-9">
+<a class="text-text-primary dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Hombre</a>
+<a class="text-text-primary dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Mujer</a>
+<a class="text-text-primary dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Niños</a>
+<a class="text-text-primary dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Rebajas</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<div class="hidden lg:flex w-full max-w-xs relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2 border-none rounded-lg leading-5 bg-[#ece7f3] dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm" placeholder="Buscar productos..." type="text"/>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-text-primary dark:text-white transition-colors">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-text-primary dark:text-white transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center justify-start py-12 px-4 sm:px-6 lg:px-8 space-y-16">
+<div class="text-center max-w-2xl mx-auto mb-8">
+<h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">Smart Preorders Demo</h1>
+<p class="mt-4 text-lg text-gray-500 dark:text-gray-400">
+                Visualización dinámica de la experiencia de compra basada en el inventario.
+            </p>
+</div>
+<div class="w-full max-w-[1400px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+<!-- Variation 1: Pre-order Active -->
+<div class="bg-background-light dark:bg-[#1f162e] rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden flex flex-col">
+<div class="bg-primary/10 py-2 px-4 border-b border-primary/20 flex justify-between items-center">
+<span class="text-xs font-bold uppercase tracking-wider text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">inventory_2</span>
+                        Inventario: 0 (Agotado)
+                    </span>
+<span class="px-2 py-0.5 rounded text-[10px] bg-primary text-white font-medium">Lógica Activa: Pre-order</span>
+</div>
+<div class="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-8 h-full">
+<!-- Image Column -->
+<div class="relative aspect-square md:aspect-auto md:h-full bg-gray-50 dark:bg-gray-900 rounded-xl overflow-hidden group">
+<img alt="Stylish green high-top sneakers on a clean background" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOwrI2cj9LjdRzTkdQs_C1veInzXJzRaUTfEw9pPED5CRUoe4fOfPL6rLlxdC7UkKL9zmKFzBmrZAwb2qDP4EMQboWzeho0P8RpaPfeBR_fqj-l25BdnHuBJmKps3RPOMgX9e2jkqRSMg3kDmttYoO969ag8fNjwuxJ11ag3OIQrh6aQdmD1ekrM8xDSrWpUSLGpT2AC3ecbDTDP3QXg0eBG_5vVWeztVjf4Iw1V8JVrfCxMafLDnOEXeCHzhuoAKeZMYZEslhE-Hg"/>
+<div class="absolute top-3 left-3">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary text-white shadow-sm">
+                                Pre-venta
+                            </span>
+</div>
+</div>
+<!-- Details Column -->
+<div class="flex flex-col h-full">
+<nav aria-label="Breadcrumb" class="flex mb-3">
+<ol class="flex items-center space-x-2 text-xs text-gray-500 dark:text-gray-400">
+<li><a class="hover:text-primary" href="#">Inicio</a></li>
+<li><span class="material-symbols-outlined text-[10px]">chevron_right</span></li>
+<li><a class="hover:text-primary" href="#">Calzado</a></li>
+</ol>
+</nav>
+<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 leading-tight">Zapatillas Ltd Ed — Summer 2026</h2>
+<div class="flex items-baseline gap-3 mb-6">
+<p class="text-xl font-bold text-gray-900 dark:text-white">89,00€</p>
+<span class="text-sm text-gray-500 line-through">120,00€</span>
+</div>
+<div class="mb-6">
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-medium text-gray-900 dark:text-white">Talla</span>
+<a class="text-xs font-medium text-primary hover:underline" href="#">Guía de tallas</a>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<button class="py-2 text-sm font-medium rounded-md border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-300 hover:border-primary hover:text-primary transition-colors">40</button>
+<button class="py-2 text-sm font-medium rounded-md border-2 border-primary text-primary bg-primary/5 shadow-sm ring-1 ring-primary/50 relative">
+                                    41
+                                    <span class="absolute -top-1.5 -right-1.5 flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+</span>
+</button>
+<button class="py-2 text-sm font-medium rounded-md border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-300 hover:border-primary hover:text-primary transition-colors">42</button>
+<button class="py-2 text-sm font-medium rounded-md border border-gray-200 dark:border-gray-700 text-gray-400 cursor-not-allowed opacity-50 relative overflow-hidden">
+                                    43
+                                    <span class="absolute inset-0 flex items-center justify-center">
+<div class="w-full h-[1px] bg-gray-400 rotate-45 transform"></div>
+</span>
+</button>
+</div>
+</div>
+<div class="mt-auto space-y-4">
+<!-- Pre-order Specific UI Elements -->
+<div class="flex items-start gap-2 text-primary bg-primary/5 p-3 rounded-lg border border-primary/10">
+<span class="material-symbols-outlined text-lg mt-0.5">auto_awesome</span>
+<div>
+<p class="text-sm font-semibold">Edición limitada — solo preventa</p>
+<p class="text-xs opacity-90">Asegura tu par antes del lanzamiento oficial.</p>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3.5 px-4 rounded-lg shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 group">
+<span class="material-symbols-outlined group-hover:rotate-180 transition-transform duration-500">hourglass_top</span>
+<span>Pre-order</span>
+</button>
+<p class="text-center text-xs text-gray-500 dark:text-gray-400 flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-sm">local_shipping</span>
+                                Envío estimado: <span class="font-medium text-gray-900 dark:text-gray-200">15/04/2026</span>
+</p>
+<p class="text-center text-xs text-gray-400 mt-2">Paga en 3 plazos sin intereses.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Variation 2: In-stock / Normal -->
+<div class="bg-background-light dark:bg-[#1f162e] rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden flex flex-col">
+<div class="bg-[#008060]/10 py-2 px-4 border-b border-[#008060]/20 flex justify-between items-center">
+<span class="text-xs font-bold uppercase tracking-wider text-[#008060] flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                        Inventario: &gt; 0 (Disponible)
+                    </span>
+<span class="px-2 py-0.5 rounded text-[10px] bg-[#008060] text-white font-medium">Lógica Activa: Standard</span>
+</div>
+<div class="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-8 h-full">
+<!-- Image Column -->
+<div class="relative aspect-square md:aspect-auto md:h-full bg-gray-50 dark:bg-gray-900 rounded-xl overflow-hidden group">
+<img alt="Stylish green high-top sneakers on a clean background" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgCNxKCIzLoOX8NkS2yj6ODIoAM3IPubTRwpN-hi6ohYOgfIDv71Z5joLBggJnnO9vpbBTW3uWLDW_GP04nw24TV4tJELVwL3rpv8hrjjRb3-Pu6pgsikhJ4gtDCtd6XPClAEB-fCZV97daRSCs5BTle45TaiztRmKKTl03no4xwIotUlqaUIrhyUkLpvqJEUc21UX54_y8I5R8ETnmSNBWB2wJZM-TRxzZe2RPkJ3l9ot9NKIaWxksBXkQau-EA7TiMXm7qq2095M"/>
+<!-- No badge here for standard stock -->
+</div>
+<!-- Details Column -->
+<div class="flex flex-col h-full">
+<nav aria-label="Breadcrumb" class="flex mb-3">
+<ol class="flex items-center space-x-2 text-xs text-gray-500 dark:text-gray-400">
+<li><a class="hover:text-[#008060]" href="#">Inicio</a></li>
+<li><span class="material-symbols-outlined text-[10px]">chevron_right</span></li>
+<li><a class="hover:text-[#008060]" href="#">Calzado</a></li>
+</ol>
+</nav>
+<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 leading-tight">Zapatillas Ltd Ed — Summer 2026</h2>
+<div class="flex items-baseline gap-3 mb-6">
+<p class="text-xl font-bold text-gray-900 dark:text-white">89,00€</p>
+</div>
+<div class="mb-6">
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-medium text-gray-900 dark:text-white">Talla</span>
+<a class="text-xs font-medium text-[#008060] hover:underline" href="#">Guía de tallas</a>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<button class="py-2 text-sm font-medium rounded-md border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-300 hover:border-[#008060] hover:text-[#008060] transition-colors">40</button>
+<button class="py-2 text-sm font-medium rounded-md border-2 border-[#008060] text-[#008060] bg-[#008060]/5 shadow-sm">
+                                    41
+                                </button>
+<button class="py-2 text-sm font-medium rounded-md border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-300 hover:border-[#008060] hover:text-[#008060] transition-colors">42</button>
+<button class="py-2 text-sm font-medium rounded-md border border-gray-200 dark:border-gray-700 text-gray-400 cursor-not-allowed opacity-50 relative overflow-hidden">
+                                    43
+                                    <span class="absolute inset-0 flex items-center justify-center">
+<div class="w-full h-[1px] bg-gray-400 rotate-45 transform"></div>
+</span>
+</button>
+</div>
+</div>
+<div class="mt-auto space-y-4">
+<!-- Standard UI Elements -->
+<div class="flex items-center gap-2 text-[#008060] text-sm">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#008060] opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#008060]"></span>
+</span>
+<span class="font-medium">En stock, listo para enviar</span>
+</div>
+<button class="w-full bg-[#008060] hover:bg-[#006e52] text-white font-medium py-3.5 px-4 rounded-lg shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2">
+<span>Añadir al carrito</span>
+</button>
+<!-- Standard shipping text often simpler or absent if immediate -->
+<p class="text-center text-xs text-gray-500 dark:text-gray-400 flex items-center justify-center gap-1.5 opacity-80">
+<span class="material-symbols-outlined text-sm">bolt</span>
+                                Entrega rápida en 24-48h
+                            </p>
+<p class="text-center text-xs text-gray-400 mt-2">Paga en 3 plazos sin intereses.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section class="w-full max-w-[960px] py-10 px-4">
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Detalles del Producto</h3>
+<div class="prose prose-sm dark:prose-invert text-gray-600 dark:text-gray-400 max-w-none">
+<p>
+                    Descubre la fusión perfecta entre estilo urbano y comodidad moderna. Las Zapatillas Ltd Ed — Summer 2026 están diseñadas con materiales sostenibles de primera calidad, ofreciendo una durabilidad excepcional sin comprometer la estética.
+                </p>
+<ul class="list-disc pl-5 mt-4 space-y-2">
+<li>Suela de caucho reciclado para un agarre superior.</li>
+<li>Tejido transpirable de alta tecnología.</li>
+<li>Diseño ergonómico que se adapta a la forma de tu pie.</li>
+<li>Hecho en España con procesos éticos.</li>
+</ul>
+</div>
+</section>
+</main>
+<footer class="bg-background-light dark:bg-background-dark border-t border-[#ece7f3] py-8">
+<div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400 text-sm">
+<p>© 2026 Shopify Store Demo. Todos los derechos reservados.</p>
+</div>
+</footer>
+</body></html>

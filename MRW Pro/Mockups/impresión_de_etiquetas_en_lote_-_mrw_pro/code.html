@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Impresión de Etiquetas en Lote - MRW Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0369a0",
+                        "background-light": "#f6f6f7",
+                        "background-dark": "#0f1c23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 antialiased selection:bg-primary/20 selection:text-primary">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header Section -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 bg-white dark:bg-slate-900 dark:border-slate-800 px-6 py-3 lg:px-10">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-slate-900 dark:text-white">
+<div class="flex items-center justify-center size-8 bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined text-xl">local_shipping</span>
+</div>
+<h2 class="text-lg font-bold tracking-tight">MRW Pro</h2>
+</div>
+<label class="hidden md:flex flex-col min-w-40 h-10 w-64">
+<div class="relative flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="block w-full rounded-lg border-none bg-slate-100 dark:bg-slate-800 py-2 pl-10 pr-4 text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-primary" placeholder="Buscar envíos, clientes..." type="text"/>
+</div>
+</label>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Envíos</a>
+<a class="text-primary font-semibold text-sm transition-colors" href="#">Etiquetas</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Facturación</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Configuración</a>
+</nav>
+<div class="flex items-center gap-3 pl-6 border-l border-slate-200 dark:border-slate-800">
+<button class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-9 w-9 overflow-hidden rounded-full bg-slate-200 ring-2 ring-white dark:ring-slate-800">
+<img alt="User profile avatar" class="h-full w-full object-cover" data-alt="Profile picture of a smiling man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDt17xa6CAryWpn79mljgAPdOnsJQAYVhI0BZt_0qL3Wr96s1-lRwrHU87RnlM1ywmiFrfS5Op0qL6Hdu6oOzI061ezH-Lse6g4hJire_tpv8JFgCvwRITygWvRJbMQgKm3XFL53HFYpLSk5g4xk1lmEptVv0oRxG_RElzQvg3KanA6SX6RwNbVMJrBorfvLUUtGoC-Nera-RfK1K09MoPZUGRNyKc1axVN4vIXAlEnkJYh7ADP-AG8nJhRa_zhqjFuO6ZSioKEl2s"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 px-4 py-8 lg:px-8 xl:px-12 max-w-7xl mx-auto w-full flex flex-col gap-8">
+<!-- Breadcrumbs & Title -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 text-sm text-slate-500">
+<a class="hover:text-primary transition-colors" href="#">Inicio</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Etiquetas</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="font-medium text-slate-900 dark:text-slate-100">Impresión en lote</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Impresión de etiquetas en lote</h1>
+<p class="mt-1 text-slate-500 dark:text-slate-400">Gestione y descargue sus etiquetas de envío pendientes para hoy.</p>
+</div>
+<div class="flex gap-3">
+<button class="inline-flex items-center justify-center gap-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-primary/20">
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+                            Actualizar
+                        </button>
+</div>
+</div>
+</div>
+<!-- Bulk Selection Status -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl bg-primary/10 border border-primary/20 p-4">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined">layers</span>
+</div>
+<div>
+<h3 class="font-semibold text-slate-900 dark:text-white">4 envíos seleccionados</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400">Listo para generar etiquetas</p>
+</div>
+</div>
+<div class="flex gap-3 w-full sm:w-auto">
+<button class="flex-1 sm:flex-none justify-center inline-flex items-center gap-2 rounded-lg bg-white dark:bg-slate-800 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 shadow-sm hover:text-primary transition-colors">
+                        Deseleccionar todo
+                    </button>
+<button class="flex-1 sm:flex-none justify-center inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                        Descargar 4 etiquetas
+                    </button>
+</div>
+</div>
+<!-- Data Table Card -->
+<div class="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm text-slate-600 dark:text-slate-400">
+<thead class="bg-slate-50 dark:bg-slate-900/50 text-xs uppercase font-semibold text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-700">
+<tr>
+<th class="px-6 py-4 w-12 text-center" scope="col">
+<input checked="" class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+</th>
+<th class="px-6 py-4" scope="col">Pedido</th>
+<th class="px-6 py-4" scope="col">Cliente</th>
+<th class="px-6 py-4" scope="col">Destino</th>
+<th class="px-6 py-4" scope="col">Estado</th>
+<th class="px-6 py-4 text-right" scope="col">Fecha</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+<!-- Row 1: Selected -->
+<tr class="group bg-primary/[0.04] dark:bg-primary/[0.1] hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<td class="px-6 py-4 text-center">
+<input checked="" class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white">
+                                    #MRW-2023-001
+                                </td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xs font-bold">JP</div>
+<span class="font-medium">Juan Pérez</span>
+</div>
+</td>
+<td class="px-6 py-4">Madrid, ES</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 px-2.5 py-1 text-xs font-medium text-emerald-700 dark:text-emerald-400">
+<span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                                        Listo
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right tabular-nums">24 Oct, 2023</td>
+</tr>
+<!-- Row 2: Selected -->
+<tr class="group bg-primary/[0.04] dark:bg-primary/[0.1] hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<td class="px-6 py-4 text-center">
+<input checked="" class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white">
+                                    #MRW-2023-002
+                                </td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xs font-bold">AG</div>
+<span class="font-medium">Ana García</span>
+</div>
+</td>
+<td class="px-6 py-4">Barcelona, ES</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 px-2.5 py-1 text-xs font-medium text-emerald-700 dark:text-emerald-400">
+<span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                                        Listo
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right tabular-nums">24 Oct, 2023</td>
+</tr>
+<!-- Row 3: Selected -->
+<tr class="group bg-primary/[0.04] dark:bg-primary/[0.1] hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<td class="px-6 py-4 text-center">
+<input checked="" class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white">
+                                    #MRW-2023-004
+                                </td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 flex items-center justify-center text-xs font-bold">LD</div>
+<span class="font-medium">Lucía Díaz</span>
+</div>
+</td>
+<td class="px-6 py-4">Sevilla, ES</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 px-2.5 py-1 text-xs font-medium text-emerald-700 dark:text-emerald-400">
+<span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                                        Listo
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right tabular-nums">23 Oct, 2023</td>
+</tr>
+<!-- Row 4: Selected -->
+<tr class="group bg-primary/[0.04] dark:bg-primary/[0.1] hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<td class="px-6 py-4 text-center">
+<input checked="" class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white">
+                                    #MRW-2023-006
+                                </td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400 flex items-center justify-center text-xs font-bold">SL</div>
+<span class="font-medium">Sofia López</span>
+</div>
+</td>
+<td class="px-6 py-4">Málaga, ES</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 px-2.5 py-1 text-xs font-medium text-emerald-700 dark:text-emerald-400">
+<span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                                        Listo
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right tabular-nums">22 Oct, 2023</td>
+</tr>
+<!-- Row 5: Unselected -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<td class="px-6 py-4 text-center">
+<input class="h-4 w-4 rounded border-slate-300 text-slate-400 focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white">
+                                    #MRW-2023-003
+                                </td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xs font-bold">CR</div>
+<span class="font-medium">Carlos Ruiz</span>
+</div>
+</td>
+<td class="px-6 py-4">Valencia, ES</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-amber-100 dark:bg-amber-900/30 px-2.5 py-1 text-xs font-medium text-amber-700 dark:text-amber-400">
+<span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
+                                        Pendiente
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right tabular-nums">23 Oct, 2023</td>
+</tr>
+<!-- Row 6: Unselected -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<td class="px-6 py-4 text-center">
+<input class="h-4 w-4 rounded border-slate-300 text-slate-400 focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white">
+                                    #MRW-2023-005
+                                </td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 flex items-center justify-center text-xs font-bold">MS</div>
+<span class="font-medium">Marcos Soler</span>
+</div>
+</td>
+<td class="px-6 py-4">Bilbao, ES</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-red-100 dark:bg-red-900/30 px-2.5 py-1 text-xs font-medium text-red-700 dark:text-red-400">
+<span class="h-1.5 w-1.5 rounded-full bg-red-500"></span>
+                                        Error
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right tabular-nums">22 Oct, 2023</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer (Simple) -->
+<div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 px-6 py-3">
+<p class="text-sm text-slate-500">Mostrando <span class="font-medium text-slate-900 dark:text-white">1</span> a <span class="font-medium text-slate-900 dark:text-white">6</span> de <span class="font-medium text-slate-900 dark:text-white">8</span> resultados</p>
+<div class="flex gap-2">
+<button class="inline-flex items-center justify-center rounded border border-slate-300 bg-white px-2 py-1 text-sm font-medium text-slate-500 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="inline-flex items-center justify-center rounded border border-slate-300 bg-white px-2 py-1 text-sm font-medium text-slate-500 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Options & Preview Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Options Card -->
+<div class="lg:col-span-2 flex flex-col rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm p-6">
+<div class="flex items-center gap-3 mb-6">
+<div class="p-2 bg-slate-100 dark:bg-slate-700 rounded-lg">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300">print</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Opciones de descarga</h3>
+</div>
+<div class="space-y-6">
+<!-- Radio Group -->
+<div class="space-y-3">
+<label class="text-sm font-semibold text-slate-900 dark:text-white block">Formato de archivo</label>
+<div class="flex flex-col gap-3">
+<label class="relative flex cursor-pointer rounded-lg border border-primary bg-primary/[0.03] p-4 shadow-sm focus:outline-none">
+<input checked="" class="mt-0.5 h-4 w-4 border-slate-300 text-primary focus:ring-primary" name="download-format" type="radio"/>
+<span class="ml-3 flex flex-col">
+<span class="block text-sm font-medium text-primary">PDF combinado</span>
+<span class="block text-xs text-slate-500">Genera un único archivo con todas las etiquetas secuenciadas. Ideal para imprimir rápido.</span>
+</span>
+<span aria-hidden="true" class="pointer-events-none absolute -inset-px rounded-lg border-2 border-primary"></span>
+</label>
+<label class="relative flex cursor-pointer rounded-lg border border-slate-200 dark:border-slate-700 p-4 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700/50 focus:outline-none transition-colors">
+<input class="mt-0.5 h-4 w-4 border-slate-300 text-primary focus:ring-primary" name="download-format" type="radio"/>
+<span class="ml-3 flex flex-col">
+<span class="block text-sm font-medium text-slate-900 dark:text-white">Archivo ZIP</span>
+<span class="block text-xs text-slate-500 dark:text-slate-400">Descarga un paquete comprimido con archivos PDF individuales para cada etiqueta.</span>
+</span>
+</label>
+</div>
+</div>
+<!-- Dropdown -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-900 dark:text-white" for="label-size">Tamaño de etiqueta</label>
+<div class="relative">
+<select class="block w-full appearance-none rounded-lg border-slate-300 bg-white py-2.5 pl-3 pr-10 text-sm focus:border-primary focus:outline-none focus:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white" id="label-size">
+<option selected="">10 x 15 cm (Estándar)</option>
+<option>10 x 10 cm</option>
+<option>A4 (4 etiquetas por hoja)</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-900 dark:text-white" for="printer-select">Impresora (Opcional)</label>
+<div class="relative">
+<select class="block w-full appearance-none rounded-lg border-slate-300 bg-white py-2.5 pl-3 pr-10 text-sm focus:border-primary focus:outline-none focus:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white" id="printer-select">
+<option selected="">Descargar como archivo</option>
+<option>Zebra ZP 450 (Oficina)</option>
+<option>Brother QL-800 (Almacén)</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Preview Section -->
+<div class="flex flex-col rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm p-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-sm font-bold text-slate-900 dark:text-white">Vista previa (4)</h3>
+<span class="text-xs text-slate-500">10x15cm</span>
+</div>
+<div class="flex-1 min-h-[200px] bg-slate-100 dark:bg-slate-900/50 rounded-lg p-4 grid grid-cols-2 gap-3 overflow-y-auto">
+<!-- Thumbnail 1 -->
+<div class="aspect-[2/3] bg-white dark:bg-slate-200 rounded border border-slate-200 shadow-sm flex flex-col p-2 gap-1 items-center justify-center opacity-100 transition-opacity hover:opacity-75 cursor-pointer">
+<div class="w-full h-1/4 bg-slate-800 mb-1"></div>
+<div class="w-3/4 h-2 bg-slate-300 mb-2"></div>
+<div class="w-full h-8 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxwYXR0ZXJuIGlkPSJwIiB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cmVjdCB3aWR0aD0iMiIgaGVpZ2h0PSI0IiBmaWxsPSIjOTQxYjJjIi8+PC9wYXR0ZXJuPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcCkiLz48L3N2Zz4=')] opacity-50"></div>
+<div class="w-1/2 h-2 bg-slate-300 mt-2"></div>
+</div>
+<!-- Thumbnail 2 -->
+<div class="aspect-[2/3] bg-white dark:bg-slate-200 rounded border border-slate-200 shadow-sm flex flex-col p-2 gap-1 items-center justify-center opacity-100 transition-opacity hover:opacity-75 cursor-pointer">
+<div class="w-full h-1/4 bg-slate-800 mb-1"></div>
+<div class="w-3/4 h-2 bg-slate-300 mb-2"></div>
+<div class="w-full h-8 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxwYXR0ZXJuIGlkPSJwIiB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cmVjdCB3aWR0aD0iMiIgaGVpZ2h0PSI0IiBmaWxsPSIjOTQxYjJjIi8+PC9wYXR0ZXJuPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcCkiLz48L3N2Zz4=')] opacity-50"></div>
+<div class="w-1/2 h-2 bg-slate-300 mt-2"></div>
+</div>
+<!-- Thumbnail 3 -->
+<div class="aspect-[2/3] bg-white dark:bg-slate-200 rounded border border-slate-200 shadow-sm flex flex-col p-2 gap-1 items-center justify-center opacity-100 transition-opacity hover:opacity-75 cursor-pointer">
+<div class="w-full h-1/4 bg-slate-800 mb-1"></div>
+<div class="w-3/4 h-2 bg-slate-300 mb-2"></div>
+<div class="w-full h-8 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxwYXR0ZXJuIGlkPSJwIiB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cmVjdCB3aWR0aD0iMiIgaGVpZ2h0PSI0IiBmaWxsPSIjOTQxYjJjIi8+PC9wYXR0ZXJuPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcCkiLz48L3N2Zz4=')] opacity-50"></div>
+<div class="w-1/2 h-2 bg-slate-300 mt-2"></div>
+</div>
+<!-- Thumbnail 4 -->
+<div class="aspect-[2/3] bg-white dark:bg-slate-200 rounded border border-slate-200 shadow-sm flex flex-col p-2 gap-1 items-center justify-center opacity-100 transition-opacity hover:opacity-75 cursor-pointer">
+<div class="w-full h-1/4 bg-slate-800 mb-1"></div>
+<div class="w-3/4 h-2 bg-slate-300 mb-2"></div>
+<div class="w-full h-8 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxwYXR0ZXJuIGlkPSJwIiB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cmVjdCB3aWR0aD0iMiIgaGVpZ2h0PSI0IiBmaWxsPSIjOTQxYjJjIi8+PC9wYXR0ZXJuPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcCkiLz48L3N2Zz4=')] opacity-50"></div>
+<div class="w-1/2 h-2 bg-slate-300 mt-2"></div>
+</div>
+</div>
+<div class="mt-4 text-center">
+<button class="text-sm text-primary font-medium hover:text-primary/80">Ver detalle</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

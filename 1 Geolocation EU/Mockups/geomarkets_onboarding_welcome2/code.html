@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GeoMarkets EU - Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#008060",
+                        "brand-blue": "#2563EB",
+                        "background-light": "#F6F6F7",
+                        "background-dark": "#0f231e",
+                        "polaris-gray": "#6D7175",
+                        "polaris-border": "#E1E3E5",
+                        "polaris-banner": "#F1F2F3"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F6F6F7;
+        }
+        .polaris-card {
+            box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15);
+        }
+        .step-active {
+            border-bottom: 3px solid #2563EB;
+            color: #2563EB;
+        }
+        .step-inactive {
+            border-bottom: 3px solid transparent;
+            color: #6D7175;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display">
+<!-- Top Navigation Bar -->
+<header class="w-full bg-white dark:bg-slate-900 border-b border-polaris-border dark:border-slate-800 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
+<div class="flex items-center gap-3">
+<div class="text-brand-blue flex items-center gap-2">
+<span class="material-symbols-outlined text-3xl">public</span>
+<h1 class="text-xl font-bold tracking-tight text-brand-blue">GeoMarkets EU</h1>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-polaris-gray hover:text-slate-900 text-sm font-medium">Ayuda</button>
+<div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center overflow-hidden">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="Avatar circular de perfil de usuario" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOcRkptkXSrNlftsFn5MjBt2RCyOwdulQjnmLFyiiB41n4X4Citi0BNjROHCyGIqz2r6tZ9q65iU0LyjIo13RYXZjyp7V6tWZ_82g-34GSZ4jhv6A8vWuWlPjsLXWb9nOKycf4U56ckqUcZqPCAwN8iznG5lyoI1ywr8CRVJjOgXiWXz2a368gRR5yzF6fE9mYPwz2glhracPrdGtu_wXY_z5V2M8qhdPHolLHcP7fecXw4qceRoJJuvoCck2ngZUPXCtkE9Vmztv9"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow flex items-center justify-center p-4 md:p-8">
+<div class="max-w-5xl w-full">
+<!-- Main Onboarding Card -->
+<div class="polaris-card bg-white dark:bg-slate-900 rounded-lg overflow-hidden flex flex-col">
+<!-- Stepper -->
+<nav class="flex border-b border-polaris-border dark:border-slate-800 px-8">
+<div class="flex-1 py-4 text-center step-active font-semibold text-sm flex items-center justify-center gap-2">
+<span class="bg-brand-blue text-white w-5 h-5 rounded-full text-[10px] flex items-center justify-center">1</span>
+                        Sincronizar Markets
+                    </div>
+<div class="flex-1 py-4 text-center step-inactive font-medium text-sm flex items-center justify-center gap-2">
+<span class="bg-slate-200 text-slate-500 w-5 h-5 rounded-full text-[10px] flex items-center justify-center">2</span>
+                        Configurar redirección
+                    </div>
+<div class="flex-1 py-4 text-center step-inactive font-medium text-sm flex items-center justify-center gap-2">
+<span class="bg-slate-200 text-slate-500 w-5 h-5 rounded-full text-[10px] flex items-center justify-center">3</span>
+                        Personalizar selector
+                    </div>
+</nav>
+<!-- Hero Section Split -->
+<div class="flex flex-col lg:flex-row">
+<!-- Left Content Column -->
+<div class="flex-1 p-8 lg:p-12 space-y-8">
+<div>
+<h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3">
+                                Bienvenid@ a la internacionalización inteligente
+                            </h2>
+<p class="text-polaris-gray dark:text-slate-400 text-lg leading-relaxed">
+                                Detecta el país de tus visitantes y adapta tu tienda automáticamente para maximizar las conversiones en toda Europa.
+                            </p>
+</div>
+<!-- Info Banner Component -->
+<div class="bg-polaris-banner dark:bg-slate-800 p-5 rounded-lg border-l-4 border-brand-blue flex gap-4">
+<span class="material-symbols-outlined text-brand-blue">info</span>
+<div class="text-sm">
+<p class="font-bold text-slate-900 dark:text-slate-100 mb-1">Nota importante para 2025</p>
+<p class="text-slate-700 dark:text-slate-300">
+                                    Shopify eliminó su app de Geolocation en 2025. <strong>GeoMarkets EU</strong> es la alternativa rápida y ligera diseñada para cumplir con las normativas europeas.
+                                </p>
+</div>
+</div>
+<!-- Action Group -->
+<div class="space-y-4">
+<button class="bg-primary hover:bg-opacity-90 text-white font-bold py-3 px-8 rounded-lg transition-all w-full md:w-auto shadow-sm">
+                                Conectar con Shopify Markets
+                            </button>
+<div>
+<a class="text-brand-blue hover:underline text-sm font-medium flex items-center gap-1" href="#">
+                                    ¿Qué son los Shopify Markets? 
+                                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Right Visual Column (Europe Map) -->
+<div class="flex-1 bg-slate-50 dark:bg-slate-800/50 p-8 flex items-center justify-center border-l border-polaris-border dark:border-slate-800">
+<div class="relative w-full aspect-square max-w-md">
+<!-- Abstract Stylized Europe Map SVG placeholder -->
+<div class="w-full h-full flex items-center justify-center">
+<div class="relative w-72 h-72">
+<!-- Map base (abstract shapes for simplicity) -->
+<svg class="w-full h-full text-slate-200 dark:text-slate-700 fill-current opacity-50" viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<path d="M40,50 L160,50 L170,140 L30,140 Z"></path>
+</svg>
+<!-- Connection Lines -->
+<svg class="absolute inset-0 w-full h-full overflow-visible pointer-events-none">
+<path d="M60,110 Q100,80 140,90" fill="none" opacity="0.4" stroke="#2563EB" stroke-dasharray="4" stroke-width="1"></path>
+<path d="M60,110 Q80,130 110,140" fill="none" opacity="0.4" stroke="#2563EB" stroke-dasharray="4" stroke-width="1"></path>
+<path d="M140,90 Q120,110 110,140" fill="none" opacity="0.4" stroke="#2563EB" stroke-dasharray="4" stroke-width="1"></path>
+</svg>
+<!-- Market Dots -->
+<!-- ES (Spain) -->
+<div class="absolute bottom-[20%] left-[25%] group cursor-pointer">
+<div class="w-3 h-3 bg-brand-blue rounded-full ring-4 ring-brand-blue/20"></div>
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 bg-white px-1.5 py-0.5 rounded shadow text-[10px] font-bold">ES</span>
+</div>
+<!-- FR (France) -->
+<div class="absolute top-[45%] left-[35%] group cursor-pointer">
+<div class="w-3 h-3 bg-brand-blue rounded-full ring-4 ring-brand-blue/20"></div>
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 bg-white px-1.5 py-0.5 rounded shadow text-[10px] font-bold">FR</span>
+</div>
+<!-- DE (Germany) -->
+<div class="absolute top-[35%] right-[40%] group cursor-pointer">
+<div class="w-3 h-3 bg-brand-blue rounded-full ring-4 ring-brand-blue/20"></div>
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 bg-white px-1.5 py-0.5 rounded shadow text-[10px] font-bold">DE</span>
+</div>
+<!-- IT (Italy) -->
+<div class="absolute bottom-[25%] right-[35%] group cursor-pointer">
+<div class="w-3 h-3 bg-brand-blue rounded-full ring-4 ring-brand-blue/20"></div>
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 bg-white px-1.5 py-0.5 rounded shadow text-[10px] font-bold">IT</span>
+</div>
+<!-- GB (UK) -->
+<div class="absolute top-[20%] left-[20%] group cursor-pointer">
+<div class="w-3 h-3 bg-brand-blue rounded-full ring-4 ring-brand-blue/20"></div>
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 bg-white px-1.5 py-0.5 rounded shadow text-[10px] font-bold">GB</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Trust Badges Footer -->
+<footer class="mt-8 flex flex-wrap justify-center gap-6 md:gap-12">
+<div class="flex items-center gap-2 text-polaris-gray dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-lg">lock</span>
+<span class="font-medium">No almacenamos IPs</span>
+</div>
+<div class="flex items-center gap-2 text-polaris-gray dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-lg">verified_user</span>
+<span class="font-medium">🇪🇺 RGPD compliant</span>
+</div>
+<div class="flex items-center gap-2 text-polaris-gray dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-lg">bolt</span>
+<span class="font-medium">&lt;100ms latencia</span>
+</div>
+</footer>
+</div>
+</main>
+<!-- App Bottom Info -->
+<div class="py-4 text-center text-xs text-polaris-gray/60 dark:text-slate-500">
+        GeoMarkets EU • Shopify App Store Certified • v2.4.0
+    </div>
+</body></html>

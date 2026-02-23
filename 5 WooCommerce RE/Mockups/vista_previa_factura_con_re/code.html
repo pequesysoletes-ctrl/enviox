@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vista Previa Factura con RE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#8056b3",
+                        "background-light": "#f7f6f7",
+                        "background-dark": "#19151d",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Top Navigation / Toolbar -->
+<header class="sticky top-0 z-50 w-full bg-white dark:bg-[#1e1a24] border-b border-slate-200 dark:border-slate-800 shadow-sm px-4 md:px-8 py-3">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+<!-- Breadcrumbs & Title -->
+<div class="flex items-center gap-4 w-full md:w-auto">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined text-xl">receipt_long</span>
+</div>
+<div>
+<h1 class="text-lg font-bold leading-tight">Vista Previa Factura</h1>
+<nav class="flex items-center text-sm text-slate-500 dark:text-slate-400 gap-2">
+<a class="hover:text-primary transition-colors" href="#">Pedidos</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="hover:text-primary transition-colors font-medium text-slate-700 dark:text-slate-300" href="#">RE-2026-0089</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-primary font-medium">Vista Previa</span>
+</nav>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-3 w-full md:w-auto justify-end">
+<button class="flex items-center justify-center gap-2 h-10 px-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-sm font-semibold transition-colors" title="Imprimir">
+<span class="material-symbols-outlined text-[20px]">print</span>
+</button>
+<button class="flex items-center justify-center gap-2 h-10 px-4 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-sm font-semibold transition-colors">
+<span class="material-symbols-outlined text-[20px]">send</span>
+<span class="hidden sm:inline">Enviar al cliente</span>
+</button>
+<button class="flex items-center justify-center gap-2 h-10 px-4 rounded-lg bg-primary hover:bg-primary/90 text-white text-sm font-bold shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span>Descargar PDF</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow p-4 md:p-8 overflow-y-auto flex justify-center">
+<!-- A4 Paper Container -->
+<!-- Standard A4 aspect ratio is roughly 1:1.41. 210mm x 297mm. -->
+<div class="relative w-full max-w-[800px] bg-white text-slate-900 shadow-xl rounded-sm print:shadow-none print:w-full">
+<!-- Invoice Content Padding -->
+<div class="p-8 md:p-12 flex flex-col h-full min-h-[1131px]">
+<!-- Header -->
+<div class="flex flex-col md:flex-row justify-between items-start mb-12 border-b border-slate-100 pb-8">
+<!-- Company Info -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-gradient-to-br from-primary to-purple-900 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-md">
+                                M
+                            </div>
+<span class="text-xl font-bold tracking-tight text-slate-900">Mi Tienda S.L.</span>
+</div>
+<div class="text-sm text-slate-500 leading-relaxed">
+<p>C/ Comercio 1, Planta 2</p>
+<p>28001 Madrid, España</p>
+<p>NIF: B12345678</p>
+<p>mitienda@ejemplo.com</p>
+</div>
+</div>
+<!-- Invoice Meta -->
+<div class="mt-6 md:mt-0 text-right">
+<h2 class="text-3xl font-bold text-slate-900 tracking-tight mb-1">FACTURA</h2>
+<p class="text-primary font-medium text-lg mb-4"># RE-2026-0089</p>
+<div class="flex flex-col gap-1 text-sm">
+<div class="flex justify-between md:justify-end gap-8">
+<span class="text-slate-500">Fecha de emisión:</span>
+<span class="font-medium text-slate-900">15/02/2026</span>
+</div>
+<div class="flex justify-between md:justify-end gap-8">
+<span class="text-slate-500">Vencimiento:</span>
+<span class="font-medium text-slate-900">15/03/2026</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Client Info & Status Badge -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+<!-- Bill To -->
+<div>
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Facturar a</h3>
+<div class="flex flex-col gap-1">
+<p class="text-lg font-bold text-slate-900">María García López</p>
+<p class="text-sm text-slate-600">Av. de la Paz 45, 3º A</p>
+<p class="text-sm text-slate-600">08001 Barcelona, España</p>
+<p class="text-sm text-slate-600">NIF: <span class="font-medium">A12345678</span></p>
+</div>
+</div>
+<!-- RE Badge Status -->
+<div class="flex md:justify-end items-start">
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 border border-primary/20 text-primary">
+<span class="material-symbols-outlined text-[20px]">storefront</span>
+<div class="flex flex-col">
+<span class="text-xs font-bold uppercase tracking-wide">Régimen Especial</span>
+<span class="text-sm font-semibold">Recargo de Equivalencia</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Items Table -->
+<div class="mb-8">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-slate-200">
+<th class="py-3 px-2 text-xs font-bold uppercase tracking-wider text-slate-500 w-[50%]">Descripción</th>
+<th class="py-3 px-2 text-xs font-bold uppercase tracking-wider text-slate-500 text-right w-[15%]">Cantidad</th>
+<th class="py-3 px-2 text-xs font-bold uppercase tracking-wider text-slate-500 text-right w-[15%]">Precio</th>
+<th class="py-3 px-2 text-xs font-bold uppercase tracking-wider text-slate-500 text-right w-[20%]">Total</th>
+</tr>
+</thead>
+<tbody class="text-sm text-slate-700">
+<tr class="border-b border-slate-100 group hover:bg-slate-50 transition-colors">
+<td class="py-4 px-2">
+<div class="font-medium text-slate-900">Camiseta algodón orgánico</div>
+<div class="text-xs text-slate-500">Color: Blanco, Talla: M</div>
+</td>
+<td class="py-4 px-2 text-right">2</td>
+<td class="py-4 px-2 text-right">20,00 €</td>
+<td class="py-4 px-2 text-right font-medium text-slate-900">40,00 €</td>
+</tr>
+<tr class="border-b border-slate-100 group hover:bg-slate-50 transition-colors">
+<td class="py-4 px-2">
+<div class="font-medium text-slate-900">Pantalón chino slim</div>
+<div class="text-xs text-slate-500">Color: Beige, Talla: 42</div>
+</td>
+<td class="py-4 px-2 text-right">1</td>
+<td class="py-4 px-2 text-right">55,00 €</td>
+<td class="py-4 px-2 text-right font-medium text-slate-900">55,00 €</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Totals Section -->
+<div class="flex justify-end mb-12">
+<div class="w-full md:w-1/2 lg:w-5/12">
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-center text-sm text-slate-600">
+<span>Base Imponible</span>
+<span class="font-medium text-slate-900">95,00 €</span>
+</div>
+<div class="flex justify-between items-center text-sm text-slate-600">
+<span>IVA (21%)</span>
+<span class="font-medium text-slate-900">19,95 €</span>
+</div>
+<!-- Recargo de Equivalencia Highlight -->
+<div class="flex justify-between items-center text-sm bg-primary/5 -mx-2 px-2 py-2 rounded-r border-l-4 border-primary">
+<span class="text-primary font-medium flex items-center gap-1">
+                                    Recargo de Equivalencia (5,2%)
+                                    <span class="material-symbols-outlined text-[14px] opacity-70 cursor-help" title="Impuesto adicional aplicado a minoristas en recargo de equivalencia">info</span>
+</span>
+<span class="font-bold text-primary">4,94 €</span>
+</div>
+<div class="h-px bg-slate-200 my-2"></div>
+<div class="flex justify-between items-center">
+<span class="text-base font-bold text-slate-900">TOTAL A PAGAR</span>
+<span class="text-2xl font-bold text-slate-900">119,89 €</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer / Legal -->
+<div class="mt-auto pt-8 border-t border-slate-100 text-center md:text-left">
+<p class="text-xs text-slate-400 mb-2">
+                        Gracias por su compra. El pago debe realizarse dentro de los 30 días siguientes a la fecha de emisión.
+                    </p>
+<p class="text-[10px] text-slate-400 uppercase tracking-wide">
+                        Régimen especial del Recargo de Equivalencia — Art. 154-163 Ley 37/1992 del IVA.
+                    </p>
+</div>
+</div>
+<!-- Decorative corner watermark for RE (optional detail) -->
+<div class="absolute bottom-12 right-12 opacity-[0.03] pointer-events-none select-none">
+<span class="material-symbols-outlined text-[120px] text-primary">verified</span>
+</div>
+</div>
+</main>
+</body></html>

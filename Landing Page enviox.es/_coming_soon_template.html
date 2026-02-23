@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>%TITLE% — Próximamente | Enviox</title>
+  <meta name="description" content="%DESC%">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" type="image/png" href="/assets/caja.png">
+  <style>
+    .coming-section { padding: 200px 0 120px; text-align: center; position: relative; }
+    .coming-icon { font-size: 64px; margin-bottom: 24px; animation: float 3s ease-in-out infinite; }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    .coming-title { font-size: clamp(32px,5vw,48px); font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; }
+    .coming-desc { font-size: 18px; color: var(--text-sub); max-width: 520px; margin: 0 auto 40px; line-height: 1.6; }
+    .coming-badge { display: inline-block; padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: 700; background: rgba(249,115,22,0.12); color: var(--orange); border: 1px solid rgba(249,115,22,0.2); margin-bottom: 24px; }
+    .coming-form { max-width: 440px; margin: 0 auto; display: flex; gap: 12px; }
+    .coming-form input {
+      flex: 1; padding: 14px 18px; border-radius: 50px; border: 1px solid var(--border);
+      background: var(--bg-card); color: var(--text); font-family: inherit; font-size: 15px;
+    }
+    .coming-form input:focus { outline: none; border-color: var(--green); }
+    .coming-form button {
+      background: var(--gradient); color: white; border: none; padding: 14px 28px;
+      border-radius: 50px; font-size: 15px; font-weight: 700; cursor: pointer; white-space: nowrap;
+      transition: all 0.3s;
+    }
+    .coming-form button:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(16,185,129,0.3); }
+    .coming-note { font-size: 13px; color: var(--text-muted); margin-top: 16px; }
+    .coming-back { margin-top: 48px; }
+    .coming-back a { color: var(--green); font-weight: 600; text-decoration: none; font-size: 15px; }
+    .coming-back a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="/" class="nav-logo"><img src="/assets/texto.png" alt="Enviox" class="nav-logo-img"></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#productos">Productos</a></li>
+        <li><a href="/contacto" class="nav-cta">Contacto</a></li>
+      </ul>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+    </div>
+  </nav>
+  <section class="coming-section">
+    <div class="hero-bg"><div class="hero-orb hero-orb--green"></div><div class="hero-orb hero-orb--blue"></div></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="coming-badge">🚧 Próximamente</div>
+      <div class="coming-icon">%ICON%</div>
+      <h1 class="coming-title">%TITLE%</h1>
+      <p class="coming-desc">%LONGDESC%</p>
+      <form class="coming-form" action="https://formspree.io/f/placeholder" method="POST">
+        <input type="email" name="email" placeholder="tu@email.com" required>
+        <button type="submit">Avisarme</button>
+      </form>
+      <p class="coming-note">Te avisaremos cuando esté disponible. Sin spam.</p>
+      <div class="coming-back">
+        <a href="/">← Volver a enviox.es</a>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">© 2026 Enviox. Hecho con 💚 en España.</div>
+    </div>
+  </footer>
+  <script src="/script.js"></script>
+</body>
+</html>

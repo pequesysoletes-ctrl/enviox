@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Envíos - Correos PrestaShop</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d4341c",
+                        "primary-hover": "#b92b16",
+                        "background-light": "#EBEFF4", // Custom PS back-office background
+                        "background-dark": "#211311",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "md": "0.375rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .ps-sidebar-link:hover {
+            background-color: #f1f5f9;
+        }
+        .ps-sidebar-link.active {
+            background-color: #d4341c;
+            color: white;
+        }
+        .ps-sidebar-link.active .material-symbols-outlined {
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-background-light text-slate-900 dark:bg-background-dark dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="bg-white border-b border-gray-200 shadow-sm z-20 relative h-16 flex items-center justify-between px-6">
+<div class="flex items-center gap-4">
+<!-- Logo area -->
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-slate-900 flex items-center justify-center text-white font-bold text-xs">PS</div>
+<h2 class="text-slate-800 text-lg font-bold tracking-tight hidden sm:block">PrestaShop</h2>
+</div>
+<!-- Quick Access / Search -->
+<div class="hidden md:flex ml-8 items-center bg-gray-100 rounded-md px-3 py-1.5 w-64 border border-gray-200 focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+<span class="material-symbols-outlined text-gray-500 text-[20px]">search</span>
+<input class="bg-transparent border-none text-sm w-full focus:ring-0 text-slate-700 placeholder-gray-500" placeholder="Buscar" type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-gray-600 hover:bg-gray-100 rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-primary rounded-full border border-white"></span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-gray-200">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-semibold text-slate-800">John Doe</p>
+<p class="text-xs text-gray-500">Administrador</p>
+</div>
+<div class="size-9 bg-gray-200 rounded-full overflow-hidden border border-gray-300">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOMMyx6Hq4GrPrzL4H_2rt0rFf8DAmuPIbuUdngGJtqZ_GuK00vSZrcmXAUtk1LK0QtT9re9VTkFVLbayyWCwgFhn_AAF3L7t_1MAes7K4vRglKV_Z9RxpoS1DlEinVETnFrSAkpIRU51KB5mKvD-11AoUiPTxgoEPrD1v-pSZsMRDE7Ab8fPXQkXmWwzEMBx0MATmZd6wiSMh-N-vmjAhd2AjBs4DbAGCC5430Q4kSLpMWs-896-YwT8zmc28vHqST0xmdmFh1Xm2"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 bg-white border-r border-gray-200 hidden lg:flex flex-col h-full overflow-y-auto">
+<div class="p-4 space-y-1">
+<a class="ps-sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-md text-slate-600 font-medium transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Inicio
+                </a>
+<a class="ps-sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-md text-slate-600 font-medium transition-colors" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+                    Pedidos
+                </a>
+<a class="ps-sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-md text-slate-600 font-medium transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                    Catálogo
+                </a>
+<a class="ps-sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-md text-slate-600 font-medium transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+                    Clientes
+                </a>
+<div class="pt-4 pb-1 px-3">
+<p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Configuración</p>
+</div>
+<a class="ps-sidebar-link active flex items-center gap-3 px-3 py-2.5 rounded-md text-slate-600 font-medium transition-colors" href="#">
+<span class="material-symbols-outlined">extension</span>
+                    Módulos
+                </a>
+<div class="pl-11 pr-3 space-y-1">
+<a class="block px-3 py-1.5 text-sm text-primary font-medium bg-primary/5 rounded-md" href="#">Correos</a>
+<a class="block px-3 py-1.5 text-sm text-slate-500 hover:text-slate-800 transition-colors" href="#">Gestor de Módulos</a>
+</div>
+<a class="ps-sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-md text-slate-600 font-medium transition-colors" href="#">
+<span class="material-symbols-outlined">palette</span>
+                    Diseño
+                </a>
+<a class="ps-sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-md text-slate-600 font-medium transition-colors" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+                    Transporte
+                </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-background-light p-6 md:p-8 relative">
+<!-- Breadcrumbs -->
+<nav class="flex mb-6 text-sm text-gray-500 items-center">
+<a class="hover:text-primary transition-colors" href="#">Inicio</a>
+<span class="material-symbols-outlined text-[16px] mx-2">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Módulos</a>
+<span class="material-symbols-outlined text-[16px] mx-2">chevron_right</span>
+<span class="font-semibold text-slate-800">Correos</span>
+<span class="material-symbols-outlined text-[16px] mx-2">chevron_right</span>
+<span class="text-slate-800">Envíos</span>
+</nav>
+<!-- Page Title Header -->
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white rounded-lg shadow-sm flex items-center justify-center p-2">
+<!-- Correos logo placeholder style -->
+<div class="w-full h-full rounded-full bg-[#ffcd00] flex items-center justify-center relative overflow-hidden">
+<div class="absolute bottom-0 right-0 w-1/2 h-1/2 bg-[#003399] rounded-tl-full"></div>
+</div>
+</div>
+<div>
+<h1 class="text-2xl font-bold text-slate-800">Envíos</h1>
+<p class="text-sm text-gray-500">Gestiona tus expediciones de Correos</p>
+</div>
+</div>
+<!-- Toolbar Actions -->
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 shadow-sm transition-all">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+                        Configuración
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 shadow-sm transition-all">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+                        Sincronizar
+                    </button>
+</div>
+</div>
+<!-- Empty State Card -->
+<div class="max-w-4xl mx-auto">
+<div class="bg-surface-light rounded-xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] border border-gray-100 p-12 md:p-16 flex flex-col items-center text-center">
+<!-- Illustration -->
+<div class="relative w-48 h-48 mb-6 group cursor-default">
+<!-- Abstract minimal postal box illustration -->
+<div class="absolute inset-0 bg-gradient-to-tr from-gray-50 to-white rounded-full"></div>
+<svg class="w-full h-full text-gray-300 drop-shadow-sm transition-transform duration-500 group-hover:scale-105" fill="none" viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<!-- Box Base -->
+<path d="M50 110 L100 135 L150 110 L150 70 L100 95 L50 70 Z" fill="#F8F9FA" stroke="#CBD5E1" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M50 110 L50 150 L100 175 L150 150 L150 110" fill="none" stroke="#94A3B8" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M100 135 L100 175" stroke="#94A3B8" stroke-linejoin="round" stroke-width="2"></path>
+<!-- Open Flaps -->
+<path d="M50 70 L100 95 L80 50 L30 35 Z" fill="#F1F5F9" stroke="#CBD5E1" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M150 70 L100 95 L120 50 L170 35 Z" fill="#F1F5F9" stroke="#CBD5E1" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M50 70 L100 45 L150 70" stroke="#CBD5E1" stroke-dasharray="4 4" stroke-linejoin="round" stroke-width="2"></path>
+<!-- Floating Elements indicating emptiness/potential -->
+<circle class="animate-bounce" cx="100" cy="80" fill="#d4341c" r="3" style="animation-duration: 2s;"></circle>
+<path class="opacity-0 group-hover:opacity-100 transition-opacity duration-300" d="M100 100 L120 90" stroke="#d4341c" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+</div>
+<!-- Main Text -->
+<h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4 tracking-tight">
+                        Aún no tienes envíos
+                    </h2>
+<p class="text-gray-500 text-base md:text-lg max-w-lg mx-auto mb-10 leading-relaxed">
+                        Los envíos se crearán automáticamente según tus reglas. También puedes crear uno manualmente.
+                    </p>
+<!-- Actions -->
+<div class="flex flex-col items-center gap-6 w-full max-w-xs">
+<button class="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white font-semibold py-3 px-6 rounded-md shadow-lg shadow-primary/20 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+                            Crear envío manual
+                        </button>
+<a class="group flex items-center gap-1.5 text-primary hover:text-primary-hover font-medium text-sm transition-colors border-b border-transparent hover:border-primary-hover" href="#">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+                            Configurar reglas
+                        </a>
+</div>
+</div>
+</div>
+<!-- Footer info (Optional for admin panels but good for completeness) -->
+<div class="mt-12 text-center text-xs text-gray-400">
+<p>© 2024 Correos Module for PrestaShop. v2.4.1</p>
+</div>
+</main>
+</div>
+</body></html>

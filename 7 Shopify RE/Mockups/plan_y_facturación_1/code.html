@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Plan y facturación - Shopify RE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#008060",
+                        "accent-purple": "#6B21A8",
+                        "background-light": "#f6f6f7",
+                        "background-dark": "#0f231e",
+                        "surface-light": "#ffffff",
+                        "border-light": "#ebebed",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .polaris-card {
+            box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex h-full flex-col">
+<!-- Top Navigation Bar -->
+<header class="bg-white dark:bg-slate-900 border-b border-border-light dark:border-slate-800 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14 items-center">
+<div class="flex items-center gap-3">
+<div class="text-primary">
+<svg class="w-8 h-8" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.8261 30.5736C16.7203 29.8826 20.2244 29.4783 24 29.4783C27.7756 29.4783 31.2797 29.8826 34.1739 30.5736C36.9144 31.2278 39.9967 32.7669 41.3563 33.8352L24.8486 7.36089C24.4571 6.73303 23.5429 6.73303 23.1514 7.36089L6.64374 33.8352C8.00331 32.7669 11.0856 31.2278 13.8261 30.5736Z" fill="currentColor"></path>
+<path clip-rule="evenodd" d="M39.998 35.764C39.9944 35.7463 39.9875 35.7155 39.9748 35.6706C39.9436 35.5601 39.8949 35.4259 39.8346 35.2825C39.8168 35.2403 39.7989 35.1993 39.7813 35.1602C38.5103 34.2887 35.9788 33.0607 33.7095 32.5189C30.9875 31.8691 27.6413 31.4783 24 31.4783C20.3587 31.4783 17.0125 31.8691 14.2905 32.5189C12.0012 33.0654 9.44505 34.3104 8.18538 35.1832C8.17384 35.2075 8.16216 35.233 8.15052 35.2592C8.09919 35.3751 8.05721 35.4886 8.02977 35.589C8.00356 35.6848 8.00039 35.7333 8.00004 35.7388C8.00004 35.739 8 35.7393 8.00004 35.7388C8.00004 35.7641 8.0104 36.0767 8.68485 36.6314C9.34546 37.1746 10.4222 37.7531 11.9291 38.2772C14.9242 39.319 19.1919 40 24 40C28.8081 40 33.0758 39.319 36.0709 38.2772C37.5778 37.7531 38.6545 37.1746 39.3151 36.6314C39.9006 36.1499 39.9857 35.8511 39.998 35.764ZM4.95178 32.7688L21.4543 6.30267C22.6288 4.4191 25.3712 4.41909 26.5457 6.30267L43.0534 32.777C43.0709 32.8052 43.0878 32.8338 43.104 32.8629L41.3563 33.8352C43.104 32.8629 43.1038 32.8626 43.104 32.8629L43.1051 32.865L43.1065 32.8675L43.1101 32.8739L43.1199 32.8918C43.1276 32.906 43.1377 32.9246 43.1497 32.9473C43.1738 32.9925 43.2062 33.0545 43.244 33.1299C43.319 33.2792 43.4196 33.489 43.5217 33.7317C43.6901 34.1321 44 34.9311 44 35.7391C44 37.4427 43.003 38.7775 41.8558 39.7209C40.6947 40.6757 39.1354 41.4464 37.385 42.0552C33.8654 43.2794 29.133 44 24 44C18.867 44 14.1346 43.2794 10.615 42.0552C8.86463 41.4464 7.30529 40.6757 6.14419 39.7209C4.99695 38.7775 3.99999 37.4427 3.99999 35.7391C3.99999 34.8725 4.29264 34.0922 4.49321 33.6393C4.60375 33.3898 4.71348 33.1804 4.79687 33.0311C4.83898 32.9556 4.87547 32.8935 4.9035 32.8471C4.91754 32.8238 4.92954 32.8043 4.93916 32.7889L4.94662 32.777L4.95178 32.7688ZM35.9868 29.004L24 9.77997L12.0131 29.004C12.4661 28.8609 12.9179 28.7342 13.3617 28.6282C16.4281 27.8961 20.0901 27.4783 24 27.4783C27.9099 27.4783 31.5719 27.8961 34.6383 28.6282C35.082 28.7342 35.5339 28.8609 35.9868 29.004Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Shopify RE</span>
+</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-sm font-medium text-slate-600 hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary transition-colors" href="#">Clientes</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary transition-colors" href="#">Pedidos</a>
+<a class="text-sm font-bold text-primary border-b-2 border-primary py-4 mt-1" href="#">Plan y facturación</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="rounded-full w-8 h-8 bg-slate-200 bg-cover bg-center" data-alt="Avatar de usuario" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBZZVE5eoW_ZY2VjrBwmrSTkglrDuittWBuuJVF_gSrzYTjJIsRzNj9Z_vQjCizPFfk0G_QhzolYSUg6c_lNJ1rd6nUXByWA15H4tUtS12IBvHW4hMwwRsP4fiKsFf50FJjB9NPTNba1o1SHNgO8Gx25eEOsAEv_C31JM6j3M8ASvlANRKheALi9gwtWRea0ZqpmvCybLaX8YjUmtOuA74bcospv1AG9Mxw-YcxUUaSatYdkq_GNrkmUzYMC4081tOGKlpUsRUlRyU')"></div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-7xl mx-auto w-full py-8 px-4 sm:px-6 lg:px-8">
+<!-- Header Section -->
+<div class="mb-8">
+<nav class="flex mb-4 text-xs font-medium text-slate-500 gap-2">
+<a class="hover:text-primary" href="#">Configuración</a>
+<span>/</span>
+<span class="text-slate-800 dark:text-slate-300">Plan y facturación</span>
+</nav>
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white">Plan y facturación</h1>
+<p class="mt-2 text-slate-600 dark:text-slate-400">Elige el plan que mejor se adapte al crecimiento de tu negocio.</p>
+</div>
+<!-- Pricing Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+<!-- Plan Starter -->
+<div class="polaris-card bg-surface-light dark:bg-slate-800 rounded-lg p-6 flex flex-col h-full border border-border-light dark:border-slate-700">
+<div class="mb-6">
+<h2 class="text-lg font-semibold text-slate-900 dark:text-white">Starter</h2>
+<div class="mt-4 flex items-baseline">
+<span class="text-4xl font-bold tracking-tight text-slate-900 dark:text-white">9,90€</span>
+<span class="ml-1 text-sm font-medium text-slate-500">/mes</span>
+</div>
+</div>
+<button class="w-full py-2 px-4 mb-8 text-sm font-semibold rounded-lg border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-900 dark:text-white transition-all">
+                        Elegir Starter
+                    </button>
+<div class="space-y-4 flex-1">
+<p class="text-xs font-bold uppercase tracking-wider text-slate-500">Qué incluye:</p>
+<ul class="space-y-3">
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+<span>10 clientes RE</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+<span>Gestión de facturas</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+<span>Exportación CSV</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Plan Growth (Highlighted) -->
+<div class="polaris-card bg-surface-light dark:bg-slate-800 rounded-lg p-6 flex flex-col h-full relative border-2 border-accent-purple">
+<div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+<span class="bg-accent-purple text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-lg">Popular</span>
+</div>
+<div class="mb-6">
+<h2 class="text-lg font-semibold text-slate-900 dark:text-white">Growth</h2>
+<div class="mt-4 flex items-baseline">
+<span class="text-4xl font-bold tracking-tight text-slate-900 dark:text-white">19,90€</span>
+<span class="ml-1 text-sm font-medium text-slate-500">/mes</span>
+</div>
+</div>
+<button class="w-full py-2.5 px-4 mb-8 text-sm font-semibold rounded-lg bg-primary hover:bg-opacity-90 text-white shadow-sm transition-all">
+                        Suscripción Actual
+                    </button>
+<div class="space-y-4 flex-1">
+<p class="text-xs font-bold uppercase tracking-wider text-slate-500">Todo en Starter, más:</p>
+<ul class="space-y-3">
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+<span>50 clientes RE</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+<span>Panel de control avanzado</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+<span>Soporte prioritario</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Plan Pro -->
+<div class="polaris-card bg-surface-light dark:bg-slate-800 rounded-lg p-6 flex flex-col h-full border border-border-light dark:border-slate-700">
+<div class="mb-6">
+<h2 class="text-lg font-semibold text-slate-900 dark:text-white">Pro</h2>
+<div class="mt-4 flex items-baseline">
+<span class="text-4xl font-bold tracking-tight text-slate-900 dark:text-white">39,90€</span>
+<span class="ml-1 text-sm font-medium text-slate-500">/mes</span>
+</div>
+</div>
+<button class="w-full py-2 px-4 mb-8 text-sm font-semibold rounded-lg border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-900 dark:text-white transition-all">
+                        Elegir Pro
+                    </button>
+<div class="space-y-4 flex-1">
+<p class="text-xs font-bold uppercase tracking-wider text-slate-500">Para grandes empresas:</p>
+<ul class="space-y-3">
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+<span>Clientes ilimitados</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+<span>Acceso completo a API</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+<span>Soporte dedicado 24/7</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Shopify Billing Footer -->
+<div class="polaris-card bg-white dark:bg-slate-800 rounded-lg overflow-hidden border border-border-light dark:border-slate-700 mb-8">
+<div class="px-6 py-5 border-b border-border-light dark:border-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h3 class="text-base font-semibold text-slate-900 dark:text-white">Gestión de facturación</h3>
+<p class="text-sm text-slate-500 mt-1">Tu suscripción está vinculada a tu cuenta de Shopify.</p>
+</div>
+<button class="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold hover:bg-opacity-90 transition-all">
+<span class="material-symbols-outlined text-base" data-icon="open_in_new">open_in_new</span>
+                        Ver en Shopify
+                    </button>
+</div>
+<div class="px-6 py-6 bg-slate-50/50 dark:bg-slate-800/50 flex items-start gap-4">
+<div class="bg-primary/10 p-2 rounded-lg text-primary shrink-0">
+<svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.13 14.73c.12-.41.2-.82.25-1.25H20c.41 0 .75-.34.75-.75s-.34-.75-.75-.75h-2.58a7.88 7.88 0 0 0-.27-1.25h2.85c.41 0 .75-.34.75-.75s-.34-.75-.75-.75h-3.32a7.88 7.88 0 0 0-.8-1.25H18c.41 0 .75-.34.75-.75s-.34-.75-.75-.75h-1.85a7.88 7.88 0 0 0-1.42-1.25H16c.41 0 .75-.34.75-.75s-.34-.75-.75-.75h-.92c-.3-.21-.61-.41-.93-.59A7.9 7.9 0 0 0 12 2.25c-.83 0-1.63.13-2.38.37l-.1.03C8.42 3 7.5 3.5 6.75 4.13H6c-.41 0-.75.34-.75.75s.34.75.75.75h.18a7.88 7.88 0 0 0-1.42 1.25H3c-.41 0-.75.34-.75.75s.34.75.75.75h1.27c-.31.39-.58.81-.8 1.25H3c-.41 0-.75.34-.75.75s.34.75.75.75h.52c-.11.41-.19.83-.24 1.25H3c-.41 0-.75.34-.75.75s.34.75.75.75h.87a7.88 7.88 0 0 0 .25 1.25H3c-.41 0-.75.34-.75.75s.34.75.75.75h2.24c.48 1.15 1.18 2.18 2.05 3.03C8.92 21.09 10.39 21.75 12 21.75s3.08-.66 4.66-2.24c.87-.85 1.57-1.88 2.05-3.03H21c.41 0 .75-.34.75-.75s-.34-.75-.75-.75h-3.87ZM12 4.25c3.72 0 6.75 3.03 6.75 6.75S15.72 17.75 12 17.75 5.25 14.72 5.25 11 8.28 4.25 12 4.25ZM10.5 13.5l-2.25-2.25a.75.75 0 1 0-1.06 1.06l2.78 2.78a.75.75 0 0 0 1.06 0l5.25-5.25a.75.75 0 1 0-1.06-1.06L10.5 13.5Z"></path>
+</svg>
+</div>
+<div>
+<p class="text-sm font-medium text-slate-800 dark:text-slate-200">Los pagos se gestionan a través de Shopify</p>
+<p class="text-xs text-slate-500 mt-1 leading-relaxed">Todos los cargos relacionados con Shopify RE aparecerán directamente en tu factura mensual de Shopify. No necesitas introducir datos de pago adicionales aquí.</p>
+</div>
+</div>
+</div>
+<!-- History Section -->
+<div class="mb-12">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Historial reciente</h3>
+<div class="polaris-card bg-surface-light dark:bg-slate-800 rounded-lg border border-border-light dark:border-slate-700 overflow-hidden">
+<table class="w-full text-left text-sm border-collapse">
+<thead class="bg-slate-50 dark:bg-slate-700/50">
+<tr>
+<th class="px-6 py-3 font-semibold text-slate-700 dark:text-slate-300">Fecha</th>
+<th class="px-6 py-3 font-semibold text-slate-700 dark:text-slate-300">Descripción</th>
+<th class="px-6 py-3 font-semibold text-slate-700 dark:text-slate-300 text-right">Monto</th>
+<th class="px-6 py-3 font-semibold text-slate-700 dark:text-slate-300 text-right">Estado</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-light dark:divide-slate-700">
+<tr>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400">1 Oct 2023</td>
+<td class="px-6 py-4 text-slate-900 dark:text-white font-medium">Suscripción Plan Growth (Octubre)</td>
+<td class="px-6 py-4 text-slate-900 dark:text-white text-right">19,90€</td>
+<td class="px-6 py-4 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">Pagado</span>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400">1 Sep 2023</td>
+<td class="px-6 py-4 text-slate-900 dark:text-white font-medium">Suscripción Plan Growth (Septiembre)</td>
+<td class="px-6 py-4 text-slate-900 dark:text-white text-right">19,90€</td>
+<td class="px-6 py-4 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">Pagado</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-slate-900 border-t border-border-light dark:border-slate-800 py-6">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+<p class="text-xs text-slate-500">© 2023 Shopify RE. Todos los derechos reservados.</p>
+<div class="flex gap-6">
+<a class="text-xs text-slate-500 hover:text-primary transition-colors" href="#">Términos de servicio</a>
+<a class="text-xs text-slate-500 hover:text-primary transition-colors" href="#">Política de privacidad</a>
+<a class="text-xs text-slate-500 hover:text-primary transition-colors" href="#">Contacto</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

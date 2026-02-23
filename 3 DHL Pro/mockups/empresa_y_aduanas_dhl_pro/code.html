@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Datos de empresa y aduanas - DHL Pro</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d42111",
+                        "primary-dark": "#b91c0e",
+                        "background-light": "#F6F6F7",
+                        "background-dark": "#1a1a1a",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#2d2d2d",
+                        "text-main": "#111827",
+                        "text-secondary": "#6b7280",
+                        "border-light": "#e5e7eb",
+                        "warning-bg": "#fffbeb",
+                        "warning-text": "#b45309",
+                        "warning-border": "#fcd34d",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                    },
+                    boxShadow: {
+                        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Custom scrollbar hide for cleaner mobile look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light text-text-main antialiased min-h-screen pb-24">
+<!-- Header -->
+<header class="bg-surface-light sticky top-0 z-10 border-b border-border-light px-4 py-3 shadow-sm">
+<div class="flex items-center justify-between max-w-lg mx-auto w-full">
+<button class="p-2 -ml-2 rounded-full hover:bg-gray-100 text-text-main transition-colors">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h1 class="text-lg font-semibold text-text-main flex-1 text-center pr-8 truncate">Datos de empresa y aduanas</h1>
+</div>
+</header>
+<!-- Main Content -->
+<main class="max-w-lg mx-auto w-full px-4 pt-6 space-y-6">
+<!-- Card 1: Datos del remitente -->
+<section class="bg-surface-light rounded-xl shadow-card border border-border-light overflow-hidden">
+<div class="px-5 py-4 border-b border-border-light flex items-center gap-3 bg-gray-50/50">
+<div class="bg-primary/10 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined text-[20px]">domain</span>
+</div>
+<h2 class="text-base font-semibold text-text-main">Datos del remitente</h2>
+</div>
+<div class="p-5 space-y-4">
+<!-- Nombre Empresa -->
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-text-secondary">Nombre empresa</label>
+<input class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5" type="text" value="Mi Tienda S.L."/>
+</div>
+<!-- NIF / CIF -->
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-text-secondary">NIF / CIF</label>
+<input class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5 uppercase" type="text" value="B12345678"/>
+</div>
+<!-- Dirección -->
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-text-secondary">Dirección</label>
+<input class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5" type="text" value="Calle Ejemplo 15"/>
+</div>
+<!-- Grid: CP & Ciudad -->
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-text-secondary">Código postal</label>
+<input class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5" type="text" value="28001"/>
+</div>
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-text-secondary">Ciudad</label>
+<input class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5" type="text" value="Madrid"/>
+</div>
+</div>
+<!-- País Dropdown -->
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-text-secondary">País</label>
+<div class="relative">
+<select class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5 pr-10 appearance-none bg-white">
+<option selected="" value="ES">España (ES)</option>
+<option value="FR">Francia (FR)</option>
+<option value="DE">Alemania (DE)</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Teléfono & Email -->
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-text-secondary">Teléfono</label>
+<input class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5" type="tel" value="+34 612 345 678"/>
+</div>
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-text-secondary">Email contacto</label>
+<input class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5" type="email" value="envios@mitienda.com"/>
+</div>
+</div>
+</section>
+<!-- Card 2: Configuración de aduanas -->
+<section class="bg-surface-light rounded-xl shadow-card border border-border-light overflow-hidden">
+<div class="px-5 py-4 border-b border-border-light flex items-center gap-3 bg-gray-50/50">
+<div class="bg-primary/10 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+</div>
+<h2 class="text-base font-semibold text-text-main">Configuración de aduanas</h2>
+</div>
+<div class="p-5 space-y-4">
+<!-- Info Banner -->
+<div class="bg-warning-bg border border-warning-border rounded-lg p-3 flex gap-3 items-start">
+<span class="material-symbols-outlined text-warning-text text-[20px] flex-shrink-0 mt-0.5">warning</span>
+<p class="text-xs text-warning-text leading-tight font-medium">
+                        Solo aplica a envíos fuera de la Unión Europea. Asegúrese de que los datos coincidan con su registro EORI.
+                    </p>
+</div>
+<!-- EORI Number -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<label class="block text-sm font-medium text-text-secondary">EORI Number</label>
+<span class="material-symbols-outlined text-gray-400 text-[16px] cursor-help">help</span>
+</div>
+<input class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5 uppercase" type="text" value="ES B12345678"/>
+<p class="text-xs text-gray-500">Número de registro e identificación de operadores económicos</p>
+</div>
+<!-- Grid: Export Type & Incoterms -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-text-secondary">Tipo de exportación</label>
+<div class="relative">
+<select class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5 pr-8 bg-white">
+<option selected="">Permanent</option>
+<option>Temporary</option>
+<option>Return</option>
+</select>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-text-secondary">Incoterms</label>
+<div class="relative">
+<select class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5 pr-8 bg-white">
+<option selected="">DAP</option>
+<option>DDP</option>
+<option>EXW</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Description -->
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-text-secondary">Descripción genérica mercancía</label>
+<input class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5" type="text" value="Productos textiles"/>
+</div>
+<!-- HS Code & Currency -->
+<div class="grid grid-cols-3 gap-4">
+<div class="col-span-2 space-y-1.5">
+<label class="block text-sm font-medium text-text-secondary truncate">HS Code</label>
+<input class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5" type="text" value="6109.10"/>
+</div>
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-text-secondary">Moneda</label>
+<select class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2.5 bg-white">
+<option selected="">EUR</option>
+<option>USD</option>
+<option>GBP</option>
+</select>
+</div>
+</div>
+</div>
+</section>
+<!-- Card 3: Valores por defecto -->
+<section class="bg-surface-light rounded-xl shadow-card border border-border-light overflow-hidden mb-6">
+<div class="px-5 py-4 border-b border-border-light flex items-center gap-3 bg-gray-50/50">
+<div class="bg-primary/10 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined text-[20px]">package_2</span>
+</div>
+<h2 class="text-base font-semibold text-text-main">Valores por defecto de paquete</h2>
+</div>
+<div class="p-5 space-y-5">
+<!-- Checkbox -->
+<div class="flex items-start">
+<div class="flex h-5 items-center">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" id="shopify-weight" type="checkbox"/>
+</div>
+<div class="ml-3 text-sm">
+<label class="font-medium text-text-main" for="shopify-weight">Usar peso de Shopify</label>
+<p class="text-gray-500 text-xs mt-0.5">Si está disponible en el producto, se usará ese valor.</p>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-3 items-end">
+<div class="col-span-1 space-y-1.5">
+<label class="block text-xs font-medium text-text-secondary mb-1">Peso (kg)</label>
+<input class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2 text-center" step="0.1" type="number" value="0.5"/>
+</div>
+<div class="col-span-3 grid grid-cols-3 gap-2">
+<div class="space-y-1.5">
+<label class="block text-xs font-medium text-text-secondary mb-1 text-center">Largo</label>
+<input class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2 text-center" placeholder="cm" type="number" value="30"/>
+</div>
+<div class="space-y-1.5">
+<label class="block text-xs font-medium text-text-secondary mb-1 text-center">Ancho</label>
+<input class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2 text-center" placeholder="cm" type="number" value="20"/>
+</div>
+<div class="space-y-1.5">
+<label class="block text-xs font-medium text-text-secondary mb-1 text-center">Alto</label>
+<input class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2 text-center" placeholder="cm" type="number" value="15"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Bar -->
+<div class="fixed bottom-0 left-0 right-0 bg-surface-light border-t border-border-light p-4 z-20 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+<div class="max-w-lg mx-auto w-full">
+<button class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3.5 px-4 rounded-lg shadow-sm transition-colors duration-200 flex justify-center items-center gap-2 text-sm uppercase tracking-wide">
+<span>Guardar configuración</span>
+</button>
+</div>
+</div>
+<!-- Padding for bottom bar so content isn't hidden -->
+<div class="h-20"></div>
+</body></html>

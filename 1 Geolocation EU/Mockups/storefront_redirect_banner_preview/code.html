@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Storefront Redirect Banner Preview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2266ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #CBD5E1;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased min-h-screen flex flex-col items-center py-10">
+<!-- Main Storefront Simulation Container -->
+<div class="w-full max-w-[1280px] bg-white shadow-xl rounded-xl overflow-hidden border border-slate-200 relative mb-16">
+<!-- French Redirect Banner (Overlay/Top) -->
+<div class="relative z-50 bg-[#EBF5FF] border-l-4 border-primary flex flex-col md:flex-row items-start md:items-center justify-between px-6 py-4 gap-4 shadow-sm animate-slideDown">
+<div class="flex items-start md:items-center gap-4 flex-1">
+<span aria-label="France Flag" class="text-2xl" role="img">🇫🇷</span>
+<p class="text-slate-800 text-sm md:text-base font-medium leading-relaxed">
+                    Il semble que vous êtes en France. Voulez-vous voir la boutique en français?
+                </p>
+</div>
+<div class="flex items-center gap-3 w-full md:w-auto justify-end">
+<button class="px-4 py-2 bg-primary hover:bg-blue-700 text-white text-sm font-semibold rounded transition-colors whitespace-nowrap shadow-sm">
+                    Oui, changer
+                </button>
+<button class="px-4 py-2 bg-transparent border border-slate-300 text-slate-600 hover:text-slate-800 hover:border-slate-400 text-sm font-semibold rounded transition-colors whitespace-nowrap">
+                    Non, rester ici
+                </button>
+<button class="ml-2 text-slate-400 hover:text-slate-600 transition-colors">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+</div>
+<!-- Store Content (Dimmed) -->
+<div class="relative opacity-50 pointer-events-none select-none filter blur-[0.5px] transition-all duration-500">
+<!-- Navigation -->
+<header class="flex items-center justify-between border-b border-slate-100 px-8 py-4 bg-white">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-slate-900">
+<span class="material-symbols-outlined text-3xl">styler</span>
+<h2 class="text-xl font-bold tracking-tight">LUXE MODE</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-900 text-sm font-medium hover:text-primary" href="#">New Arrivals</a>
+<a class="text-slate-500 text-sm font-medium hover:text-primary" href="#">Clothing</a>
+<a class="text-slate-500 text-sm font-medium hover:text-primary" href="#">Accessories</a>
+<a class="text-slate-500 text-sm font-medium hover:text-primary" href="#">Sale</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center bg-slate-100 rounded-full px-3 py-1.5 w-64">
+<span class="material-symbols-outlined text-slate-400 text-xl">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full text-slate-700 placeholder-slate-400" placeholder="Search" type="text"/>
+</div>
+<div class="flex gap-2 text-slate-700">
+<button class="p-2 hover:bg-slate-50 rounded-full"><span class="material-symbols-outlined">favorite</span></button>
+<button class="p-2 hover:bg-slate-50 rounded-full"><span class="material-symbols-outlined">shopping_bag</span></button>
+<button class="p-2 hover:bg-slate-50 rounded-full"><span class="material-symbols-outlined">person</span></button>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<div class="relative h-[480px] w-full bg-slate-100 overflow-hidden flex items-center justify-center">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Fashion model walking in a shopping district" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCY6k94RZpX8-eNNOoO10zvx3RBBNMgV32EnUOby4HchS4hBXIskqTqYm9wTsMu2FmUr5tQ28UlNagEt4l0f3rl5DrBbDDzm4Rl9YEh22WR415XGG5sbPTDvTje22Uk1VkWjj0p517sT5q58TmAHiCD3NrAoybFQEH3la_1TqCgD6qGt3wqxo7Yui8N7lBVawCdPqnEvWfVKadlz23T5_uqfz6F-g-ReYBmAOwhLtb9OlZDF22ah_6Y0F3B6s9kVmdn6Rq5kGuwZe63');"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent"></div>
+<div class="relative z-10 text-white text-center px-4 max-w-2xl mx-auto">
+<span class="uppercase tracking-widest text-xs font-bold mb-2 block text-white/90">Spring / Summer 2024</span>
+<h1 class="text-5xl md:text-6xl font-display font-bold mb-6 leading-tight">Elevate Your Everyday</h1>
+<p class="text-lg text-white/90 mb-8 font-light">Discover the new collection defined by modern elegance and timeless style.</p>
+<button class="bg-white text-slate-900 px-8 py-3 rounded-full font-semibold hover:bg-slate-100 transition shadow-lg">Shop Collection</button>
+</div>
+</div>
+<!-- Product Grid Mockup -->
+<div class="max-w-7xl mx-auto px-8 py-12">
+<div class="flex justify-between items-end mb-8">
+<h3 class="text-2xl font-bold text-slate-900">Trending Now</h3>
+<a class="text-primary text-sm font-semibold flex items-center gap-1" href="#">View All <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Product 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-lg overflow-hidden bg-slate-100 mb-4 relative">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Beige linen jacket on hanger" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAk33UwhuKd4MLMxElEEW19bS96FIsfu543FGROtiAPm6pme4e2Oa1kElNSfyXhlKI6s8TOAvwyqQz_EaJMOL4Hpj_z4QGAiAYLCIO1NtFdHT2F00pAvJXCkwLGN7mdL3EaSDBsMzJlCVwZzJ_j8IeXdnou6_PcT7f9QFWbmThG1CbfU771_p3OE7y9N5aXsxYZdkceJc3T2XgKeeeeAPn1eZ-ewTtc9MFWwBJv-Q6_paNHt6WWZF30o2C_MpG_3z8CKFUnTy5ixS5Z');"></div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-slate-900 font-medium text-base">Linen Blazer</h4>
+<p class="text-slate-500 text-sm mt-1">Outerwear</p>
+</div>
+<span class="text-slate-900 font-semibold">€120.00</span>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-lg overflow-hidden bg-slate-100 mb-4 relative">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Elegant silk dress on mannequin" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAXv0WRNsg6LoFLaYqmf4pxw5hCEQnCwKzH_70p76cUXKaef-TkQX5dhFm6830SI6XI-OtDdgyl-3Z7bwk1_qgXQI0x9B0jjZrHP4H7YQI3ytCd48QA50u3f3_ySMorlM8SBK_TrrwwSk0dY5L4Yc5DDGsQ_WIoxvxdn7JspciCg_xIWktEeZOhCUar-O0-KA_ycTfHVgthnqwfp-w_K8MZg1yXHq5uDg_Tx1S2ajWC8-vAqUD6gyRX4X9Sys0HVRiqoTdPVDeZJPaU');"></div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-slate-900 font-medium text-base">Silk Evening Dress</h4>
+<p class="text-slate-500 text-sm mt-1">Dresses</p>
+</div>
+<span class="text-slate-900 font-semibold">€185.00</span>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-lg overflow-hidden bg-slate-100 mb-4 relative">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Detailed shot of leather shoes" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJhppp1FPBFdIjQARubbdNKASEelLEYkkv8WxmJhfxcZpphlxpk2bYWyidH3E-WcWIsAFyqofKu0ORrXYP_8sHL-0wo3rtoYWb8M6PuzbE-gX-yVAeA28l3j2aj5D5FycKEUBrdCPuntQmlxyf_cK9tP7AwDyKK0lgNpm8MDa0Gk56D9bu1TD_3W_cRfGiWTtXxm2sbI3KnCT3wE9eZSBpkIlUMEUT1E1F8mSB7hiM7FF-DB8Y9n7kYT6_xItcsdC1YKlH3ABNA45L');"></div>
+<span class="absolute top-2 left-2 bg-slate-900 text-white text-xs font-bold px-2 py-1 rounded">New</span>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-slate-900 font-medium text-base">Leather Loafers</h4>
+<p class="text-slate-500 text-sm mt-1">Footwear</p>
+</div>
+<span class="text-slate-900 font-semibold">€210.00</span>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-lg overflow-hidden bg-slate-100 mb-4 relative">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Woman wearing stylish sunglasses" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB5TMzcChtO7a_S6MgMO6x3C0oUELWaZn2TZ1O1KTEydJdJrw2hc_UI_FfCVhPmj2sWZo7cdqdsVKEumUeIl9l3y6I4qGKOnUnl3dj4cmY5mdL2D4WDKeqSlVsydHqhsh7IkYHJScUmR2MbjtEkzYv_F96icY4Uev14M0A2CVP6ZbIs6pcOg8XaLQ2a1vZAHNyA1Si3kRHaiYeQQ2evNMXyshgKUybnxkRjDzZMyfZL2MUGlIupoZD7m0FSiDFEjrwCExwnYEnk2P5k');"></div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-slate-900 font-medium text-base">Cat Eye Shades</h4>
+<p class="text-slate-500 text-sm mt-1">Accessories</p>
+</div>
+<span class="text-slate-900 font-semibold">€95.00</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Variant: German Banner Comparison -->
+<div class="w-full max-w-[1280px] px-4">
+<div class="flex items-center gap-2 mb-4">
+<span class="bg-slate-200 text-slate-600 text-xs font-bold px-2 py-1 rounded uppercase tracking-wider">Variant B</span>
+<h3 class="text-slate-500 text-sm font-medium">German Localization</h3>
+</div>
+<div class="w-full bg-white shadow-sm rounded-lg overflow-hidden border border-slate-200">
+<!-- German Redirect Banner -->
+<div class="bg-[#EBF5FF] border-l-4 border-primary flex flex-col md:flex-row items-start md:items-center justify-between px-6 py-4 gap-4">
+<div class="flex items-start md:items-center gap-4 flex-1">
+<span aria-label="Germany Flag" class="text-2xl" role="img">🇩🇪</span>
+<p class="text-slate-800 text-sm md:text-base font-medium leading-relaxed">
+                        Es sieht so aus, als wären Sie in Deutschland. Möchten Sie den Shop auf Deutsch sehen?
+                    </p>
+</div>
+<div class="flex items-center gap-3 w-full md:w-auto justify-end">
+<button class="px-4 py-2 bg-primary hover:bg-blue-700 text-white text-sm font-semibold rounded transition-colors whitespace-nowrap shadow-sm">
+                        Ja, wechseln
+                    </button>
+<button class="px-4 py-2 bg-transparent border border-slate-300 text-slate-600 hover:text-slate-800 hover:border-slate-400 text-sm font-semibold rounded transition-colors whitespace-nowrap">
+                        Nein, hier bleiben
+                    </button>
+<button class="ml-2 text-slate-400 hover:text-slate-600 transition-colors">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+</div>
+<!-- Partial Context Below Variant -->
+<div class="h-12 bg-white border-t border-slate-100 flex items-center px-8 opacity-40">
+<div class="h-3 w-24 bg-slate-200 rounded"></div>
+<div class="ml-auto h-3 w-64 bg-slate-100 rounded"></div>
+</div>
+</div>
+</div>
+</body></html>

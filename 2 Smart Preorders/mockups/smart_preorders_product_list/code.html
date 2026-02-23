@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart Preorders - Product List</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7c3bed",
+                        "primary-hover": "#6932c9",
+                        "background-light": "#f6f6f7", // Shopify Polaris background
+                        "background-dark": "#171121",
+                        "surface-light": "#ffffff",
+                        "text-main": "#202223", // Polaris text
+                        "text-subdued": "#6d7175", // Polaris subdued text
+                        "border-subdued": "#e1e3e5", // Polaris border
+                        "success-bg": "#e4e5e7", // Placeholder for badge bg
+                        "success-text": "#008060", // Polaris success
+                        "attention-bg": "#ffea8a", 
+                        "attention-text": "#8a6116",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "-apple-system", "BlinkMacSystemFont", "San Francisco", "Segoe UI", "Roboto", "Helvetica Neue", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "polaris": "0px 0px 5px rgba(0, 0, 0, 0.05), 0px 1px 2px rgba(0, 0, 0, 0.15)",
+                        "polaris-hover": "0px 0px 5px rgba(0, 0, 0, 0.1), 0px 2px 4px rgba(0, 0, 0, 0.2)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f6f6f7;
+            color: #202223;
+        }
+        /* Custom Scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #bdc1cc;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a0a4b0;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex text-text-main dark:text-gray-100 font-display">
+<!-- Mobile Header (Visible on small screens) -->
+<div class="lg:hidden w-full bg-white border-b border-border-subdued p-4 flex items-center justify-between sticky top-0 z-20">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-subdued">menu</span>
+<span class="font-bold text-lg text-text-main">Smart Preorders</span>
+</div>
+<div class="h-8 w-8 bg-gray-200 rounded-full flex items-center justify-center text-primary font-bold">SP</div>
+</div>
+<div class="flex w-full max-w-[1600px] mx-auto">
+<!-- Sidebar Navigation -->
+<aside class="hidden lg:flex flex-col w-64 bg-background-light dark:bg-background-dark border-r border-border-subdued h-screen sticky top-0 overflow-y-auto shrink-0 py-5 px-3">
+<!-- App Header in Sidebar -->
+<div class="px-3 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<div>
+<h1 class="text-sm font-semibold text-text-main dark:text-white">Smart Preorders</h1>
+<p class="text-xs text-text-subdued dark:text-gray-400">Shopify Admin</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-1 flex-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-subdued dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-text-main dark:group-hover:text-gray-200">dashboard</span>
+<span class="text-sm font-medium group-hover:text-text-main dark:group-hover:text-gray-200">Dashboard</span>
+</a>
+<!-- Active Item -->
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-white dark:bg-gray-800 text-primary shadow-sm border border-transparent dark:border-gray-700 relative overflow-hidden group" href="#">
+<!-- Active Indicator Line -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-l-lg"></div>
+<span class="material-symbols-outlined text-[20px] ml-1 fill-current">inventory_2</span>
+<span class="text-sm font-semibold">Productos</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-subdued dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-text-main dark:group-hover:text-gray-200">shopping_cart</span>
+<span class="text-sm font-medium group-hover:text-text-main dark:group-hover:text-gray-200">Carrito mixto</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-subdued dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-text-main dark:group-hover:text-gray-200">receipt_long</span>
+<span class="text-sm font-medium group-hover:text-text-main dark:group-hover:text-gray-200">Pedidos</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-subdued dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-text-main dark:group-hover:text-gray-200">savings</span>
+<span class="text-sm font-medium group-hover:text-text-main dark:group-hover:text-gray-200">Ahorro</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-subdued dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-text-main dark:group-hover:text-gray-200">verified_user</span>
+<span class="text-sm font-medium group-hover:text-text-main dark:group-hover:text-gray-200">Plan</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-subdued dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-text-main dark:group-hover:text-gray-200">help</span>
+<span class="text-sm font-medium group-hover:text-text-main dark:group-hover:text-gray-200">Ayuda</span>
+</a>
+</nav>
+<!-- Bottom User Profile (Optional placeholder for completeness) -->
+<div class="mt-auto pt-4 border-t border-border-subdued px-3">
+<div class="flex items-center gap-3 cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-xs font-bold">JS</div>
+<div class="flex flex-col">
+<span class="text-xs font-medium text-text-main dark:text-white">Jane Smith</span>
+<span class="text-[10px] text-text-subdued">Store Owner</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 min-w-0 p-4 lg:p-8 max-w-[1200px] mx-auto w-full">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+<h1 class="text-2xl font-bold text-text-main dark:text-white">Productos en preventa</h1>
+<button class="bg-primary hover:bg-primary-hover text-white text-sm font-medium px-4 py-2 rounded-lg shadow-sm transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Añadir producto a preventa
+                </button>
+</div>
+<!-- Configuration Card -->
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-polaris border border-border-subdued mb-6 overflow-hidden">
+<div class="p-5 border-b border-border-subdued">
+<div class="flex items-start gap-3">
+<div class="flex h-6 items-center">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" id="auto-preventa" name="auto-preventa" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<label class="text-sm font-semibold text-text-main dark:text-white flex items-center gap-1 cursor-pointer select-none" for="auto-preventa">
+                                Auto-preventa: activar automáticamente cuando stock = 0
+                                <span class="material-symbols-outlined text-text-subdued text-[16px] cursor-help" title="Información sobre auto-preventa">info</span>
+</label>
+<!-- Info Banner -->
+<div class="mt-3 bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 rounded-md p-3 flex gap-3">
+<span class="material-symbols-outlined text-blue-700 dark:text-blue-300 text-[20px] shrink-0">info</span>
+<p class="text-sm text-blue-800 dark:text-blue-200">
+                                    Los productos con auto-preventa se activan automáticamente cuando el stock llega a 0.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Products Index Table Card -->
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-polaris border border-border-subdued overflow-hidden flex flex-col">
+<!-- Table Controls / Filters (Visual Placeholder for Polaris feel) -->
+<div class="p-3 border-b border-border-subdued flex items-center justify-between bg-white dark:bg-gray-800">
+<div class="flex gap-2">
+<button class="text-xs font-medium px-3 py-1.5 rounded bg-gray-100 hover:bg-gray-200 text-text-subdued transition-colors border border-transparent">Todos</button>
+<button class="text-xs font-medium px-3 py-1.5 rounded hover:bg-gray-50 text-text-subdued transition-colors border border-transparent">Activos</button>
+<button class="text-xs font-medium px-3 py-1.5 rounded hover:bg-gray-50 text-text-subdued transition-colors border border-transparent">Borradores</button>
+</div>
+<div class="flex gap-2">
+<button class="p-1.5 text-text-subdued hover:bg-gray-100 rounded border border-transparent transition-colors">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</button>
+<button class="p-1.5 text-text-subdued hover:bg-gray-100 rounded border border-transparent transition-colors">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+</button>
+<button class="p-1.5 text-text-subdued hover:bg-gray-100 rounded border border-transparent transition-colors">
+<span class="material-symbols-outlined text-[20px]">sort</span>
+</button>
+</div>
+</div>
+<!-- Responsive Table Container -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse min-w-[900px]">
+<thead>
+<tr class="bg-gray-50 dark:bg-gray-700/50 border-b border-border-subdued text-xs uppercase tracking-wide text-text-subdued font-semibold">
+<th class="py-3 px-4 w-16">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox"/>
+</th>
+<th class="py-3 px-4 w-16"></th> <!-- Thumbnail Column -->
+<th class="py-3 px-4">Producto / Variante</th>
+<th class="py-3 px-4 w-24 text-right">Stock</th>
+<th class="py-3 px-4 w-40">Estado</th>
+<th class="py-3 px-4 w-40">Fecha envío est.</th>
+<th class="py-3 px-4 w-24 text-right">Preorders</th>
+<th class="py-3 px-4 w-24 text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="text-sm divide-y divide-border-subdued">
+<!-- Row 1 -->
+<tr class="group hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+<td class="py-3 px-4">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" type="checkbox"/>
+</td>
+<td class="py-3 px-4">
+<div class="h-10 w-10 rounded border border-gray-200 bg-gray-100 flex items-center justify-center overflow-hidden">
+<img alt="Zapatillas rojas deportivas" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHmFge_tC3XxRZUzg0Zxbv2tAB9PZI7U6NLEEobwHc6rQ3J5a_ZBL1UUGrUzsnJ6ipkqFWpXXxiRaw1N6XpXp6Hp12ugHJWvGCCeIRaz8xDGtPm8C7hOCopPY7pkpJSEFutOd4o7nH8Q2Vw15f8TxcaPhdjdM_yfqGfFzI65VHxeNCpuQKPygfx2ZXvzk1GOAqrKQnBt2rk724NIwZftmV3lTfZykGAmE97gGxu4LlpARXcxTAC4bVwNH4MKLdAbvzlJTgJrBD_VTr"/>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="font-medium text-text-main dark:text-white">Zapatillas Ltd Ed</div>
+<div class="text-text-subdued text-xs">T.42</div>
+</td>
+<td class="py-3 px-4 text-right text-text-subdued">0</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20">
+                                        Pre-order
+                                    </span>
+</td>
+<td class="py-3 px-4 text-text-subdued">15/04/2026</td>
+<td class="py-3 px-4 text-right font-medium text-text-main dark:text-white">8</td>
+<td class="py-3 px-4 text-right">
+<a class="text-primary hover:underline font-medium text-xs" href="#">Editar</a>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+<td class="py-3 px-4">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" type="checkbox"/>
+</td>
+<td class="py-3 px-4">
+<div class="h-10 w-10 rounded border border-gray-200 bg-gray-100 flex items-center justify-center overflow-hidden">
+<img alt="Zapatillas rojas deportivas" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtrkZg_q7UlMH4lK9MfCPSLhXFmWbiMAStdMiA6RRuoXKTHVCCnQRF6wW7FUKRoJkmcRa92gl2M9mMMqHktLVcXHcIz6FfhA023QTbfzLyxNA5z89tdgHs4lW8K_gvXsSCsUEkIMU2XsLE-rT4I8tBBQaANhPj7GMTuiSXJDK3V4Jdhb2Nee5XLFngXdSKGYjYb0KMO9WgpZZXzBqQnaw9X-0R5ybpdTRFQ8M-uhbLtSR10Pi_d9S0u02LpzkwTKh-yv25o64MWrjh"/>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="font-medium text-text-main dark:text-white">Zapatillas Ltd Ed</div>
+<div class="text-text-subdued text-xs">T.43</div>
+</td>
+<td class="py-3 px-4 text-right text-text-subdued">0</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20">
+                                        Pre-order
+                                    </span>
+</td>
+<td class="py-3 px-4 text-text-subdued">15/04/2026</td>
+<td class="py-3 px-4 text-right font-medium text-text-main dark:text-white">5</td>
+<td class="py-3 px-4 text-right">
+<a class="text-primary hover:underline font-medium text-xs" href="#">Editar</a>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+<td class="py-3 px-4">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" type="checkbox"/>
+</td>
+<td class="py-3 px-4">
+<div class="h-10 w-10 rounded border border-gray-200 bg-gray-100 flex items-center justify-center overflow-hidden">
+<img alt="Sudadera blanca con capucha" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAy5IBJkxUw1OU1Q7JEpTI4UH6IA3CQOcjUTW64sgrTFN1dkb2nooZG2QfKmFYkcAuXjDYDZhtGzlA7lrvSwUUlIG7RcgdyVXJj8VpwVtghRHMXzWKCazMelO5MbmQlmyKIAwsyQeW0SczK0n9XmXIU40du7REDBQNNUNo_4S708L6q8Sz8KFyH-3v4pLIeHtEQPACgL826HjO1T2SrqPq5qo8YHDFw2Ca5uK3dKyxfLzTJBFrSKq4TEaTVfEN-pc5_RBy-4MIybKV"/>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="font-medium text-text-main dark:text-white">Sudadera Drop 7</div>
+<div class="text-text-subdued text-xs">M</div>
+</td>
+<td class="py-3 px-4 text-right text-text-subdued">0</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20">
+                                        Pre-order
+                                    </span>
+</td>
+<td class="py-3 px-4 text-text-subdued">22/04/2026</td>
+<td class="py-3 px-4 text-right font-medium text-text-main dark:text-white">3</td>
+<td class="py-3 px-4 text-right">
+<a class="text-primary hover:underline font-medium text-xs" href="#">Editar</a>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="group hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+<td class="py-3 px-4">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" type="checkbox"/>
+</td>
+<td class="py-3 px-4">
+<div class="h-10 w-10 rounded border border-gray-200 bg-gray-100 flex items-center justify-center overflow-hidden">
+<img alt="Camiseta blanca sencilla" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCro9YYYtb432i4rMzlzFFkqZnAzJ1xW6EQDLqF-6woV98TqZBbrUd8Ix70EOQnRZ2rDMND8o4jxKR6mHaOMTZ0ARSIReVPAfK2xk-RFJ27UxzW-0H7EMoXAnMEG2wwEFE1OI8RnU-Z6gu4LJW0jyR_id0iD3s9cGKoLfmwiz_ozoCjyNTb5qs6-aP2DFGUt2HvEC9SzzF4aA9g_CQPiArPUr1sPftaWVI7P6WRrL-3ATyjNhekRxZls0qoDwf2OUS6IqZmSJcKDMks"/>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="font-medium text-text-main dark:text-white">Camiseta Summer</div>
+<div class="text-text-subdued text-xs">L</div>
+</td>
+<td class="py-3 px-4 text-right text-text-subdued">15</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200 dark:bg-green-900/30 dark:text-green-300 dark:border-green-800">
+                                        En stock
+                                    </span>
+</td>
+<td class="py-3 px-4 text-text-subdued">—</td>
+<td class="py-3 px-4 text-right font-medium text-text-subdued">—</td>
+<td class="py-3 px-4 text-right">
+<!-- Using link as requested but keeping it subdued as it's not active preorder -->
+<a class="text-text-subdued hover:underline font-medium text-xs" href="#">Editar</a>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="group hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+<td class="py-3 px-4">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" type="checkbox"/>
+</td>
+<td class="py-3 px-4">
+<div class="h-10 w-10 rounded border border-gray-200 bg-gray-100 flex items-center justify-center overflow-hidden">
+<img alt="Gorra vintage estilo béisbol" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOBwfX9ulcYTqdTSZu5ylGt3ZGJvcBcrGnwBETsRwZIe1GyYHt2kUVSEnMWRzEhrYNmAZc0inLf78ZvzQaPSdIN4E1_TKDigbTkhwdM5FViUFgs18zRAQ5lt-l5ZUV5v9Je2ZD_nV4LpTBe2GqIPRZJSv_TOYRszMUtIXWQCeoTrdkupnYq5ujYBSCkYO4Pr0SeBL9IWoVdD8NDz16L6E-KhlkZ6Y9H9aiSx1nQ0Hq-bEoQJiJrohsSf4bKjKI_0qW0StQBR0-CEQl"/>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="font-medium text-text-main dark:text-white">Gorra Vintage</div>
+<div class="text-text-subdued text-xs">Única</div>
+</td>
+<td class="py-3 px-4 text-right text-text-subdued">0</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200 dark:bg-amber-900/30 dark:text-amber-300 dark:border-amber-800">
+                                        Auto-preorder
+                                    </span>
+</td>
+<td class="py-3 px-4 text-text-subdued italic">Sin fecha</td>
+<td class="py-3 px-4 text-right font-medium text-text-main dark:text-white">1</td>
+<td class="py-3 px-4 text-right">
+<a class="text-primary hover:underline font-medium text-xs" href="#">Editar</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Footer Summary inside the card -->
+<div class="bg-gray-50 dark:bg-gray-800 border-t border-border-subdued px-4 py-3 flex justify-center text-xs text-text-subdued font-medium">
+                    5 productos en preventa • 17 preorders activos
+                </div>
+</div>
+<!-- Page Footer -->
+<div class="mt-8 flex justify-center pb-8">
+<p class="text-xs text-text-subdued">Smart Preorders App • <a class="hover:underline" href="#">Documentation</a> • <a class="hover:underline" href="#">Support</a></p>
+</div>
+</main>
+</div>
+</body></html>

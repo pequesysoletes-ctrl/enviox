@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Conexión MRW - Error de Conexión</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#033aa0",
+                        "primary-hover": "#022c7a",
+                        "background-light": "#F6F6F7",
+                        "background-dark": "#0f1623",
+                        "mrw-red": "#e3001b", // MRW brand color for reference, though prompt specifies specific error reds
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.375rem", // 6px
+                        "lg": "0.5rem",      // 8px
+                        "xl": "0.75rem",     // 12px
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for cleaner look if needed */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col items-center justify-start pt-10 pb-20 px-4 sm:px-6 lg:px-8 text-slate-900 dark:text-white font-display">
+<!-- Main Container -->
+<div class="w-full max-w-[640px] flex flex-col gap-6">
+<!-- Header -->
+<div class="flex items-center justify-between">
+<h1 class="text-2xl font-bold tracking-tight text-[#111318] dark:text-white">Conexión MRW</h1>
+</div>
+<!-- Warning Banner -->
+<div class="rounded-lg bg-[#FEF3C7] border border-[#D97706]/30 p-4 flex gap-3 items-start shadow-sm dark:bg-amber-900/30 dark:border-amber-700">
+<span class="material-symbols-outlined text-[#D97706] dark:text-amber-500 mt-0.5 shrink-0">warning</span>
+<div class="flex flex-col">
+<p class="text-[#92400e] dark:text-amber-200 text-sm font-medium leading-relaxed">
+<span class="font-bold">Requisito obligatorio</span> — Esta app requiere un contrato MRW activo con acceso a MRWLink API.
+                </p>
+</div>
+</div>
+<!-- Main Card -->
+<div class="bg-white dark:bg-[#1a202c] rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-6 sm:p-8 flex flex-col gap-6">
+<!-- Form Fields -->
+<div class="flex flex-col gap-5">
+<!-- Código de cliente MRW -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-[#111318] dark:text-slate-200" for="client-code">
+                            Código de cliente MRW <span class="text-red-600">*</span>
+</label>
+<div class="relative">
+<input class="w-full rounded-lg border-red-500 bg-red-50 dark:bg-red-900/10 dark:border-red-500/50 text-[#111318] dark:text-white h-11 px-4 text-base focus:ring-2 focus:ring-red-200 focus:border-red-500 transition-shadow outline-none placeholder:text-slate-400" id="client-code" placeholder="00000" type="text" value="12849"/>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-red-500">
+<span class="material-symbols-outlined text-[20px]">error</span>
+</div>
+</div>
+</div>
+<!-- Franquicia MRW asignada -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-[#111318] dark:text-slate-200" for="franquicia">
+                            Franquicia MRW asignada <span class="text-red-600">*</span>
+</label>
+<div class="relative">
+<input class="w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-[#111318] dark:text-white h-11 px-4 text-base focus:ring-2 focus:ring-primary/20 focus:border-primary transition-shadow outline-none placeholder:text-slate-400" id="franquicia" placeholder="00000" type="text" value="02800"/>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-slate-400">
+<span class="material-symbols-outlined text-[20px]">storefront</span>
+</div>
+</div>
+</div>
+<!-- Password API MRW -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-[#111318] dark:text-slate-200" for="password">
+                            Password API MRW <span class="text-red-600">*</span>
+</label>
+<div class="relative">
+<input class="w-full rounded-lg border-red-500 bg-red-50 dark:bg-red-900/10 dark:border-red-500/50 text-[#111318] dark:text-white h-11 px-4 pr-10 text-base focus:ring-2 focus:ring-red-200 focus:border-red-500 transition-shadow outline-none placeholder:text-slate-400" id="password" type="password" value="password123"/>
+<button class="absolute inset-y-0 right-0 flex items-center pr-3 text-slate-500 hover:text-slate-700 cursor-pointer focus:outline-none">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<!-- Número de contrato (opcional) -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-baseline">
+<label class="text-sm font-medium text-[#111318] dark:text-slate-200" for="contract">
+                                Número de contrato
+                            </label>
+<span class="text-xs text-slate-500 dark:text-slate-400">(opcional)</span>
+</div>
+<div class="relative">
+<input class="w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-[#111318] dark:text-white h-11 px-4 text-base focus:ring-2 focus:ring-primary/20 focus:border-primary transition-shadow outline-none placeholder:text-slate-400" id="contract" placeholder="Ej: 123456" type="text"/>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-slate-400">
+<span class="material-symbols-outlined text-[20px]">description</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="pt-2">
+<button class="w-full rounded-lg bg-primary hover:bg-primary-hover text-white h-12 px-6 font-semibold text-base shadow-sm hover:shadow transition-all duration-200 flex items-center justify-center gap-2 focus:ring-4 focus:ring-primary/30">
+<span>Verificar conexión</span>
+</button>
+</div>
+<!-- Error Banner -->
+<div class="rounded-lg bg-[#FEF2F2] border border-[#DC2626]/40 p-3 flex gap-3 items-center dark:bg-red-900/30 dark:border-red-500/50">
+<span class="material-symbols-outlined text-[#DC2626] text-xl shrink-0 dark:text-red-400">cancel</span>
+<p class="text-[#DC2626] dark:text-red-300 text-sm font-medium">
+                        Error: código de cliente o password incorrectos
+                    </p>
+</div>
+</div>
+<!-- Footer Link Area -->
+<div class="bg-slate-50 dark:bg-slate-800/50 border-t border-slate-100 dark:border-slate-800 px-6 py-4 flex justify-center">
+<a class="text-primary hover:text-primary-hover dark:text-blue-400 dark:hover:text-blue-300 text-sm font-medium flex items-center gap-1.5 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">help</span>
+                    ¿Dónde encuentro mis credenciales MRW?
+                </a>
+</div>
+</div>
+<div class="text-center text-xs text-slate-400 dark:text-slate-600 mt-4">
+            MRW Pro © 2024
+        </div>
+</div>
+</body></html>

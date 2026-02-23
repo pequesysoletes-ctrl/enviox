@@ -1,0 +1,26 @@
+name = "Correos Pro"
+client_id = "4ccacd3f5f82dcc84f516e943b0225fc"
+application_url = "https://correos.enviox.es"
+embedded = true
+
+[access_scopes]
+scopes = "write_orders,read_orders,write_fulfillments,read_fulfillments,read_shipping,write_shipping"
+
+[auth]
+redirect_urls = [ "https://correos.enviox.es/auth/callback" ]
+
+[webhooks]
+api_version = "2025-01"
+
+  [[webhooks.subscriptions]]
+  topics = ["app/uninstalled"]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = ["app/scopes_update"]
+  uri = "/webhooks/app/scopes_update"
+
+  # NOTA: Requiere "Protected customer data" aprobado para deploy a producción
+  # [[webhooks.subscriptions]]
+  # topics = ["orders/create"]
+  # uri = "/webhooks/orders/create"

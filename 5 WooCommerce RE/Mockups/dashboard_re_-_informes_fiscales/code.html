@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard RE - Informes Fiscales</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#8056b3",
+                        "primary-dark": "#6a4696",
+                        "primary-light": "#efeaf7",
+                        "background-light": "#f0f0f1", // WP Admin background
+                        "background-dark": "#1d2327",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#2c3338",
+                        "text-primary": "#1e1e1e",
+                        "text-secondary": "#646970",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "system-ui", "sans-serif"],
+                        "body": ["Inter", "system-ui", "sans-serif"],
+                    },
+                    boxShadow: {
+                        "wp-card": "0 1px 1px rgba(0,0,0,0.04)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        /* Custom scrollbar for sidebar */
+        .sidebar-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        .sidebar-scroll::-webkit-scrollbar-track {
+            background: #2c3338;
+        }
+        .sidebar-scroll::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-primary dark:text-gray-100 min-h-screen flex overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-40 md:w-48 lg:w-64 bg-[#1d2327] dark:bg-black text-white flex-shrink-0 flex flex-col h-screen sticky top-0 z-50 overflow-y-auto sidebar-scroll">
+<!-- Sidebar Header -->
+<div class="h-12 flex items-center px-4 bg-[#000000] sticky top-0 z-10">
+<span class="material-symbols-outlined mr-2 text-white">grid_view</span>
+<span class="font-bold text-sm tracking-wide">WordPress</span>
+</div>
+<!-- Sidebar Navigation -->
+<nav class="flex-1 py-2">
+<ul class="flex flex-col space-y-0.5">
+<li class="group">
+<a class="flex items-center px-3 py-2 text-gray-300 hover:bg-[#2271b1] hover:text-white transition-colors text-sm" href="#">
+<span class="material-symbols-outlined mr-3 text-[20px]">speed</span>
+                        Escritorio
+                    </a>
+</li>
+<li class="group">
+<a class="flex items-center px-3 py-2 text-gray-300 hover:bg-[#2271b1] hover:text-white transition-colors text-sm" href="#">
+<span class="material-symbols-outlined mr-3 text-[20px]">push_pin</span>
+                        Entradas
+                    </a>
+</li>
+<li class="group">
+<a class="flex items-center px-3 py-2 text-gray-300 hover:bg-[#2271b1] hover:text-white transition-colors text-sm" href="#">
+<span class="material-symbols-outlined mr-3 text-[20px]">image</span>
+                        Medios
+                    </a>
+</li>
+<li class="group">
+<a class="flex items-center px-3 py-2 text-gray-300 hover:bg-[#2271b1] hover:text-white transition-colors text-sm" href="#">
+<span class="material-symbols-outlined mr-3 text-[20px]">description</span>
+                        Páginas
+                    </a>
+</li>
+<li class="group">
+<a class="flex items-center px-3 py-2 text-gray-300 hover:bg-[#2271b1] hover:text-white transition-colors text-sm" href="#">
+<span class="material-symbols-outlined mr-3 text-[20px]">chat_bubble</span>
+                        Comentarios
+                    </a>
+</li>
+<li class="border-t border-gray-700 my-2"></li>
+<!-- WooCommerce Section -->
+<li class="group bg-[#2271b1]">
+<a class="flex items-center px-3 py-2 text-white font-medium text-sm relative" href="#">
+<span class="material-symbols-outlined mr-3 text-[20px]">storefront</span>
+                        WooCommerce
+                        <span class="absolute right-0 top-0 h-full w-1 bg-primary"></span>
+</a>
+<ul class="bg-[#101517] text-xs">
+<li><a class="block px-3 py-2 pl-11 text-gray-400 hover:text-[#2271b1]" href="#">Inicio</a></li>
+<li><a class="block px-3 py-2 pl-11 text-gray-400 hover:text-[#2271b1]" href="#">Pedidos</a></li>
+<li><a class="block px-3 py-2 pl-11 text-gray-400 hover:text-[#2271b1]" href="#">Clientes</a></li>
+<li><a class="block px-3 py-2 pl-11 text-white font-bold" href="#">Informes Fiscales</a></li>
+<li><a class="block px-3 py-2 pl-11 text-gray-400 hover:text-[#2271b1]" href="#">Ajustes</a></li>
+</ul>
+</li>
+<li class="group">
+<a class="flex items-center px-3 py-2 text-gray-300 hover:bg-[#2271b1] hover:text-white transition-colors text-sm" href="#">
+<span class="material-symbols-outlined mr-3 text-[20px]">shopping_bag</span>
+                        Productos
+                    </a>
+</li>
+<li class="group">
+<a class="flex items-center px-3 py-2 text-gray-300 hover:bg-[#2271b1] hover:text-white transition-colors text-sm" href="#">
+<span class="material-symbols-outlined mr-3 text-[20px]">analytics</span>
+                        Análisis
+                    </a>
+</li>
+<li class="group">
+<a class="flex items-center px-3 py-2 text-gray-300 hover:bg-[#2271b1] hover:text-white transition-colors text-sm" href="#">
+<span class="material-symbols-outlined mr-3 text-[20px]">campaign</span>
+                        Marketing
+                    </a>
+</li>
+</ul>
+</nav>
+<!-- Sidebar Footer -->
+<div class="px-3 py-2 text-xs text-gray-500 hover:text-[#2271b1] cursor-pointer">
+<div class="flex items-center">
+<span class="material-symbols-outlined mr-2 text-[18px]">chevron_left</span>
+                Cerrar menú
+            </div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col h-screen overflow-hidden">
+<!-- WP Top Admin Bar Stub -->
+<header class="h-8 bg-[#1d2327] dark:bg-black text-white flex items-center justify-between px-4 text-sm flex-shrink-0 z-40">
+<div class="flex items-center space-x-4">
+<div class="flex items-center hover:text-[#2271b1] cursor-pointer">
+<span class="material-symbols-outlined text-[18px] mr-1">home</span>
+<span class="hidden sm:inline">Mi Sitio Web</span>
+</div>
+<div class="flex items-center hover:text-[#2271b1] cursor-pointer">
+<span class="material-symbols-outlined text-[18px] mr-1">cached</span>
+<span class="hidden sm:inline">0</span>
+</div>
+<div class="flex items-center hover:text-[#2271b1] cursor-pointer">
+<span class="material-symbols-outlined text-[18px] mr-1">comment</span>
+<span class="hidden sm:inline">0</span>
+</div>
+<div class="flex items-center hover:text-[#2271b1] cursor-pointer">
+<span class="material-symbols-outlined text-[18px] mr-1">add</span>
+<span class="hidden sm:inline">Nuevo</span>
+</div>
+</div>
+<div class="flex items-center hover:text-[#2271b1] cursor-pointer">
+                Hola, Admin
+                <div class="ml-2 w-6 h-6 bg-gray-500 rounded flex items-center justify-center overflow-hidden">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="User avatar placeholder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnNXbLOO9qL6gIDiP1HK2ImWlbRG994Lx6AAb9oyW0biBVHJo8Lp5-GBCwhLuuD3FcO7cbp7rMLJM0omRJjo13EfpvYNgy0r_QU9OOsGRwt1HbOiq6-w9HrGYWIIVyCal6Cp6zVURoXxE5FqQk5swlKCK58-qlw-Jo6-lUJO6-kac7YIvJl65Tqiqz-Mb7DbhSR-nww2nhf2DDmPITFeff9JHuu1Bka6rJluS_gWhlUqQUzn8BCKd9ZI6Epf6WJ-dpMFquDFrm2i4"/>
+</div>
+</div>
+</header>
+<!-- Main Content Scrollable Area -->
+<main class="flex-1 overflow-y-auto p-4 md:p-8 relative">
+<div class="max-w-[1200px] mx-auto space-y-6">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-2">
+<div class="flex items-center gap-3">
+<h1 class="text-2xl font-semibold text-[#1d2327] dark:text-white tracking-tight">Dashboard RE — Informes Fiscales</h1>
+<span class="bg-primary/10 text-primary text-xs font-semibold px-2 py-0.5 rounded border border-primary/20">PRO</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<select class="appearance-none bg-surface-light dark:bg-surface-dark border border-gray-300 dark:border-gray-600 text-text-primary dark:text-gray-200 py-1.5 pl-4 pr-10 rounded text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent cursor-pointer shadow-sm">
+<option>Febrero 2026</option>
+<option>Enero 2026</option>
+<option>Diciembre 2025</option>
+<option>Noviembre 2025</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+</div>
+<button class="flex items-center justify-center p-1.5 text-gray-500 hover:text-primary transition-colors bg-white dark:bg-surface-dark border border-gray-300 dark:border-gray-600 rounded shadow-sm" title="Actualizar datos">
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+</button>
+</div>
+</div>
+<!-- KPI Cards Row -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- KPI 1 -->
+<div class="bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg p-5 shadow-wp-card relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-primary text-5xl">euro_symbol</span>
+</div>
+<p class="text-text-secondary dark:text-gray-400 text-sm font-medium">Total RE cobrado</p>
+<div class="mt-2 flex items-baseline gap-2">
+<h3 class="text-3xl font-bold text-text-primary dark:text-white">€847,32</h3>
+</div>
+<div class="mt-2 flex items-center text-xs font-medium text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-0.5 rounded w-fit">
+<span class="material-symbols-outlined text-[14px] mr-1">trending_up</span>
+                            +12.5% vs enero
+                        </div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg p-5 shadow-wp-card relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-gray-500 text-5xl">shopping_cart</span>
+</div>
+<p class="text-text-secondary dark:text-gray-400 text-sm font-medium">Pedidos con RE</p>
+<div class="mt-2 flex items-baseline gap-2">
+<h3 class="text-3xl font-bold text-text-primary dark:text-white">38</h3>
+</div>
+<div class="mt-2 flex items-center text-xs font-medium text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-0.5 rounded w-fit">
+<span class="material-symbols-outlined text-[14px] mr-1">add</span>
+                            12 vs enero
+                        </div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg p-5 shadow-wp-card relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-gray-500 text-5xl">group</span>
+</div>
+<p class="text-text-secondary dark:text-gray-400 text-sm font-medium">Clientes RE activos</p>
+<div class="mt-2 flex items-baseline gap-2">
+<h3 class="text-3xl font-bold text-text-primary dark:text-white">42</h3>
+</div>
+<div class="mt-2 flex items-center text-xs font-medium text-gray-500 bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded w-fit">
+<span class="material-symbols-outlined text-[14px] mr-1">remove</span>
+                            Sin cambios
+                        </div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg p-5 shadow-wp-card relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-gray-500 text-5xl">receipt_long</span>
+</div>
+<p class="text-text-secondary dark:text-gray-400 text-sm font-medium">Ticket medio RE</p>
+<div class="mt-2 flex items-baseline gap-2">
+<h3 class="text-3xl font-bold text-text-primary dark:text-white">€127,50</h3>
+</div>
+<div class="mt-2 flex items-center text-xs font-medium text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-0.5 rounded w-fit">
+<span class="material-symbols-outlined text-[14px] mr-1">trending_up</span>
+                            +8%
+                        </div>
+</div>
+</div>
+<!-- Main Chart Section -->
+<div class="bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-wp-card">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-lg font-semibold text-text-primary dark:text-white">Recargo de Equivalencia cobrado por mes</h2>
+<button class="text-primary hover:text-primary-dark text-sm font-medium flex items-center">
+                            Ver informe completo
+                            <span class="material-symbols-outlined text-[18px] ml-1">arrow_forward</span>
+</button>
+</div>
+<!-- Chart Visualization -->
+<div class="relative h-64 w-full flex items-end justify-between px-2 sm:px-8 gap-2 sm:gap-4">
+<!-- Grid Lines Background -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none z-0 pr-4 pb-6">
+<div class="w-full border-t border-dashed border-gray-200 dark:border-gray-700 h-0"><span class="text-[10px] text-gray-400 -mt-2.5 block">€1000</span></div>
+<div class="w-full border-t border-dashed border-gray-200 dark:border-gray-700 h-0"><span class="text-[10px] text-gray-400 -mt-2.5 block">€750</span></div>
+<div class="w-full border-t border-dashed border-gray-200 dark:border-gray-700 h-0"><span class="text-[10px] text-gray-400 -mt-2.5 block">€500</span></div>
+<div class="w-full border-t border-dashed border-gray-200 dark:border-gray-700 h-0"><span class="text-[10px] text-gray-400 -mt-2.5 block">€250</span></div>
+<div class="w-full border-t border-gray-300 dark:border-gray-600 h-0"></div>
+</div>
+<!-- Bars -->
+<div class="relative z-10 flex flex-col items-center flex-1 group h-full justify-end">
+<div class="w-full max-w-[48px] bg-primary/40 rounded-t-sm hover:bg-primary transition-all duration-300 relative group-hover:shadow-lg" style="height: 32%;">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-10 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs py-1 px-2 rounded whitespace-nowrap transition-opacity pointer-events-none">€320,00</div>
+</div>
+<span class="text-xs text-gray-500 mt-2 font-medium">Sep</span>
+</div>
+<div class="relative z-10 flex flex-col items-center flex-1 group h-full justify-end">
+<div class="w-full max-w-[48px] bg-primary/50 rounded-t-sm hover:bg-primary transition-all duration-300 relative group-hover:shadow-lg" style="height: 41%;">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-10 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs py-1 px-2 rounded whitespace-nowrap transition-opacity pointer-events-none">€410,50</div>
+</div>
+<span class="text-xs text-gray-500 mt-2 font-medium">Oct</span>
+</div>
+<div class="relative z-10 flex flex-col items-center flex-1 group h-full justify-end">
+<div class="w-full max-w-[48px] bg-primary/60 rounded-t-sm hover:bg-primary transition-all duration-300 relative group-hover:shadow-lg" style="height: 38%;">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-10 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs py-1 px-2 rounded whitespace-nowrap transition-opacity pointer-events-none">€380,20</div>
+</div>
+<span class="text-xs text-gray-500 mt-2 font-medium">Nov</span>
+</div>
+<div class="relative z-10 flex flex-col items-center flex-1 group h-full justify-end">
+<div class="w-full max-w-[48px] bg-primary/70 rounded-t-sm hover:bg-primary transition-all duration-300 relative group-hover:shadow-lg" style="height: 55%;">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-10 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs py-1 px-2 rounded whitespace-nowrap transition-opacity pointer-events-none">€550,10</div>
+</div>
+<span class="text-xs text-gray-500 mt-2 font-medium">Dic</span>
+</div>
+<div class="relative z-10 flex flex-col items-center flex-1 group h-full justify-end">
+<div class="w-full max-w-[48px] bg-primary/80 rounded-t-sm hover:bg-primary transition-all duration-300 relative group-hover:shadow-lg" style="height: 72%;">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-10 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs py-1 px-2 rounded whitespace-nowrap transition-opacity pointer-events-none">€720,90</div>
+</div>
+<span class="text-xs text-gray-500 mt-2 font-medium">Ene</span>
+</div>
+<div class="relative z-10 flex flex-col items-center flex-1 group h-full justify-end">
+<div class="w-full max-w-[48px] bg-primary rounded-t-sm shadow-md hover:bg-primary-dark transition-all duration-300 relative" style="height: 84%;">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-10 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs py-1 px-2 rounded whitespace-nowrap transition-opacity pointer-events-none">€847,32</div>
+</div>
+<span class="text-xs text-gray-900 dark:text-white mt-2 font-bold">Feb</span>
+</div>
+</div>
+</div>
+<!-- Secondary Data Row -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- IVA Breakdown -->
+<div class="bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-wp-card">
+<h3 class="text-base font-semibold text-text-primary dark:text-white mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400">pie_chart</span>
+                            Desglose por tipo de IVA
+                        </h3>
+<div class="space-y-6">
+<!-- Item 1 -->
+<div class="group">
+<div class="flex justify-between text-sm mb-1">
+<span class="font-medium text-gray-700 dark:text-gray-300">General (21% + 5.2% RE)</span>
+<span class="font-bold text-gray-900 dark:text-white">€711.75 <span class="text-xs font-normal text-gray-500 ml-1">(84%)</span></span>
+</div>
+<div class="w-full bg-gray-100 dark:bg-gray-700 rounded-full h-2.5 overflow-hidden">
+<div class="bg-primary h-2.5 rounded-full" style="width: 84%"></div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group">
+<div class="flex justify-between text-sm mb-1">
+<span class="font-medium text-gray-700 dark:text-gray-300">Reducido (10% + 1.4% RE)</span>
+<span class="font-bold text-gray-900 dark:text-white">€101.68 <span class="text-xs font-normal text-gray-500 ml-1">(12%)</span></span>
+</div>
+<div class="w-full bg-gray-100 dark:bg-gray-700 rounded-full h-2.5 overflow-hidden">
+<div class="bg-primary/60 h-2.5 rounded-full" style="width: 12%"></div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="group">
+<div class="flex justify-between text-sm mb-1">
+<span class="font-medium text-gray-700 dark:text-gray-300">Superreducido (4% + 0.5% RE)</span>
+<span class="font-bold text-gray-900 dark:text-white">€33.89 <span class="text-xs font-normal text-gray-500 ml-1">(4%)</span></span>
+</div>
+<div class="w-full bg-gray-100 dark:bg-gray-700 rounded-full h-2.5 overflow-hidden">
+<div class="bg-primary/30 h-2.5 rounded-full" style="width: 4%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Top Customers Table -->
+<div class="bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-wp-card flex flex-col">
+<h3 class="text-base font-semibold text-text-primary dark:text-white mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400">star</span>
+                            Top clientes RE (mes)
+                        </h3>
+<div class="flex-1 overflow-x-auto">
+<table class="w-full text-sm text-left">
+<thead class="text-xs text-gray-500 uppercase border-b border-gray-100 dark:border-gray-700">
+<tr>
+<th class="py-3 px-2 font-medium">Cliente</th>
+<th class="py-3 px-2 font-medium text-center">Pedidos</th>
+<th class="py-3 px-2 font-medium text-right">Total RE</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-50 dark:divide-gray-800">
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<td class="py-3 px-2 font-medium text-primary cursor-pointer hover:underline">María García</td>
+<td class="py-3 px-2 text-center text-gray-600 dark:text-gray-400">8</td>
+<td class="py-3 px-2 text-right font-bold text-gray-900 dark:text-white">€145.20</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<td class="py-3 px-2 font-medium text-primary cursor-pointer hover:underline">Carlos Rodríguez</td>
+<td class="py-3 px-2 text-center text-gray-600 dark:text-gray-400">5</td>
+<td class="py-3 px-2 text-right font-bold text-gray-900 dark:text-white">€98.50</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<td class="py-3 px-2 font-medium text-primary cursor-pointer hover:underline">Juan Pérez</td>
+<td class="py-3 px-2 text-center text-gray-600 dark:text-gray-400">4</td>
+<td class="py-3 px-2 text-right font-bold text-gray-900 dark:text-white">€76.10</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<td class="py-3 px-2 font-medium text-primary cursor-pointer hover:underline">Ana Martín</td>
+<td class="py-3 px-2 text-center text-gray-600 dark:text-gray-400">3</td>
+<td class="py-3 px-2 text-right font-bold text-gray-900 dark:text-white">€45.90</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Obligations & Export Card -->
+<div class="bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-wp-card relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-amber-400"></div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-full bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center flex-shrink-0 text-amber-600 dark:text-amber-400">
+<span class="material-symbols-outlined text-[24px]">calendar_clock</span>
+</div>
+<div>
+<h3 class="text-base font-bold text-text-primary dark:text-white mb-1">Próximas obligaciones fiscales</h3>
+<p class="text-sm text-text-secondary dark:text-gray-400 max-w-xl">
+<span class="inline-block bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 text-xs font-bold px-1.5 py-0.5 rounded mr-1">IMPORTANTE</span>
+                                    Recuerda presentar el <strong class="text-gray-900 dark:text-white">Modelo 309</strong> correspondiente al 1T de 2026 antes del 20 de abril.
+                                </p>
+</div>
+</div>
+<div class="flex-shrink-0">
+<button class="w-full md:w-auto flex items-center justify-center gap-2 border border-primary text-primary hover:bg-primary hover:text-white font-medium py-2.5 px-5 rounded transition-colors text-sm">
+<span class="material-symbols-outlined text-[20px]">file_download</span>
+                                Exportar datos fiscales Q1 2026
+                            </button>
+</div>
+</div>
+</div>
+<!-- Footer Credits -->
+<div class="text-xs text-gray-400 text-center pt-8 pb-4">
+<p>WooCommerce RE Fiscal Reports Plugin v2.1.0 • <a class="hover:text-primary underline" href="#">Documentación</a> • <a class="hover:text-primary underline" href="#">Soporte</a></p>
+</div>
+</div>
+</main>
+</div>
+</body></html>

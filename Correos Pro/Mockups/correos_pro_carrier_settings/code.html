@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Correos Pro Carrier Settings</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d4371c",
+                        "correos-express": "#002e6d",
+                        "background-light": "#f6f6f7",
+                        "background-dark": "#211311",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display antialiased">
+<div class="relative flex h-auto min-h-screen w-full flex-row overflow-x-hidden">
+<!-- Sidebar -->
+<div class="hidden lg:flex flex-col w-64 border-r border-slate-200 bg-white h-screen sticky top-0 shrink-0">
+<div class="flex flex-col h-full justify-between p-4">
+<div class="flex flex-col gap-6">
+<!-- Brand -->
+<div class="flex gap-3 items-center px-2">
+<div class="bg-center bg-no-repeat bg-cover rounded-lg size-10 shadow-sm" data-alt="Abstract shipping logo with geometric shapes" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDRDn-o2qSy2KqEydEkSzDkcOw5U1z8G_K5Y-zUYORLNE3bNm5VVLCGbnvOKBipdAZPmdLtB5hEOSI37-dmung3AU26y043OqV0BxxmDr6fA3HNlRMqEI6pbE8cra6AVygUc_rbqdVEHKZ4OVdBuYwAL9v31xXxcd_yZsbsA7PnFeyY17ZMguTtuZwGT0Cc_Igj05yxbYWzGGsYVpQUlMB_SEoDOEJTq9kpm98ThO7SM9yZVzxXIJr5Aoc82YcxuhaPY_gtEWKuTRQg");'></div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 text-base font-bold leading-tight">Shipping SaaS</h1>
+<p class="text-slate-500 text-xs font-medium">Admin Panel</p>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-50 text-slate-600 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary" style="font-size: 24px;">grid_view</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-50 text-slate-600 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary" style="font-size: 24px;">package_2</span>
+<span class="text-sm font-medium">Envíos</span>
+</a>
+<!-- Active State -->
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary transition-colors" href="#">
+<span class="material-symbols-outlined fill-1" style="font-size: 24px;">settings</span>
+<span class="text-sm font-medium">Conexión Correos</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-50 text-slate-600 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary" style="font-size: 24px;">receipt_long</span>
+<span class="text-sm font-medium">Facturación</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-50 text-slate-600 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary" style="font-size: 24px;">help</span>
+<span class="text-sm font-medium">Ayuda</span>
+</a>
+</nav>
+</div>
+<!-- User Profile (Bottom Sidebar) -->
+<div class="border-t border-slate-200 pt-4 px-2">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-600 font-bold text-xs">JD</div>
+<div class="flex flex-col">
+<p class="text-sm font-medium text-slate-900">Juan Director</p>
+<p class="text-xs text-slate-500">Logística Global S.L.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0 bg-background-light">
+<!-- Mobile Header (Visible only on small screens) -->
+<header class="lg:hidden flex items-center justify-between p-4 bg-white border-b border-slate-200">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-lg size-8" data-alt="Abstract shipping logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAmEIqMFZRw3TvH0mvJnmEyw07R3KqtLw8AhzTDzpPPvRZ-_SDnDYOrBWJ97FEFdkdBgMFHaMmzW3ozk1W2weiqgtYnAP6qwXQbAyemQ8ddPUdURltERKB8OZiWHXEdz6XQwe1YNCuShHyRj6ARm3MS5xOH5ZqiBaayUNachFJw257YepqfWzdhdl7_vep4U-zuADO_wNc-UHsDIKs5aOofdN_-lABQNQxIJFTsMfVca-097QyC9vEGbfX8P3bBpSzlgwbqj8fPZRjB");'></div>
+<span class="font-bold text-slate-900">Shipping SaaS</span>
+</div>
+<button class="text-slate-600">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<div class="flex-1 p-6 md:p-10 max-w-7xl mx-auto w-full">
+<!-- Page Header -->
+<div class="mb-8">
+<h1 class="text-3xl font-black text-slate-900 tracking-tight mb-2">Conexión Correos</h1>
+<p class="text-slate-500 text-lg">Gestiona tus credenciales de envío para Correos y Correos Express.</p>
+</div>
+<!-- Warning Banner -->
+<div class="rounded-lg bg-amber-50 border border-amber-200 p-4 mb-8 flex items-start gap-3">
+<span class="material-symbols-outlined text-amber-600 mt-0.5 shrink-0">warning</span>
+<div class="text-sm text-amber-900">
+<span class="font-bold">Requisito obligatorio</span> — Necesitas al menos un contrato activo: Correos Ecommerce o Correos Express con acceso API.
+                </div>
+</div>
+<!-- Grid Layout for Cards -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+<!-- Card A: Correos Standard -->
+<div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden relative group h-full flex flex-col">
+<!-- Left Accent Border -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="p-6 md:p-8 flex-1 flex flex-col">
+<div class="flex items-center gap-3 mb-6">
+<div class="size-10 rounded-full bg-red-50 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">local_post_office</span>
+</div>
+<div>
+<h2 class="text-lg font-bold text-slate-900">Correos Standard</h2>
+<p class="text-xs text-slate-500">Paquetería estándar nacional</p>
+</div>
+</div>
+<div class="space-y-5 flex-1">
+<div>
+<label class="block text-sm font-medium text-slate-700 mb-1">Código contrato Correos <span class="text-primary">*</span></label>
+<input class="w-full rounded-lg border-slate-300 focus:border-primary focus:ring-primary shadow-sm text-slate-900" placeholder="Ej: 50012345" type="text" value="50098765"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700 mb-1">Password API Correos</label>
+<div class="relative">
+<input class="w-full rounded-lg border-slate-300 focus:border-primary focus:ring-primary shadow-sm text-slate-900 pr-10" type="password" value="••••••••••••"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full bg-primary hover:bg-red-700 text-white font-medium py-2.5 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 shadow-sm shadow-red-200">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+                                    Verificar Standard
+                                </button>
+</div>
+<!-- Success Message -->
+<div class="rounded-lg bg-emerald-50 border border-emerald-100 p-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-600 text-[18px]">check_circle</span>
+<span class="text-sm font-medium text-emerald-800">Correos Standard conectado correctamente</span>
+</div>
+<p class="text-xs text-slate-400 italic text-center">(Opcional si solo usas Correos Express)</p>
+</div>
+</div>
+</div>
+<!-- Card B: Correos Express -->
+<div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden relative group h-full flex flex-col">
+<!-- Left Accent Border -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-correos-express"></div>
+<div class="p-6 md:p-8 flex-1 flex flex-col">
+<div class="flex items-center gap-3 mb-6">
+<div class="size-10 rounded-full bg-blue-50 flex items-center justify-center text-correos-express">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+<div>
+<h2 class="text-lg font-bold text-slate-900">Correos Express</h2>
+<p class="text-xs text-slate-500">Servicio urgente 24h</p>
+</div>
+</div>
+<div class="space-y-5 flex-1">
+<div>
+<label class="block text-sm font-medium text-slate-700 mb-1">Código contrato Correos Express <span class="text-primary">*</span></label>
+<input class="w-full rounded-lg border-slate-300 focus:border-correos-express focus:ring-correos-express shadow-sm text-slate-900" placeholder="Ej: CEX-123456" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700 mb-1">Password API CE</label>
+<div class="relative">
+<input class="w-full rounded-lg border-slate-300 focus:border-correos-express focus:ring-correos-express shadow-sm text-slate-900 pr-10" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</button>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full bg-correos-express hover:bg-[#001f4d] text-white font-medium py-2.5 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 shadow-sm shadow-blue-200">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+                                    Verificar Express
+                                </button>
+</div>
+<!-- Error Message -->
+<div class="rounded-lg bg-red-50 border border-red-100 p-3 flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5">error</span>
+<span class="text-sm font-medium text-red-800">Error: credenciales de Correos Express incorrectas. Verifique el código de cliente.</span>
+</div>
+<p class="text-xs text-slate-400 italic text-center">(Opcional si solo usas Correos Standard)</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Section -->
+<div class="mt-12 border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<a class="flex items-center gap-2 text-primary hover:text-red-700 font-medium text-sm transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:-translate-y-0.5 transition-transform text-[20px]">help</span>
+                    ¿Dónde encuentro mis credenciales?
+                </a>
+<p class="text-sm text-slate-500 flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-[18px]">info</span>
+                    Al menos una conexión debe estar verificada para continuar.
+                </p>
+</div>
+</div>
+</main>
+</div>
+</body></html>

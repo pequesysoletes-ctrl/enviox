@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BundlerPro Bundle Management List</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#008060",
+                        "primary-hover": "#006e52",
+                        "background-light": "#f6f6f7",
+                        "background-dark": "#0f231e",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a332d",
+                        "text-main": "#202223",
+                        "text-subdued": "#6d7175",
+                        "border-subdued": "#e1e3e5",
+                        "status-success-bg": "#e3f1df",
+                        "status-success-text": "#008060",
+                        "status-attention-bg": "#ffea8a",
+                        "status-attention-text": "#5c4905",
+                        "status-info-bg": "#e4f0f6",
+                        "status-info-text": "#005bd3",
+                        "status-critical-bg": "#fbeae5",
+                        "status-critical-text": "#d82c0d",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                    },
+                    boxShadow: {
+                        "polaris": "0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15)",
+                        "polaris-hover": "0 0 0 1px rgba(63, 63, 68, 0.05), 0 4px 6px 0 rgba(63, 63, 68, 0.15)",
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header Section -->
+<header class="w-full bg-surface-light dark:bg-surface-dark border-b border-border-subdued dark:border-slate-700 sticky top-0 z-10 px-6 py-4">
+<div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+<h1 class="text-2xl font-bold text-text-main dark:text-white tracking-tight">Bundles</h1>
+<button class="bg-primary hover:bg-primary-hover text-white font-medium rounded-lg px-4 py-2 flex items-center gap-2 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>Create Bundle</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-6xl mx-auto px-6 py-8">
+<!-- Filter Bar -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-polaris p-4 mb-6">
+<div class="flex flex-col md:flex-row gap-4 items-center">
+<!-- Search -->
+<div class="relative flex-grow w-full md:w-auto">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-subdued pointer-events-none">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-white dark:bg-black/20 border border-border-subdued dark:border-slate-600 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-primary transition-shadow outline-none placeholder:text-text-subdued" placeholder="Search bundles..." type="text"/>
+</div>
+<!-- Filters -->
+<div class="flex gap-3 w-full md:w-auto">
+<div class="relative w-full md:w-48">
+<select class="w-full appearance-none bg-white dark:bg-black/20 border border-border-subdued dark:border-slate-600 rounded-lg py-2 pl-3 pr-10 text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none cursor-pointer">
+<option value="all">Status: All</option>
+<option value="active">Active</option>
+<option value="paused">Paused</option>
+<option value="archived">Archived</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-text-subdued pointer-events-none text-[20px]">arrow_drop_down</span>
+</div>
+<div class="relative w-full md:w-48">
+<select class="w-full appearance-none bg-white dark:bg-black/20 border border-border-subdued dark:border-slate-600 rounded-lg py-2 pl-3 pr-10 text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none cursor-pointer">
+<option value="revenue">Sort by: Revenue</option>
+<option value="date">Sort by: Created date</option>
+<option value="conversions">Sort by: Conversions</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-text-subdued pointer-events-none text-[20px]">sort</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Card 1: Summer Essentials Kit -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-polaris hover:shadow-polaris-hover transition-shadow duration-200 border border-transparent hover:border-border-subdued overflow-hidden flex flex-col">
+<div class="p-5 flex flex-col gap-4 flex-grow">
+<div class="flex justify-between items-start">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h3 class="font-bold text-lg text-text-main dark:text-white">Summer Essentials Kit</h3>
+<span class="px-2 py-0.5 rounded-full bg-status-success-bg text-status-success-text text-xs font-medium border border-status-success-bg dark:border-transparent">Active</span>
+</div>
+<p class="text-text-subdued dark:text-slate-400 text-sm">Created 2 days ago</p>
+</div>
+<button class="text-text-subdued hover:bg-slate-100 dark:hover:bg-white/10 p-1 rounded transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="flex items-center gap-2 my-1">
+<!-- Thumbnails -->
+<div class="flex -space-x-3 overflow-hidden py-1">
+<img alt="Sunscreen bottle in sand" class="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-surface-dark object-cover bg-gray-100" data-alt="Sunscreen bottle in sand" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJpv5Bw05XjXOycWBe5FDX3ORGbgKJGS56OjPq5h6P4ipyyq8oGGKx84icWMlQu6InGF9KXc61GPU7OaC_O4_P3muuq1OczDlDGGZ7NNf7nxqm8yD0xhvT2sjdmDEc-UXjH_3IL2dZhs81XUGQuPT7J2nFUzYu8GC3Sd2t8aRvM7gQxNdk7yC0QRXUVDmQYbR99dDdw1rUmU8htJ5gGQilaNZaK3NY-2tqOIki56dPDu2PAJ7qkMQVM3gAvG5a00ta6K5gjFK8126L"/>
+<img alt="Beach towel pattern" class="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-surface-dark object-cover bg-gray-100" data-alt="Beach towel pattern" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVJDZpEI1-xi8BhxI8xM6hlaHn37dPoiIE-m7kzoqzvi5RIq2e8vUeba9QRc2SJAbQdkWy7pDZQfQSO9IMOecIoYUQbJAYXnFXEguCXP2zT0M5Xq-w7n-hIASiH2rKMnkmRHxiRy7MtyayAkcqr8MfG-jKHVZFqG8jgtceGmOtL00qYnYex3TImkbG-QpaQdWgkmUBRF8HnXnEhdWiwODcQyV5xHKmVl1SWJiBSbgoUA4ICqGDuSmFRRb1s1FqiGBYwbKnRQ1iQowO"/>
+<img alt="Sunglasses on table" class="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-surface-dark object-cover bg-gray-100" data-alt="Sunglasses on table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAq0ESaVeLFDvl-inlqBp90L7hTp7V5p9j-1Ank66dAs34rNOxth2IKnD-4qSYjGMiTd4DeDgcl-H1azz8ZUuuRv4ag17qjfs36nnd3mZ80JwWYrCrrRvwopy7kDD8KjObXOfKPT_PvlJf5rdlcsO_CXPxvUspm5z8Nw1gLQj45pu6KtbNV_Fewbnv2_Pyu4Kt6j7r4nTC03ctkaS9FJgsrfDVoJC_TfH_Hx2Q9rydb0j_cgZsdROp_lmNavC0BP9i58UD7q7RyuKGT"/>
+</div>
+<span class="text-xs text-text-subdued dark:text-slate-400 font-medium ml-2">+2 variants</span>
+</div>
+<div class="mt-1">
+<p class="text-text-main dark:text-white font-semibold text-lg">15% off — $73.95</p>
+</div>
+</div>
+<!-- Stats Footer -->
+<div class="bg-slate-50 dark:bg-black/20 px-5 py-3 border-t border-border-subdued dark:border-slate-700 flex justify-between items-center text-sm">
+<div class="flex items-center gap-1.5 text-text-subdued dark:text-slate-400" title="Views">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span>450</span>
+</div>
+<div class="w-px h-4 bg-gray-300 dark:bg-slate-600"></div>
+<div class="flex items-center gap-1.5 text-text-subdued dark:text-slate-400" title="Sales">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+<span>23</span>
+</div>
+<div class="w-px h-4 bg-gray-300 dark:bg-slate-600"></div>
+<div class="flex items-center gap-1.5 font-medium text-primary dark:text-emerald-400" title="Revenue">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+<span>$1,840</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Complete Skincare Routine -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-polaris hover:shadow-polaris-hover transition-shadow duration-200 border border-transparent hover:border-border-subdued overflow-hidden flex flex-col">
+<div class="p-5 flex flex-col gap-4 flex-grow">
+<div class="flex justify-between items-start">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h3 class="font-bold text-lg text-text-main dark:text-white">Complete Skincare Routine</h3>
+<span class="px-2 py-0.5 rounded-full bg-status-success-bg text-status-success-text text-xs font-medium border border-status-success-bg dark:border-transparent">Active</span>
+</div>
+<p class="text-text-subdued dark:text-slate-400 text-sm">Created 5 days ago</p>
+</div>
+<button class="text-text-subdued hover:bg-slate-100 dark:hover:bg-white/10 p-1 rounded transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="flex items-center gap-2 my-1">
+<div class="flex -space-x-3 overflow-hidden py-1">
+<img alt="Cleanser bottle" class="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-surface-dark object-cover bg-gray-100" data-alt="Cleanser bottle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAL0UPJfDwCD5uNcec94EMjXSbUPTOmCLhBAxryoyNz0IdDd73Ul2IKHtouA2qchMn-vVRy5VB3VNJvKoMvLLMBzZ4a25VddztuphJMr-D5J2f7L2VC2thhxgNeWf4AE7NryCjp6LjSaTQYp747ApQ1zQCXEc_UT7joXnor2ScPHlwFPytGu4Me_Y80nkbU3J0BxipGWUJRBjvZ-Jl9kS8ysBi6HPzGlUKqypdgQOkJOMzZJSKs-CfrKECwv9bxgNVnvn_o24jYc1Y"/>
+<img alt="Moisturizer jar" class="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-surface-dark object-cover bg-gray-100" data-alt="Moisturizer jar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjHDlKaLsBj2Wv2Josl57I9px95NnwpJ72V-R3A6bsPrVLczxoL3kVtDkGGNTncilz_UWNrB_BShI1BE-9Y6gRqyEBuyplWlctP9UfBnKicZ-BhZlQpwj-jH15oxjQem5BnRFfAnkALWcc6-fhYANCTYSmBWdln9iVJaL57l-Ojsjo9ob1VBb_-D0jHHycyfZKS7JJ1xZs_J-CN12EZKMZLV8e1s84tkNGEmVfCMsc0Zf6CTU9OjpiPAGW2MRmImDrmM-HSa5IZDZa"/>
+<img alt="Serum dropper" class="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-surface-dark object-cover bg-gray-100" data-alt="Serum dropper" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa3taFNkKX22CGyJ8PF8lPXQmZikc5m0PD2hErlIxN4AAzRVyRyMT7NDHn-F2mUbBCPoPdH6PUiDpeKXptcAmIPZ7doz432aElgEmMhBuxbwoALL4CzP5RgzBT6Gb_1_qB5It1goicn4fqdSDScMkjU4pjylL-J4PNe_pkWpxGXyTqghCvsvAp95C7Lck6FfzeW9KdfcM0Pw9G8XFVXuqmrnTNHdQqWI3ZjBMD1FtjMzGV3yYK6MEaGJCm5rDqRJ20MMc9F7OOds1e"/>
+</div>
+</div>
+<div class="mt-1">
+<p class="text-text-main dark:text-white font-semibold text-lg">20% off — $54.40</p>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-black/20 px-5 py-3 border-t border-border-subdued dark:border-slate-700 flex justify-between items-center text-sm">
+<div class="flex items-center gap-1.5 text-text-subdued dark:text-slate-400">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span>380</span>
+</div>
+<div class="w-px h-4 bg-gray-300 dark:bg-slate-600"></div>
+<div class="flex items-center gap-1.5 text-text-subdued dark:text-slate-400">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+<span>19</span>
+</div>
+<div class="w-px h-4 bg-gray-300 dark:bg-slate-600"></div>
+<div class="flex items-center gap-1.5 font-medium text-primary dark:text-emerald-400">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+<span>$1,520</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Workout Bundle -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-polaris hover:shadow-polaris-hover transition-shadow duration-200 border border-transparent hover:border-border-subdued overflow-hidden flex flex-col">
+<div class="p-5 flex flex-col gap-4 flex-grow">
+<div class="flex justify-between items-start">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h3 class="font-bold text-lg text-text-main dark:text-white">Workout Bundle</h3>
+<span class="px-2 py-0.5 rounded-full bg-status-attention-bg text-status-attention-text text-xs font-medium border border-status-attention-bg dark:border-transparent">Paused</span>
+</div>
+<p class="text-text-subdued dark:text-slate-400 text-sm">Created 2 weeks ago</p>
+</div>
+<button class="text-text-subdued hover:bg-slate-100 dark:hover:bg-white/10 p-1 rounded transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="flex items-center gap-2 my-1">
+<div class="flex -space-x-3 overflow-hidden py-1">
+<img alt="Dumbbells" class="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-surface-dark object-cover bg-gray-100" data-alt="Dumbbells" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGZbSUTXBlawZmVUhzNvmrKp-G-3cPYqd8K0dG4y0kpWY4gWdQYuiRZhdw_GLoSLL_YfosoluLX2IMywpgFUTmxU1BpN2WOaGIwN1sKAzW4EWPzA_B5Q3vjl-38KyEx02PVjRye3SIOHChWvRItpWjBu2AWL-MVu4G01qC7X4IEdjVOBycpLxxh3A_Li-XXl7Zo898PqCyD8NCevZwlJWidkR-nXL1AR_Vkcjtuas5BNNegQxMbo7VTwuodz1nfSoumzh-zKaS-osl"/>
+<img alt="Yoga mat" class="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-surface-dark object-cover bg-gray-100" data-alt="Yoga mat" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_zAJiN7pCg3BiE-w2QD0aDllazM9UKttKtEC-G0IHk-FF_a8pC1IDl_qIvQg08MY8i1Ohz-1kQI2U8KrzXqaPXlHVAhOWbxIp_XKkkPlGQmp0cwX4a-ofW3ABY8rlW140yppBuSNnvPEJcybNisdWa6v9KMzZu3LUoAaQddi0l9m8IWp_dmX8Fgdn8Hyl8FlPexIZuHwOZBgp_DooUfFP6OFwEQzONEsFu_yDYmD_ZVREcMHwOnChO4Yp4pt9rxwGIfhHobOLto7p"/>
+<img alt="Resistance bands" class="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-surface-dark object-cover bg-gray-100" data-alt="Resistance bands" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2obJgFfdfdAp6SwFGDSCJQ0FpQqq8RYN3y3ey4ZXj6yHNnlUWxbLDNbKZCiKRcQ94Z-BOdIn6DJ9_RBGBbRWzVsRBOeZ5m2yZlchiqOhBJGWTJzO6LsAjiUaEjMgGAg7M5MfJv-b1znoeKWPAtIRsdGQj5N1dWJ9LUQwmSGYaYxPuj0oGrXIdABHVS_UrdJBe6PIS3RA0x06Xj7EPCiAaakb2CiwBFGABBxgyeojhKxooExlEdLIQxGdb5ccbSy4Mj97HpTSOb-lt"/>
+</div>
+</div>
+<div class="mt-1">
+<p class="text-text-main dark:text-white font-semibold text-lg">10% off — $76.50</p>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-black/20 px-5 py-3 border-t border-border-subdued dark:border-slate-700 flex justify-between items-center text-sm">
+<div class="flex items-center gap-1.5 text-text-subdued dark:text-slate-400">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span>120</span>
+</div>
+<div class="w-px h-4 bg-gray-300 dark:bg-slate-600"></div>
+<div class="flex items-center gap-1.5 text-text-subdued dark:text-slate-400">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+<span>5</span>
+</div>
+<div class="w-px h-4 bg-gray-300 dark:bg-slate-600"></div>
+<div class="flex items-center gap-1.5 font-medium text-text-main dark:text-white">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+<span>$390</span>
+</div>
+</div>
+</div>
+<!-- Card 4: Winter Sale Pack -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-polaris hover:shadow-polaris-hover transition-shadow duration-200 border border-transparent hover:border-border-subdued overflow-hidden flex flex-col">
+<div class="p-5 flex flex-col gap-4 flex-grow">
+<div class="flex justify-between items-start">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h3 class="font-bold text-lg text-text-main dark:text-white">Winter Sale Pack</h3>
+<span class="px-2 py-0.5 rounded-full bg-status-success-bg text-status-success-text text-xs font-medium border border-status-success-bg dark:border-transparent">Active</span>
+</div>
+<p class="text-text-subdued dark:text-slate-400 text-sm">Created 1 month ago</p>
+</div>
+<button class="text-text-subdued hover:bg-slate-100 dark:hover:bg-white/10 p-1 rounded transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="flex items-center gap-2 my-1">
+<div class="flex -space-x-3 overflow-hidden py-1">
+<img alt="Red sneakers" class="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-surface-dark object-cover bg-gray-100" data-alt="Red sneakers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxkht-sOcA1u_KYjWLCubkh98-eLZvQLwo3SVtXQr477weeKtZ59wFzyKJSGhOE-ZzbzZ-z35CYOULkxAa8e9Z35HxrzNj_ETHHxy2uplG244umCP7CwtDEq-TV9YTNs929bhS4TsPlmpb9X8dIquyf4S3TGuN4T9oSTkHMz-Hv2aGGKcPlaSIOujXj7VFKzUNesEFAq4ppRnqhr36uiSuhO14JkDzgIUPAGtsRYrO3oQh72wPC9djnNvGSeh0yKZRmGJDF-ehaGzk"/>
+<img alt="Wool scarf" class="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-surface-dark object-cover bg-gray-100" data-alt="Wool scarf" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBijBJP7xbLnVijFzyxpq6nUNz2CfmfQptHWiZ5IbFiZIE2Gv4t3YhCP0fFeFBeFRjknqMYuq_RB0ojdD_TRcCJWYNIX3ttvkJg2NCek9z2KEql7MdtLlvYqEj-EfFcrlNtlWmLUarh1IutM74JFo5Qkx3LDgJK6NaMWDrgpp-aB7dxpXGkIzaZ3DCl8bhD4a_ZGIlEaQru2yMk_NlbUPQ4B4N2MNN3KEYdvZVAvO6k8I84JnvLxLLmW74iTfz8g5gWFzRY3zbR7Dyq"/>
+<img alt="Winter gloves" class="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-surface-dark object-cover bg-gray-100" data-alt="Winter gloves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoDDMW-pgKfhXtQVfmj1ubkp5muAP1Z3fMVAGTcElsr96gdoV3Dgy62BRHJeJZO40Vw0Nv_vJ22tvEBsgbtVEOprJ6Mtg9JhcT2WUVMEHkMfxJh7KZLmoRFXqdwrJ3NbBQBz0TlTQZG9tEJ0yXc1J1fMb5fmvBZxETsyYSUgWJpJjTbs0iYxmbyyHEO7xxO4Y7eLllEsaXGsIVf2Mvbnuy539Cowebn2m2PP7foCpxsnxCdJf8DzrOIIKiEefD5ijEq0G1eggWCdfp"/>
+<img alt="Beanie hat" class="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-surface-dark object-cover bg-gray-100" data-alt="Beanie hat" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8v_hgkxvXjPTOiVYBQ2I6Z5cNg8L45BpUp0elS19ZZlIS7AJ7-BZQpR9qx3yEdSgeL29EMPiPdVwNvX16Q7eO80S_Mpm2V0ob922iXMNdYcDguQ4OP3x1ZAqgVgpXCvPp8syU2Fspei1BnclYRnNBBFAa12T_NsqzuDycTevsnUNQwp-J2DsiovTU0dAMhUFt7KqaWAlH7EGxnJM-sAt3FEXKIGq5phSzEUEDWvi0gXapwBgWVzXVVLJCCKwRLzfM5BlR0XnYeb_V"/>
+</div>
+</div>
+<div class="mt-1">
+<p class="text-text-main dark:text-white font-semibold text-lg">25% off — $112.50</p>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-black/20 px-5 py-3 border-t border-border-subdued dark:border-slate-700 flex justify-between items-center text-sm">
+<div class="flex items-center gap-1.5 text-text-subdued dark:text-slate-400">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span>890</span>
+</div>
+<div class="w-px h-4 bg-gray-300 dark:bg-slate-600"></div>
+<div class="flex items-center gap-1.5 text-text-subdued dark:text-slate-400">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+<span>45</span>
+</div>
+<div class="w-px h-4 bg-gray-300 dark:bg-slate-600"></div>
+<div class="flex items-center gap-1.5 font-medium text-primary dark:text-emerald-400">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+<span>$3,600</span>
+</div>
+</div>
+</div>
+<!-- Card 5: Tech Starter Kit -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-polaris hover:shadow-polaris-hover transition-shadow duration-200 border border-transparent hover:border-border-subdued overflow-hidden flex flex-col relative">
+<!-- A/B Test Gradient Border Hint -->
+<div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary to-blue-500"></div>
+<div class="p-5 pl-6 flex flex-col gap-4 flex-grow">
+<div class="flex justify-between items-start">
+<div>
+<div class="flex items-center gap-2 mb-1 flex-wrap">
+<h3 class="font-bold text-lg text-text-main dark:text-white">Tech Starter Kit</h3>
+<div class="flex gap-1">
+<span class="px-2 py-0.5 rounded-full bg-status-success-bg text-status-success-text text-xs font-medium border border-status-success-bg dark:border-transparent">Active</span>
+<span class="px-2 py-0.5 rounded-full bg-status-info-bg text-status-info-text text-xs font-medium border border-status-info-bg dark:border-transparent flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">science</span> A/B Test
+                                    </span>
+</div>
+</div>
+<p class="text-text-subdued dark:text-slate-400 text-sm">Running for 3 days</p>
+</div>
+<button class="text-text-subdued hover:bg-slate-100 dark:hover:bg-white/10 p-1 rounded transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="flex items-center gap-2 my-1">
+<div class="flex -space-x-3 overflow-hidden py-1">
+<img alt="Mouse" class="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-surface-dark object-cover bg-gray-100" data-alt="Mouse" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgfwLndfipAgz_EKqAeA6Tm3yP0zqDeMWqUDQO614yWb4vTjSD9cjSCm2qzYYL6Y4ah9b6VrlgMjPG3eGntTcAabdApptmguDqMwYLjPyTVxoxC6eTBDunaUUZkVFpbUqe8ewV68IPZK9XVKCPTtJfVOBqO0FDxb5WetPd7mBKhgBxfiwjPKLkkHBALWRkHzgXOhrS8_7JzjSDNXEH6RWLgXR2QPS_QkXjE7u3Z2rizOpB11wiPgB2UJ0d_ZgvrhmPFeQ-f02_RkxA"/>
+<img alt="Keyboard" class="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-surface-dark object-cover bg-gray-100" data-alt="Keyboard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA99uAOwjolIJHEMD1qEF7wAI6bBAPjiIIM3a-CqgyA1kxlf7z3JjFV7TBVJZWL_Mve1JkH6pHUQHx7jmISH9svrZUuAnO_eyC4DlMLNB5c5crBkJuiR2djjlxo-VceXEZpt3oEXLqwUavqE3bt4gKnrm_DHxKW1m4BqG7p9j-bB5Jqbrw38JeywR3vkFHEKioulJen6BcBR_gTmK5hrVdzdZJHDjJPC4xDw7-v9Hp5y5UBPur--YapgMWmY9dMpqm5pQYlL2k01sM5"/>
+<img alt="USB hub" class="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-surface-dark object-cover bg-gray-100" data-alt="USB hub" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1HE_zeLoLYZpXKzirhhnG-mweX6MKmRi63g42TdVZf8OvX_JKU6V8DTbxRTqRCPsKpobY0eDfL1EwjRQrFWE2BYXGbeaSwQZ-rQ5L--DTU4pYoRP-O5SZaJya_lqPe259-4JoQpFUkc3h9HcZOGz3SSS_9lrXmK9nUIhJmYh5zcR-oWlUVW7Eqm5pcsQjlqn8X_6d7TC48zo5hBJy795fnKY0AoueO9FIUaUWuIQG3DuEGyBpAutOd50M9G7v2c4CcKL_v8t91buB"/>
+</div>
+</div>
+<div class="mt-1">
+<p class="text-text-main dark:text-white font-semibold text-lg flex items-center gap-2">
+                            Testing: <span class="bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded text-base">15% vs 20%</span>
+</p>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-black/20 px-5 pl-6 py-3 border-t border-border-subdued dark:border-slate-700 flex justify-between items-center text-sm">
+<div class="flex items-center gap-1.5 text-text-subdued dark:text-slate-400">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span>280</span>
+</div>
+<div class="w-px h-4 bg-gray-300 dark:bg-slate-600"></div>
+<div class="flex items-center gap-1.5 text-text-subdued dark:text-slate-400">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+<span>12</span>
+</div>
+<div class="w-px h-4 bg-gray-300 dark:bg-slate-600"></div>
+<div class="flex items-center gap-1.5 font-medium text-primary dark:text-emerald-400">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+<span>$960</span>
+</div>
+</div>
+</div>
+<!-- Card 6: Holiday Gift Set (Archived) -->
+<div class="bg-slate-50 dark:bg-white/5 rounded-xl shadow-none border border-border-subdued dark:border-slate-700 overflow-hidden flex flex-col opacity-75 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 group">
+<div class="p-5 flex flex-col gap-4 flex-grow">
+<div class="flex justify-between items-start">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h3 class="font-bold text-lg text-text-subdued dark:text-slate-400">Holiday Gift Set</h3>
+<span class="px-2 py-0.5 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">Archived</span>
+</div>
+<p class="text-text-subdued dark:text-slate-500 text-sm">Expired 3 months ago</p>
+</div>
+<button class="text-text-subdued hover:bg-slate-200 dark:hover:bg-white/10 p-1 rounded transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="flex items-center gap-2 my-1 opacity-60 group-hover:opacity-100 transition-opacity">
+<div class="flex -space-x-3 overflow-hidden py-1">
+<img alt="Gift box" class="inline-block h-10 w-10 rounded-full ring-2 ring-slate-50 dark:ring-slate-700 object-cover bg-gray-100" data-alt="Gift box" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtPuXiatj-ogv6vOqqPSlAZfg_FqM1V0H8qXb4OVekRX77dcp5_yvXG9In9sTkpcFNvFxYUSfiWSc5A96c7bsZAzIa82koP7mAxhFQNghTsg3mjiQA3lunC4E8UF0kqGYLUgsMgg8Of50wljNY_Y7v8k83uuIh808YTtE6WRqFCbjpCYG8WMrVnI3JlMXrYJZ5Y9d6BvilSvRiL6RpvEWtvbUzlRNGmdDPsJ1rKUsjHTab2kiQJ63XkQRgQrYOTbmnosrAwDRNyQcp"/>
+<img alt="Ribbon" class="inline-block h-10 w-10 rounded-full ring-2 ring-slate-50 dark:ring-slate-700 object-cover bg-gray-100" data-alt="Ribbon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgzo_6L2iATO4lGvM_xk1lj18Jtu-F99zxG2ABBnM1d2kXZ1Ao2l3VQYZb8tGK3fu2qC6xL2OxJ81_R6P6o9vD-ySF-Tqaefc-Y3WTI5PmRFuci2fC52jRQC8sE1weE7EDpilRWW1IOe3US9WaKbw9CgvwkH-LwJRQLV2TEQZO5EDG4peZy4IRRN8xhEABnXVi9jdJ0TbJnoTWUGo2e3s-5w4ubBNJrno6TicucAi5E8FkNdBRJNebLv0_azzp7dBTlectBvwB6WgS"/>
+<img alt="Ornaments" class="inline-block h-10 w-10 rounded-full ring-2 ring-slate-50 dark:ring-slate-700 object-cover bg-gray-100" data-alt="Ornaments" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmxqp3a6axKMYLpPSiDvnfb6lEv0nl1PVlbv3o0HyXYTkpMvY341MoG2sWsLeDm73WG_Awuj527czJElH0VITDDz6QRq5SnwKfltpYwqdDGmmN2Vn49BJkrXL1NxHCX0AtkZUcgfBPxOM45vOjXMySAY7VCmWREjHk1M0GPJHTHWaSxjPz8BWZjxvOpJu9565JTd_337w7OpCj3FK7ummlIPFlsZI80hzRtxcQ6WN7fV6kAa83-eP5OCpp5ZBA_69ZkOFQSkD1a6_l"/>
+<img alt="Chocolate" class="inline-block h-10 w-10 rounded-full ring-2 ring-slate-50 dark:ring-slate-700 object-cover bg-gray-100" data-alt="Chocolate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE7oLnUKPkDBe8gm_zzKP6qJEkM474M1cm7gtOPjhEF4sGia_pBDdYeHXBwcdvDTLZNmuxrZNOdLqXnZFnFySssiaO7LJqAsFb_y5R8iC1w3f4R05MqsbpEDrMhwHD930WHpECgv_aaFsWD4mXnYrijjUd1o-JIzU4tGvYNGz_Xsj9y0fihAgy4BDfhdMs0skr-wNMZJVojUbfQgrRU072GC1FWh0Mex9r3iL-5ZDlReX0RSK0QeH1poAVqkSmQUZpejxX0D4di5su"/>
+</div>
+</div>
+<div class="mt-1">
+<p class="text-text-subdued dark:text-slate-400 font-semibold text-lg line-through">30% off — expired</p>
+</div>
+</div>
+<div class="bg-slate-100 dark:bg-black/40 px-5 py-3 border-t border-border-subdued dark:border-slate-700 flex justify-between items-center text-sm">
+<div class="flex items-center gap-1.5 text-text-subdued dark:text-slate-500">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span>--</span>
+</div>
+<div class="w-px h-4 bg-gray-300 dark:bg-slate-700"></div>
+<div class="flex items-center gap-1.5 text-text-subdued dark:text-slate-500">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+<span>--</span>
+</div>
+<div class="w-px h-4 bg-gray-300 dark:bg-slate-700"></div>
+<div class="flex items-center gap-1.5 font-medium text-text-subdued dark:text-slate-500">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+<span>--</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Pagination -->
+<div class="flex justify-center items-center mt-8 gap-4">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-border-subdued bg-surface-light dark:bg-surface-dark dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-white/10 text-text-subdued disabled:opacity-50 disabled:cursor-not-allowed">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<span class="text-sm font-medium text-text-subdued dark:text-slate-400">Showing 6 of 12 bundles</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-border-subdued bg-surface-light dark:bg-surface-dark dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-white/10 text-text-main dark:text-white">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</main>
+</body></html>

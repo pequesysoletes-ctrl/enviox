@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart Preorders - Configurar Preventa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7c3bed",
+                        "shopify-green": "#008060",
+                        "shopify-green-hover": "#006e52",
+                        "background-light": "#f6f6f7",
+                        "background-dark": "#171121",
+                        "surface": "#ffffff",
+                        "border": "#d8d8db",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"],
+                    },
+                    boxShadow: {
+                        'card': '0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f6f6f7;
+        }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #d1d5db;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-background-light text-slate-900 antialiased min-h-screen flex flex-col">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-[#f6f6f7] border-b border-[#e1e3e5] px-4 py-4 sm:px-8">
+<div class="max-w-5xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-4">
+<button class="p-2 -ml-2 rounded-md hover:bg-slate-200 transition-colors text-slate-500 hover:text-slate-700">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="text-xl font-bold text-slate-900 leading-tight">Configurar preventa</h1>
+<span class="text-sm text-slate-500">Smart Preorders</span>
+</div>
+</div>
+<div class="hidden sm:flex gap-2">
+<div class="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center text-primary font-bold text-xs">SP</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 w-full max-w-5xl mx-auto px-4 py-8 sm:px-8 space-y-6">
+<!-- Card 1: Product Info (Read-only) -->
+<section class="bg-white rounded-xl shadow-card p-4 sm:p-5 flex gap-4 sm:gap-6 items-start">
+<div class="h-20 w-20 sm:h-24 sm:w-24 shrink-0 rounded-lg bg-slate-100 border border-slate-200 overflow-hidden relative">
+<img alt="Red Nike shoe product image" class="h-full w-full object-cover" data-alt="Red Nike shoe product image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWgrle3qTFj4QzrQ1cS6efMQzTNG1LrNDzNRZo0o_FBEh4RKiExE0PL4FgVnt-_YgYMLX0gOA6Gdxn5bFXhdmk4jWVFgLpjP6tXlF7_rzL6FcKoxkqiDpOm7z-lJf1cSdFq0_exIKIVg4-iTgNU0BFyKqlGRIEJa1NJEhQc2cKXXMF8khO1kg4IjbabaZ6ITb-FA6EDtKOlj4va8w3tiQDZ5lxvFMN1tUau3ZTxyBsNDApobsMtfcJmLoowz-JnTI4QXc2u2JZnJms"/>
+</div>
+<div class="flex-1 space-y-1 py-1">
+<h2 class="text-base sm:text-lg font-bold text-slate-900">Zapatillas Ltd Ed</h2>
+<div class="flex flex-wrap gap-x-3 gap-y-1 text-sm text-slate-500">
+<span class="bg-slate-100 px-2 py-0.5 rounded text-slate-600 font-medium">Talla 42</span>
+<span class="text-slate-400">•</span>
+<span>Stock: 0</span>
+<span class="text-slate-400">•</span>
+<span>SKU: ZAP-42-LTD</span>
+</div>
+<div class="pt-1">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700 border border-amber-100">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                        Agotado
+                    </span>
+</div>
+</div>
+<div class="hidden sm:block">
+<button class="text-primary text-sm font-medium hover:underline">Ver producto</button>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Left Column: Forms -->
+<div class="lg:col-span-2 space-y-6">
+<!-- Card 2: Configuration -->
+<section class="bg-white rounded-xl shadow-card overflow-hidden">
+<div class="p-5 border-b border-slate-100 flex items-center justify-between">
+<h3 class="font-bold text-slate-900">Configuración de preventa</h3>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+<span class="ml-3 text-sm font-medium text-slate-700">Activo</span>
+</label>
+</div>
+<div class="p-5 space-y-5">
+<!-- Date Picker -->
+<div>
+<label class="block text-sm font-medium text-slate-700 mb-1.5">Fecha estimada de envío</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2 border border-slate-300 rounded-lg text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" type="text" value="15/04/2026"/>
+</div>
+<p class="mt-1 text-xs text-slate-500">Esta fecha se mostrará a los clientes en la página del producto.</p>
+</div>
+<!-- Preorder Note -->
+<div>
+<label class="block text-sm font-medium text-slate-700 mb-1.5">Nota de preventa</label>
+<input class="block w-full px-3 py-2 border border-slate-300 rounded-lg text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" type="text" value="Edición limitada — envío abril 2026"/>
+</div>
+<!-- Button Text -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+<div>
+<label class="block text-sm font-medium text-slate-700 mb-1.5">Texto del botón</label>
+<input class="block w-full px-3 py-2 border border-slate-300 rounded-lg text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" type="text" value="⏳ Pre-order"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700 mb-1.5">Color del botón</label>
+<div class="flex shadow-sm rounded-lg overflow-hidden border border-slate-300">
+<div class="w-10 bg-primary flex-shrink-0 border-r border-slate-200"></div>
+<input class="block w-full px-3 py-2 border-none text-sm focus:ring-0 text-slate-600 font-mono" type="text" value="#7C3AED"/>
+<button class="px-3 hover:bg-slate-50 border-l border-slate-200 text-slate-500">
+<span class="material-symbols-outlined text-[18px]">colorize</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Card 3: Limits -->
+<section class="bg-white rounded-xl shadow-card overflow-hidden">
+<div class="p-5 border-b border-slate-100">
+<h3 class="font-bold text-slate-900">Límites</h3>
+</div>
+<div class="p-5 space-y-4">
+<fieldset>
+<legend class="sr-only">Límites de preorder</legend>
+<div class="space-y-3">
+<div class="flex items-center">
+<input checked="" class="h-4 w-4 border-gray-300 text-primary focus:ring-primary" id="limit-unlimited" name="limit-type" type="radio"/>
+<label class="ml-3 block text-sm font-medium text-slate-700" for="limit-unlimited">
+                                        Aceptar preorders ilimitados
+                                    </label>
+</div>
+<div class="flex items-center">
+<input class="h-4 w-4 border-gray-300 text-primary focus:ring-primary" id="limit-fixed" name="limit-type" type="radio"/>
+<div class="ml-3 flex items-center gap-2">
+<label class="block text-sm font-medium text-slate-700" for="limit-fixed">
+                                            Limitar a
+                                        </label>
+<input class="w-20 px-2 py-1 text-sm border border-slate-300 rounded-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary disabled:bg-slate-50 disabled:text-slate-400" disabled="" placeholder="0" type="number"/>
+<span class="text-sm font-medium text-slate-700">preorders</span>
+</div>
+</div>
+</div>
+</fieldset>
+<hr class="border-slate-100 my-4"/>
+<div class="flex items-start">
+<div class="flex items-center h-5">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" id="disable-stock" type="checkbox"/>
+</div>
+<div class="ml-3 text-sm">
+<label class="font-medium text-slate-700" for="disable-stock">Desactivar preventa cuando llegue stock</label>
+<p class="text-slate-500 text-xs mt-0.5">La preventa se desactivará automáticamente si el inventario de Shopify es mayor a 0.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Preview -->
+<div class="lg:col-span-1">
+<section class="sticky top-24 space-y-4">
+<div class="flex items-center justify-between px-1">
+<h3 class="text-sm font-bold text-slate-500 uppercase tracking-wide">Vista Previa</h3>
+<span class="text-xs text-primary font-medium cursor-pointer hover:underline">Refrescar</span>
+</div>
+<!-- Preview Card -->
+<div class="bg-white rounded-xl shadow-card overflow-hidden border border-slate-200">
+<div class="bg-slate-50 px-4 py-2 border-b border-slate-200 flex items-center justify-center gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-slate-300"></div>
+<div class="w-24 h-2 rounded-full bg-slate-200"></div>
+</div>
+<div class="p-6 flex flex-col items-center text-center space-y-4">
+<!-- Mockup Image -->
+<div class="w-full aspect-square bg-slate-100 rounded-lg mb-2 relative overflow-hidden group">
+<img alt="Shoe product mockup in preview" class="w-full h-full object-cover mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform duration-500" data-alt="Shoe product mockup in preview" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBY2RSThg8jAa6XxTW-KEWzSqaXiy3xIEsyw5jpBazblC35LD6Jg6Pml3XcW75Rrhx4ugxrOLeRKmpqIzdkYWSPz812W8MVcJn1-xgREOeWRVmJvn7Fc7-aP_dPfAY2lWboiwt7LlTJbjaspOkqWI3AOvJ3uzUxe9sVOzkh9ihK66UOMsrXCKksjjITwpUc4Xsx_tYMCs404PuMn232GA5XBd8O8N_vJSm0OChDIwp2JsVEOwW8n6Am83Xn90UtqckCxP8uVPmJZ2tm"/>
+<div class="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] font-bold text-slate-800 shadow-sm">
+                                    PRE-ORDER
+                                </div>
+</div>
+<!-- Mockup Text -->
+<div class="w-full space-y-2">
+<div class="h-4 bg-slate-200 rounded w-3/4 mx-auto"></div>
+<div class="h-3 bg-slate-100 rounded w-1/2 mx-auto"></div>
+<div class="mt-4 flex justify-center gap-1 text-slate-800 font-bold text-lg">
+                                    $180.00 <span class="text-slate-400 text-sm font-normal line-through">$220.00</span>
+</div>
+</div>
+<!-- Interactive Element Preview -->
+<div class="w-full pt-4 border-t border-slate-100 mt-2">
+<button class="w-full bg-primary hover:bg-[#682bd0] text-white font-medium py-3 px-4 rounded-lg shadow-sm transition-all transform active:scale-[0.98] flex items-center justify-center gap-2">
+<span>⏳ Pre-order</span>
+</button>
+<p class="text-xs text-slate-500 mt-2 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[14px]">local_shipping</span>
+                                    Edición limitada — envío abril 2026
+                                </p>
+</div>
+</div>
+</div>
+<div class="bg-blue-50 border border-blue-100 rounded-lg p-3 flex gap-3">
+<span class="material-symbols-outlined text-blue-600 shrink-0">info</span>
+<p class="text-xs text-blue-800 leading-relaxed">
+                             La vista previa es aproximada. El estilo final dependerá del tema activo de tu tienda Shopify.
+                         </p>
+</div>
+</section>
+</div>
+</div>
+<!-- Sticky Footer for Actions -->
+<div class="sticky bottom-0 left-0 right-0 py-4 mt-8 -mx-4 sm:-mx-8 px-4 sm:px-8 bg-white/80 backdrop-blur-md border-t border-slate-200 flex justify-end gap-3 z-40">
+<button class="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500">
+                Cancelar
+            </button>
+<button class="px-6 py-2 text-sm font-medium text-white bg-shopify-green rounded-lg shadow-sm hover:bg-shopify-green-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-shopify-green transition-colors">
+                Guardar
+            </button>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BundlerPro Dashboard Skeleton Loading</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#04ae84",
+                        "background-light": "#f6f6f7", // Updated to match user request
+                        "background-dark": "#0f231e",
+                        "skeleton": "#E1E3E5",
+                        "skeleton-dark": "#1F2937",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .shimmer {
+            position: relative;
+            overflow: hidden;
+            background-color: #E1E3E5;
+        }
+        
+        .dark .shimmer {
+            background-color: #1F2937;
+        }
+
+        .shimmer::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            transform: translateX(-100%);
+            background-image: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0) 0,
+                rgba(255, 255, 255, 0.4) 20%,
+                rgba(255, 255, 255, 0.7) 60%,
+                rgba(255, 255, 255, 0)
+            );
+            animation: shimmer 2s infinite;
+            content: '';
+        }
+
+        .dark .shimmer::after {
+             background-image: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0) 0,
+                rgba(255, 255, 255, 0.05) 20%,
+                rgba(255, 255, 255, 0.1) 60%,
+                rgba(255, 255, 255, 0)
+            );
+        }
+
+        @keyframes shimmer {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased selection:bg-primary/30">
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="flex h-16 shrink-0 items-center justify-between border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-6">
+<div class="flex items-center gap-4">
+<!-- Logo Skeleton -->
+<div class="size-8 rounded-lg shimmer"></div>
+<!-- Title Skeleton -->
+<div class="h-6 w-32 rounded shimmer"></div>
+</div>
+<div class="flex items-center gap-4">
+<!-- Action Button Skeleton -->
+<div class="h-9 w-24 rounded-lg shimmer"></div>
+<!-- User Avatar Skeleton -->
+<div class="size-9 rounded-full shimmer"></div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="hidden w-64 flex-col border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 py-6 px-4 md:flex">
+<!-- Store Info Skeleton -->
+<div class="mb-8 flex flex-col gap-2 px-2">
+<div class="h-5 w-3/4 rounded shimmer"></div>
+<div class="h-4 w-1/2 rounded shimmer opacity-60"></div>
+</div>
+<!-- Nav Items -->
+<nav class="flex flex-1 flex-col gap-2">
+<!-- Active State Imitation -->
+<div class="flex items-center gap-3 rounded-lg bg-gray-50 dark:bg-gray-800 px-3 py-2.5">
+<div class="size-5 rounded shimmer"></div>
+<div class="h-4 w-24 rounded shimmer"></div>
+</div>
+<div class="flex items-center gap-3 rounded-lg px-3 py-2.5">
+<div class="size-5 rounded shimmer opacity-60"></div>
+<div class="h-4 w-20 rounded shimmer opacity-60"></div>
+</div>
+<div class="flex items-center gap-3 rounded-lg px-3 py-2.5">
+<div class="size-5 rounded shimmer opacity-60"></div>
+<div class="h-4 w-28 rounded shimmer opacity-60"></div>
+</div>
+<div class="flex items-center gap-3 rounded-lg px-3 py-2.5">
+<div class="size-5 rounded shimmer opacity-60"></div>
+<div class="h-4 w-24 rounded shimmer opacity-60"></div>
+</div>
+</nav>
+<!-- Bottom Nav Items -->
+<div class="mt-auto flex flex-col gap-2 border-t border-gray-100 dark:border-gray-800 pt-4">
+<div class="flex items-center gap-3 rounded-lg px-3 py-2.5">
+<div class="size-5 rounded shimmer opacity-60"></div>
+<div class="h-4 w-20 rounded shimmer opacity-60"></div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark p-6 md:p-8 lg:p-10">
+<div class="mx-auto max-w-6xl space-y-8">
+<!-- Stats Grid -->
+<section class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+<!-- Stat Card 1 -->
+<div class="flex flex-col gap-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 shadow-sm">
+<div class="h-4 w-1/2 rounded shimmer mb-1"></div>
+<div class="h-8 w-3/4 rounded shimmer"></div>
+</div>
+<!-- Stat Card 2 -->
+<div class="flex flex-col gap-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 shadow-sm">
+<div class="h-4 w-1/2 rounded shimmer mb-1"></div>
+<div class="h-8 w-2/3 rounded shimmer"></div>
+</div>
+<!-- Stat Card 3 -->
+<div class="flex flex-col gap-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 shadow-sm">
+<div class="h-4 w-1/2 rounded shimmer mb-1"></div>
+<div class="h-8 w-1/3 rounded shimmer"></div>
+</div>
+<!-- Stat Card 4 -->
+<div class="flex flex-col gap-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 shadow-sm">
+<div class="h-4 w-1/2 rounded shimmer mb-1"></div>
+<div class="h-8 w-2/3 rounded shimmer"></div>
+</div>
+</section>
+<!-- AI Recommendations Section -->
+<section class="space-y-4">
+<div class="h-6 w-48 rounded shimmer"></div>
+<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+<!-- Recommendation 1 -->
+<div class="flex aspect-video w-full flex-col justify-end rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-sm relative overflow-hidden">
+<div class="absolute inset-0 shimmer opacity-50"></div>
+<div class="relative z-10 flex flex-col gap-2">
+<div class="h-5 w-1/3 rounded bg-gray-300 dark:bg-gray-700"></div>
+<div class="h-4 w-1/2 rounded bg-gray-200 dark:bg-gray-800"></div>
+</div>
+</div>
+<!-- Recommendation 2 -->
+<div class="flex aspect-video w-full flex-col justify-end rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-sm relative overflow-hidden">
+<div class="absolute inset-0 shimmer opacity-50"></div>
+<div class="relative z-10 flex flex-col gap-2">
+<div class="h-5 w-1/3 rounded bg-gray-300 dark:bg-gray-700"></div>
+<div class="h-4 w-1/2 rounded bg-gray-200 dark:bg-gray-800"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Data Table Skeleton -->
+<section class="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm overflow-hidden">
+<!-- Table Header -->
+<div class="border-b border-gray-100 dark:border-gray-800 p-4 flex items-center justify-between">
+<div class="h-5 w-32 rounded shimmer"></div>
+<div class="h-8 w-24 rounded shimmer"></div>
+</div>
+<!-- Table Rows -->
+<div class="flex flex-col">
+<!-- Header Row imitation -->
+<div class="flex items-center border-b border-gray-100 dark:border-gray-800 px-6 py-3 bg-gray-50/50 dark:bg-gray-800/50">
+<div class="w-1/4"><div class="h-4 w-20 rounded shimmer"></div></div>
+<div class="w-1/4"><div class="h-4 w-16 rounded shimmer"></div></div>
+<div class="w-1/4"><div class="h-4 w-24 rounded shimmer"></div></div>
+<div class="w-1/4 flex justify-end"><div class="h-4 w-12 rounded shimmer"></div></div>
+</div>
+<!-- Row 1 -->
+<div class="flex items-center border-b border-gray-100 dark:border-gray-800 px-6 py-4">
+<div class="w-1/4 flex items-center gap-3">
+<div class="size-10 rounded shimmer shrink-0"></div>
+<div class="flex flex-col gap-1 w-full">
+<div class="h-4 w-3/4 rounded shimmer"></div>
+<div class="h-3 w-1/2 rounded shimmer opacity-60"></div>
+</div>
+</div>
+<div class="w-1/4"><div class="h-4 w-16 rounded shimmer"></div></div>
+<div class="w-1/4"><div class="h-6 w-20 rounded-full shimmer"></div></div>
+<div class="w-1/4 flex justify-end"><div class="h-4 w-16 rounded shimmer"></div></div>
+</div>
+<!-- Row 2 -->
+<div class="flex items-center border-b border-gray-100 dark:border-gray-800 px-6 py-4">
+<div class="w-1/4 flex items-center gap-3">
+<div class="size-10 rounded shimmer shrink-0"></div>
+<div class="flex flex-col gap-1 w-full">
+<div class="h-4 w-2/3 rounded shimmer"></div>
+<div class="h-3 w-1/3 rounded shimmer opacity-60"></div>
+</div>
+</div>
+<div class="w-1/4"><div class="h-4 w-14 rounded shimmer"></div></div>
+<div class="w-1/4"><div class="h-6 w-20 rounded-full shimmer"></div></div>
+<div class="w-1/4 flex justify-end"><div class="h-4 w-20 rounded shimmer"></div></div>
+</div>
+<!-- Row 3 -->
+<div class="flex items-center border-b border-gray-100 dark:border-gray-800 px-6 py-4">
+<div class="w-1/4 flex items-center gap-3">
+<div class="size-10 rounded shimmer shrink-0"></div>
+<div class="flex flex-col gap-1 w-full">
+<div class="h-4 w-1/2 rounded shimmer"></div>
+<div class="h-3 w-1/2 rounded shimmer opacity-60"></div>
+</div>
+</div>
+<div class="w-1/4"><div class="h-4 w-12 rounded shimmer"></div></div>
+<div class="w-1/4"><div class="h-6 w-20 rounded-full shimmer"></div></div>
+<div class="w-1/4 flex justify-end"><div class="h-4 w-14 rounded shimmer"></div></div>
+</div>
+<!-- Row 4 -->
+<div class="flex items-center border-b border-gray-100 dark:border-gray-800 px-6 py-4">
+<div class="w-1/4 flex items-center gap-3">
+<div class="size-10 rounded shimmer shrink-0"></div>
+<div class="flex flex-col gap-1 w-full">
+<div class="h-4 w-3/5 rounded shimmer"></div>
+<div class="h-3 w-2/5 rounded shimmer opacity-60"></div>
+</div>
+</div>
+<div class="w-1/4"><div class="h-4 w-16 rounded shimmer"></div></div>
+<div class="w-1/4"><div class="h-6 w-20 rounded-full shimmer"></div></div>
+<div class="w-1/4 flex justify-end"><div class="h-4 w-12 rounded shimmer"></div></div>
+</div>
+<!-- Row 5 -->
+<div class="flex items-center px-6 py-4">
+<div class="w-1/4 flex items-center gap-3">
+<div class="size-10 rounded shimmer shrink-0"></div>
+<div class="flex flex-col gap-1 w-full">
+<div class="h-4 w-4/5 rounded shimmer"></div>
+<div class="h-3 w-1/3 rounded shimmer opacity-60"></div>
+</div>
+</div>
+<div class="w-1/4"><div class="h-4 w-14 rounded shimmer"></div></div>
+<div class="w-1/4"><div class="h-6 w-20 rounded-full shimmer"></div></div>
+<div class="w-1/4 flex justify-end"><div class="h-4 w-16 rounded shimmer"></div></div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Configuración Shopify RE Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#008060",
+                        "primary-hover": "#006e52",
+                        "background-light": "#f6f6f7",
+                        "background-dark": "#0f231e",
+                        "surface": "#ffffff",
+                        "border": "#e1e3e5",
+                        "text-main": "#202223",
+                        "text-subdued": "#6d7175",
+                        "success": "#008060",
+                        "info-bg": "#eaf5fa",
+                        "info-border": "#bce3f1",
+                        "info-icon": "#007ace"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    boxShadow: {
+                        "card": "0px 1px 0px rgba(0, 0, 0, 0.05), 0px 4px 5px rgba(0, 0, 0, 0.03)",
+                        "input": "0 0 0 1px rgba(225, 227, 229, 1)",
+                        "input-focus": "0 0 0 2px #008060"
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f6f6f7;
+        }
+        .polaris-shadow {
+            box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15);
+        }
+        /* Custom scrollbar for sidebar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e1e3e5; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #cdcdcd; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main h-screen flex overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 bg-[#f8fcfb] border-r border-border flex flex-col flex-shrink-0 h-full">
+<!-- App Header -->
+<div class="p-4 border-b border-border/50">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">shopping_bag</span>
+</div>
+<div>
+<h1 class="text-sm font-semibold text-text-main">Shopify RE Admin</h1>
+<p class="text-xs text-text-subdued">Gestión de Recargo</p>
+</div>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="flex-1 overflow-y-auto py-4 px-2 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-main hover:bg-black/5 group transition-colors" href="#">
+<span class="material-symbols-outlined text-text-subdued group-hover:text-text-main">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-main hover:bg-black/5 group transition-colors" href="#">
+<span class="material-symbols-outlined text-text-subdued group-hover:text-text-main">group</span>
+<span class="text-sm font-medium">Clientes RE</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-main hover:bg-black/5 group transition-colors" href="#">
+<span class="material-symbols-outlined text-text-subdued group-hover:text-text-main">receipt_long</span>
+<span class="text-sm font-medium">Pedidos RE</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-main hover:bg-black/5 group transition-colors" href="#">
+<span class="material-symbols-outlined text-text-subdued group-hover:text-text-main">ios_share</span>
+<span class="text-sm font-medium">Exportar</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-main hover:bg-black/5 group transition-colors" href="#">
+<span class="material-symbols-outlined text-text-subdued group-hover:text-text-main">payments</span>
+<span class="text-sm font-medium">Facturación</span>
+</a>
+<!-- Active Item with Purple Indicator style -->
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-surface polaris-shadow relative text-text-main group transition-colors" href="#">
+<!-- Purple accent indicator -->
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-purple-600 rounded-r"></div>
+<span class="material-symbols-outlined text-purple-700 ml-1">settings</span>
+<span class="text-sm font-medium text-purple-900">Configuración</span>
+</a>
+</nav>
+<!-- User/Bottom -->
+<div class="p-4 border-t border-border mt-auto">
+<div class="flex items-center gap-3 px-2">
+<div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 font-medium text-xs">
+                    MT
+                </div>
+<div class="flex flex-col">
+<span class="text-sm font-medium">Mi Tienda</span>
+<span class="text-xs text-text-subdued">Pro Plan</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto h-full">
+<div class="max-w-[1000px] mx-auto px-4 sm:px-8 py-8 pb-24">
+<!-- Page Title -->
+<div class="mb-8">
+<h1 class="text-2xl font-bold text-text-main mb-2">Configuración del Recargo de Equivalencia</h1>
+<p class="text-text-subdued">Gestiona los ajustes generales, tasas impositivas y datos de facturación.</p>
+</div>
+<!-- Content Grid -->
+<div class="space-y-6">
+<!-- Card 1: Estado del Plugin -->
+<div class="bg-surface rounded-lg polaris-shadow overflow-hidden">
+<div class="p-5 border-b border-border flex justify-between items-center">
+<h2 class="text-base font-semibold text-text-main">Estado del plugin</h2>
+<span class="px-2 py-1 rounded bg-green-100 text-green-800 text-xs font-medium">Activo</span>
+</div>
+<div class="p-5 space-y-5">
+<label class="flex items-start gap-3 cursor-pointer">
+<div class="relative flex items-center pt-0.5">
+<input checked="" class="h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary focus:ring-offset-0" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-text-main">Activar Recargo de Equivalencia</span>
+<span class="text-sm text-text-subdued">Habilita el cálculo automático del RE en el checkout para clientes minoristas.</span>
+</div>
+</label>
+<!-- Info Banner -->
+<div class="bg-info-bg border border-info-border rounded-md p-4 flex gap-3">
+<span class="material-symbols-outlined text-info-icon flex-shrink-0" style="font-size: 20px;">info</span>
+<div class="flex-1">
+<h3 class="text-sm font-semibold text-[#005c99] mb-1">Obligaciones y Tasas</h3>
+<p class="text-sm text-[#202223] mb-3 leading-relaxed">
+                                    El recargo de equivalencia es un régimen especial de IVA obligatorio para comerciantes minoristas que no realizan ninguna transformación en los productos que venden.
+                                </p>
+<!-- Mini Table inside Banner -->
+<div class="overflow-x-auto bg-white/50 rounded border border-info-border/50">
+<table class="w-full text-sm text-left">
+<thead class="bg-white/80 border-b border-info-border/50">
+<tr>
+<th class="px-3 py-2 font-medium text-text-subdued">Tipo</th>
+<th class="px-3 py-2 font-medium text-text-subdued">% IVA</th>
+<th class="px-3 py-2 font-medium text-text-subdued">% RE</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-info-border/30">
+<tr>
+<td class="px-3 py-2 text-text-main">General</td>
+<td class="px-3 py-2 text-text-subdued">21%</td>
+<td class="px-3 py-2 font-medium text-text-main">5.2%</td>
+</tr>
+<tr>
+<td class="px-3 py-2 text-text-main">Reducido</td>
+<td class="px-3 py-2 text-text-subdued">10%</td>
+<td class="px-3 py-2 font-medium text-text-main">1.4%</td>
+</tr>
+<tr>
+<td class="px-3 py-2 text-text-main">Superreducido</td>
+<td class="px-3 py-2 text-text-subdued">4%</td>
+<td class="px-3 py-2 font-medium text-text-main">0.5%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Comportamiento -->
+<div class="bg-surface rounded-lg polaris-shadow">
+<div class="p-5 border-b border-border">
+<h2 class="text-base font-semibold text-text-main">Comportamiento</h2>
+</div>
+<div class="p-5 space-y-6">
+<!-- Radio Group -->
+<div>
+<p class="text-sm font-medium text-text-main mb-3">Modo de aplicación</p>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="h-4 w-4 border-gray-300 text-primary focus:ring-primary" name="app_mode" type="radio"/>
+<span class="text-sm text-text-main">Aplicar RE automáticamente a clientes marcados</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input class="h-4 w-4 border-gray-300 text-primary focus:ring-primary" name="app_mode" type="radio"/>
+<span class="text-sm text-text-main">Solo aplicar RE manualmente</span>
+</label>
+</div>
+</div>
+<hr class="border-border"/>
+<!-- Checkboxes -->
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary focus:ring-offset-0" type="checkbox"/>
+<span class="text-sm text-text-main">Mostrar desglose RE en facturas</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary focus:ring-offset-0" type="checkbox"/>
+<span class="text-sm text-text-main">Incluir RE como línea en checkout</span>
+</label>
+</div>
+<!-- Dropdown -->
+<div>
+<label class="block text-sm font-medium text-text-main mb-1.5">Tipo IVA por defecto</label>
+<select class="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2 px-3">
+<option>21% (General)</option>
+<option>10% (Reducido)</option>
+<option>4% (Superreducido)</option>
+</select>
+<p class="mt-1 text-xs text-text-subdued">Se usará si el producto no tiene un tipo de IVA asignado.</p>
+</div>
+</div>
+</div>
+<!-- Card 3: Datos fiscales del vendedor -->
+<div class="bg-surface rounded-lg polaris-shadow">
+<div class="p-5 border-b border-border">
+<h2 class="text-base font-semibold text-text-main">Datos fiscales del vendedor</h2>
+</div>
+<div class="p-5 space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Nombre -->
+<div>
+<label class="block text-sm font-medium text-text-main mb-1.5">Nombre empresa</label>
+<input class="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2 px-3" type="text" value="Mi Tienda S.L."/>
+</div>
+<!-- NIF/CIF with validation -->
+<div>
+<label class="block text-sm font-medium text-text-main mb-1.5">NIF / CIF</label>
+<div class="relative">
+<input class="block w-full rounded-md border-green-500 shadow-sm focus:border-green-600 focus:ring-green-600 sm:text-sm py-2 px-3 pr-10" type="text" value="B12345678"/>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+<span class="material-symbols-outlined text-green-600 text-lg">check_circle</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Dirección -->
+<div>
+<label class="block text-sm font-medium text-text-main mb-1.5">Dirección fiscal</label>
+<input class="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2 px-3" type="text" value="Calle Ejemplo 15, 28001 Madrid"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+<!-- Prefijo -->
+<div>
+<label class="block text-sm font-medium text-text-main mb-1.5">Prefijo facturas RE</label>
+<input class="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2 px-3" type="text" value="RE"/>
+</div>
+<!-- Siguiente numero -->
+<div>
+<label class="block text-sm font-medium text-text-main mb-1.5">Siguiente número factura</label>
+<input class="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-2 px-3" type="number" value="1"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Footer Action -->
+<div class="fixed bottom-0 left-0 sm:left-64 right-0 bg-surface border-t border-border p-4 flex justify-end items-center z-10 polaris-shadow">
+<button class="bg-primary hover:bg-primary-hover text-white font-medium py-2 px-4 rounded shadow-sm transition-colors text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">save</span>
+                    Guardar configuración
+                </button>
+</div>
+</div>
+</main>
+</body></html>

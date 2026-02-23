@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard RE — Informes Fiscales</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#6B21A8", // Purple requested by user
+                        "primary-dark": "#4c1d95",
+                        "primary-light": "#9333ea",
+                        "shopify-surface": "#F6F6F7",
+                        "shopify-border": "#E1E3E5",
+                        "shopify-text": "#202223",
+                        "shopify-subtext": "#6D7175",
+                        "shopify-green": "#008060",
+                        "shopify-green-bg": "#E3F1DF",
+                        "shopify-amber-bg": "#FFEA8A",
+                        "shopify-amber-border": "#EECD25",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    boxShadow: {
+                        'polaris': '0px 1px 2px 0px rgba(0, 0, 0, 0.05), 0px 0px 0px 1px rgba(63, 63, 68, 0.05)',
+                        'polaris-hover': '0px 2px 4px 0px rgba(0, 0, 0, 0.05), 0px 0px 0px 1px rgba(63, 63, 68, 0.05)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #F6F6F7;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .polaris-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05), 0px 0px 0px 1px rgba(63, 63, 68, 0.05);
+        }
+    </style>
+</head>
+<body class="text-shopify-text">
+<div class="min-h-screen flex flex-col max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-8 gap-8">
+<!-- Header -->
+<header class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h1 class="text-2xl font-bold tracking-tight text-[#150f1a]">Dashboard RE — Informes Fiscales</h1>
+<p class="text-shopify-subtext text-sm mt-1">Resumen de Recargo de Equivalencia y tipos impositivos</p>
+</div>
+<div class="relative">
+<button class="flex items-center gap-2 bg-white border border-[#C9CCCF] hover:bg-[#F6F6F7] text-sm font-medium px-3 py-2 rounded shadow-sm transition-colors group">
+<span class="material-symbols-outlined text-[20px] text-shopify-subtext">calendar_month</span>
+<span class="text-shopify-text">Febrero 2026</span>
+<span class="material-symbols-outlined text-[20px] text-shopify-subtext">expand_more</span>
+</button>
+</div>
+</header>
+<!-- KPI Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- KPI 1 -->
+<div class="polaris-card p-4 flex flex-col justify-between h-32 hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start">
+<p class="text-sm font-semibold text-shopify-subtext truncate">Total RE cobrado</p>
+<span class="material-symbols-outlined text-primary text-[20px]">payments</span>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-shopify-text">€847,32</h3>
+<div class="h-1 w-8 bg-primary rounded-full mt-2"></div>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="polaris-card p-4 flex flex-col justify-between h-32 hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start">
+<p class="text-sm font-semibold text-shopify-subtext truncate">Pedidos con RE</p>
+<span class="bg-shopify-green-bg text-shopify-green px-2 py-0.5 rounded text-xs font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+                        12 vs enero
+                    </span>
+</div>
+<h3 class="text-2xl font-bold text-shopify-text">38</h3>
+</div>
+<!-- KPI 3 -->
+<div class="polaris-card p-4 flex flex-col justify-between h-32 hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start">
+<p class="text-sm font-semibold text-shopify-subtext truncate">Clientes RE activos</p>
+<span class="material-symbols-outlined text-shopify-subtext text-[20px]">group</span>
+</div>
+<h3 class="text-2xl font-bold text-shopify-text">42</h3>
+</div>
+<!-- KPI 4 -->
+<div class="polaris-card p-4 flex flex-col justify-between h-32 hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start">
+<p class="text-sm font-semibold text-shopify-subtext truncate">Ticket medio RE</p>
+<span class="bg-shopify-green-bg text-shopify-green px-2 py-0.5 rounded text-xs font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                        8%
+                    </span>
+</div>
+<h3 class="text-2xl font-bold text-shopify-text">€127,50</h3>
+</div>
+</section>
+<!-- Main Chart Section -->
+<section class="polaris-card p-6">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="text-lg font-bold text-shopify-text">RE cobrado por mes</h2>
+<p class="text-sm text-shopify-subtext mt-1">Tendencia de los últimos 6 meses</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-xs text-shopify-subtext font-medium">Recargo Cobrado</span>
+</div>
+</div>
+<div class="w-full h-64 flex items-end justify-between gap-4 px-2 sm:px-8">
+<!-- Sep -->
+<div class="group flex flex-col items-center flex-1 gap-2 h-full justify-end cursor-pointer">
+<div class="w-full bg-primary/20 hover:bg-primary/30 rounded-t-sm transition-all relative group-hover:-translate-y-1 duration-300" style="height: 30%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">€254,00</div>
+</div>
+<span class="text-xs font-medium text-shopify-subtext">Sep</span>
+</div>
+<!-- Oct -->
+<div class="group flex flex-col items-center flex-1 gap-2 h-full justify-end cursor-pointer">
+<div class="w-full bg-primary/30 hover:bg-primary/40 rounded-t-sm transition-all relative group-hover:-translate-y-1 duration-300" style="height: 45%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">€381,00</div>
+</div>
+<span class="text-xs font-medium text-shopify-subtext">Oct</span>
+</div>
+<!-- Nov -->
+<div class="group flex flex-col items-center flex-1 gap-2 h-full justify-end cursor-pointer">
+<div class="w-full bg-primary/40 hover:bg-primary/50 rounded-t-sm transition-all relative group-hover:-translate-y-1 duration-300" style="height: 40%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">€340,50</div>
+</div>
+<span class="text-xs font-medium text-shopify-subtext">Nov</span>
+</div>
+<!-- Dic -->
+<div class="group flex flex-col items-center flex-1 gap-2 h-full justify-end cursor-pointer">
+<div class="w-full bg-primary/60 hover:bg-primary/70 rounded-t-sm transition-all relative group-hover:-translate-y-1 duration-300" style="height: 90%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">€765,20</div>
+</div>
+<span class="text-xs font-medium text-shopify-subtext">Dic</span>
+</div>
+<!-- Ene -->
+<div class="group flex flex-col items-center flex-1 gap-2 h-full justify-end cursor-pointer">
+<div class="w-full bg-primary/80 hover:bg-primary/90 rounded-t-sm transition-all relative group-hover:-translate-y-1 duration-300" style="height: 65%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">€550,80</div>
+</div>
+<span class="text-xs font-medium text-shopify-subtext">Ene</span>
+</div>
+<!-- Feb -->
+<div class="group flex flex-col items-center flex-1 gap-2 h-full justify-end cursor-pointer">
+<div class="w-full bg-gradient-to-t from-primary to-primary-light rounded-t-sm transition-all relative group-hover:-translate-y-1 duration-300" style="height: 100%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">€847,32</div>
+</div>
+<span class="text-xs font-bold text-shopify-text">Feb</span>
+</div>
+</div>
+</section>
+<!-- Detailed Breakdown Grid -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Tax Breakdown -->
+<div class="polaris-card p-0 flex flex-col lg:col-span-1">
+<div class="p-5 border-b border-shopify-border">
+<h3 class="font-bold text-shopify-text">Desglose por tipo IVA</h3>
+</div>
+<div class="p-5 flex flex-col gap-6 flex-1 justify-center">
+<!-- General -->
+<div>
+<div class="flex justify-between items-end mb-1">
+<span class="text-sm font-semibold text-shopify-text">General (5.2%)</span>
+<span class="text-sm text-shopify-subtext">€712,40 (84%)</span>
+</div>
+<div class="w-full bg-[#E1E3E5] rounded-full h-2">
+<div class="bg-[#4a1575] h-2 rounded-full" style="width: 84%"></div>
+</div>
+</div>
+<!-- Reducido -->
+<div>
+<div class="flex justify-between items-end mb-1">
+<span class="text-sm font-semibold text-shopify-text">Reducido (1.4%)</span>
+<span class="text-sm text-shopify-subtext">€98,50 (12%)</span>
+</div>
+<div class="w-full bg-[#E1E3E5] rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 12%"></div>
+</div>
+</div>
+<!-- Superreducido -->
+<div>
+<div class="flex justify-between items-end mb-1">
+<span class="text-sm font-semibold text-shopify-text">Superreducido (0.5%)</span>
+<span class="text-sm text-shopify-subtext">€36,42 (4%)</span>
+</div>
+<div class="w-full bg-[#E1E3E5] rounded-full h-2">
+<div class="bg-primary-light h-2 rounded-full" style="width: 4%"></div>
+</div>
+</div>
+</div>
+<div class="p-4 bg-gray-50 border-t border-shopify-border rounded-b-lg">
+<a class="text-sm text-primary font-medium hover:underline flex items-center gap-1" href="#">
+                        Ver informe detallado de impuestos <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Top Customers Table -->
+<div class="polaris-card p-0 flex flex-col lg:col-span-2 overflow-hidden">
+<div class="p-5 border-b border-shopify-border flex justify-between items-center">
+<h3 class="font-bold text-shopify-text">Top clientes RE</h3>
+<button class="text-shopify-subtext hover:text-shopify-text">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left">
+<thead class="bg-gray-50 text-shopify-subtext font-medium border-b border-shopify-border">
+<tr>
+<th class="px-5 py-3 w-1/2">Cliente</th>
+<th class="px-5 py-3 text-right">Pedidos</th>
+<th class="px-5 py-3 text-right">Total RE</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-shopify-border">
+<tr class="hover:bg-gray-50 transition-colors group">
+<td class="px-5 py-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-purple-100 text-primary flex items-center justify-center font-bold text-xs">MG</div>
+<div class="font-medium text-shopify-text group-hover:underline cursor-pointer">Maria Garcia</div>
+</div>
+</td>
+<td class="px-5 py-4 text-right text-shopify-text">12</td>
+<td class="px-5 py-4 text-right font-medium text-shopify-text">€234,50</td>
+</tr>
+<tr class="hover:bg-gray-50 transition-colors group">
+<td class="px-5 py-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs">CR</div>
+<div class="font-medium text-shopify-text group-hover:underline cursor-pointer">Carlos Rodriguez</div>
+</div>
+</td>
+<td class="px-5 py-4 text-right text-shopify-text">8</td>
+<td class="px-5 py-4 text-right font-medium text-shopify-text">€189,20</td>
+</tr>
+<tr class="hover:bg-gray-50 transition-colors group">
+<td class="px-5 py-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center font-bold text-xs">JP</div>
+<div class="font-medium text-shopify-text group-hover:underline cursor-pointer">Juan Perez</div>
+</div>
+</td>
+<td class="px-5 py-4 text-right text-shopify-text">6</td>
+<td class="px-5 py-4 text-right font-medium text-shopify-text">€156,80</td>
+</tr>
+<!-- Added extra row to fill space nicely -->
+<tr class="hover:bg-gray-50 transition-colors group">
+<td class="px-5 py-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-orange-100 text-orange-700 flex items-center justify-center font-bold text-xs">EL</div>
+<div class="font-medium text-shopify-text group-hover:underline cursor-pointer">Elena Lopez</div>
+</div>
+</td>
+<td class="px-5 py-4 text-right text-shopify-text">4</td>
+<td class="px-5 py-4 text-right font-medium text-shopify-text">€98,40</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Footer Actions -->
+<footer class="flex flex-col md:flex-row gap-4 items-center justify-between pt-4 border-t border-shopify-border">
+<div class="bg-amber-50 border border-amber-200 rounded-md p-3 flex items-start gap-3 w-full md:w-auto flex-1 max-w-2xl">
+<span class="material-symbols-outlined text-amber-600 mt-0.5">warning</span>
+<div>
+<p class="text-sm font-semibold text-gray-900">Modelo 309: presentar antes del 20/04/2026</p>
+<p class="text-sm text-gray-600">Periodo de liquidación: Primer Trimestre (Q1 2026)</p>
+</div>
+</div>
+<div class="flex gap-3 w-full md:w-auto justify-end">
+<button class="px-4 py-2 bg-white border border-[#C9CCCF] text-shopify-text font-medium rounded shadow-sm hover:bg-gray-50 transition text-sm">
+                    Configuración
+                </button>
+<button class="px-4 py-2 bg-primary hover:bg-primary-dark text-white font-medium rounded shadow-sm transition text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                    Exportar datos fiscales Q1
+                </button>
+</div>
+</footer>
+</div>
+</body></html>

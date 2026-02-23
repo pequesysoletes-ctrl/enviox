@@ -1,0 +1,203 @@
+<html lang="es"><head>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">```html
+
+
+
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DHL Pro - Crear Devolución</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d42111",
+                        "dhl-yellow": "#FFCC00",
+                        "background-light": "#F6F6F7",
+                        "background-dark": "#221210",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+    </style>
+<!-- Sticky Header -->
+<header class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 h-16 flex items-center justify-between">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-700 dark:text-slate-300">arrow_back</span>
+</button>
+<h1 class="text-lg font-semibold text-slate-800 dark:text-slate-100">Crear devolución</h1>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</header>
+<main class="max-w-lg mx-auto p-4 space-y-4 pb-32">
+<!-- Card 1: Seleccionar pedido -->
+<section class="bg-white dark:bg-slate-900 rounded-xl p-4 shadow-sm border border-slate-200 dark:border-slate-800">
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-4">Seleccionar pedido</h2>
+<div class="relative mb-4">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary text-sm" placeholder="Buscar pedido entregado..." type="text"/>
+</div>
+<!-- Selected Order Preview -->
+<div class="flex flex-col gap-3 p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-100 dark:border-slate-700">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm font-semibold text-slate-900 dark:text-slate-100">#2047 — Sophie Laurent</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Entregado 16/02/2026</p>
+</div>
+<span class="bg-dhl-yellow text-[10px] font-bold px-2 py-1 rounded text-slate-900 uppercase tracking-tight">DHL Express</span>
+</div>
+</div>
+</section>
+<!-- Card 2: Motivo -->
+<section class="bg-white dark:bg-slate-900 rounded-xl p-4 shadow-sm border border-slate-200 dark:border-slate-800">
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-4">Motivo</h2>
+<div class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Motivo de la devolución</label>
+<select class="w-full p-3 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary text-sm">
+<option selected="">Producto defectuoso</option>
+<option>No es lo que esperaba</option>
+<option>Talla/Color incorrecto</option>
+<option>Llegó tarde</option>
+<option>Otros</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Notas adicionales (opcional)</label>
+<textarea class="w-full p-3 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary text-sm" placeholder="Escribe aquí los detalles del problema..." rows="3"></textarea>
+</div>
+</div>
+</section>
+<!-- Card 3: Servicio para la devolución -->
+<section class="bg-white dark:bg-slate-900 rounded-xl p-4 shadow-sm border border-slate-200 dark:border-slate-800">
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Servicio para la devolución</h2>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Selecciona el método de transporte</p>
+<div class="space-y-3">
+<!-- Option 1: DHL Express -->
+<label class="relative flex items-center p-4 rounded-lg border-2 border-dhl-yellow bg-dhl-yellow/5 cursor-pointer">
+<input checked="" class="hidden peer" name="service" type="radio"/>
+<div class="w-5 h-5 rounded-full border-2 border-dhl-yellow flex items-center justify-center mr-3">
+<div class="w-2.5 h-2.5 rounded-full bg-dhl-yellow"></div>
+</div>
+<div class="flex-1">
+<p class="text-sm font-semibold text-slate-900 dark:text-slate-100">DHL Express — Return Worldwide</p>
+</div>
+<span class="material-symbols-outlined text-dhl-yellow">verified</span>
+</label>
+<!-- Option 2: eCommerce Ibérica -->
+<label class="relative flex items-center p-4 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-primary/50 cursor-pointer">
+<input class="hidden" name="service" type="radio"/>
+<div class="w-5 h-5 rounded-full border-2 border-slate-300 dark:border-slate-600 flex items-center justify-center mr-3">
+<div class="w-2.5 h-2.5 rounded-full bg-transparent"></div>
+</div>
+<div class="flex-1">
+<p class="text-sm font-semibold text-slate-700 dark:text-slate-300">eCommerce Ibérica — Return Connect</p>
+</div>
+</label>
+</div>
+<div class="mt-4 flex gap-2 items-start bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+<span class="material-symbols-outlined text-blue-600 dark:text-blue-400 text-sm">info</span>
+<p class="text-xs text-blue-700 dark:text-blue-300 leading-relaxed">
+                    Para devoluciones internacionales se recomienda <strong>DHL Express</strong> para agilizar trámites de aduanas.
+                </p>
+</div>
+</section>
+<!-- Card 4: Dirección de recogida -->
+<section class="bg-white dark:bg-slate-900 rounded-xl p-4 shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Dirección de recogida</h2>
+<!-- Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between mb-3">
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400">Usar dirección del pedido original</span>
+</div>
+<div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-dashed border-slate-200 dark:border-slate-700">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-slate-400 mt-0.5">location_on</span>
+<p class="text-sm text-slate-500 dark:text-slate-400 leading-normal">
+                        15 Rue de Rivoli, 75001 París, Francia
+                    </p>
+</div>
+</div>
+</section>
+<!-- Card 5: Método de entrega -->
+<section class="bg-white dark:bg-slate-900 rounded-xl p-4 shadow-sm border border-slate-200 dark:border-slate-800">
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-4">Método de entrega</h2>
+<div class="space-y-4">
+<label class="flex items-start gap-3 cursor-pointer">
+<input checked="" class="mt-1 text-primary focus:ring-primary h-4 w-4 border-slate-300" name="delivery-method" type="radio"/>
+<div>
+<p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Generar etiqueta</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">El cliente lleva el paquete a un punto de conveniencia DHL ServicePoint.</p>
+</div>
+</label>
+<div class="h-px bg-slate-100 dark:bg-slate-800 ml-7"></div>
+<label class="flex items-start gap-3 cursor-pointer">
+<input class="mt-1 text-primary focus:ring-primary h-4 w-4 border-slate-300" name="delivery-method" type="radio"/>
+<div>
+<p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Solicitar recogida en domicilio</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Un mensajero pasará por la dirección indicada a recoger el paquete.</p>
+</div>
+</label>
+</div>
+</section>
+</main>
+<!-- Sticky Footer -->
+<footer class="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 p-4 pb-8 shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
+<div class="max-w-lg mx-auto flex flex-col gap-3">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3.5 rounded-lg transition-colors shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">confirmation_number</span>
+                Generar etiqueta de devolución
+            </button>
+<button class="w-full bg-transparent border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-semibold py-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                Cancelar
+            </button>
+</div>
+</footer>
+<style>
+    body {
+        background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+        background-size: 20px 20px;
+    }
+    .dark body {
+        background-image: radial-gradient(#334155 1px, transparent 1px);
+    }
+</style></body></html><!-- Imagen de fondo de textura sutil o gradiente abstracto -->

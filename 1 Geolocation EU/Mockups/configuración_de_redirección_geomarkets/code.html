@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Configuración de redirección GeoMarkets</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2563EB", // Blue requested
+                        "shopify-green": "#008060", // Green requested
+                        "background-light": "#F6F6F7", // Polaris background
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .polaris-shadow {
+            box-shadow: 0px 0px 5px rgba(23, 24, 24, 0.05), 0px 1px 2px rgba(0, 0, 0, 0.15);
+        }
+        /* Custom scrollbar for sidebar if needed */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #dfe3e8;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col md:flex-row overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-full md:w-64 bg-white dark:bg-[#1a202c] border-r border-slate-200 dark:border-slate-800 flex-shrink-0 flex flex-col h-screen overflow-y-auto">
+<div class="p-4 flex items-center gap-3 border-b border-slate-100 dark:border-slate-800">
+<div class="bg-gradient-to-tr from-primary to-blue-400 aspect-square rounded-lg size-10 flex items-center justify-center text-white font-bold text-xl shadow-sm">
+                G
+            </div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-base font-semibold leading-tight">GeoMarkets</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium">Shopify App</p>
+</div>
+</div>
+<nav class="flex-1 p-2 gap-1 flex flex-col">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors">home</span>
+<span class="text-sm font-medium">General</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:text-blue-400 font-medium" href="#">
+<span class="material-symbols-outlined text-primary fill-1">alt_route</span>
+<span class="text-sm">Redirección</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors">public</span>
+<span class="text-sm">Mercados</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors">palette</span>
+<span class="text-sm">Diseño del selector</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors">bar_chart</span>
+<span class="text-sm">Analíticas</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-100 dark:border-slate-800">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-500">settings</span>
+<span class="text-sm font-medium">Ajustes</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto h-screen relative flex flex-col">
+<!-- Header -->
+<header class="bg-background-light dark:bg-background-dark sticky top-0 z-10 px-6 py-5 md:px-10 md:py-8 flex justify-between items-center">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 text-slate-500 text-sm mb-1">
+<span class="cursor-pointer hover:underline">App</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>Configuración</span>
+</div>
+<h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Configuración de redirección</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Gestiona cómo se redirigen los visitantes según su geolocalización.</p>
+</div>
+<button class="hidden md:flex bg-shopify-green hover:bg-[#006e52] text-white px-4 py-2 rounded-lg text-sm font-medium shadow-sm transition-colors items-center gap-2">
+                Guardar configuración
+            </button>
+</header>
+<div class="px-6 md:px-10 pb-20 max-w-4xl mx-auto w-full flex flex-col gap-6">
+<!-- Card 1: Modo de redirección -->
+<section class="bg-white dark:bg-[#1a202c] rounded-lg polaris-shadow overflow-hidden relative">
+<!-- Blue Accent Header -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
+<div class="p-5 md:p-6 border-b border-slate-100 dark:border-slate-700">
+<h3 class="text-lg font-semibold text-slate-900 dark:text-white">Modo de redirección</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Elige el comportamiento principal de la aplicación cuando llega un nuevo visitante.</p>
+</div>
+<div class="p-5 md:p-6 flex flex-col gap-4">
+<!-- Option 1: Selected -->
+<label class="cursor-pointer group relative flex items-start gap-3 p-4 border border-primary bg-primary/5 rounded-lg transition-all">
+<div class="flex items-center h-5">
+<input checked="" class="h-4 w-4 text-primary border-gray-300 focus:ring-primary" name="redirection_mode" type="radio"/>
+</div>
+<div class="flex flex-col">
+<span class="block text-sm font-semibold text-slate-900 dark:text-white">Automática (redirect 302)</span>
+<span class="block text-sm text-slate-500 dark:text-slate-400 mt-1">El visitante se redirige instantáneamente al mercado correcto. Recomendado.</span>
+</div>
+<span class="absolute top-4 right-4 bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Activo</span>
+</label>
+<!-- Option 2 -->
+<label class="cursor-pointer group flex items-start gap-3 p-4 border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 rounded-lg transition-all">
+<div class="flex items-center h-5">
+<input class="h-4 w-4 text-primary border-gray-300 focus:ring-primary" name="redirection_mode" type="radio"/>
+</div>
+<div class="flex flex-col">
+<span class="block text-sm font-medium text-slate-900 dark:text-white">Con banner de confirmación</span>
+<span class="block text-sm text-slate-500 dark:text-slate-400 mt-1">Muestra un banner preguntando al visitante si quiere cambiar.</span>
+</div>
+</label>
+<!-- Option 3 -->
+<label class="cursor-pointer group flex items-start gap-3 p-4 border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 rounded-lg transition-all">
+<div class="flex items-center h-5">
+<input class="h-4 w-4 text-primary border-gray-300 focus:ring-primary" name="redirection_mode" type="radio"/>
+</div>
+<div class="flex flex-col">
+<span class="block text-sm font-medium text-slate-900 dark:text-white">Solo selector manual</span>
+<span class="block text-sm text-slate-500 dark:text-slate-400 mt-1">Solo el widget de selector. Sin redirect automático.</span>
+</div>
+</label>
+</div>
+</section>
+<!-- Card 2: Banner de confirmación (Dimmed) -->
+<section class="bg-white dark:bg-[#1a202c] rounded-lg polaris-shadow relative overflow-hidden opacity-75 grayscale-[0.3]">
+<!-- Disabled Overlay hint -->
+<div class="absolute inset-0 bg-white/40 dark:bg-black/20 z-10 pointer-events-none flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+<!-- This could be a tooltip if needed, kept invisible for now as per clean look request -->
+</div>
+<div class="p-5 md:p-6 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center">
+<h3 class="text-lg font-semibold text-slate-900 dark:text-white">Banner de confirmación</h3>
+<span class="bg-slate-100 text-slate-500 text-xs px-2 py-1 rounded font-medium border border-slate-200">Solo en modo banner</span>
+</div>
+<div class="p-5 md:p-6 flex flex-col gap-6">
+<!-- Preview Mockup -->
+<div class="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+<div class="bg-slate-50 dark:bg-slate-800 px-4 py-2 border-b border-slate-200 dark:border-slate-700 flex items-center gap-2">
+<div class="size-2 rounded-full bg-red-400"></div>
+<div class="size-2 rounded-full bg-yellow-400"></div>
+<div class="size-2 rounded-full bg-green-400"></div>
+<span class="text-xs text-slate-400 ml-2">Vista previa</span>
+</div>
+<!-- The banner preview itself -->
+<div class="bg-slate-900 text-white p-4 flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<span class="text-xl">🇫🇷</span>
+<p class="text-sm font-medium leading-tight">Il semble que vous êtes en France. Voulez-vous voir la boutique en français?</p>
+</div>
+<div class="flex gap-2 shrink-0">
+<button class="text-xs font-medium px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 text-white transition">Non</button>
+<button class="text-xs font-medium px-3 py-1.5 rounded bg-white text-slate-900 shadow-sm hover:bg-slate-100 transition">Oui, changer</button>
+</div>
+</div>
+<!-- Placeholder Content below banner -->
+<div class="h-32 bg-slate-50 dark:bg-slate-800/50 flex items-center justify-center relative overflow-hidden" style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 20px 20px;">
+<div class="text-slate-400 text-sm font-medium bg-white dark:bg-slate-800 px-3 py-1 rounded shadow-sm z-10">Contenido de la tienda...</div>
+<div class="absolute inset-0 bg-gradient-to-b from-white/50 to-transparent dark:from-slate-900/50"></div>
+</div>
+</div>
+<!-- Inputs -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Texto del banner</label>
+<input class="w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-sm focus:ring-primary focus:border-primary" type="text" value="Parece que estás en {country}. ¿Quieres cambiar?"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Botón aceptar</label>
+<input class="w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-sm focus:ring-primary focus:border-primary" type="text" value="Cambiar"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Botón rechazar</label>
+<input class="w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-sm focus:ring-primary focus:border-primary" type="text" value="No, gracias"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Card 3: Exclusiones -->
+<section class="bg-white dark:bg-[#1a202c] rounded-lg polaris-shadow">
+<div class="p-5 md:p-6 border-b border-slate-100 dark:border-slate-700">
+<h3 class="text-lg font-semibold text-slate-900 dark:text-white">Exclusiones y Reglas</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Define cuándo NO debe actuar la redirección automática.</p>
+</div>
+<div class="p-5 md:p-6 flex flex-col gap-6">
+<!-- Toggle 1: Bots -->
+<div class="flex items-start justify-between gap-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<label class="text-sm font-medium text-slate-900 dark:text-white cursor-pointer" for="bots">No redirigir bots de buscadores (Google, Bing, etc.)</label>
+<span class="material-symbols-outlined text-green-600 text-[18px]" title="Recomendado">check_circle</span>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="inline-flex items-center rounded-full bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-700 ring-1 ring-inset ring-amber-600/20">
+<span class="material-symbols-outlined text-[12px] mr-1">warning</span> CRÍTICO para SEO. No desactivar.
+                                </span>
+</div>
+</div>
+<div aria-checked="true" class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 bg-shopify-green" role="switch">
+<span aria-hidden="true" class="translate-x-5 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</div>
+</div>
+<hr class="border-slate-100 dark:border-slate-700"/>
+<!-- Textarea: URLs -->
+<div class="flex flex-col gap-2">
+<label class="block text-sm font-medium text-slate-900 dark:text-white">URLs excluidas (una por línea)</label>
+<p class="text-xs text-slate-500 dark:text-slate-400">La redirección no se activará si la URL contiene estos términos.</p>
+<textarea class="block w-full rounded-lg border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-sm font-mono text-slate-600 dark:text-slate-300 focus:ring-primary focus:border-primary" rows="4">/checkout
+/cart
+/account</textarea>
+</div>
+<hr class="border-slate-100 dark:border-slate-700"/>
+<!-- Toggle 2: Cookie -->
+<div class="flex items-center justify-between gap-4">
+<div class="flex flex-col">
+<label class="text-sm font-medium text-slate-900 dark:text-white">Respetar elección manual del usuario</label>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-0.5">Si el usuario cambia de país manualmente, recordarlo por 30 días.</p>
+</div>
+<div aria-checked="true" class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 bg-shopify-green" role="switch">
+<span aria-hidden="true" class="translate-x-5 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</div>
+</div>
+<!-- Toggle 3: Checkout -->
+<div class="flex items-center justify-between gap-4">
+<div class="flex flex-col">
+<label class="text-sm font-medium text-slate-900 dark:text-white">No redirigir en páginas de checkout</label>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-0.5">Evita interrupciones durante el proceso de pago.</p>
+</div>
+<div aria-checked="true" class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 bg-shopify-green" role="switch">
+<span aria-hidden="true" class="translate-x-5 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Mobile Sticky Footer Action -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-white dark:bg-[#1a202c] border-t border-slate-200 dark:border-slate-700 z-20 shadow-lg">
+<button class="w-full bg-shopify-green hover:bg-[#006e52] text-white py-3 rounded-lg text-sm font-bold shadow-sm transition-colors flex justify-center items-center gap-2">
+                Guardar configuración
+            </button>
+</div>
+</main>
+<!-- Images with data-alt -->
+<!-- The only images used are gradients and placeholders in css, or material icons. No explicit <img> tags needed for this design except potentially a logo which is handled by text/css shapes. -->
+</body></html>

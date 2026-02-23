@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GeoMarkets EU Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#205eee",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-hidden">
+<div class="flex h-screen w-full overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 flex-shrink-0 bg-white dark:bg-[#1a202c] border-r border-slate-200 dark:border-slate-800 flex flex-col justify-between overflow-y-auto">
+<div>
+<!-- App Header -->
+<div class="p-4 flex items-center gap-3 mb-2">
+<div class="bg-center bg-no-repeat bg-cover rounded-lg size-10 shadow-sm border border-slate-100" data-alt="GeoMarkets Logo abstract" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAXyvi_No6OSGuG_Ikv0xOU5R6OSimV4XBJoxOmMYMgF3g9PuJIi8dFgKklaX90C49O9SeSg8ZkqTleV6w2lCdhJkpHPc0LDwgLHKdimS4uz1qOTdcBxiQFzm8w6EEnHnb0qYuBvORPg0Rcu_yeWWA6t4f_De5oHWJpPmfHMvjNSoKkzu4TZmGE4jEUVeKMkKjIqeghJpa29a-A29jz3PYcwe0P4h0mINaqR16maRFPzZPi3UTDU8l9Fauy6kwK0EerZS1vZYNLCsUo");'></div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-sm font-semibold leading-tight">GeoMarkets EU</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-normal">Shopify App</p>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="flex flex-col gap-1 px-2">
+<!-- Dashboard (Active) -->
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:text-primary-400 group" href="#">
+<span class="material-symbols-outlined filled text-[20px]">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-sm font-medium">Configuración</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">public</span>
+<span class="text-sm font-medium">Markets</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">touch_app</span>
+<span class="text-sm font-medium">Selector</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">bar_chart</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">credit_card</span>
+<span class="text-sm font-medium">Plan</span>
+</a>
+</nav>
+</div>
+<div class="p-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group mb-4" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<span class="text-sm font-medium">Ayuda</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-full overflow-y-auto">
+<!-- Header -->
+<header class="px-8 py-6 flex flex-col gap-1 bg-white dark:bg-[#1a202c] border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Dashboard GeoMarkets</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Última actualización: hace 5 min</p>
+</header>
+<div class="p-8 flex flex-col gap-6 max-w-[1200px] mx-auto w-full pb-20">
+<!-- KPI Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Card 1 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col justify-between min-h-[140px]">
+<div class="flex flex-col gap-1">
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Redirecciones hoy</span>
+<div class="flex items-end gap-2">
+<span class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">2,340</span>
+</div>
+</div>
+<div class="h-10 w-full mt-2 flex items-end gap-1">
+<!-- Simple SVG Sparkline simulation -->
+<svg class="w-full h-full text-primary" preserveaspectratio="none" viewbox="0 0 100 25">
+<path d="M0 20 L10 15 L20 18 L30 10 L40 12 L50 5 L60 14 L70 8 L80 10 L90 5 L100 2" fill="none" stroke="currentColor" stroke-width="2"></path>
+<path class="fill-primary/10" d="M0 20 L10 15 L20 18 L30 10 L40 12 L50 5 L60 14 L70 8 L80 10 L90 5 L100 2 V 25 H 0 Z" stroke="none"></path>
+</svg>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col justify-between min-h-[140px]">
+<div class="flex flex-col gap-1">
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Visitantes geolocalizados</span>
+<div class="flex items-center gap-3">
+<span class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">8,912</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">
+<span class="material-symbols-outlined text-[14px] mr-0.5">trending_up</span> 12%
+                                </span>
+</div>
+</div>
+<div class="text-xs text-slate-500 dark:text-slate-400 mt-2">vs ayer</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col justify-between min-h-[140px]">
+<div class="flex flex-col gap-1">
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Mercados activos</span>
+<span class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">5</span>
+</div>
+<div class="flex -space-x-2 mt-2">
+<div class="w-8 h-8 rounded-full border-2 border-white dark:border-slate-800 bg-slate-200 flex items-center justify-center text-xs font-bold overflow-hidden" title="España">
+<img alt="ES" data-alt="Flag of Spain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6tgnRlidP5yGlDtk4UxutDIyP0fZ29TPkg-p6gc5H6CgOXpLEErDEGL0vlHyQxp_VTersazIplATKLGDXk8VBul8NA6au6DjkhVImtEzz76KjeSEm1VO00GuzLpeGnf9_rbGrM3Urw4AcPyXm4Ep2YBQssL68XbidJA4GgLfw_0ALg1X_r2iZg8_llMqAPNAESkpyowqe2kZ_VEGqDnZ2OKb0O78464Ka90xkb3nj7VGYFx4Dq5Kn3_FlLuWu1ATDINgpVUpUnNjL"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-white dark:border-slate-800 bg-slate-200 flex items-center justify-center text-xs font-bold overflow-hidden" title="Francia">
+<img alt="FR" data-alt="Flag of France" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVVayt1AFsqUoLmepOJGuGjEZgPL_UFFBsUclBCmOcy9-D5JChBIRBEXot9rKqYZl8SeXqsK0fuMbbrIYNahqlaMo_NJiU90d1zUMuUFdAjBmCzHNnmS4ibQ4jK-0YnNTGfWzqX4jXD5eUXoky87rzBPNPthbkB5-kMDoo-Gc2Z0UDJRw8K9ItlRK-keiFiT3iUkOUR6cCZWZmoJJbD_FRucnHA4EsgyVOtO3v9T93wXtWJymlqNzfqeCxaVYcFAWMuv7WjUAuWf4G"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-white dark:border-slate-800 bg-slate-200 flex items-center justify-center text-xs font-bold overflow-hidden" title="Alemania">
+<img alt="DE" data-alt="Flag of Germany" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfzaow6n3lqW_nV3p-NNhxpyMmDK4SkY9dSY4Y9v7iSPoDc1rhtgRGdvd1q4VgWvH5mROLESS8AojGvwusV2hkFGpGBrdIynGWhwgYhVqnWvemZVMxTJ8GdphYu1Ggwlnna-lpw2-X-VAcQjjZtV1GWk1JHHvK70OLaQNgz86RbHctNOC5ZnfHrezdHKmciIAqzraBAjw3vHjeEG-2suhidkPDWx45_fzt6bfGfb6F1BtKSxefkiz83jKOs5EquPKT3JneZV_nin8E"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-white dark:border-slate-800 bg-slate-200 flex items-center justify-center text-xs font-bold overflow-hidden" title="Italia">
+<img alt="IT" data-alt="Flag of Italy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPIaV3AThBYPMOsN0MAzhck5YTSljuYeqCpz8oY4PQthK0VnwlE75-bge-YHmIk7SRTK4Ti_vpClkJQYMHDpSucv0AX-byD3l-6g1qoNyE0_w6UrtnJrbqfYBHGN9f3ju2hUvR_6ge1uarwh6F2RSP4FF2IFXRQroYyhWbA2yhjaZCVtT0AC5mtusLfv4CmJDcaSMZFPyYC92UhNAsTCYz3zbxJwkhPIc6FWzp5Z5oOQGseNL8tVogIQpzmNDKLYJhgxVzCDvRHij5"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-white dark:border-slate-800 bg-slate-200 flex items-center justify-center text-xs font-bold overflow-hidden" title="Reino Unido">
+<img alt="GB" data-alt="Flag of United Kingdom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoa_MRUyboU-IF-tY29sML065YkA4ipSi566oy7Z8slzSkJOJfdFHEWdKfxxSm5g2HAmOINcosLAqCWuESEq0rBAekBlUKLW0RfYjqmvqenDFA-BB-6DXJDhBw_8octS9H_sY5RwueWaPmgwUP5aw-3P7nuXQIJGr24xeL6H_ZHvY1DTIcEPF2_pU-XbZ-_Z2RVA43AINOA7BMITtDb40e8nD3mN3Nb_sptEa_E_Dy9MZgFTR3TYNFyRO3vV71XzLanNf6mUZouUAP"/>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col justify-between min-h-[140px]">
+<div class="flex flex-col gap-1">
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Tasa aceptación banner</span>
+<div class="flex items-center gap-3">
+<span class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">84%</span>
+</div>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-2 mt-4 overflow-hidden">
+<div class="bg-primary h-2 rounded-full" style="width: 84%"></div>
+</div>
+</div>
+</div>
+<!-- Main Chart Section -->
+<div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Visitantes por país (última semana)</h3>
+<div class="flex gap-2">
+<button class="px-3 py-1 text-sm font-medium text-slate-600 bg-slate-100 rounded-md hover:bg-slate-200 transition-colors">7D</button>
+<button class="px-3 py-1 text-sm font-medium text-slate-400 hover:text-slate-600 transition-colors">30D</button>
+</div>
+</div>
+<!-- Chart Container -->
+<div class="h-64 w-full flex items-end justify-between gap-2 sm:gap-4 md:gap-8 px-2 md:px-10">
+<!-- Bar Item -->
+<div class="flex flex-col items-center gap-2 flex-1 group cursor-pointer">
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-t-sm relative h-48 group-hover:bg-slate-200 transition-all flex items-end">
+<div class="w-full bg-primary rounded-t-sm relative" style="height: 100%;">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-2 rounded pointer-events-none whitespace-nowrap z-10">3,450</div>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<img alt="ES" class="w-4 h-auto rounded-[2px]" data-alt="Small flag of Spain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8F_4JygrsnDAqf4F2_hctj6WGEDclNvZ7zbXduQSbT0TRZErxZRIYuyTxyeiThu_wyNeM0j6djcEPEsfzs6ik8CHwL9oJ9YIZ6XlOT_x0ayDfGy9hbnY7WY_4ArWTlHqBTszcanuLSRhoHAkMBBSd5C7KZwyw-kG5sUDj9fiK8HvL-cpOTrf60OhvsBkxvaiczts--zj0j6G8WQ60c73bTVgfXXeM_ZykdUaob1wAG5WrsDgNjD18dBK84Lzpo1gB7YjSmwZXxUij"/>
+<span class="text-xs font-semibold text-slate-500">ES</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group cursor-pointer">
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-t-sm relative h-48 group-hover:bg-slate-200 transition-all flex items-end">
+<div class="w-full bg-primary/90 rounded-t-sm relative" style="height: 75%;">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-2 rounded pointer-events-none whitespace-nowrap z-10">2,580</div>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<img alt="FR" class="w-4 h-auto rounded-[2px]" data-alt="Small flag of France" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJKxTkqT67bBZ4qZpbHksvUjLeUbtPugeGPXlNGX-8icjr3wCvUX-2Ef-Xp8CjrlIp02ta-YRkV7qsxpgEePGUKjDoZBRoHyyts5LGq7ckVQH92oI6eswFw7RAitgBUs79KDmBqMsDnNePsxXsUs9Dax9nXuuoegLFtMArMYTnXz_bkZlVTrc8rw6t-KoKVCtXfZ6tm4JWqWf7cYRQ_t28yZ8RiKvoXR7pS8oRUXcukt_8ABtPK8Ti0Ob8bvlMmU6LxFPKKGw-JS-E"/>
+<span class="text-xs font-semibold text-slate-500">FR</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group cursor-pointer">
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-t-sm relative h-48 group-hover:bg-slate-200 transition-all flex items-end">
+<div class="w-full bg-primary/80 rounded-t-sm relative" style="height: 60%;">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-2 rounded pointer-events-none whitespace-nowrap z-10">2,100</div>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<img alt="DE" class="w-4 h-auto rounded-[2px]" data-alt="Small flag of Germany" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADw16PUVQ77reOoQn3UXE2XWOs7yYEVgeXGJ6FW1GZuLuH4QXvSrAKAnDIyVGG3-WK3JNlqznhX11k-jDjN4VpjOWfhM9g1LE_v6zIXVNJ1NeHgFn9cl_3FjkztSF3UEy4-097_eOzgpGH6CXGdDIfOO4VrewbILoTrLABRQxarr_CN6f90-cYKSKAIFb7DbHKvxi7NZaAV9O3Itj5m3dzaXSA7-qE0RpouanivaxSHYvQ3MZq850zE29oO2AgjnL24h9CwM6MQp2f"/>
+<span class="text-xs font-semibold text-slate-500">DE</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group cursor-pointer">
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-t-sm relative h-48 group-hover:bg-slate-200 transition-all flex items-end">
+<div class="w-full bg-primary/70 rounded-t-sm relative" style="height: 45%;">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-2 rounded pointer-events-none whitespace-nowrap z-10">1,550</div>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<img alt="GB" class="w-4 h-auto rounded-[2px]" data-alt="Small flag of UK" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCYAYseLfV7ofkN-6INOZZGX1OiYAFqD3uyKzA7DfIgGmtGGvtTMvaKImQp8xtqjJWgEHaEcpCrub3SxcfAF_IiokBU3KUAuJPR7hh-T90tPJ__-M5f2__pwOADcoK00pYFzS-4Cphr1kaXNmx0Lml_fZpH8MF8NA5czR-3F1da7CUYlUCW3FW7EKGyKdGmIViDn52M8lQ062UtOCBhC7qDnyiU83yYs-8gx94BLsOR4pyAtAGYIZ9OoZoO_hXgVnKF4we_ZJzjqO-"/>
+<span class="text-xs font-semibold text-slate-500">GB</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group cursor-pointer">
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-t-sm relative h-48 group-hover:bg-slate-200 transition-all flex items-end">
+<div class="w-full bg-primary/60 rounded-t-sm relative" style="height: 35%;">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-2 rounded pointer-events-none whitespace-nowrap z-10">1,200</div>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<img alt="IT" class="w-4 h-auto rounded-[2px]" data-alt="Small flag of Italy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL0yPKmVwPlHRobmQC2uEwXTdtDyDOdbOY0-SZ8_fGTCSKhIcy7hOz2A7_imKIfu4D9geJildmWIdzVZp6s1tRfsZj4NBDQcLExeBbyhIFvNsAnp8Vf5JYEQOlhYOUTyrjd7fpKruUwFNp2dWt6_Pb4n0bp0u6yYUwywSqT-EaOFKixpPa0vCiuEg0iJJ__DHVSe1r68xl1hwzsh-EQUz-FH-0lH-zbeVsuqqhkPAIeCJycBi9MtgKNNwDIfakT7WMdfi_txnNaZZ4"/>
+<span class="text-xs font-semibold text-slate-500">IT</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group cursor-pointer">
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-t-sm relative h-48 group-hover:bg-slate-200 transition-all flex items-end">
+<div class="w-full bg-primary/50 rounded-t-sm relative" style="height: 25%;">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-2 rounded pointer-events-none whitespace-nowrap z-10">850</div>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<img alt="PT" class="w-4 h-auto rounded-[2px]" data-alt="Small flag of Portugal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWWk2zeYxF2o5F4sCh-umsu9M-XtipvJsKvSGP7rj3navLsQjZOUHpg8qQXBcPU65VoW0aDKUR2incq0k16LJksh4_kHqRE-H-Sk4EWcYVJJ-c7YKHuRX97O8Qd1pLuCEJQ3a0vtT8j3eWOE-jOvKXvDltqwaQthKHl39icplw-BD83zlUT_8-UWbX2osT5DnQj358tShuqJWFcE0W_StlzVhpcXwB4enRaZf-QSEUp_rjQQmdjym_DnimurxPSKZmLLt2WRffeXMF"/>
+<span class="text-xs font-semibold text-slate-500">PT</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group cursor-pointer">
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-t-sm relative h-48 group-hover:bg-slate-200 transition-all flex items-end">
+<div class="w-full bg-primary/40 rounded-t-sm relative" style="height: 20%;">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-2 rounded pointer-events-none whitespace-nowrap z-10">720</div>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<img alt="NL" class="w-4 h-auto rounded-[2px]" data-alt="Small flag of Netherlands" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfskxPpZraYjFx8T9m4C4uaRuVzmfo3KcIKf4FNgqGNljdbTyN4pboPGRziaB1_TcPWtnVB2UF0GZf7GC-f2e9uV3T30IYfL2e8yNSwMfa6IdY0ZXlt9EqicHflpFK3x_jG8_cxB0BnrovRAgrhbdm32bk8IwGAMmvSGMsp0fbjGPDb6WE0jz8gYTiAE1cW6OFpQLzhiY5oC_x2felLFMPpticOZNHhdGSkGYoIineh9MBE5BjpEdQGCQTavq8Mkf4GCPzJgX9k2MG"/>
+<span class="text-xs font-semibold text-slate-500">NL</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Grid: Table & Alert -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Table Card -->
+<div class="lg:col-span-2 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col">
+<div class="px-6 py-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Últimas redirecciones</h3>
+<button class="text-primary text-sm font-medium hover:underline">Ver todas</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead class="bg-slate-50 dark:bg-slate-900/50 text-slate-500 dark:text-slate-400 font-medium">
+<tr>
+<th class="px-6 py-3">Hora</th>
+<th class="px-6 py-3">Origen</th>
+<th class="px-6 py-3">Ruta de mercado</th>
+<th class="px-6 py-3">Estado</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-700">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<td class="px-6 py-3 text-slate-600 dark:text-slate-300">10:42 AM</td>
+<td class="px-6 py-3">
+<div class="flex items-center gap-2">
+<img alt="FR" class="w-5 rounded-[2px]" data-alt="Flag of France" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3b5cb8YEbGm-9brxiuH8_CbqbVRAqs_Mt7qcXuNGhy1vcxqGiV6RwmNvxS1l_EOtokYmP4i2cWa3PiXrR6PGWyZsYu9eKzAsEL9xXvDFnm3CkpSaQEBhxikzkEUs24bV3FhMAHkiF0kkceVCVD0bk6euZeliiZLRxz1STjm4wP-UzO-BdyfUkdcRPS-SDKy_kdTC0hSEotfXhEo1MINlNxuSeBXnvme8DGI9aLYx7-AHFvsmZNYIbqoKjZIHZJL7BYmQ5jvY47EGz"/>
+<span class="text-slate-900 dark:text-white font-medium">Francia</span>
+</div>
+</td>
+<td class="px-6 py-3 text-slate-600 dark:text-slate-300 font-mono text-xs">/fr-fr/products/t-shirt</td>
+<td class="px-6 py-3">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
+<span class="material-symbols-outlined text-[14px] mr-1">check_circle</span> Aceptado
+                                            </span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<td class="px-6 py-3 text-slate-600 dark:text-slate-300">10:41 AM</td>
+<td class="px-6 py-3">
+<div class="flex items-center gap-2">
+<img alt="DE" class="w-5 rounded-[2px]" data-alt="Flag of Germany" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJwPIYc9kG-Kxh7REMh-fhwvDNvc6C0PMLYRZGbqCZMSdawD_MZ0ce0yffg5A2hZfZXrdGvQs9tw_lxGfuQs2rYzVf-Bt-B9rjmKDYhOh2utbp-u5u12CGKKwDXfYSynyqyx2VdgwTab1rnam8Yx8hHsp6cgQxr-LIpXgnrmNq_QTpPqiwmcBcA-LZRIla4nVw4ZC87Ud_uD6si9LzsoC82_ykGI7_0oP2eJ5TD7AGs66AvW_V2zdm3ITLG9Cvnr4S8U3AReIJ5lR9"/>
+<span class="text-slate-900 dark:text-white font-medium">Alemania</span>
+</div>
+</td>
+<td class="px-6 py-3 text-slate-600 dark:text-slate-300 font-mono text-xs">/de-de/collections/sale</td>
+<td class="px-6 py-3">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
+<span class="material-symbols-outlined text-[14px] mr-1">bolt</span> Auto
+                                            </span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<td class="px-6 py-3 text-slate-600 dark:text-slate-300">10:38 AM</td>
+<td class="px-6 py-3">
+<div class="flex items-center gap-2">
+<img alt="US" class="w-5 rounded-[2px]" data-alt="Flag of USA" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1vk8JmaW_TNxUN7Pw34Joru86WypbEXMRnUxtZv4jyHx6-3mdzXi_IN5vbonbm4OVeTt75kYU59yk_7EQSpuwOwy2UJxo2lsayjDVgDYuDfp-mqXbRTR2RpvF11LPtnbLIIfoExaYqho8QooNg02FS04NBMOyZ_zKxYCilRn_xiQTIeYEn2UDJEYkqlvGk57Q1C86AL2yaYjsa2NGUhscZ329HXjDzlyXJ_SXmuYftGvoobDenJWubKpzNE6zlJy0JQ0IK3NsBZHc"/>
+<span class="text-slate-900 dark:text-white font-medium">EE.UU</span>
+</div>
+</td>
+<td class="px-6 py-3 text-slate-600 dark:text-slate-300 font-mono text-xs">/</td>
+<td class="px-6 py-3">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400">
+<span class="material-symbols-outlined text-[14px] mr-1">cancel</span> Rechazado
+                                            </span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<td class="px-6 py-3 text-slate-600 dark:text-slate-300">10:35 AM</td>
+<td class="px-6 py-3">
+<div class="flex items-center gap-2">
+<img alt="ES" class="w-5 rounded-[2px]" data-alt="Flag of Spain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlk0_6sXbFmMJWFWg6pkNN-BvuoVtQj7x_6cjgKlSPO8INkw76PPsguRA6-HcDuhPhJeW71OMqpxQeB3Y253SB4W262P6EgI-h5x8v6JBMnMdBmcFhL5TNc-kh1mq7sE7l21mVzzx9TnQk7eYnjZOQ0kvW_9A4pOCLlX20PMcUxOqjqhDXP0eKocOoAMb37HG--ymiAEzfaEzKI2Z4wpOg4NL5rjcPwBpCtKZH9P4RsSAxXPhHHbML0DmhR8AkjiY1T051vHWTCZAW"/>
+<span class="text-slate-900 dark:text-white font-medium">España</span>
+</div>
+</td>
+<td class="px-6 py-3 text-slate-600 dark:text-slate-300 font-mono text-xs">/es-es/pages/contact</td>
+<td class="px-6 py-3">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
+<span class="material-symbols-outlined text-[14px] mr-1">check_circle</span> Aceptado
+                                            </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Alert Card -->
+<div class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl p-6 flex flex-col gap-4 shadow-sm">
+<div class="flex items-start gap-3">
+<div class="p-2 bg-amber-100 dark:bg-amber-800 rounded-lg text-amber-700 dark:text-amber-400">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Países sin mercado</h3>
+<p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Estás perdiendo tráfico de países donde no tienes un mercado configurado.</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 mt-2">
+<div class="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-amber-100 dark:border-slate-700 shadow-sm">
+<div class="flex items-center gap-3">
+<img alt="PT" class="w-8 h-8 rounded-full border border-slate-100" data-alt="Flag of Portugal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG0BULoCY7bfga7IFM8eiUy3-XH31e6D7WL1eqFS8-Xndxmf3cTwYK7fizlMYXP72VU_ZaBtspoK1D8KABTnZryiVVnYIciqxJcFgwDW-zf3J8ew1J23RFAP1d2eU3AxwnrGu5SAhFk0rWNnqO3PNDyiozaVk-r9JsyxK-K4q-4vfvprMHWMfxVh6q3VTERK2qzr59sFYAp5Xyw-yfHvh-HBKj6I_DUD6jZMNJ1OZ7JdV4cxebk7QFtSxKdzymwfeTFH1XlyiiBUN8"/>
+<div class="flex flex-col">
+<span class="font-bold text-slate-900 dark:text-white">Portugal</span>
+<span class="text-xs text-slate-500">148 visitantes</span>
+</div>
+</div>
+<span class="text-amber-600 font-bold text-sm">Sin config.</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-amber-100 dark:border-slate-700 shadow-sm">
+<div class="flex items-center gap-3">
+<img alt="NL" class="w-8 h-8 rounded-full border border-slate-100" data-alt="Flag of Netherlands" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIr8jrbkgSMTn6QDkCluh6xKZwnzrlM8rvJFN2vEGGKTqWAJG1Yzr47WILlNmuLBk0L6H__DO6fM9L-Ltief--CK1BXBNhjOxsZ3XyebVfMmsMX-rIkjFDfJJn9oXpn-LOMxAd-ewIra3iE9RfBgutTKkwN7sumdxYUOxrmBHFwhpZ6l9KwnvkdFPS4goEEUcyc14eipoI33nViPBql9hRSQhAoUH74oC9icF8IldxSSpB8rWBb8aZbgG5qOv9R7RYb0xPdP7nSrFM"/>
+<div class="flex flex-col">
+<span class="font-bold text-slate-900 dark:text-white">Países Bajos</span>
+<span class="text-xs text-slate-500">57 visitantes</span>
+</div>
+</div>
+<span class="text-amber-600 font-bold text-sm">Sin config.</span>
+</div>
+</div>
+<button class="mt-auto w-full py-2.5 px-4 bg-primary hover:bg-blue-700 text-white font-medium rounded-lg transition-colors flex items-center justify-center gap-2 shadow-sm">
+                            Crear mercado para PT
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

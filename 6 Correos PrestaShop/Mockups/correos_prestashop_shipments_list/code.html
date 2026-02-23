@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Correos PrestaShop Shipments List</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d4341c",
+                        "primary-dark": "#b02a15",
+                        "background-light": "#EBEFF4", 
+                        "background-dark": "#211311",
+                        "ps-blue": "#25b9d7",
+                        "ps-green": "#50cf5c",
+                        "ps-yellow": "#ffce38",
+                        "ps-red": "#e03b3b",
+                        "text-main": "#363a41",
+                        "text-secondary": "#6c868e",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Open Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-text-main">
+<div class="relative flex min-h-screen w-full flex-row overflow-x-hidden">
+<!-- Sidebar -->
+<aside class="flex w-64 flex-col bg-white border-r border-gray-200 shadow-sm z-20 shrink-0 hidden lg:flex">
+<!-- Brand -->
+<div class="flex h-16 items-center gap-3 px-6 border-b border-gray-100">
+<div class="bg-center bg-no-repeat bg-contain h-8 w-8" data-alt="PrestaShop Logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDkakrT0WHxbSObSzsUJdOOv1VjRPhB2svhtxzNYQSon8M4uOPHLiPe5YV6repWS_j1QXPPf4Eb0b2f7x76UrWk2D68MvVxN28Ga9bhq2mgvvb6eV6wkffIr13l_BA3u01nILKZXQMwLcDFEEyIikqXL1Grz6Dw5oI1tK6BKVrkcpIzZv3z9d5_cjVyYYbhTRiZkljaAk7lLnF7oB8pPohw0vi2aWzxZDvVOLQhGJN0bizwd9LMKkLGGfO-mXNP7rD3zm4qGfuhrdt_');"></div>
+<div class="flex flex-col">
+<h1 class="text-text-main text-base font-bold leading-none">PrestaShop</h1>
+<p class="text-text-secondary text-xs font-normal">1.7.8.8</p>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-50 group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary">dashboard</span>
+<span class="text-text-main text-sm font-medium">Inicio</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-50 group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary">shopping_cart</span>
+<span class="text-text-main text-sm font-medium">Pedidos</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-50 group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary">storefront</span>
+<span class="text-text-main text-sm font-medium">Catálogo</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-50 group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary">group</span>
+<span class="text-text-main text-sm font-medium">Clientes</span>
+</a>
+<!-- Active State Example -->
+<div class="bg-blue-50/50 rounded-md">
+<a class="flex items-center gap-3 px-3 py-2 rounded-md bg-[#e5f4ff] text-ps-blue font-bold shadow-sm border-l-4 border-ps-blue" href="#">
+<span class="material-symbols-outlined text-ps-blue">local_shipping</span>
+<span class="text-ps-blue text-sm">Envíos</span>
+</a>
+</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-50 group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary">bar_chart</span>
+<span class="text-text-main text-sm font-medium">Estadísticas</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-50 group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary">extension</span>
+<span class="text-text-main text-sm font-medium">Módulos</span>
+</a>
+<div class="pt-4 mt-4 border-t border-gray-100">
+<p class="px-3 text-xs font-semibold text-text-secondary uppercase tracking-wider mb-2">Configuración</p>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-50 group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary">settings</span>
+<span class="text-text-main text-sm font-medium">Parámetros</span>
+</a>
+</div>
+</nav>
+</aside>
+<!-- Main Content -->
+<div class="flex flex-1 flex-col min-w-0">
+<!-- Top Header -->
+<header class="h-16 bg-white shadow-sm flex items-center justify-between px-6 sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<button class="lg:hidden p-2 text-gray-500 hover:bg-gray-100 rounded-md">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="text-lg font-bold text-text-main">Back Office</h2>
+<div class="hidden md:flex items-center gap-4 ml-4 text-sm font-medium text-text-secondary">
+<a class="hover:text-primary transition-colors" href="#">Acceso rápido</a>
+<span class="text-gray-300">|</span>
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+                            Ver mi tienda
+                            <span class="material-symbols-outlined text-base">open_in_new</span>
+</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+<span class="material-symbols-outlined text-lg">search</span>
+</span>
+<input class="w-64 pl-10 pr-4 py-2 bg-background-light border-none rounded-md text-sm text-text-main placeholder-text-secondary focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all" placeholder="Buscar..." type="text"/>
+</div>
+<div class="flex items-center gap-2 border-l border-gray-200 pl-4 ml-2">
+<button class="p-2 text-text-secondary hover:bg-gray-50 rounded-full relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full border border-white"></span>
+</button>
+<button class="p-2 text-text-secondary hover:bg-gray-50 rounded-full">
+<span class="material-symbols-outlined">person</span>
+</button>
+<div class="bg-gray-200 rounded-full h-8 w-8 bg-cover bg-center ml-2" data-alt="User Avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBZXbnmT8hQ7JifDCE8GvdJqn6Q4EN6W95Tk-zqCrV2uA8F4QYomENUtTN5L9M47IvpRX3IdwkcXGQsm_5r2TH_hy_lEdMks4cXTj0buoR7srrkjyUJCoNCSTu6NMbb7J3Rv00DqiJ18UYIEgeqY5IRT4eIvJBzkT0Ho0y6GCI26mIKxEl7kkWTA3QCuwDpnN3UHO5dWscgpu7mIRwwOXWZ-50so_ptcNrU1ocpzm6IG_TQTh46WWurd_9aV2ma8EXYBVHTlJIb7wDY');"></div>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 overflow-y-auto p-4 md:p-8">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-yellow-400 rounded-lg text-white shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center font-bold text-2xl tracking-tighter" style="font-family: serif; color:#002E6D;">C</div>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h1 class="text-2xl md:text-3xl font-bold text-text-main">Envíos</h1>
+<span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded-full border border-green-200">PRO</span>
+</div>
+<p class="text-text-secondary text-sm mt-1">Gestión de envíos con Correos</p>
+</div>
+</div>
+<button class="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-md shadow-sm transition-colors font-medium text-sm">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+                        Crear envío manual
+                    </button>
+</div>
+<!-- Main Card -->
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+<!-- Filters Toolbar -->
+<div class="p-4 border-b border-gray-100 bg-gray-50/50">
+<form class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 items-end">
+<!-- Search -->
+<div class="lg:col-span-3">
+<label class="block text-xs font-semibold text-text-secondary uppercase mb-1">Buscar</label>
+<div class="relative">
+<input class="w-full border-gray-300 rounded-md text-sm focus:border-primary focus:ring-primary h-10" placeholder="ID, Referencia, Cliente..." type="text"/>
+</div>
+</div>
+<!-- Carrier Dropdown -->
+<div class="lg:col-span-2">
+<label class="block text-xs font-semibold text-text-secondary uppercase mb-1">Transportista</label>
+<select class="w-full border-gray-300 rounded-md text-sm focus:border-primary focus:ring-primary h-10 text-text-main">
+<option>Todos</option>
+<option>Correos Paq Estándar</option>
+<option>Correos Paq Premium</option>
+<option>Correos Express 24h</option>
+</select>
+</div>
+<!-- Status Dropdown -->
+<div class="lg:col-span-2">
+<label class="block text-xs font-semibold text-text-secondary uppercase mb-1">Estado</label>
+<select class="w-full border-gray-300 rounded-md text-sm focus:border-primary focus:ring-primary h-10 text-text-main">
+<option>Todos</option>
+<option>Creado</option>
+<option>En tránsito</option>
+<option>Entregado</option>
+<option>Incidencia</option>
+</select>
+</div>
+<!-- Date Range -->
+<div class="lg:col-span-3">
+<label class="block text-xs font-semibold text-text-secondary uppercase mb-1">Fecha</label>
+<div class="flex items-center gap-2">
+<input class="w-full border-gray-300 rounded-md text-sm focus:border-primary focus:ring-primary h-10" placeholder="Desde" type="text"/>
+<span class="text-gray-400">-</span>
+<input class="w-full border-gray-300 rounded-md text-sm focus:border-primary focus:ring-primary h-10" placeholder="Hasta" type="text"/>
+</div>
+</div>
+<!-- Filter Button -->
+<div class="lg:col-span-2 flex justify-end gap-2">
+<button class="h-10 px-4 bg-white border border-gray-300 text-text-main rounded-md hover:bg-gray-50 text-sm font-medium flex items-center justify-center w-full lg:w-auto" type="button">
+                                    Resetear
+                                </button>
+<button class="h-10 px-4 bg-ps-blue text-white rounded-md hover:bg-cyan-600 text-sm font-bold shadow-sm flex items-center justify-center w-full lg:w-auto" type="submit">
+<span class="material-symbols-outlined text-lg mr-1">filter_alt</span>
+                                    Filtrar
+                                </button>
+</div>
+</form>
+</div>
+<!-- Bulk Actions Bar (Simulated Active state if checkboxes were checked, hidden by default visually but laid out) -->
+<div class="px-4 py-2 border-b border-gray-100 flex items-center gap-2">
+<div class="relative inline-block text-left">
+<button aria-expanded="true" aria-haspopup="true" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none" id="menu-button" type="button">
+                              Acciones masivas
+                              <span class="material-symbols-outlined text-lg ml-2 -mr-1">arrow_drop_down</span>
+</button>
+</div>
+<span class="text-xs text-text-secondary ml-2">Selecciona elementos para aplicar acciones</span>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="min-w-full divide-y divide-gray-200">
+<thead class="bg-gray-50">
+<tr>
+<th class="px-6 py-3 text-left text-xs font-medium text-text-secondary uppercase tracking-wider w-10" scope="col">
+<input class="rounded border-gray-300 text-ps-blue focus:ring-ps-blue" type="checkbox"/>
+</th>
+<th class="px-6 py-3 text-left text-xs font-bold text-text-main uppercase tracking-wider cursor-pointer hover:bg-gray-100 group" scope="col">
+<div class="flex items-center gap-1">
+                                            Pedido
+                                            <span class="material-symbols-outlined text-sm text-gray-400 group-hover:text-gray-600">unfold_more</span>
+</div>
+</th>
+<th class="px-6 py-3 text-left text-xs font-bold text-text-main uppercase tracking-wider cursor-pointer hover:bg-gray-100 group" scope="col">
+<div class="flex items-center gap-1">
+                                            Cliente
+                                            <span class="material-symbols-outlined text-sm text-gray-400 group-hover:text-gray-600">unfold_more</span>
+</div>
+</th>
+<th class="px-6 py-3 text-left text-xs font-bold text-text-main uppercase tracking-wider" scope="col">
+                                        Destino
+                                    </th>
+<th class="px-6 py-3 text-left text-xs font-bold text-text-main uppercase tracking-wider" scope="col">
+                                        Servicio
+                                    </th>
+<th class="px-6 py-3 text-left text-xs font-bold text-text-main uppercase tracking-wider cursor-pointer hover:bg-gray-100 group" scope="col">
+<div class="flex items-center gap-1">
+                                            Estado
+                                            <span class="material-symbols-outlined text-sm text-gray-400 group-hover:text-gray-600">unfold_more</span>
+</div>
+</th>
+<th class="px-6 py-3 text-left text-xs font-bold text-text-main uppercase tracking-wider cursor-pointer hover:bg-gray-100 group" scope="col">
+<div class="flex items-center gap-1">
+                                            Fecha
+                                            <span class="material-symbols-outlined text-sm text-gray-400 group-hover:text-gray-600">unfold_more</span>
+</div>
+</th>
+<th class="relative px-6 py-3" scope="col">
+<span class="sr-only">Acciones</span>
+</th>
+</tr>
+</thead>
+<tbody class="bg-white divide-y divide-gray-200">
+<!-- Row 1 -->
+<tr class="hover:bg-blue-50/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<input class="rounded border-gray-300 text-ps-blue focus:ring-ps-blue" type="checkbox"/>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-text-main">
+<a class="text-ps-blue hover:underline" href="#">#2047</a>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        María García
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        Madrid
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex flex-col gap-1">
+<span class="text-sm text-text-main font-medium">Paq Estándar</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800 w-fit">Standard</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                            Creado
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        17/02/2024
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-text-secondary hover:text-primary rounded-full p-1 hover:bg-gray-100">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-blue-50/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<input class="rounded border-gray-300 text-ps-blue focus:ring-ps-blue" type="checkbox"/>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-text-main">
+<a class="text-ps-blue hover:underline" href="#">#2046</a>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        Juan López
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        Barcelona
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex flex-col gap-1">
+<span class="text-sm text-text-main font-medium">Express 24h</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800 w-fit">Express</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+                                            En tránsito
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        16/02/2024
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-text-secondary hover:text-primary rounded-full p-1 hover:bg-gray-100">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-blue-50/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<input class="rounded border-gray-300 text-ps-blue focus:ring-ps-blue" type="checkbox"/>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-text-main">
+<a class="text-ps-blue hover:underline" href="#">#2045</a>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        Ana Martín
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        Valencia
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex flex-col gap-1">
+<span class="text-sm text-text-main font-medium">Paq Premium</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800 w-fit">Standard</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                            Entregado
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        16/02/2024
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-text-secondary hover:text-primary rounded-full p-1 hover:bg-gray-100">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-blue-50/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<input class="rounded border-gray-300 text-ps-blue focus:ring-ps-blue" type="checkbox"/>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-text-main">
+<a class="text-ps-blue hover:underline" href="#">#2044</a>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        Pedro Ruiz
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        Sevilla
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex flex-col gap-1">
+<span class="text-sm text-text-main font-medium">Paquete Azul</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800 w-fit">Standard</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+<span class="material-symbols-outlined text-[16px] mr-1">warning</span>
+                                            Incidencia
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        15/02/2024
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-text-secondary hover:text-primary rounded-full p-1 hover:bg-gray-100">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-blue-50/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<input class="rounded border-gray-300 text-ps-blue focus:ring-ps-blue" type="checkbox"/>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-text-main">
+<a class="text-ps-blue hover:underline" href="#">#2043</a>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        Laura Díaz
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        Bilbao
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex flex-col gap-1">
+<span class="text-sm text-text-main font-medium">Express 24h</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800 w-fit">Express</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                            Entregado
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        15/02/2024
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-text-secondary hover:text-primary rounded-full p-1 hover:bg-gray-100">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-blue-50/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<input class="rounded border-gray-300 text-ps-blue focus:ring-ps-blue" type="checkbox"/>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-text-main">
+<a class="text-ps-blue hover:underline" href="#">#2042</a>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        Carlos Sanz
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        Málaga
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex flex-col gap-1">
+<span class="text-sm text-text-main font-medium">Paq Estándar</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800 w-fit">Standard</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+                                            En tránsito
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        14/02/2024
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-text-secondary hover:text-primary rounded-full p-1 hover:bg-gray-100">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-blue-50/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<input class="rounded border-gray-300 text-ps-blue focus:ring-ps-blue" type="checkbox"/>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-text-main">
+<a class="text-ps-blue hover:underline" href="#">#2041</a>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        Elena Vega
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        Zaragoza
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex flex-col gap-1">
+<span class="text-sm text-text-main font-medium">Express 48h</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800 w-fit">Express</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                            Entregado
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        14/02/2024
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-text-secondary hover:text-primary rounded-full p-1 hover:bg-gray-100">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 8 -->
+<tr class="hover:bg-blue-50/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<input class="rounded border-gray-300 text-ps-blue focus:ring-ps-blue" type="checkbox"/>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-text-main">
+<a class="text-ps-blue hover:underline" href="#">#2040</a>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        David Moreno
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        Las Palmas
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex flex-col gap-1">
+<span class="text-sm text-text-main font-medium">Internacional</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800 w-fit">Standard</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-800 text-white">
+<span class="material-symbols-outlined text-[16px] mr-1">error</span>
+                                            Error
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        13/02/2024
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-text-secondary hover:text-primary rounded-full p-1 hover:bg-gray-100">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gray-50/50">
+<div class="text-sm text-text-secondary">
+                            Mostrando <span class="font-medium text-text-main">1</span>- <span class="font-medium text-text-main">8</span> de <span class="font-medium text-text-main">345</span> envíos
+                        </div>
+<div class="flex items-center gap-1">
+<button class="p-2 rounded-md hover:bg-gray-200 text-text-secondary disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="px-3 py-1 rounded-md bg-primary text-white text-sm font-medium">1</button>
+<button class="px-3 py-1 rounded-md hover:bg-gray-200 text-text-main text-sm font-medium transition-colors">2</button>
+<button class="px-3 py-1 rounded-md hover:bg-gray-200 text-text-main text-sm font-medium transition-colors">3</button>
+<span class="px-2 text-text-secondary">...</span>
+<button class="px-3 py-1 rounded-md hover:bg-gray-200 text-text-main text-sm font-medium transition-colors">44</button>
+<button class="p-2 rounded-md hover:bg-gray-200 text-text-secondary transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-8 text-center text-xs text-text-secondary">
+                    © 2024 Módulo de Correos para PrestaShop v2.4.1
+                </div>
+</main>
+</div>
+</div>
+</body></html>

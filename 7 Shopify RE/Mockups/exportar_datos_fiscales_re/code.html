@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Exportar Datos Fiscales RE</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#008060",
+                        "primary-dark": "#006e52",
+                        "secondary": "#6B21A8",
+                        "surface": "#ffffff",
+                        "background-light": "#f6f6f7",
+                        "background-dark": "#0f231e",
+                        "text-main": "#202223",
+                        "text-subdued": "#6d7175",
+                        "border-subdued": "#e1e3e5",
+                        "border-highlight": "#babfc3",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "polaris": "0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15)",
+                        "polaris-hover": "0 0 0 1px rgba(63, 63, 68, 0.05), 0 4px 12px 0 rgba(63, 63, 68, 0.15)"
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f6f6f7;
+            color: #202223;
+        }
+        
+        /* Custom Checkbox/Radio Styles for Polaris Look */
+        .polaris-radio {
+            appearance: none;
+            background-color: #fff;
+            border: 2px solid #babfc3;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .polaris-radio:checked {
+            border-color: #008060;
+            background-color: #008060;
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+        }
+        
+        .polaris-checkbox {
+            appearance: none;
+            background-color: #fff;
+            border: 2px solid #babfc3;
+            border-radius: 4px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .polaris-checkbox:checked {
+            background-color: #008060;
+            border-color: #008060;
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+            background-size: 80%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .polaris-checkbox:focus, .polaris-radio:focus {
+            outline: 2px solid #008060;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main font-display antialiased">
+<div class="flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="hidden w-64 flex-col bg-[#ebebeb] border-r border-border-subdued md:flex">
+<div class="flex h-16 items-center gap-3 px-4 bg-[#f1f2f3]">
+<div class="h-8 w-8 rounded bg-primary flex items-center justify-center text-white font-bold">
+                SR
+            </div>
+<div class="flex flex-col">
+<h1 class="text-sm font-semibold text-text-main">Shopify RE</h1>
+<p class="text-xs text-text-subdued">Admin</p>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto px-2 py-4 space-y-1">
+<a class="flex items-center gap-3 rounded px-3 py-2 text-sm font-medium text-text-subdued hover:bg-[#e4e5e7] hover:text-text-main transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">home</span>
+                Inicio
+            </a>
+<a class="flex items-center gap-3 rounded px-3 py-2 text-sm font-medium text-text-subdued hover:bg-[#e4e5e7] hover:text-text-main transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+                Pedidos
+            </a>
+<a class="flex items-center gap-3 rounded px-3 py-2 text-sm font-medium text-text-subdued hover:bg-[#e4e5e7] hover:text-text-main transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+                Productos
+            </a>
+<a class="flex items-center gap-3 rounded px-3 py-2 text-sm font-medium text-text-subdued hover:bg-[#e4e5e7] hover:text-text-main transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+                Clientes
+            </a>
+<!-- Active State -->
+<a class="flex items-center gap-3 rounded px-3 py-2 text-sm font-medium bg-white text-primary shadow-sm ring-1 ring-border-subdued" href="#">
+<span class="material-symbols-outlined text-[20px]">bar_chart</span>
+                Informes RE
+            </a>
+<a class="flex items-center gap-3 rounded px-3 py-2 text-sm font-medium text-text-subdued hover:bg-[#e4e5e7] hover:text-text-main transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+                Configuración
+            </a>
+</nav>
+<div class="p-4 border-t border-border-subdued">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-[#e3e3e3] flex items-center justify-center text-text-subdued">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</div>
+<div class="flex flex-col">
+<p class="text-sm font-medium text-text-main">Usuario Admin</p>
+<p class="text-xs text-text-subdued">Pro Plan</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto bg-background-light p-4 md:p-8">
+<div class="mx-auto max-w-5xl">
+<!-- Header -->
+<header class="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 text-text-subdued text-sm mb-2">
+<span class="cursor-pointer hover:underline">Inicio</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="cursor-pointer hover:underline">Informes</span>
+</div>
+<h1 class="text-2xl font-bold text-text-main">Exportar datos fiscales RE</h1>
+<p class="mt-1 text-text-subdued">Genera y descarga informes detallados para la declaración del Recargo de Equivalencia.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 text-sm font-medium text-text-main bg-white border border-border-subdued rounded shadow-sm hover:bg-gray-50 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">email</span>
+                        Enviar por email
+                    </button>
+<button class="px-4 py-2 text-sm font-medium text-white bg-primary rounded shadow-sm hover:bg-primary-dark transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Descargar
+                    </button>
+</div>
+</header>
+<!-- Summary Banner -->
+<div class="mb-6 rounded-lg border border-primary/20 bg-primary/5 p-4 flex items-start gap-4">
+<div class="mt-0.5 text-primary">
+<span class="material-symbols-outlined">info</span>
+</div>
+<div class="flex-1">
+<h3 class="font-semibold text-text-main">Resumen Trimestral (Q1 2026)</h3>
+<p class="mt-1 text-sm text-text-main">
+                        Se han encontrado <span class="font-semibold">38 pedidos</span> elegibles.
+                    </p>
+<div class="mt-3 flex flex-wrap gap-4 text-sm">
+<div class="flex items-center gap-2 bg-white px-3 py-1 rounded border border-primary/10">
+<span class="text-text-subdued">Base:</span>
+<span class="font-mono font-medium">€4.850,00</span>
+</div>
+<div class="flex items-center gap-2 bg-white px-3 py-1 rounded border border-primary/10">
+<span class="text-text-subdued">IVA:</span>
+<span class="font-mono font-medium">€1.018,50</span>
+</div>
+<div class="flex items-center gap-2 bg-white px-3 py-1 rounded border border-primary/10">
+<span class="text-text-subdued">RE:</span>
+<span class="font-mono font-medium text-primary">€252,20</span>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Left Column (Configuration) -->
+<div class="lg:col-span-1 space-y-6">
+<!-- Card 1: Periodo -->
+<div class="bg-surface rounded-lg shadow-polaris p-5">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-base font-semibold text-text-main">Periodo</h2>
+<span class="material-symbols-outlined text-text-subdued text-[20px]">calendar_month</span>
+</div>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="polaris-radio" name="period" type="radio"/>
+<span class="text-sm text-text-main group-hover:text-primary transition-colors">Mes actual</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="polaris-radio" name="period" type="radio"/>
+<span class="text-sm text-text-main group-hover:text-primary transition-colors">Trimestre Q1</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="polaris-radio" name="period" type="radio"/>
+<span class="text-sm text-text-main group-hover:text-primary transition-colors">Año fiscal</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="polaris-radio" name="period" type="radio"/>
+<span class="text-sm text-text-main group-hover:text-primary transition-colors">Personalizado</span>
+</label>
+</div>
+</div>
+<!-- Card 3: Formato -->
+<div class="bg-surface rounded-lg shadow-polaris p-5">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-base font-semibold text-text-main">Formato de archivo</h2>
+<span class="material-symbols-outlined text-text-subdued text-[20px]">description</span>
+</div>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="polaris-radio" name="format" type="radio"/>
+<div class="flex items-center gap-2">
+<span class="text-sm font-medium text-text-main group-hover:text-primary transition-colors">CSV</span>
+<span class="text-xs text-text-subdued px-1.5 py-0.5 bg-gray-100 rounded">Recomendado</span>
+</div>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="polaris-radio" name="format" type="radio"/>
+<span class="text-sm text-text-main group-hover:text-primary transition-colors">Excel (.xlsx)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="polaris-radio" name="format" type="radio"/>
+<span class="text-sm text-text-main group-hover:text-primary transition-colors">PDF</span>
+</label>
+</div>
+</div>
+<!-- Card 2: Datos a incluir -->
+<div class="bg-surface rounded-lg shadow-polaris p-5">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-base font-semibold text-text-main">Datos a incluir</h2>
+<span class="text-xs text-primary font-medium cursor-pointer hover:underline">Seleccionar todo</span>
+</div>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="polaris-checkbox" type="checkbox"/>
+<span class="text-sm text-text-main">Pedidos</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="polaris-checkbox" type="checkbox"/>
+<span class="text-sm text-text-main">Clientes</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="polaris-checkbox" type="checkbox"/>
+<span class="text-sm text-text-main">IVA</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="polaris-checkbox" type="checkbox"/>
+<span class="text-sm text-text-main">Recargo de Equivalencia (RE)</span>
+</label>
+<hr class="border-border-subdued my-2"/>
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="polaris-checkbox" type="checkbox"/>
+<span class="text-sm text-text-main font-medium">Totales y Resumen</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Right Column (Preview) -->
+<div class="lg:col-span-2 space-y-6">
+<!-- Card 4: Vista Previa -->
+<div class="bg-surface rounded-lg shadow-polaris h-full flex flex-col">
+<div class="p-5 border-b border-border-subdued flex justify-between items-center bg-gray-50/50 rounded-t-lg">
+<h2 class="text-base font-semibold text-text-main">Vista previa de datos</h2>
+<button class="text-sm text-text-subdued hover:text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+                                Actualizar
+                            </button>
+</div>
+<div class="overflow-x-auto flex-1 p-0">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-border-subdued bg-gray-50/50">
+<th class="py-3 px-4 text-xs font-semibold text-text-subdued uppercase tracking-wide">Pedido</th>
+<th class="py-3 px-4 text-xs font-semibold text-text-subdued uppercase tracking-wide">Fecha</th>
+<th class="py-3 px-4 text-xs font-semibold text-text-subdued uppercase tracking-wide">Cliente</th>
+<th class="py-3 px-4 text-xs font-semibold text-text-subdued uppercase tracking-wide">NIF</th>
+<th class="py-3 px-4 text-xs font-semibold text-text-subdued uppercase tracking-wide text-right">Base</th>
+<th class="py-3 px-4 text-xs font-semibold text-text-subdued uppercase tracking-wide text-right">IVA</th>
+<th class="py-3 px-4 text-xs font-semibold text-text-subdued uppercase tracking-wide text-right">RE (5.2%)</th>
+<th class="py-3 px-4 text-xs font-semibold text-text-subdued uppercase tracking-wide text-right">Total</th>
+</tr>
+</thead>
+<tbody class="text-sm text-text-main divide-y divide-border-subdued">
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="py-3 px-4 font-medium text-primary cursor-pointer hover:underline">#1001</td>
+<td class="py-3 px-4 text-text-subdued">12/01/2026</td>
+<td class="py-3 px-4">Juan Pérez</td>
+<td class="py-3 px-4 text-text-subdued">12345678A</td>
+<td class="py-3 px-4 text-right font-mono">€120.00</td>
+<td class="py-3 px-4 text-right font-mono text-text-subdued">€25.20</td>
+<td class="py-3 px-4 text-right font-mono text-primary font-medium">€6.24</td>
+<td class="py-3 px-4 text-right font-mono font-medium">€151.44</td>
+</tr>
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="py-3 px-4 font-medium text-primary cursor-pointer hover:underline">#1002</td>
+<td class="py-3 px-4 text-text-subdued">14/01/2026</td>
+<td class="py-3 px-4">Maria Garcia</td>
+<td class="py-3 px-4 text-text-subdued">87654321B</td>
+<td class="py-3 px-4 text-right font-mono">€85.50</td>
+<td class="py-3 px-4 text-right font-mono text-text-subdued">€17.96</td>
+<td class="py-3 px-4 text-right font-mono text-primary font-medium">€4.45</td>
+<td class="py-3 px-4 text-right font-mono font-medium">€107.91</td>
+</tr>
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="py-3 px-4 font-medium text-primary cursor-pointer hover:underline">#1003</td>
+<td class="py-3 px-4 text-text-subdued">15/01/2026</td>
+<td class="py-3 px-4">Empresa SL</td>
+<td class="py-3 px-4 text-text-subdued">B12345678</td>
+<td class="py-3 px-4 text-right font-mono">€240.00</td>
+<td class="py-3 px-4 text-right font-mono text-text-subdued">€50.40</td>
+<td class="py-3 px-4 text-right font-mono text-primary font-medium">€12.48</td>
+<td class="py-3 px-4 text-right font-mono font-medium">€302.88</td>
+</tr>
+<!-- Empty State Row/Placeholder -->
+<tr class="hover:bg-gray-50 transition-colors bg-gray-50/20">
+<td class="py-3 px-4 font-medium text-text-subdued">...</td>
+<td class="py-3 px-4 text-text-subdued">...</td>
+<td class="py-3 px-4 text-text-subdued">...</td>
+<td class="py-3 px-4 text-text-subdued">...</td>
+<td class="py-3 px-4 text-right font-mono text-text-subdued">...</td>
+<td class="py-3 px-4 text-right font-mono text-text-subdued">...</td>
+<td class="py-3 px-4 text-right font-mono text-text-subdued">...</td>
+<td class="py-3 px-4 text-right font-mono text-text-subdued">...</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-border-subdued bg-gray-50 rounded-b-lg text-center">
+<p class="text-xs text-text-subdued">Mostrando los primeros 3 registros de 38 encontrados.</p>
+</div>
+</div>
+<!-- Additional Info / Help Card -->
+<div class="bg-surface rounded-lg shadow-polaris p-5 flex gap-4 items-start">
+<div class="flex-shrink-0 text-secondary bg-purple-50 p-2 rounded-full">
+<span class="material-symbols-outlined">lightbulb</span>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-text-main mb-1">¿Sabías qué?</h4>
+<p class="text-sm text-text-subdued">Puedes configurar el envío automático de estos informes a tu gestoría desde la sección de <a class="text-primary hover:underline" href="#">Configuración &gt; Notificaciones</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 mb-12 flex justify-center text-xs text-text-subdued">
+<p>© 2026 Shopify RE. Todos los derechos reservados.</p>
+</div>
+</div>
+</main>
+</div>
+</body></html>

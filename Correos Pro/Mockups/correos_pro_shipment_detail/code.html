@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Detalle del Envío - Correos Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d4341c",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211311",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col">
+<!-- Header Navigation (Adapted from TopNavBar) -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-[#1a0f0e] px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="size-8 flex items-center justify-center text-primary">
+<!-- Correos Logo Icon (Simplified) -->
+<svg class="size-8" fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Correos Pro</h2>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors text-slate-900 dark:text-white">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors text-slate-900 dark:text-white">
+<span class="material-symbols-outlined text-[20px]">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex justify-center py-8 px-4 sm:px-8">
+<div class="w-full max-w-[1100px] flex flex-col gap-6">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center h-10 w-10 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div>
+<div class="flex items-center gap-3">
+<h1 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Envío #COR-2026-02047</h1>
+<span class="hidden sm:inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">
+                                Correos Standard
+                            </span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Detalles del pedido #2047 de Shopify</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 h-10 rounded-lg border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 font-medium text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-[18px]">undo</span>
+                        Crear devolución
+                    </button>
+<button class="flex items-center gap-2 px-4 h-10 rounded-lg border border-red-200 bg-red-50 text-red-700 font-medium text-sm hover:bg-red-100 dark:bg-red-900/20 dark:border-red-800 dark:text-red-400 dark:hover:bg-red-900/40 transition-colors">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+                        Cancelar envío
+                    </button>
+</div>
+</div>
+<!-- Top Grid: Details & Label -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Left Card: Shipment Info -->
+<div class="lg:col-span-2 bg-white dark:bg-[#1a0f0e] rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-6">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Información del envío</h3>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-green-100 text-green-700 border border-green-200 dark:bg-green-900/30 dark:text-green-400 dark:border-green-800">
+<span class="w-2 h-2 rounded-full bg-green-600 dark:bg-green-400"></span>
+                            Entregado
+                        </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8">
+<div>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Cliente</p>
+<p class="text-base font-semibold text-slate-900 dark:text-white">María García</p>
+<p class="text-sm text-slate-600 dark:text-slate-300">maria.garcia@example.com</p>
+</div>
+<div>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Dirección de entrega</p>
+<p class="text-sm font-medium text-slate-900 dark:text-white">C/ Gran Vía 12, 4º D</p>
+<p class="text-sm text-slate-600 dark:text-slate-300">28013 Madrid, España</p>
+</div>
+<div>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Transportista &amp; Servicio</p>
+<div class="flex items-center gap-2 mb-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Correos Standard</p>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-300">Paq Estándar (2.5kg)</p>
+</div>
+<div>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Número de seguimiento</p>
+<div class="flex items-center gap-2">
+<p class="text-sm font-mono font-medium text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded select-all">PQ4E7X0002345</p>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</div>
+<div class="md:col-span-2 pt-4 border-t border-slate-100 dark:border-slate-800">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-slate-400 text-[18px] mt-0.5">rule</span>
+<div>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Regla Aplicada</p>
+<p class="text-sm text-slate-700 dark:text-slate-300">Por defecto <span class="text-slate-400 px-1">→</span> Paq Estándar</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Card: Label Action -->
+<div class="flex flex-col bg-white dark:bg-[#1a0f0e] rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-6 h-full">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Etiqueta de envío</h3>
+<div class="flex-1 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mb-6 min-h-[160px] relative overflow-hidden group">
+<!-- Abstract barcode representation -->
+<div class="absolute inset-0 opacity-10 dark:opacity-20" style="background-image: repeating-linear-gradient(90deg, transparent, transparent 10px, #000 10px, #000 12px);"></div>
+<div class="flex flex-col items-center gap-2 text-slate-400 dark:text-slate-500 z-10">
+<span class="material-symbols-outlined text-[48px]">qr_code_2</span>
+<span class="text-xs font-mono">PQ4E7X0002345</span>
+</div>
+</div>
+<button class="w-full flex items-center justify-center gap-2 px-4 h-12 rounded-lg bg-primary hover:bg-red-700 text-white font-bold text-sm transition-colors shadow-sm shadow-red-200 dark:shadow-none">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                        Descargar etiqueta PDF
+                    </button>
+</div>
+</div>
+<!-- Bottom Card: Tracking Timeline -->
+<div class="bg-white dark:bg-[#1a0f0e] rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-6">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-8">Seguimiento del envío</h3>
+<div class="relative pl-4 md:pl-8">
+<!-- Vertical Line -->
+<div class="absolute left-[27px] md:left-[43px] top-2 bottom-4 w-0.5 bg-slate-200 dark:bg-slate-700"></div>
+<!-- Timeline Items -->
+<div class="space-y-8">
+<!-- Step 5 (Latest) -->
+<div class="relative flex gap-6 items-start">
+<div class="absolute left-[3px] md:left-[19px] top-0 z-10 bg-white dark:bg-[#1a0f0e] py-1">
+<div class="flex items-center justify-center w-6 h-6 rounded-full bg-primary text-white shadow-sm ring-4 ring-white dark:ring-[#1a0f0e]">
+<span class="material-symbols-outlined text-[14px] font-bold">check</span>
+</div>
+</div>
+<div class="ml-8 md:ml-12 flex flex-col sm:flex-row sm:items-baseline sm:justify-between w-full gap-1">
+<div>
+<p class="text-base font-bold text-slate-900 dark:text-white">Entregado — Firmado por: M. García</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Madrid, España</p>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400 whitespace-nowrap">16/02/2026 12:45</p>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="relative flex gap-6 items-start group">
+<div class="absolute left-[3px] md:left-[19px] top-0 z-10 bg-white dark:bg-[#1a0f0e] py-1">
+<div class="flex items-center justify-center w-6 h-6 rounded-full bg-primary text-white shadow-sm ring-4 ring-white dark:ring-[#1a0f0e]">
+<span class="material-symbols-outlined text-[14px] font-bold">check</span>
+</div>
+</div>
+<div class="ml-8 md:ml-12 flex flex-col sm:flex-row sm:items-baseline sm:justify-between w-full gap-1">
+<div>
+<p class="text-base font-semibold text-slate-900 dark:text-white">En reparto</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">El mensajero está en camino</p>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400 whitespace-nowrap">16/02/2026 10:15</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative flex gap-6 items-start group">
+<div class="absolute left-[3px] md:left-[19px] top-0 z-10 bg-white dark:bg-[#1a0f0e] py-1">
+<div class="flex items-center justify-center w-6 h-6 rounded-full bg-primary text-white shadow-sm ring-4 ring-white dark:ring-[#1a0f0e]">
+<span class="material-symbols-outlined text-[14px] font-bold">check</span>
+</div>
+</div>
+<div class="ml-8 md:ml-12 flex flex-col sm:flex-row sm:items-baseline sm:justify-between w-full gap-1">
+<div>
+<p class="text-base font-semibold text-slate-900 dark:text-white">En tránsito — Centro logístico Madrid</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Llegada a las instalaciones de distribución</p>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400 whitespace-nowrap">16/02/2026 06:00</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative flex gap-6 items-start group">
+<div class="absolute left-[3px] md:left-[19px] top-0 z-10 bg-white dark:bg-[#1a0f0e] py-1">
+<div class="flex items-center justify-center w-6 h-6 rounded-full bg-primary text-white shadow-sm ring-4 ring-white dark:ring-[#1a0f0e]">
+<span class="material-symbols-outlined text-[14px] font-bold">check</span>
+</div>
+</div>
+<div class="ml-8 md:ml-12 flex flex-col sm:flex-row sm:items-baseline sm:justify-between w-full gap-1">
+<div>
+<p class="text-base font-semibold text-slate-900 dark:text-white">Admitido en oficina origen</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">El paquete ha sido recibido por Correos</p>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400 whitespace-nowrap">15/02/2026 14:30</p>
+</div>
+</div>
+<!-- Step 1 -->
+<div class="relative flex gap-6 items-start group">
+<div class="absolute left-[3px] md:left-[19px] top-0 z-10 bg-white dark:bg-[#1a0f0e] py-1">
+<div class="flex items-center justify-center w-6 h-6 rounded-full bg-primary text-white shadow-sm ring-4 ring-white dark:ring-[#1a0f0e]">
+<span class="material-symbols-outlined text-[14px] font-bold">check</span>
+</div>
+</div>
+<div class="ml-8 md:ml-12 flex flex-col sm:flex-row sm:items-baseline sm:justify-between w-full gap-1">
+<div>
+<p class="text-base font-semibold text-slate-900 dark:text-white">Pre-registrado en Correos</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">La información del envío ha sido recibida</p>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400 whitespace-nowrap">15/02/2026 09:00</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

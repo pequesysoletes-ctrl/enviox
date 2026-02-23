@@ -1,0 +1,325 @@
+{% comment %}
+  GeoMarkets EU — Country Selector Block
+  Can be placed in header, footer, or any section
+  Shows current market + dropdown to switch
+{% endcomment %}
+
+{% assign current_locale = request.locale.iso_code | upcase %}
+{% assign current_country = localization.country.iso_code %}
+{% assign current_currency = localization.country.currency.iso_code %}
+
+<div 
+  id="geo-country-selector" 
+  class="geo-selector"
+  data-position="{{ block.settings.position | default: 'inline' }}"
+  data-show-flags="{{ block.settings.show_flags | default: true }}"
+  data-show-currency="{{ block.settings.show_currency | default: true }}"
+  role="navigation"
+  aria-label="Country selector"
+>
+  {%- comment -%} Trigger button {%- endcomment -%}
+  <button 
+    class="geo-selector__trigger" 
+    aria-expanded="false" 
+    aria-haspopup="listbox"
+    type="button"
+  >
+    {% if block.settings.show_flags %}
+      <span class="geo-selector__flag" aria-hidden="true">
+        {{ current_country | append: '' }}
+      </span>
+    {% endif %}
+    
+    {% if block.settings.show_country_name %}
+      <span class="geo-selector__country">
+        {{ localization.country.name }}
+      </span>
+    {% endif %}
+    
+    {% if block.settings.show_currency %}
+      <span class="geo-selector__currency">
+        {{ current_currency }}
+      </span>
+    {% endif %}
+    
+    <span class="geo-selector__arrow" aria-hidden="true">▾</span>
+  </button>
+
+  {%- comment -%} Dropdown list {%- endcomment -%}
+  <div class="geo-selector__dropdown" role="listbox" aria-label="Select country" hidden>
+    {% for country in localization.available_countries %}
+      <button 
+        class="geo-selector__option {% if country.iso_code == current_country %}geo-selector__option--active{% endif %}" 
+        role="option"
+        aria-selected="{% if country.iso_code == current_country %}true{% else %}false{% endif %}"
+        data-country="{{ country.iso_code }}"
+        data-url="{{ country.localize_url }}"
+        type="button"
+      >
+        {% if block.settings.show_flags %}
+          <span class="geo-selector__flag" aria-hidden="true">
+            {{ country.iso_code }}
+          </span>
+        {% endif %}
+        <span class="geo-selector__name">{{ country.name }}</span>
+        {% if block.settings.show_currency %}
+          <span class="geo-selector__currency">{{ country.currency.iso_code }}</span>
+        {% endif %}
+      </button>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .geo-selector {
+    position: relative;
+    display: inline-block;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .geo-selector__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: {{ block.settings.padding | default: '8px 12px' }};
+    background: {{ block.settings.bg_color | default: '#ffffff' }};
+    color: {{ block.settings.text_color | default: '#111827' }};
+    border: 1px solid {{ block.settings.border_color | default: '#e5e7eb' }};
+    border-radius: {{ block.settings.border_radius | default: '8px' }};
+    cursor: pointer;
+    font-size: {{ block.settings.font_size | default: '14px' }};
+    transition: all 0.2s ease;
+    box-shadow: {% if block.settings.shadow %}0 2px 8px rgba(0,0,0,0.08){% else %}none{% endif %};
+  }
+
+  .geo-selector__trigger:hover {
+    border-color: {{ block.settings.accent_color | default: '#2563EB' }};
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  }
+
+  .geo-selector__currency {
+    color: {{ block.settings.accent_color | default: '#2563EB' }};
+    font-weight: 600;
+  }
+
+  .geo-selector__arrow {
+    opacity: 0.4;
+    font-size: 12px;
+    transition: transform 0.2s;
+  }
+
+  .geo-selector__trigger[aria-expanded="true"] .geo-selector__arrow {
+    transform: rotate(180deg);
+  }
+
+  .geo-selector__dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    min-width: 220px;
+    max-height: 320px;
+    overflow-y: auto;
+    background: {{ block.settings.bg_color | default: '#ffffff' }};
+    border: 1px solid #e5e7eb;
+    border-radius: {{ block.settings.border_radius | default: '8px' }};
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    z-index: 999;
+    animation: geoFadeIn 0.15s ease-out;
+  }
+
+  .geo-selector__dropdown[hidden] {
+    display: none;
+  }
+
+  .geo-selector__option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 14px;
+    background: none;
+    border: none;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    font-size: 14px;
+    color: {{ block.settings.text_color | default: '#111827' }};
+    text-align: left;
+    transition: background 0.15s;
+  }
+
+  .geo-selector__option:hover {
+    background: {{ block.settings.accent_color | default: '#2563EB' }}10;
+  }
+
+  .geo-selector__option--active {
+    background: {{ block.settings.accent_color | default: '#2563EB' }}10;
+    border-left-color: {{ block.settings.accent_color | default: '#2563EB' }};
+    font-weight: 600;
+  }
+
+  @keyframes geoFadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .geo-selector__dropdown {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: auto;
+      border-radius: 16px 16px 0 0;
+      max-height: 50vh;
+      animation: geoSlideUp 0.25s ease-out;
+    }
+
+    @keyframes geoSlideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    var selector = document.getElementById('geo-country-selector');
+    if (!selector) return;
+    
+    var trigger = selector.querySelector('.geo-selector__trigger');
+    var dropdown = selector.querySelector('.geo-selector__dropdown');
+    
+    // Toggle
+    trigger.addEventListener('click', function() {
+      var expanded = trigger.getAttribute('aria-expanded') === 'true';
+      trigger.setAttribute('aria-expanded', String(!expanded));
+      if (expanded) {
+        dropdown.setAttribute('hidden', '');
+      } else {
+        dropdown.removeAttribute('hidden');
+      }
+    });
+    
+    // Option selection → navigate
+    var options = dropdown.querySelectorAll('.geo-selector__option');
+    options.forEach(function(opt) {
+      opt.addEventListener('click', function() {
+        var url = opt.getAttribute('data-url');
+        if (url) {
+          // Set cookie for 30 days (respect manual choice)
+          document.cookie = 'geo_override=' + opt.getAttribute('data-country') + 
+            ';max-age=' + (30 * 86400) + ';path=/;SameSite=Lax';
+          window.location.href = url;
+        }
+      });
+    });
+    
+    // Close on outside click
+    document.addEventListener('click', function(e) {
+      if (!selector.contains(e.target)) {
+        trigger.setAttribute('aria-expanded', 'false');
+        dropdown.setAttribute('hidden', '');
+      }
+    });
+    
+    // Keyboard navigation
+    trigger.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        trigger.setAttribute('aria-expanded', 'false');
+        dropdown.setAttribute('hidden', '');
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Country Selector",
+  "target": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "position",
+      "label": "Position",
+      "options": [
+        { "value": "inline", "label": "Inline" },
+        { "value": "floating", "label": "Floating" }
+      ],
+      "default": "inline"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_flags",
+      "label": "Show flags",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_country_name",
+      "label": "Show country name",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_currency",
+      "label": "Show currency code",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "shadow",
+      "label": "Shadow",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#2563EB"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "select",
+      "id": "border_radius",
+      "label": "Border radius",
+      "options": [
+        { "value": "0px", "label": "Square" },
+        { "value": "4px", "label": "Subtle" },
+        { "value": "8px", "label": "Rounded" },
+        { "value": "12px", "label": "Very rounded" },
+        { "value": "9999px", "label": "Pill" }
+      ],
+      "default": "8px"
+    },
+    {
+      "type": "select",
+      "id": "font_size",
+      "label": "Font size",
+      "options": [
+        { "value": "12px", "label": "Small" },
+        { "value": "14px", "label": "Normal" },
+        { "value": "16px", "label": "Large" }
+      ],
+      "default": "14px"
+    }
+  ]
+}
+{% endschema %}

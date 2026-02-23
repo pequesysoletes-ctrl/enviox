@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MRW Pro - Verificación Requerida</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0369a0",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1c23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased overflow-x-hidden min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-[#1a2c35] px-6 py-3 shadow-sm">
+<div class="flex items-center gap-4 text-[#111618] dark:text-white">
+<div class="size-8 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">local_shipping</span>
+</div>
+<h2 class="text-[#111618] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">MRW Pro</h2>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<nav class="hidden md:flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
+<a class="text-primary font-semibold" href="#">Envíos</a>
+<a class="hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Informes</a>
+<a class="hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Facturación</a>
+</nav>
+<div class="h-6 w-px bg-slate-200 dark:bg-slate-700 hidden md:block"></div>
+<div class="flex gap-2">
+<button class="flex size-10 cursor-pointer items-center justify-center overflow-hidden rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex size-10 cursor-pointer items-center justify-center overflow-hidden rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 ring-2 ring-slate-100 dark:ring-slate-800 cursor-pointer" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAv_8ZM73p8AnFom-nlPoIy6riKf0M9nIeMCUlFluvxNluWkNGHLf884WvrJZmkEoitiJnOhFcexeqjiVj8HedsjUoRK4wapxHh66-o0MBtxfDwzkOIetEbQ0rlNFOZo3q7yIIMvDYd0UvmIYGwl1ZsL8oRTs76Kro4whEjDzqTYp7gw_PAmi-3sBiH-F5BIvZA3eQ6ExY4hmudCnE2WtrAgQDuUjKoTGokfWb4VDY3W-WtukWQsOXatxYx0a1g9B2cj8ysM8j_0tU");'></div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 relative flex flex-col">
+<!-- Persistent Warning Banner (High Z-Index) -->
+<div class="w-full bg-amber-100 border-b border-amber-200 text-amber-800 px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 z-40 relative shadow-sm">
+<div class="flex items-center gap-3">
+<div class="bg-amber-200/50 p-2 rounded-full text-amber-600 flex items-center justify-center">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div>
+<p class="font-bold text-sm sm:text-base">Verifica tu conexión MRW para empezar a crear envíos</p>
+<p class="text-xs sm:text-sm text-amber-700 mt-0.5">La sincronización de datos está pausada temporalmente.</p>
+</div>
+</div>
+<button class="bg-amber-600 hover:bg-amber-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow-sm transition-colors flex items-center gap-2 whitespace-nowrap w-full sm:w-auto justify-center">
+<span>Verificar ahora</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- Content Container -->
+<div class="flex-1 px-6 py-8 relative">
+<!-- Disabled Overlay: This blocks interaction with the content below -->
+<div class="absolute inset-0 bg-background-light/60 dark:bg-background-dark/70 z-30 backdrop-blur-[1px] cursor-not-allowed"></div>
+<!-- Dashboard Content (Visually Muted/Disabled) -->
+<div aria-hidden="true" class="max-w-7xl mx-auto opacity-50 grayscale-[0.3] pointer-events-none select-none">
+<!-- Page Header Actions -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+<div>
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Envíos</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Gestiona y rastrea todos tus paquetes en tiempo real.</p>
+</div>
+<div class="flex gap-3 w-full md:w-auto">
+<button class="flex-1 md:flex-none h-10 px-4 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-medium text-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">file_upload</span>
+                            Importar CSV
+                        </button>
+<button class="flex-1 md:flex-none h-10 px-4 rounded-lg bg-primary text-white font-medium text-sm flex items-center justify-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                            Nuevo Envío
+                        </button>
+</div>
+</div>
+<!-- Filters Bar -->
+<div class="bg-white dark:bg-[#1a2c35] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 mb-6 grid grid-cols-1 md:grid-cols-12 gap-4">
+<!-- Search -->
+<div class="md:col-span-5 lg:col-span-6 relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2.5 border border-slate-300 dark:border-slate-600 rounded-lg leading-5 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm" placeholder="Buscar por seguimiento, nombre o referencia..." type="text"/>
+</div>
+<!-- Date Filter -->
+<div class="md:col-span-3 lg:col-span-3 relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+</div>
+<select class="block w-full pl-10 pr-10 py-2.5 border border-slate-300 dark:border-slate-600 rounded-lg leading-5 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm appearance-none">
+<option>Últimos 30 días</option>
+<option>Esta semana</option>
+<option>Hoy</option>
+</select>
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+<!-- Status Filter -->
+<div class="md:col-span-4 lg:col-span-3 relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+</div>
+<select class="block w-full pl-10 pr-10 py-2.5 border border-slate-300 dark:border-slate-600 rounded-lg leading-5 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm appearance-none">
+<option>Todos los estados</option>
+<option>Pendientes</option>
+<option>En tránsito</option>
+<option>Entregados</option>
+</select>
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Stats Summary -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+<div class="bg-white dark:bg-[#1a2c35] p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-xs font-medium text-slate-500 uppercase tracking-wider mb-1">Total Envíos</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">1,248</p>
+</div>
+<div class="bg-white dark:bg-[#1a2c35] p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-xs font-medium text-slate-500 uppercase tracking-wider mb-1">En Tránsito</p>
+<p class="text-2xl font-bold text-blue-600">42</p>
+</div>
+<div class="bg-white dark:bg-[#1a2c35] p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-xs font-medium text-slate-500 uppercase tracking-wider mb-1">Incidencias</p>
+<p class="text-2xl font-bold text-red-600">3</p>
+</div>
+<div class="bg-white dark:bg-[#1a2c35] p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-xs font-medium text-slate-500 uppercase tracking-wider mb-1">Entregados (Hoy)</p>
+<p class="text-2xl font-bold text-green-600">18</p>
+</div>
+</div>
+<!-- Data Table -->
+<div class="bg-white dark:bg-[#1a2c35] rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="overflow-x-auto">
+<table class="min-w-full divide-y divide-slate-200 dark:divide-slate-700">
+<thead class="bg-slate-50 dark:bg-[#15232d]">
+<tr>
+<th class="px-6 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider" scope="col">ID Envío</th>
+<th class="px-6 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider" scope="col">Destinatario</th>
+<th class="px-6 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider" scope="col">Servicio</th>
+<th class="px-6 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider" scope="col">Estado</th>
+<th class="px-6 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider" scope="col">Fecha</th>
+<th class="relative px-6 py-3" scope="col">
+<span class="sr-only">Acciones</span>
+</th>
+</tr>
+</thead>
+<tbody class="bg-white dark:bg-[#1a2c35] divide-y divide-slate-200 dark:divide-slate-700">
+<!-- Row 1 -->
+<tr>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium text-primary">MRW-839201</div>
+<div class="text-xs text-slate-500">Ref: INV-2023-001</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 text-xs font-bold mr-3">
+                                                JS
+                                            </div>
+<div>
+<div class="text-sm font-medium text-slate-900 dark:text-white">Juan Sanchez</div>
+<div class="text-xs text-slate-500">Madrid, ES</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm text-slate-900 dark:text-white">Urgente 19</div>
+<div class="text-xs text-slate-500">Hasta 5kg</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                                            En Tránsito
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">
+                                        24 Oct 2023
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">more_vert</span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium text-primary">MRW-839202</div>
+<div class="text-xs text-slate-500">Ref: INV-2023-002</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 text-xs font-bold mr-3">
+                                                ML
+                                            </div>
+<div>
+<div class="text-sm font-medium text-slate-900 dark:text-white">Maria López</div>
+<div class="text-xs text-slate-500">Barcelona, ES</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm text-slate-900 dark:text-white">Económico</div>
+<div class="text-xs text-slate-500">Hasta 10kg</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200">
+                                            Pendiente
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">
+                                        23 Oct 2023
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">more_vert</span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium text-primary">MRW-839203</div>
+<div class="text-xs text-slate-500">Ref: INV-2023-003</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 text-xs font-bold mr-3">
+                                                CR
+                                            </div>
+<div>
+<div class="text-sm font-medium text-slate-900 dark:text-white">Carlos Rodriguez</div>
+<div class="text-xs text-slate-500">Valencia, ES</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm text-slate-900 dark:text-white">Urgente 10</div>
+<div class="text-xs text-slate-500">Documentos</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                            Entregado
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">
+                                        22 Oct 2023
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">more_vert</span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium text-primary">MRW-839204</div>
+<div class="text-xs text-slate-500">Ref: INV-2023-004</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 text-xs font-bold mr-3">
+                                                AG
+                                            </div>
+<div>
+<div class="text-sm font-medium text-slate-900 dark:text-white">Ana García</div>
+<div class="text-xs text-slate-500">Sevilla, ES</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm text-slate-900 dark:text-white">Marítimo</div>
+<div class="text-xs text-slate-500">Pallet 50kg</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
+                                            Incidencia
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">
+                                        21 Oct 2023
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">more_vert</span>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium text-primary">MRW-839205</div>
+<div class="text-xs text-slate-500">Ref: INV-2023-005</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 text-xs font-bold mr-3">
+                                                LP
+                                            </div>
+<div>
+<div class="text-sm font-medium text-slate-900 dark:text-white">Luis Pérez</div>
+<div class="text-xs text-slate-500">Bilbao, ES</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm text-slate-900 dark:text-white">Urgente 19</div>
+<div class="text-xs text-slate-500">Paquete pequeño</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                                            En Tránsito
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">
+                                        20 Oct 2023
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">more_vert</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination (Visual only) -->
+<div class="bg-white dark:bg-[#1a2c35] px-4 py-3 flex items-center justify-between border-t border-slate-200 dark:border-slate-800 sm:px-6">
+<div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+<div>
+<p class="text-sm text-slate-700 dark:text-slate-300">
+                                    Mostrando <span class="font-medium">1</span> a <span class="font-medium">5</span> de <span class="font-medium">1248</span> resultados
+                                </p>
+</div>
+<div>
+<nav aria-label="Pagination" class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px">
+<a class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-sm font-medium text-slate-500 hover:bg-slate-50" href="#">
+<span class="sr-only">Anterior</span>
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</a>
+<a aria-current="page" class="z-10 bg-primary/10 border-primary text-primary relative inline-flex items-center px-4 py-2 border text-sm font-medium" href="#">
+                                        1
+                                    </a>
+<a class="bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-600 text-slate-500 hover:bg-slate-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium" href="#">
+                                        2
+                                    </a>
+<a class="bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-600 text-slate-500 hover:bg-slate-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium" href="#">
+                                        3
+                                    </a>
+<span class="relative inline-flex items-center px-4 py-2 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-sm font-medium text-slate-700 dark:text-slate-300">
+                                        ...
+                                    </span>
+<a class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-sm font-medium text-slate-500 hover:bg-slate-50" href="#">
+<span class="sr-only">Siguiente</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</a>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

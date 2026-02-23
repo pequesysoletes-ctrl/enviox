@@ -1,0 +1,36 @@
+{% comment %}
+  GeoMarkets EU — Floating Widget (App Embed Block)
+  Injected in <body> via Theme App Extension
+  Renders the geo-detect.js script + meta tag with shop info
+{% endcomment %}
+
+{% if app.metafields.geomarkets.enabled == true %}
+  <meta 
+    name="geo-current-market" 
+    data-shop="{{ shop.permanent_domain }}"
+    data-market-path="{{ request.locale.root_url }}"
+    data-worker-url="{{ app.metafields.geomarkets.worker_url | default: 'https://geomarkets-detect.workers.dev' }}"
+  />
+  
+  {{ 'geo-detect.js' | asset_url | script_tag }}
+{% endif %}
+
+{% schema %}
+{
+  "name": "GeoMarkets EU",
+  "target": "body",
+  "javascript": "geo-detect.js",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Este bloque habilita la detección de geolocalización automática. Asegúrate de tener configurados tus Markets en Shopify Admin."
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_detect",
+      "label": "Detectar país automáticamente",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

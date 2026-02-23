@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Alerta de Conexión DHL Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f9bc06",
+                        "background-light": "#F6F6F7", // Modified to match user request
+                        "background-dark": "#231e0f",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased selection:bg-primary/30">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-hidden max-w-md mx-auto bg-white dark:bg-slate-900 shadow-2xl">
+<!-- Header -->
+<div class="flex items-center justify-between px-4 py-4 bg-white dark:bg-slate-900 sticky top-0 z-10">
+<h1 class="text-2xl font-bold tracking-tight">Envíos</h1>
+<button class="flex items-center justify-center gap-2 rounded-full bg-slate-100 dark:bg-slate-800 px-4 py-2 text-sm font-semibold text-slate-400 cursor-not-allowed opacity-50" disabled="">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>Nuevo Envío</span>
+</button>
+</div>
+<!-- Warning Banner -->
+<div class="px-4 pb-4 z-20">
+<div class="flex flex-col gap-3 rounded-xl border border-amber-600/20 bg-amber-100 dark:bg-amber-900/30 p-4 shadow-sm">
+<div class="flex items-start gap-3">
+<div class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-500/20">
+<span class="material-symbols-outlined text-amber-600 dark:text-amber-500 text-[18px]">warning</span>
+</div>
+<div class="flex-1">
+<h3 class="text-sm font-bold text-amber-700 dark:text-amber-400 mb-1">Conecta tu cuenta</h3>
+<p class="text-xs font-medium leading-relaxed text-amber-800 dark:text-amber-200/80">
+                            ⚠ Conecta al menos DHL Express o eCommerce Ibérica para empezar a crear envíos.
+                        </p>
+</div>
+</div>
+<button class="w-full rounded-lg bg-primary py-2.5 text-sm font-bold text-slate-900 transition-colors hover:bg-yellow-400 active:scale-[0.98]">
+                    Configurar ahora
+                </button>
+</div>
+</div>
+<!-- Search & Filter (Disabled State) -->
+<div class="px-4 pb-2 opacity-40 pointer-events-none select-none grayscale-[0.5]">
+<div class="relative mb-4">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</span>
+<input class="w-full rounded-lg border-none bg-slate-100 py-3 pl-10 pr-4 text-sm font-medium text-slate-600 focus:ring-0 dark:bg-slate-800 dark:text-slate-300" placeholder="Buscar por ID, nombre..." type="text"/>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
+<div class="whitespace-nowrap rounded-lg bg-slate-900 px-3 py-1.5 text-xs font-medium text-white dark:bg-white dark:text-slate-900">Todos</div>
+<div class="whitespace-nowrap rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">Pendiente</div>
+<div class="whitespace-nowrap rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">En Tránsito</div>
+<div class="whitespace-nowrap rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">Entregado</div>
+</div>
+</div>
+<!-- Main Content (Disabled/Blurred State) -->
+<div class="relative flex-1 overflow-hidden px-4 opacity-40 pointer-events-none select-none grayscale-[0.5]">
+<!-- List Items -->
+<div class="flex flex-col gap-3 pb-24">
+<!-- Item 1 -->
+<div class="flex flex-col gap-3 rounded-xl border border-slate-100 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900/50">
+<div class="flex items-center justify-between border-b border-slate-50 pb-3 dark:border-slate-800">
+<div class="flex items-center gap-2">
+<div class="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center dark:bg-slate-800">
+<span class="material-symbols-outlined text-slate-400 text-[18px]">local_shipping</span>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-900 dark:text-white">#DHL-ES-8921</p>
+<p class="text-[10px] text-slate-500">hace 2 horas</p>
+</div>
+</div>
+<span class="rounded-full bg-yellow-100 px-2 py-0.5 text-[10px] font-bold text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400">Pendiente</span>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Destinatario</p>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-200">Maria Garcia</p>
+<p class="text-xs text-slate-500">Madrid, ES</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Servicio</p>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-200">Express 24h</p>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex flex-col gap-3 rounded-xl border border-slate-100 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900/50">
+<div class="flex items-center justify-between border-b border-slate-50 pb-3 dark:border-slate-800">
+<div class="flex items-center gap-2">
+<div class="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center dark:bg-slate-800">
+<span class="material-symbols-outlined text-slate-400 text-[18px]">package_2</span>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-900 dark:text-white">#DHL-ES-8920</p>
+<p class="text-[10px] text-slate-500">hace 5 horas</p>
+</div>
+</div>
+<span class="rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-bold text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">En Tránsito</span>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Destinatario</p>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-200">Tech Solutions SL</p>
+<p class="text-xs text-slate-500">Barcelona, ES</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Servicio</p>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-200">Economy Select</p>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex flex-col gap-3 rounded-xl border border-slate-100 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900/50">
+<div class="flex items-center justify-between border-b border-slate-50 pb-3 dark:border-slate-800">
+<div class="flex items-center gap-2">
+<div class="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center dark:bg-slate-800">
+<span class="material-symbols-outlined text-slate-400 text-[18px]">check_circle</span>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-900 dark:text-white">#DHL-ES-8919</p>
+<p class="text-[10px] text-slate-500">ayer</p>
+</div>
+</div>
+<span class="rounded-full bg-green-100 px-2 py-0.5 text-[10px] font-bold text-green-700 dark:bg-green-900/30 dark:text-green-400">Entregado</span>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Destinatario</p>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-200">Juan Pérez</p>
+<p class="text-xs text-slate-500">Valencia, ES</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Servicio</p>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-200">Express 12:00</p>
+</div>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="flex flex-col gap-3 rounded-xl border border-slate-100 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900/50">
+<div class="flex items-center justify-between border-b border-slate-50 pb-3 dark:border-slate-800">
+<div class="flex items-center gap-2">
+<div class="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center dark:bg-slate-800">
+<span class="material-symbols-outlined text-slate-400 text-[18px]">check_circle</span>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-900 dark:text-white">#DHL-ES-8918</p>
+<p class="text-[10px] text-slate-500">ayer</p>
+</div>
+</div>
+<span class="rounded-full bg-green-100 px-2 py-0.5 text-[10px] font-bold text-green-700 dark:bg-green-900/30 dark:text-green-400">Entregado</span>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Destinatario</p>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-200">Ana Lopez</p>
+<p class="text-xs text-slate-500">Sevilla, ES</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Servicio</p>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-200">Domestic Express</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Overlay to reinforce disabled state visually -->
+<div class="absolute inset-0 z-10 bg-white/40 dark:bg-black/40 backdrop-blur-[1px]"></div>
+</div>
+<!-- Bottom Navigation -->
+<div class="mt-auto border-t border-slate-100 bg-white px-6 pb-6 pt-3 dark:border-slate-800 dark:bg-slate-900">
+<div class="flex items-center justify-between">
+<a class="flex flex-col items-center gap-1 text-slate-400 transition-colors hover:text-slate-600 dark:hover:text-slate-200" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-[10px] font-medium">Inicio</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<div class="relative">
+<span class="material-symbols-outlined text-[24px] font-variation-settings-fill">local_shipping</span>
+<span class="absolute -right-1 -top-1 flex h-2 w-2">
+<span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75"></span>
+<span class="relative inline-flex h-2 w-2 rounded-full bg-amber-500"></span>
+</span>
+</div>
+<span class="text-[10px] font-bold">Envíos</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 transition-colors hover:text-slate-600 dark:hover:text-slate-200" href="#">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="text-[10px] font-medium">Configuración</span>
+</a>
+</div>
+</div>
+</div>
+</body></html>

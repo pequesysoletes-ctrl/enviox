@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BundlerPro Analytics Dashboard</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0df280",
+                        "primary-dark": "#0be075",
+                        "background-light": "#f6f6f7",
+                        "background-dark": "#102219",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1c2e26",
+                        "border-light": "#e1e3e5",
+                        "border-dark": "#2a3f35",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 5px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.02)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f6f6f7;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-display">
+<!-- Top Navigation (Adapted from component) -->
+<header class="bg-surface-light dark:bg-surface-dark border-b border-border-light dark:border-border-dark sticky top-0 z-30">
+<div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-lg bg-primary/20 flex items-center justify-center text-primary-dark">
+<span class="material-symbols-outlined">layers</span>
+</div>
+<h1 class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">BundlerPro</h1>
+</div>
+<div class="flex items-center gap-3">
+<button class="relative p-2 text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-primary rounded-full ring-2 ring-white dark:ring-surface-dark"></span>
+</button>
+<div class="h-8 w-[1px] bg-border-light dark:bg-border-dark mx-1"></div>
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-full hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<div class="size-8 rounded-full bg-gradient-to-tr from-primary to-emerald-400 overflow-hidden" data-alt="User Avatar Gradient"></div>
+<span class="text-sm font-medium hidden sm:block">Store Admin</span>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">expand_more</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+<!-- Page Header & Controls -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Analytics</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Overview of your store's bundle performance.</p>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<div class="relative group">
+<select class="appearance-none pl-10 pr-10 py-2.5 bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/50 shadow-sm cursor-pointer hover:border-slate-300 dark:hover:border-slate-600 transition-colors">
+<option>Last 30 Days</option>
+<option>Last 7 Days</option>
+<option>Last Quarter</option>
+<option>Year to Date</option>
+</select>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[18px] pointer-events-none">calendar_today</span>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-[18px] pointer-events-none">expand_more</span>
+</div>
+<button class="flex items-center gap-2 px-4 py-2.5 bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-primary/50 shadow-sm transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                    Export CSV
+                </button>
+</div>
+</div>
+<!-- Stat Cards Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Card 1 -->
+<div class="bg-surface-light dark:bg-surface-dark p-6 rounded-xl border border-border-light dark:border-border-dark shadow-soft flex flex-col justify-between h-[160px] group hover:border-primary/50 transition-colors">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">AOV Increase</p>
+<div class="p-1.5 bg-slate-50 dark:bg-slate-800 rounded-md group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary text-[20px]">trending_up</span>
+</div>
+</div>
+<div class="space-y-1">
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">+35%</h3>
+<div class="flex items-center gap-1 text-sm font-medium text-emerald-600 dark:text-primary">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+<span>5%</span>
+<span class="text-slate-400 dark:text-slate-500 font-normal ml-1">vs last period</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-light dark:bg-surface-dark p-6 rounded-xl border border-border-light dark:border-border-dark shadow-soft flex flex-col justify-between h-[160px] group hover:border-primary/50 transition-colors">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Bundle Sales</p>
+<div class="p-1.5 bg-slate-50 dark:bg-slate-800 rounded-md group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary text-[20px]">shopping_bag</span>
+</div>
+</div>
+<div class="space-y-1">
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">89</h3>
+<div class="flex items-center gap-1 text-sm font-medium text-emerald-600 dark:text-primary">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+<span>12%</span>
+<span class="text-slate-400 dark:text-slate-500 font-normal ml-1">vs last period</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-light dark:bg-surface-dark p-6 rounded-xl border border-border-light dark:border-border-dark shadow-soft flex flex-col justify-between h-[160px] group hover:border-primary/50 transition-colors">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Bundle Conversion</p>
+<div class="p-1.5 bg-slate-50 dark:bg-slate-800 rounded-md group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary text-[20px]">percent</span>
+</div>
+</div>
+<div class="space-y-1">
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">7.2%</h3>
+<div class="flex items-center gap-1 text-sm font-medium text-emerald-600 dark:text-primary">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+<span>1.1%</span>
+<span class="text-slate-400 dark:text-slate-500 font-normal ml-1">vs last period</span>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-light dark:bg-surface-dark p-6 rounded-xl border border-border-light dark:border-border-dark shadow-soft flex flex-col justify-between h-[160px] group hover:border-primary/50 transition-colors">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Bundle Revenue</p>
+<div class="p-1.5 bg-slate-50 dark:bg-slate-800 rounded-md group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary text-[20px]">attach_money</span>
+</div>
+</div>
+<div class="space-y-1">
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">$6,582</h3>
+<div class="flex items-center gap-1 text-sm font-medium text-emerald-600 dark:text-primary">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+<span>18%</span>
+<span class="text-slate-400 dark:text-slate-500 font-normal ml-1">vs last period</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Chart & Top Bundles Row -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Revenue Comparison Chart -->
+<div class="lg:col-span-2 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark shadow-soft p-6">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Revenue Comparison</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Bundle Revenue vs Total Store Revenue</p>
+</div>
+<div class="flex items-center gap-4 text-xs font-medium">
+<div class="flex items-center gap-2">
+<span class="size-2.5 rounded-full bg-primary"></span>
+<span class="text-slate-700 dark:text-slate-300">Bundle Rev</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-2.5 rounded-full border border-slate-400 bg-transparent border-dashed"></span>
+<span class="text-slate-500 dark:text-slate-400">Total Store Rev</span>
+</div>
+</div>
+</div>
+<!-- Custom CSS Chart Visualization -->
+<div class="relative h-[300px] w-full mt-4 group">
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between text-xs text-slate-400">
+<div class="border-b border-dashed border-slate-200 dark:border-slate-700 h-0 w-full flex items-end pb-1"><span>$10k</span></div>
+<div class="border-b border-dashed border-slate-200 dark:border-slate-700 h-0 w-full flex items-end pb-1"><span>$7.5k</span></div>
+<div class="border-b border-dashed border-slate-200 dark:border-slate-700 h-0 w-full flex items-end pb-1"><span>$5k</span></div>
+<div class="border-b border-dashed border-slate-200 dark:border-slate-700 h-0 w-full flex items-end pb-1"><span>$2.5k</span></div>
+<div class="border-b border-slate-200 dark:border-slate-700 h-0 w-full flex items-end pb-1"><span>$0</span></div>
+</div>
+<!-- Chart Lines Container -->
+<div class="absolute inset-0 ml-8 mr-4 mt-2 mb-2 flex items-end">
+<!-- SVG for Lines -->
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 100 100">
+<!-- Dashed Line (Total Store Revenue) -->
+<path class="text-slate-300 dark:text-slate-600" d="M0,80 C10,75 20,60 33,55 C45,50 55,40 66,45 C80,50 90,30 100,20" fill="none" stroke="currentColor" stroke-dasharray="4,4" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+<!-- Solid Line (Bundle Revenue) -->
+<path class="text-primary" d="M0,90 C10,88 20,80 33,65 C45,50 55,55 66,35 C80,20 90,25 100,10" fill="none" stroke="currentColor" stroke-width="3" vector-effect="non-scaling-stroke"></path>
+<!-- Area under solid line (Gradient) -->
+<path class="text-primary" d="M0,90 C10,88 20,80 33,65 C45,50 55,55 66,35 C80,20 90,25 100,10 V100 H0 Z" fill="url(#gradient)" opacity="0.15"></path>
+<defs>
+<lineargradient id="gradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:currentColor;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:currentColor;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+</svg>
+<!-- Tooltip Hover Simulation Point (Invisible but logical placement) -->
+<div class="absolute left-[66%] top-[35%] -ml-1.5 -mt-1.5 size-3 bg-primary rounded-full ring-4 ring-white dark:ring-surface-dark shadow-md z-10 cursor-pointer">
+<div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs py-1 px-2 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                                $5,820 (Jun 12)
+                            </div>
+</div>
+</div>
+</div>
+<div class="flex justify-between mt-2 ml-8 mr-4 text-xs text-slate-400 font-medium">
+<span>Week 1</span>
+<span>Week 2</span>
+<span>Week 3</span>
+<span>Week 4</span>
+</div>
+</div>
+<!-- Top Performing Bundles Table -->
+<div class="lg:col-span-1 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark shadow-soft p-0 overflow-hidden flex flex-col">
+<div class="p-6 border-b border-border-light dark:border-border-dark">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Top Bundles</h3>
+</div>
+<div class="overflow-x-auto flex-1">
+<table class="w-full text-sm text-left">
+<thead class="text-xs text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800 uppercase font-medium">
+<tr>
+<th class="px-6 py-3">Bundle Name</th>
+<th class="px-6 py-3 text-right">Conv.%</th>
+<th class="px-6 py-3 text-right">Rev</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-light dark:divide-border-dark">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white">Summer Essentials</td>
+<td class="px-6 py-4 text-right text-emerald-600 dark:text-primary">8.4%</td>
+<td class="px-6 py-4 text-right text-slate-700 dark:text-slate-300 font-semibold">$2,405</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white">Winter Sale Pack</td>
+<td class="px-6 py-4 text-right text-emerald-600 dark:text-primary">6.1%</td>
+<td class="px-6 py-4 text-right text-slate-700 dark:text-slate-300 font-semibold">$1,890</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white">Starter Kit v2</td>
+<td class="px-6 py-4 text-right text-emerald-600 dark:text-primary">5.2%</td>
+<td class="px-6 py-4 text-right text-slate-700 dark:text-slate-300 font-semibold">$940</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white">Gift Set Deluxe</td>
+<td class="px-6 py-4 text-right text-emerald-600 dark:text-primary">9.8%</td>
+<td class="px-6 py-4 text-right text-slate-700 dark:text-slate-300 font-semibold">$760</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-border-light dark:border-border-dark text-center">
+<button class="text-primary hover:text-primary-dark text-sm font-medium hover:underline">View All Bundles</button>
+</div>
+</div>
+</div>
+<!-- Bottom Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Device Breakdown -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark shadow-soft p-6 flex flex-col items-center">
+<div class="w-full mb-2">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Device Breakdown</h3>
+</div>
+<div class="relative size-48 my-4">
+<!-- Pie Chart Simulation using CSS Conic Gradient -->
+<div class="size-full rounded-full bg-[conic-gradient(var(--tw-colors-primary)_0deg_234deg,#e2e8f0_234deg_360deg)] dark:bg-[conic-gradient(var(--tw-colors-primary)_0deg_234deg,#334155_234deg_360deg)]" data-alt="Pie chart showing 65% mobile usage"></div>
+<!-- Inner Circle for Donut Effect -->
+<div class="absolute inset-8 rounded-full bg-surface-light dark:bg-surface-dark flex items-center justify-center flex-col">
+<span class="text-3xl font-bold text-slate-900 dark:text-white">65%</span>
+<span class="text-xs text-slate-500 uppercase tracking-wide">Mobile</span>
+</div>
+</div>
+<div class="flex gap-8 mt-2">
+<div class="flex items-center gap-2">
+<span class="size-3 rounded-full bg-primary"></span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Mobile (65%)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-3 rounded-full bg-slate-200 dark:bg-slate-700"></span>
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Desktop (35%)</span>
+</div>
+</div>
+</div>
+<!-- Customer Segments -->
+<div class="lg:col-span-2 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark shadow-soft p-6 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-6">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Customer Segments</h3>
+<button class="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded text-slate-400">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<div>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Average Order Value (AOV)</p>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between items-end mb-1">
+<span class="font-medium text-slate-900 dark:text-white">Bundle Buyers</span>
+<span class="font-bold text-xl text-slate-900 dark:text-white">$89.50</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2.5 overflow-hidden">
+<div class="bg-primary h-2.5 rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-end mb-1">
+<span class="font-medium text-slate-500 dark:text-slate-400">Non-Bundle Buyers</span>
+<span class="font-bold text-xl text-slate-500 dark:text-slate-400">$52.30</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2.5 overflow-hidden">
+<div class="bg-slate-300 dark:bg-slate-600 h-2.5 rounded-full" style="width: 58%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col justify-center">
+<div class="bg-primary/10 border border-primary/20 rounded-lg p-5 flex gap-4 items-start">
+<div class="bg-surface-light dark:bg-surface-dark rounded-full p-2 text-emerald-600 dark:text-primary shadow-sm">
+<span class="material-symbols-outlined">lightbulb</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-1">Insight</h4>
+<p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                        Bundle buyers spend <span class="font-bold text-emerald-700 dark:text-emerald-400">71% more</span> on average than single-product customers.
+                                    </p>
+</div>
+</div>
+<div class="mt-6 grid grid-cols-2 gap-4 border-t border-border-light dark:border-border-dark pt-6">
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-1">New Customers</p>
+<p class="text-lg font-bold text-slate-900 dark:text-white">42%</p>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-1">Returning</p>
+<p class="text-lg font-bold text-slate-900 dark:text-white">58%</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

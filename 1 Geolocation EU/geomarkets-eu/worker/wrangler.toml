@@ -1,0 +1,18 @@
+name = "geomarkets-detect"
+compatibility_date = "2025-01-01"
+main = "src/index.ts"
+
+# Route pattern — all requests to geo.geomarkets.workers.dev
+# workers_dev = true  # Uncomment for dev
+
+[[kv_namespaces]]
+binding = "SHOP_CONFIG_KV"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+preview_id = "REPLACE_WITH_PREVIEW_KV_ID"
+
+[vars]
+ENVIRONMENT = "production"
+
+# Limits
+# - Free plan: 100k requests/day (more than enough for most shops)
+# - Paid plan: 10M requests/month ($5/month)

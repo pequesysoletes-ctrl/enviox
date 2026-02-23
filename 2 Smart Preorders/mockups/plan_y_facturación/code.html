@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Plan y facturación - Smart Preorders</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7c3bed",
+                        "background-light": "#f6f6f7",
+                        "background-dark": "#171121",
+                        "polaris-green-bg": "#e6f4ea",
+                        "polaris-green-text": "#059669",
+                        "polaris-border": "#dde0e4",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex flex-col min-h-screen">
+<!-- Top Nav Bar (Polaris Style) -->
+<header class="sticky top-0 z-10 flex h-14 items-center justify-between border-b border-polaris-border bg-white px-4 md:px-8 dark:bg-background-dark dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="flex h-8 w-8 items-center justify-center rounded bg-primary text-white">
+<span class="material-symbols-outlined text-xl">shopping_cart_checkout</span>
+</div>
+<h1 class="text-sm font-semibold tracking-tight text-slate-900 dark:text-slate-100">Smart Preorders</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex h-9 w-9 items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-[20px]">help</span>
+</button>
+<button class="flex h-9 w-9 items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<img alt="User Avatar" class="h-full w-full object-cover" data-alt="Avatar de usuario del comerciante" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCU16C3r45SoqfQBTlJsbO-juK_vdSCbcbmOSD3UPDA7ODbMn9C42121X0DQMOu_FCNnKatH-8w1THkKSACzn_Z-lOJ3xKPuI_XR71WMyOOm2q6YisdSBsoqQSZku1YrVFy4Da2B5IqZDrAsx736juR5xfSpi9wAy77xC-2fxA9uPpA4i6zElDB0UuroNJUPDEJfloyhJxY_qcyhJqmrwvW7hAWleT7NZaxMM_mb5Pouk9tOLlTUvizqE6i-86qBfWffzrepZAxTrqg"/>
+</div>
+</div>
+</header>
+<main class="mx-auto w-full max-w-[1000px] flex-1 px-4 py-8 md:px-8">
+<!-- Page Header -->
+<div class="mb-8">
+<nav class="mb-4 flex items-center text-sm text-slate-500">
+<span class="material-symbols-outlined mr-1 text-sm">arrow_back</span>
+<span class="hover:underline cursor-pointer">Configuración</span>
+</nav>
+<h2 class="text-2xl font-bold leading-tight text-slate-900 dark:text-white">Plan y facturación</h2>
+<p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Elige el plan que mejor se adapte al volumen de tu tienda.</p>
+</div>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+<!-- Card 1: Lite -->
+<div class="flex flex-col rounded-xl border border-polaris-border bg-white p-6 shadow-sm dark:bg-slate-900 dark:border-slate-800">
+<div class="mb-6 flex flex-col gap-1">
+<h3 class="text-base font-semibold text-slate-900 dark:text-slate-100">Lite</h3>
+<div class="flex items-baseline gap-1">
+<span class="text-3xl font-bold text-slate-900 dark:text-white">9,99€</span>
+<span class="text-sm font-medium text-slate-500">/mes</span>
+</div>
+<p class="text-xs text-slate-500">Ideal para tiendas que están empezando.</p>
+</div>
+<button class="mb-8 w-full rounded-lg border-2 border-primary py-2.5 text-sm font-semibold text-primary hover:bg-primary/5 transition-all">
+                        Seleccionar
+                    </button>
+<div class="flex flex-col gap-4">
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1">check_circle</span>
+<span class="text-slate-700 dark:text-slate-300">50 preorders/mes</span>
+</div>
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1">check_circle</span>
+<span class="text-slate-700 dark:text-slate-300">Botón personalizable</span>
+</div>
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1">check_circle</span>
+<span class="text-slate-700 dark:text-slate-300">Aviso carrito mixto</span>
+</div>
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1">check_circle</span>
+<span class="text-slate-700 dark:text-slate-300">Tags automáticos</span>
+</div>
+<div class="flex items-start gap-3 text-sm opacity-50">
+<span class="material-symbols-outlined text-slate-400 text-xl">cancel</span>
+<span class="text-slate-500 line-through">Cobro envío extra</span>
+</div>
+<div class="flex items-start gap-3 text-sm opacity-50">
+<span class="material-symbols-outlined text-slate-400 text-xl">cancel</span>
+<span class="text-slate-500 line-through">Dashboard de ahorro</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Pro (Highlighted) -->
+<div class="relative flex flex-col rounded-xl border-2 border-primary bg-white p-6 shadow-md dark:bg-slate-900">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2">
+<span class="inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow-sm">
+                            ⭐ Recomendado
+                        </span>
+</div>
+<div class="mb-6 mt-2 flex flex-col gap-1">
+<h3 class="text-base font-semibold text-slate-900 dark:text-slate-100">Pro</h3>
+<div class="flex items-baseline gap-1">
+<span class="text-3xl font-bold text-slate-900 dark:text-white">19,99€</span>
+<span class="text-sm font-medium text-slate-500">/mes</span>
+</div>
+<p class="text-xs text-slate-500">Todo lo que necesitas para escalar.</p>
+</div>
+<button class="mb-8 w-full rounded-lg bg-primary py-2.5 text-sm font-semibold text-white shadow-sm hover:opacity-90 transition-all">
+                        Seleccionar
+                    </button>
+<div class="flex flex-col gap-4">
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1">check_circle</span>
+<span class="font-medium text-slate-900 dark:text-slate-100">Preorders ilimitados</span>
+</div>
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1">check_circle</span>
+<span class="text-slate-700 dark:text-slate-300">Cobro envío extra (Functions)</span>
+</div>
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1">check_circle</span>
+<span class="text-slate-700 dark:text-slate-300">Dashboard de ahorro + ROI</span>
+</div>
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1">check_circle</span>
+<span class="text-slate-700 dark:text-slate-300">Tags + notas automáticas</span>
+</div>
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1">check_circle</span>
+<span class="text-slate-700 dark:text-slate-300">Soporte prioritario</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ROI Callout Banner -->
+<div class="mt-8 rounded-lg bg-polaris-green-bg p-5 border border-[#c3e6cb] dark:bg-green-950 dark:border-green-900">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-polaris-green-text text-2xl">monetization_on</span>
+<div class="flex-1">
+<p class="text-[14px] leading-relaxed text-polaris-green-text dark:text-green-300 font-medium">
+                            💰 Con solo 3 pedidos mixtos al mes (ahorro de 18€ en envíos), el plan Pro ya se paga solo. ¿Tu tienda tiene drops o lanzamientos? Es una inversión obvia para maximizar tu margen.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Footer Section -->
+<footer class="mt-12 text-center">
+<p class="text-sm text-slate-500 dark:text-slate-400">
+                    Los pagos se gestionan de forma segura a través de <span class="font-semibold">Shopify</span>.
+                    <br class="md:hidden"/>
+<span class="md:mx-2">•</span>
+                    7 días de prueba gratuita.
+                </p>
+<div class="mt-8 flex justify-center gap-6 opacity-30">
+<img alt="Visa" class="h-6" data-alt="Logotipo de Visa" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_QX8-Vz3xLYeqMqY-9-_IeJM8ZdpkH2tR2hd1rEWj5qJTDC555mWkhse6vazKEf5PTfAT-v9raMKXbM5a27I07d2oJ7cqy_1HgvA3SqYypDWLuSJ_Kq9SlFkrU0e3UjTKtTyHVW80VGD5biGn-4n9_HukwM31wjL_EXeXs7Xq1HD_65mTlG4Xq1V-ik5yVPdtTZsiQmjwqE3WeFIZV_w615qmD8gd6Q2BetpqU8J0qVkMFKBMMrDj_lOoW8pVSV22SBI3AsA0C58U"/>
+<img alt="Mastercard" class="h-6" data-alt="Logotipo de Mastercard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAutiH1mY6Al6kJDFJA7FY9Nc27i5TJTLc6ZCaUgKQ8wrfOfm7SSoHH9A_WJwgYoJWxFN80130H-QSPzQ1l6aFyfnHjFM0iZan22K1ggbFOylA7nw5id5FWz_gHznYbMBt0dUeX7WQ4kQjlCUALOWTHc3XKdsg6nrIAcjh-D8PXd2lkSHDwoQQCc-cPyMz2CSDfuLw_h3yrVI9c1qFHnUxVXbX77cQnTYpJna_Bs1u8LxefcPOqF0dAqAeV0noqNAn0n6uhk6OhK7JC"/>
+<img alt="Amex" class="h-6" data-alt="Logotipo de American Express" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtWc1etdSFMS0ogxyGQ7Pg39RB7xs4sNyC9KNEeI5Ht0tBqFQxtwZ0NgtQobeUT8W2NT2Vnr4vhXOgg-3Re-JMys4MYIjjKpqgCpxI3-PstqQRWuBGRDn933RC9Noy9ejKjmXTySz9IIx7uDxtIZQvyYAbGqEqLLiDGekCDarl1IAbDGom-QMCG_afEP_U2Y1ggdlY1sAEdZ74Kpb818pp5d2D3ikZUtWSD1fTxkiDi0Ib2MPgr_G5Qny6y2pbsYjP4OV-LdoJyW9z"/>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

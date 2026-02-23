@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Listado de Envíos - MRW Pro</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0369a0",
+                        "primary-hover": "#025686",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1c23",
+                        "surface-light": "#ffffff",
+                        "border-light": "#e5e7eb",
+                        "text-primary": "#111827",
+                        "text-secondary": "#6b7280",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "md": "0.375rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for table if needed */
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+    </style>
+</head>
+<body class="bg-background-light text-text-primary h-screen overflow-hidden flex">
+<!-- Side Navigation -->
+<aside class="w-64 bg-white border-r border-border-light hidden lg:flex flex-col h-full flex-shrink-0">
+<!-- Logo Area -->
+<div class="h-16 flex items-center px-6 border-b border-border-light">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl">local_shipping</span>
+<span class="text-xl font-bold tracking-tight text-gray-900">MRW Pro</span>
+</div>
+</div>
+<!-- User Profile -->
+<div class="p-4 border-b border-border-light">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-gray-200 bg-cover bg-center" data-alt="User profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCNHPZg5Lo-g_S4miKryJ_U0Oge9HsK_00RRRP_7TTlO-4YuW5QG8v1YEGR6ePlpWMmCfN6dCS5-t4BVBRa0rR1GywR0V50bhvaM8sOW6KOFZY93Pa5tS6ewme71GuvPXiFH2yFSfQOyr3DiXRixmlGpttKuQb5TEtl7NuFnW4414Xggl1zL4g6TmJJ2C6y69KUWn_9-Xjyl2nbc0DGTtCwVa60GpCsqIuPy0x0wj3eXOuhcbVXGOCECldAk-goDNqG6m32Cwqg7nE');"></div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-gray-900">Carlos Méndez</span>
+<span class="text-xs text-gray-500">Administrador</span>
+</div>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-50 hover:text-gray-900 group transition-colors" href="#">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-gray-600">dashboard</span>
+                Inicio
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-primary bg-primary/10 rounded-lg group transition-colors" href="#">
+<span class="material-symbols-outlined text-primary">inventory_2</span>
+                Envíos
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-50 hover:text-gray-900 group transition-colors" href="#">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-gray-600">group</span>
+                Clientes
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-50 hover:text-gray-900 group transition-colors" href="#">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-gray-600">receipt_long</span>
+                Facturación
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-50 hover:text-gray-900 group transition-colors" href="#">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-gray-600">settings</span>
+                Configuración
+            </a>
+</nav>
+<!-- Bottom Actions -->
+<div class="p-4 border-t border-border-light">
+<button class="flex items-center gap-3 w-full px-3 py-2.5 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-50 hover:text-gray-900 transition-colors">
+<span class="material-symbols-outlined text-gray-400">logout</span>
+                Cerrar sesión
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-screen overflow-hidden bg-[#F6F6F7]">
+<!-- Top Header (Mobile specific menu trigger could go here) -->
+<header class="h-16 bg-white border-b border-border-light flex items-center justify-between px-4 sm:px-6 lg:px-8 flex-shrink-0">
+<div class="flex items-center gap-4 lg:hidden">
+<button class="p-2 text-gray-500 hover:text-gray-700">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="text-lg font-bold text-primary">MRW Pro</span>
+</div>
+<div class="flex items-center justify-between w-full">
+<h1 class="text-2xl font-bold text-gray-900 hidden lg:block">Envíos</h1>
+<div class="flex items-center gap-4 ml-auto">
+<button class="p-2 text-gray-400 hover:text-gray-600 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 h-2 w-2 rounded-full bg-red-500 border border-white"></span>
+</button>
+<button class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-medium shadow-sm transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span class="hidden sm:inline">Crear envío manual</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Content Scroll Area -->
+<div class="flex-1 overflow-auto p-4 sm:p-6 lg:p-8">
+<div class="max-w-7xl mx-auto space-y-6">
+<!-- Filters Section -->
+<div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+<div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto flex-1">
+<!-- Search -->
+<div class="relative w-full sm:w-80">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm" placeholder="Buscar por pedido, cliente..." type="text"/>
+</div>
+<!-- Status Filter -->
+<div class="w-full sm:w-48">
+<select class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm rounded-lg">
+<option>Todos los estados</option>
+<option>Creado</option>
+<option>En tránsito</option>
+<option>Entregado</option>
+<option>Incidencia</option>
+</select>
+</div>
+</div>
+<!-- Date Picker (Mock) -->
+<div class="w-full sm:w-auto">
+<button class="flex items-center justify-between w-full sm:w-auto gap-2 px-3 py-2 bg-white border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-primary">
+<span class="material-symbols-outlined text-gray-400 text-[20px]">calendar_today</span>
+<span>Oct 1, 2023 - Oct 31, 2023</span>
+<span class="material-symbols-outlined text-gray-400 text-[20px]">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Data Table Card -->
+<div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+<div class="overflow-x-auto custom-scrollbar">
+<table class="min-w-full divide-y divide-gray-200">
+<thead class="bg-gray-50">
+<tr>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Pedido</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Cliente</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Destino</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Servicio</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Estado</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Fecha</th>
+<th class="relative px-6 py-3" scope="col">
+<span class="sr-only">Acciones</span>
+</th>
+</tr>
+</thead>
+<tbody class="bg-white divide-y divide-gray-200">
+<!-- Row 1 -->
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-primary">#1847</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Juan Pérez</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Madrid, ES</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Urgente 19</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#0369A1]/10 text-[#0369A1]">
+                                            Creado
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">12 Oct 2023</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-gray-600 rounded-full p-1 hover:bg-gray-100">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-primary">#1846</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Ana Gómez</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Barcelona, ES</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Económico</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#D97706]/10 text-[#D97706]">
+                                            En tránsito
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">11 Oct 2023</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-gray-600 rounded-full p-1 hover:bg-gray-100">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-primary">#1845</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Carlos Ruiz</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Valencia, ES</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Urgente 10</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#059669]/10 text-[#059669]">
+                                            Entregado
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10 Oct 2023</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-gray-600 rounded-full p-1 hover:bg-gray-100">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-primary">#1844</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Luisa Fernández</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Sevilla, ES</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Marítimo</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#DC2626]/10 text-[#DC2626]">
+                                            Incidencia
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">09 Oct 2023</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-gray-600 rounded-full p-1 hover:bg-gray-100">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-primary">#1843</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Pedro Sánchez</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Bilbao, ES</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Urgente 19</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#059669]/10 text-[#059669]">
+                                            Entregado
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">08 Oct 2023</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-gray-600 rounded-full p-1 hover:bg-gray-100">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-primary">#1842</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Marta López</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Zaragoza, ES</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Económico</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#EA580C]/10 text-[#EA580C]">
+                                            Devuelto
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">07 Oct 2023</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-gray-600 rounded-full p-1 hover:bg-gray-100">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-primary">#1841</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Jorge Díaz</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Málaga, ES</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Urgente 10</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#D97706]/10 text-[#D97706]">
+                                            En tránsito
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">06 Oct 2023</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-gray-600 rounded-full p-1 hover:bg-gray-100">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 8 -->
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-primary">#1840</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Elena Torres</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Alicante, ES</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Marítimo</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#991B1B]/10 text-[#991B1B]">
+                                            Error creación
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">05 Oct 2023</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-gray-600 rounded-full p-1 hover:bg-gray-100">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+<div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+<div>
+<p class="text-sm text-gray-700">
+                                    Mostrando <span class="font-medium">1-8</span> de <span class="font-medium">342</span> envíos
+                                </p>
+</div>
+<div>
+<nav aria-label="Pagination" class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px">
+<a class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50" href="#">
+<span class="sr-only">Anterior</span>
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</a>
+<a aria-current="page" class="z-10 bg-primary/10 border-primary text-primary relative inline-flex items-center px-4 py-2 border text-sm font-medium" href="#">
+                                        1
+                                    </a>
+<a class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium" href="#">
+                                        2
+                                    </a>
+<a class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium" href="#">
+                                        3
+                                    </a>
+<span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
+                                        ...
+                                    </span>
+<a class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium" href="#">
+                                        8
+                                    </a>
+<a class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium" href="#">
+                                        9
+                                    </a>
+<a class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50" href="#">
+<span class="sr-only">Siguiente</span>
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</a>
+</nav>
+</div>
+</div>
+<!-- Mobile pagination simple view -->
+<div class="flex items-center justify-between w-full sm:hidden">
+<a class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50" href="#">
+                                Anterior
+                            </a>
+<p class="text-sm text-gray-700">
+                                Pág <span class="font-medium">1</span> de <span class="font-medium">43</span>
+</p>
+<a class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50" href="#">
+                                Siguiente
+                            </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Plan y facturación - GeoMarkets EU</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "primary-hover": "#1d4ed8",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a202c",
+                        "text-main": "#202223", // Polaris dark text
+                        "text-subdued": "#6d7175", // Polaris subdued text
+                        "border-subdued": "#e1e3e5", // Polaris border
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                    },
+                    boxShadow: {
+                        'polaris': '0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15)',
+                        'polaris-hover': '0 0 0 1px rgba(63, 63, 68, 0.05), 0 4px 12px 0 rgba(63, 63, 68, 0.15)',
+                        'polaris-active': '0 0 0 2px #2463eb, 0 4px 12px 0 rgba(63, 63, 68, 0.15)',
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem", // rounded-lg
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen text-slate-900 dark:text-slate-100 antialiased selection:bg-primary/20 selection:text-primary">
+<div class="flex min-h-screen flex-col">
+<!-- Main Content Wrapper -->
+<main class="flex-grow w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+<!-- Page Header -->
+<div class="mb-8 text-center sm:text-left">
+<h1 class="text-3xl sm:text-4xl font-bold text-text-main dark:text-white tracking-tight">
+                    Plan y facturación
+                </h1>
+<p class="mt-2 text-text-subdued dark:text-slate-400">
+                    Gestiona tu suscripción y métodos de pago para GeoMarkets EU.
+                </p>
+</div>
+<!-- Pricing Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+<!-- Basic Plan -->
+<div class="relative flex flex-col bg-surface-light dark:bg-surface-dark rounded-lg shadow-polaris hover:shadow-polaris-hover transition-shadow duration-200 overflow-hidden h-full">
+<div class="p-6 flex flex-col h-full">
+<div class="mb-4">
+<h2 class="text-lg font-semibold text-text-main dark:text-white">Basic</h2>
+<div class="mt-4 flex items-baseline">
+<span class="text-4xl font-extrabold tracking-tight text-text-main dark:text-white">9,99€</span>
+<span class="ml-1 text-base font-medium text-text-subdued dark:text-slate-400">/mes</span>
+</div>
+<p class="mt-2 text-sm text-text-subdued dark:text-slate-400">Para tiendas que están empezando.</p>
+</div>
+<div class="flex-grow space-y-4 py-4 border-t border-border-subdued dark:border-slate-700">
+<!-- Feature Item: Included -->
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] select-none">check_circle</span>
+<span class="text-sm text-text-main dark:text-slate-200">3 mercados</span>
+</div>
+<!-- Feature Item: Included -->
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] select-none">check_circle</span>
+<span class="text-sm text-text-main dark:text-slate-200">Redirect automático</span>
+</div>
+<!-- Feature Item: Included -->
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] select-none">check_circle</span>
+<span class="text-sm text-text-main dark:text-slate-200">Selector básico</span>
+</div>
+<!-- Feature Item: Included -->
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] select-none">check_circle</span>
+<span class="text-sm text-text-main dark:text-slate-200">Exclusión bots SEO</span>
+</div>
+<!-- Feature Item: Excluded -->
+<div class="flex items-start gap-3 opacity-50">
+<span class="material-symbols-outlined text-text-subdued dark:text-slate-500 text-[20px] select-none">cancel</span>
+<span class="text-sm text-text-subdued dark:text-slate-500 line-through decoration-slate-400">Analytics</span>
+</div>
+<!-- Feature Item: Excluded -->
+<div class="flex items-start gap-3 opacity-50">
+<span class="material-symbols-outlined text-text-subdued dark:text-slate-500 text-[20px] select-none">cancel</span>
+<span class="text-sm text-text-subdued dark:text-slate-500 line-through decoration-slate-400">CSS custom</span>
+</div>
+</div>
+<div class="mt-6 pt-2">
+<button class="w-full flex justify-center items-center px-4 py-2.5 border border-border-subdued dark:border-slate-600 rounded-lg shadow-sm text-sm font-semibold text-text-main dark:text-white bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors">
+                                Seleccionar Basic
+                            </button>
+</div>
+</div>
+</div>
+<!-- Pro Plan (Highlighted) -->
+<div class="relative flex flex-col bg-surface-light dark:bg-surface-dark rounded-lg shadow-polaris-active ring-2 ring-primary z-10 scale-[1.02] md:scale-105 transform transition-transform duration-200 overflow-hidden h-full">
+<!-- Popular Badge -->
+<div class="absolute top-0 right-0 left-0 flex justify-center -mt-3">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-primary text-white shadow-sm ring-2 ring-white dark:ring-slate-900">
+<span class="material-symbols-outlined text-[14px] mr-1">star</span>
+                            Popular
+                        </span>
+</div>
+<div class="p-6 flex flex-col h-full pt-8">
+<div class="mb-4">
+<h2 class="text-lg font-bold text-primary dark:text-blue-400">Pro</h2>
+<div class="mt-4 flex items-baseline">
+<span class="text-4xl font-extrabold tracking-tight text-text-main dark:text-white">19,99€</span>
+<span class="ml-1 text-base font-medium text-text-subdued dark:text-slate-400">/mes</span>
+</div>
+<p class="mt-2 text-sm text-text-subdued dark:text-slate-400">Para negocios en expansión global.</p>
+</div>
+<div class="flex-grow space-y-4 py-4 border-t border-border-subdued dark:border-slate-700">
+<!-- Feature Item: Included -->
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] select-none">check_circle</span>
+<span class="text-sm font-medium text-text-main dark:text-slate-100">Mercados ilimitados</span>
+</div>
+<!-- Feature Item: Included -->
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] select-none">check_circle</span>
+<span class="text-sm font-medium text-text-main dark:text-slate-100">Redirect + banner</span>
+</div>
+<!-- Feature Item: Included -->
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] select-none">check_circle</span>
+<span class="text-sm font-medium text-text-main dark:text-slate-100">CSS personalizable</span>
+</div>
+<!-- Feature Item: Included -->
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] select-none">check_circle</span>
+<span class="text-sm font-medium text-text-main dark:text-slate-100">Analytics completos</span>
+</div>
+<!-- Feature Item: Included -->
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] select-none">check_circle</span>
+<span class="text-sm font-medium text-text-main dark:text-slate-100">Banderas custom</span>
+</div>
+<!-- Feature Item: Excluded -->
+<div class="flex items-start gap-3 opacity-50">
+<span class="material-symbols-outlined text-text-subdued dark:text-slate-500 text-[20px] select-none">cancel</span>
+<span class="text-sm text-text-subdued dark:text-slate-500 line-through decoration-slate-400">Multi-tienda</span>
+</div>
+</div>
+<div class="mt-6 pt-2">
+<button class="w-full flex justify-center items-center px-4 py-2.5 border border-transparent rounded-lg shadow-sm text-sm font-bold text-white bg-primary hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors">
+                                Seleccionar Pro
+                            </button>
+</div>
+</div>
+</div>
+<!-- Agency Plan -->
+<div class="relative flex flex-col bg-surface-light dark:bg-surface-dark rounded-lg shadow-polaris hover:shadow-polaris-hover transition-shadow duration-200 overflow-hidden h-full">
+<div class="p-6 flex flex-col h-full">
+<div class="mb-4">
+<h2 class="text-lg font-semibold text-text-main dark:text-white">Agency</h2>
+<div class="mt-4 flex items-baseline">
+<span class="text-4xl font-extrabold tracking-tight text-text-main dark:text-white">29,99€</span>
+<span class="ml-1 text-base font-medium text-text-subdued dark:text-slate-400">/mes</span>
+</div>
+<p class="mt-2 text-sm text-text-subdued dark:text-slate-400">Control total para expertos.</p>
+</div>
+<div class="flex-grow space-y-4 py-4 border-t border-border-subdued dark:border-slate-700">
+<!-- Feature Item: Included -->
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] select-none">verified</span>
+<span class="text-sm text-text-main dark:text-slate-200 font-medium">Todo en Pro</span>
+</div>
+<!-- Feature Item: Included -->
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] select-none">check_circle</span>
+<span class="text-sm text-text-main dark:text-slate-200">Multi-tienda</span>
+</div>
+<!-- Feature Item: Included -->
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] select-none">check_circle</span>
+<span class="text-sm text-text-main dark:text-slate-200">API access</span>
+</div>
+<!-- Feature Item: Included -->
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] select-none">check_circle</span>
+<span class="text-sm text-text-main dark:text-slate-200">Soporte prioritario</span>
+</div>
+<!-- Feature Item: Included -->
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] select-none">check_circle</span>
+<span class="text-sm text-text-main dark:text-slate-200">White-label option</span>
+</div>
+</div>
+<div class="mt-6 pt-2">
+<button class="w-full flex justify-center items-center px-4 py-2.5 border border-border-subdued dark:border-slate-600 rounded-lg shadow-sm text-sm font-semibold text-text-main dark:text-white bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors">
+                                Seleccionar Agency
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Notice -->
+<div class="mt-12 text-center">
+<div class="inline-flex items-center justify-center p-3 rounded-lg bg-surface-light dark:bg-slate-800 border border-border-subdued dark:border-slate-700 shadow-sm max-w-2xl mx-auto">
+<span class="material-symbols-outlined text-text-subdued dark:text-slate-500 mr-2 text-[18px]">lock</span>
+<p class="text-sm text-text-subdued dark:text-slate-400">
+                        Los pagos se gestionan de forma segura a través de Shopify. <strong>7 días de prueba gratuita</strong> incluidos en todos los planes.
+                    </p>
+</div>
+</div>
+</main>
+</div>
+</body></html>

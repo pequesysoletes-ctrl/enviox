@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Plans &amp; Billing - BundlerPro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#008060",
+                        "background-light": "#f6f6f7",
+                        "background-dark": "#0f231e",
+                        "text-main": "#202223",
+                        "border-subtle": "#e1e3e5",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-size: 20px; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen font-display">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-border-subtle dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 cursor-pointer">
+<div class="bg-primary p-1 rounded">
+<svg class="w-5 h-5 text-white" fill="currentColor" viewbox="0 0 48 48">
+<path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"></path>
+</svg>
+</div>
+<span class="font-bold text-lg tracking-tight text-slate-900 dark:text-white">BundlerPro</span>
+</div>
+<nav class="hidden md:flex gap-6">
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300" href="#">Dashboard</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300" href="#">Bundles</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300" href="#">Analytics</a>
+<a class="text-sm font-medium text-primary border-b-2 border-primary pb-4 -mb-[17px]" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary/10 text-primary px-3 py-1.5 rounded-lg text-sm font-semibold hover:bg-primary/20 transition-colors">Shop Admin</button>
+<div class="h-8 w-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<img alt="User" data-alt="User profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMu3piimUKc2Di7pwW6CYUW5zIfRgXEKYYcu9lIdmp6cXKTjx3CYdSTqiEifR-pT2kyu_fOpkKBMO7NfvnCXPE3rayh23Q7vUSsqnJf0Z-kunbC66b17jovJVQTpLw64fNFB7jx3h9561LUmhu4ddG1DZfEgT2vZ3_hIwv2L9mtLmYz4xmSKDB_drDIKYjkz0B_CNAzef4kKyfvPGabOERIXVpw42wCwhUaWEpq91Gzb7iG_6qOG0njTpyZ4-v5su7k8vTuNgkjdEa"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 py-10">
+<!-- Header -->
+<div class="mb-10">
+<h1 class="text-3xl font-extrabold text-slate-900 dark:text-white">Plans &amp; Billing</h1>
+<p class="text-slate-500 mt-2 text-lg">Manage your subscription and view your payment history.</p>
+</div>
+<!-- Pricing Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center mb-16">
+<!-- Free Plan -->
+<div class="bg-white dark:bg-slate-900 border border-border-subtle dark:border-slate-800 rounded-xl p-8 flex flex-col h-full hover:shadow-lg transition-shadow">
+<div class="mb-8">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white uppercase tracking-wider">Free</h3>
+<div class="mt-4 flex items-baseline">
+<span class="text-4xl font-extrabold text-slate-900 dark:text-white">$0</span>
+<span class="ml-1 text-slate-500 font-medium">/month</span>
+</div>
+</div>
+<div class="flex-grow space-y-4 mb-8">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-sm text-slate-700 dark:text-slate-300">3 active bundles</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-sm text-slate-700 dark:text-slate-300">Basic analytics</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-sm text-slate-700 dark:text-slate-300">Manual bundle creation</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-red-500">cancel</span>
+<span class="text-sm text-slate-500 dark:text-slate-500 italic">AI recommendations</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-red-500">cancel</span>
+<span class="text-sm text-slate-500 dark:text-slate-500 italic">A/B testing</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-red-500">cancel</span>
+<span class="text-sm text-slate-500 dark:text-slate-500 italic">Priority support</span>
+</div>
+</div>
+<button class="w-full py-2.5 px-4 rounded-lg border border-border-subtle text-slate-700 font-bold text-sm hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300">Current Plan</button>
+</div>
+<!-- Pro Plan (Highlighted) -->
+<div class="bg-white dark:bg-slate-900 border-2 border-primary rounded-xl p-8 flex flex-col h-full shadow-2xl relative transform scale-105 z-10">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
+                    Most Popular
+                </div>
+<div class="mb-8">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white uppercase tracking-wider">Pro</h3>
+<div class="mt-4 flex items-baseline">
+<span class="text-4xl font-extrabold text-slate-900 dark:text-white">$49</span>
+<span class="ml-1 text-slate-500 font-medium">/month</span>
+</div>
+<p class="mt-2 text-primary font-bold text-sm">14-day free trial included</p>
+</div>
+<div class="flex-grow space-y-4 mb-8">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-sm text-slate-900 dark:text-slate-200 font-medium">Unlimited bundles</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-sm text-slate-900 dark:text-slate-200 font-medium">Advanced analytics</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-sm text-slate-900 dark:text-slate-200 font-medium">AI-powered recommendations</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-sm text-slate-900 dark:text-slate-200 font-medium">A/B testing</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-sm text-slate-900 dark:text-slate-200 font-medium">Auto-generated descriptions GPT-4</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-sm text-slate-900 dark:text-slate-200 font-medium">Priority support</span>
+</div>
+</div>
+<button class="w-full bg-primary py-3 px-4 rounded-lg text-white font-bold text-sm hover:brightness-110 transition-all shadow-md">Start Free Trial</button>
+<p class="mt-3 text-center text-[11px] text-slate-400">No credit card required to start</p>
+</div>
+<!-- Enterprise Plan -->
+<div class="bg-white dark:bg-slate-900 border border-border-subtle dark:border-slate-800 rounded-xl p-8 flex flex-col h-full hover:shadow-lg transition-shadow">
+<div class="mb-8">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white uppercase tracking-wider">Enterprise</h3>
+<div class="mt-4 flex items-baseline">
+<span class="text-4xl font-extrabold text-slate-900 dark:text-white">$199</span>
+<span class="ml-1 text-slate-500 font-medium">/month</span>
+</div>
+</div>
+<div class="flex-grow space-y-4 mb-8">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-sm text-slate-700 dark:text-slate-300 font-semibold">Everything in Pro</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-sm text-slate-700 dark:text-slate-300">Custom AI training</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-sm text-slate-700 dark:text-slate-300">API access</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-sm text-slate-700 dark:text-slate-300">Multi-store support</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-sm text-slate-700 dark:text-slate-300">Dedicated account manager</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-sm text-slate-700 dark:text-slate-300">Custom integrations</span>
+</div>
+</div>
+<button class="w-full py-2.5 px-4 rounded-lg border border-primary text-primary font-bold text-sm hover:bg-primary/5 transition-colors">Contact Sales</button>
+</div>
+</div>
+<!-- FAQ Section -->
+<section class="mb-20 max-w-3xl mx-auto">
+<h2 class="text-2xl font-bold text-center text-slate-900 dark:text-white mb-8">Frequently Asked Questions</h2>
+<div class="space-y-4">
+<details class="group bg-white dark:bg-slate-900 border border-border-subtle dark:border-slate-800 rounded-lg overflow-hidden">
+<summary class="flex justify-between items-center p-5 cursor-pointer list-none font-semibold text-slate-900 dark:text-white">
+<span>Can I change plans later?</span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-5 pb-5 text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        Yes, you can upgrade or downgrade your plan at any time through the dashboard. Plan changes are prorated immediately.
+                    </div>
+</details>
+<details class="group bg-white dark:bg-slate-900 border border-border-subtle dark:border-slate-800 rounded-lg overflow-hidden">
+<summary class="flex justify-between items-center p-5 cursor-pointer list-none font-semibold text-slate-900 dark:text-white">
+<span>How does the 14-day trial work?</span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-5 pb-5 text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        You get full access to all Pro features for 14 days. No credit card is required. At the end of the trial, you can choose to continue on the Pro plan or automatically revert to the Free plan.
+                    </div>
+</details>
+<details class="group bg-white dark:bg-slate-900 border border-border-subtle dark:border-slate-800 rounded-lg overflow-hidden">
+<summary class="flex justify-between items-center p-5 cursor-pointer list-none font-semibold text-slate-900 dark:text-white">
+<span>Do you offer discounts for annual billing?</span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-5 pb-5 text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        Yes! Annual plans are available and offer a 20% discount compared to monthly billing. You can switch to annual billing in your account settings.
+                    </div>
+</details>
+</div>
+</section>
+<!-- Billing History Table -->
+<section>
+<div class="bg-white dark:bg-slate-900 border border-border-subtle dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
+<div class="px-6 py-4 border-b border-border-subtle dark:border-slate-800 flex justify-between items-center">
+<h3 class="font-bold text-slate-900 dark:text-white">Billing History</h3>
+<button class="text-sm text-primary font-semibold hover:underline">Export CSV</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50">
+<th class="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Date</th>
+<th class="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Description</th>
+<th class="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Amount</th>
+<th class="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Status</th>
+<th class="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-300">Feb 1, 2024</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">Pro Plan - Monthly</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-300">$49.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                        Paid
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:text-primary/80 font-semibold text-sm flex items-center gap-1 ml-auto">
+<span class="material-symbols-outlined">download</span>
+                                        PDF
+                                    </button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-300">Jan 1, 2024</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">Pro Plan - Monthly</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-300">$49.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                        Paid
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:text-primary/80 font-semibold text-sm flex items-center gap-1 ml-auto">
+<span class="material-symbols-outlined">download</span>
+                                        PDF
+                                    </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+<footer class="max-w-6xl mx-auto px-4 py-10 border-t border-border-subtle dark:border-slate-800 mt-20 text-center">
+<p class="text-sm text-slate-500">© 2024 BundlerPro. All rights reserved. Powered by Shopify.</p>
+</footer>
+</body></html>

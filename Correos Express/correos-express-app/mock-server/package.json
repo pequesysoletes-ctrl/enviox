@@ -1,0 +1,14 @@
+{
+  "name": "mrw-mock-server",
+  "version": "1.0.0",
+  "description": "Mock server simulating MRW SOAP API (sagec.mrw.es/MRWEnvio.asmx)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "xml2js": "^0.6.2"
+  }
+}

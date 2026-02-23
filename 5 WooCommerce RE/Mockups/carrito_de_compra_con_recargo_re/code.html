@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Carrito de Compra - Cliente RE</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#8056b3",
+                        "primary-light": "#9c7cc4",
+                        "primary-dark": "#664490",
+                        "background-light": "#f7f6f7",
+                        "background-dark": "#19151d",
+                        "text-main": "#141316",
+                        "text-muted": "#746c7f",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Hide number input spinners */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-white dark:bg-[#1e1b24] border-b border-[#e0dee3] dark:border-gray-700 px-6 py-3 shadow-sm">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<!-- Logo -->
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 bg-primary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">storefront</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-text-main dark:text-white">Tienda Mayorista</h1>
+</div>
+<!-- Right Actions -->
+<div class="flex items-center gap-6">
+<!-- RE Badge -->
+<div class="hidden md:flex items-center gap-2 px-3 py-1.5 bg-primary/10 dark:bg-primary/20 rounded-full border border-primary/20">
+<span class="text-lg leading-none">🏪</span>
+<span class="text-xs font-bold text-primary dark:text-primary-light uppercase tracking-wide">Cliente RE verificado</span>
+</div>
+<!-- User & Cart -->
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-text-main dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">person</span>
+<span class="hidden sm:inline">Mi Cuenta</span>
+</button>
+<button class="relative p-2 text-text-main dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors group">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-1.5 right-1.5 flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 py-8 lg:py-12">
+<!-- Page Title -->
+<div class="mb-8">
+<h2 class="text-3xl font-bold text-text-main dark:text-white mb-2">Carrito de compra</h2>
+<div class="flex items-center gap-2 text-sm text-text-muted dark:text-gray-400">
+<span>Inicio</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="font-medium text-primary">Carrito</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+<!-- Left Column: Cart Items -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Cart Table Header (Hidden on mobile) -->
+<div class="hidden md:grid grid-cols-12 gap-4 pb-4 border-b border-[#e0dee3] dark:border-gray-700 text-sm font-medium text-text-muted dark:text-gray-400 uppercase tracking-wider">
+<div class="col-span-6">Producto</div>
+<div class="col-span-2 text-center">Precio</div>
+<div class="col-span-2 text-center">Cantidad</div>
+<div class="col-span-2 text-right">Subtotal</div>
+</div>
+<!-- Cart Item 1 -->
+<div class="group relative bg-white dark:bg-[#1e1b24] p-4 rounded-xl border border-[#e0dee3] dark:border-gray-700 shadow-sm md:shadow-none md:border-0 md:bg-transparent md:dark:bg-transparent md:p-0">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+<!-- Product Info -->
+<div class="col-span-1 md:col-span-6 flex gap-4">
+<div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50">
+<img alt="Camiseta blanca de algodón orgánico doblada" class="h-full w-full object-cover object-center" data-alt="Folded white organic cotton t-shirt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW70KGYlR8Fe0fNfAa-lfZUly3y3stkaBxVKyGYoRQB_dovEu4gyMgBIdxdPKAA6LBBLAhjG2N2HWpLOQX7zzlltY4mM7rRX1PUgLSVZjEI0Z8TWbYa5ZPvsTJpTuxg4GNoak43oEtLq0x6TbH_cXpHRHFfq5uPbkdr60KLmjTtr8lz5UQMPwhMBggMKQVosVMKPSBKxWHW_6ZYGXfHcGJ2zUweASmMoQdtDVgaGtse10itDzVeq9E-aiUArNzPRqNuVgSxyJvlvg"/>
+</div>
+<div class="flex flex-col justify-center">
+<h3 class="text-base font-semibold text-text-main dark:text-white">Camiseta algodón orgánico</h3>
+<p class="text-sm text-text-muted dark:text-gray-400 mt-1">Talla: M | Color: Blanco</p>
+<button class="text-sm text-red-500 hover:text-red-700 font-medium flex items-center gap-1 mt-2 md:hidden">
+<span class="material-symbols-outlined text-[16px]">delete</span> Eliminar
+                                </button>
+</div>
+</div>
+<!-- Price -->
+<div class="col-span-1 md:col-span-2 flex md:justify-center items-center justify-between md:flex-col">
+<span class="md:hidden text-sm text-text-muted">Precio:</span>
+<span class="text-sm font-medium text-text-main dark:text-gray-200">25,00€</span>
+</div>
+<!-- Quantity -->
+<div class="col-span-1 md:col-span-2 flex md:justify-center items-center justify-between">
+<span class="md:hidden text-sm text-text-muted">Cantidad:</span>
+<div class="flex items-center rounded-lg border border-[#e0dee3] dark:border-gray-600 bg-white dark:bg-gray-800">
+<button class="px-2 py-1 text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<input class="w-8 text-center border-0 bg-transparent text-sm font-medium text-text-main dark:text-white focus:ring-0 p-0" readonly="" type="number" value="2"/>
+<button class="px-2 py-1 text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+</div>
+<!-- Subtotal -->
+<div class="col-span-1 md:col-span-2 flex md:justify-end items-center justify-between">
+<span class="md:hidden text-sm text-text-muted">Subtotal:</span>
+<span class="text-base font-bold text-text-main dark:text-white">50,00€</span>
+</div>
+</div>
+<!-- Desktop Remove Button -->
+<button class="hidden md:flex absolute -left-10 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 transition-colors p-2" title="Eliminar producto">
+<span class="material-symbols-outlined">delete</span>
+</button>
+<!-- Divider for mobile view -->
+<div class="md:hidden border-t border-[#e0dee3] dark:border-gray-700 mt-4 pt-4"></div>
+</div>
+<!-- Cart Item 2 -->
+<div class="group relative bg-white dark:bg-[#1e1b24] p-4 rounded-xl border border-[#e0dee3] dark:border-gray-700 shadow-sm md:shadow-none md:border-0 md:bg-transparent md:dark:bg-transparent md:p-0">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+<div class="col-span-1 md:col-span-6 flex gap-4">
+<div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50">
+<img alt="Pantalón chino beige slim fit" class="h-full w-full object-cover object-center" data-alt="Beige slim fit chinos" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE9J9gVHxuiiNV70o6vDzRmqUdhz8RQgDLS0-Y-tSykGkfcHWL9fqs0evG3acvqpaUIE2FV1Q_e9t84XX--fWIrFRc9l60uXFkUTkz0eZ8B-nUlKuAbNPF9jhwgVEFXXYSSvL6bkjn5XW1Gkz6cPTPb0UtOtLatesfbFxgtA411lofMAr2j9fu2zpx68TSmsAxdzvsr-Hj4R3HAyixDVLfS3HjMWoaXTOiXHcrAWidmobIMZNLZVPYKkiw2-UBIXvWlR_tLPCKpZ0"/>
+</div>
+<div class="flex flex-col justify-center">
+<h3 class="text-base font-semibold text-text-main dark:text-white">Pantalón chino slim</h3>
+<p class="text-sm text-text-muted dark:text-gray-400 mt-1">Talla: 42 | Color: Beige</p>
+<button class="text-sm text-red-500 hover:text-red-700 font-medium flex items-center gap-1 mt-2 md:hidden">
+<span class="material-symbols-outlined text-[16px]">delete</span> Eliminar
+                                </button>
+</div>
+</div>
+<div class="col-span-1 md:col-span-2 flex md:justify-center items-center justify-between md:flex-col">
+<span class="md:hidden text-sm text-text-muted">Precio:</span>
+<span class="text-sm font-medium text-text-main dark:text-gray-200">45,00€</span>
+</div>
+<div class="col-span-1 md:col-span-2 flex md:justify-center items-center justify-between">
+<span class="md:hidden text-sm text-text-muted">Cantidad:</span>
+<div class="flex items-center rounded-lg border border-[#e0dee3] dark:border-gray-600 bg-white dark:bg-gray-800">
+<button class="px-2 py-1 text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<input class="w-8 text-center border-0 bg-transparent text-sm font-medium text-text-main dark:text-white focus:ring-0 p-0" readonly="" type="number" value="1"/>
+<button class="px-2 py-1 text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+</div>
+<div class="col-span-1 md:col-span-2 flex md:justify-end items-center justify-between">
+<span class="md:hidden text-sm text-text-muted">Subtotal:</span>
+<span class="text-base font-bold text-text-main dark:text-white">45,00€</span>
+</div>
+</div>
+<button class="hidden md:flex absolute -left-10 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 transition-colors p-2" title="Eliminar producto">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<!-- Coupon Section -->
+<div class="mt-4 pt-6 border-t border-[#e0dee3] dark:border-gray-700">
+<div class="flex flex-wrap gap-3">
+<input class="rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm w-full sm:w-64 focus:border-primary focus:ring-primary" placeholder="Código de cupón" type="text"/>
+<button class="px-5 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 font-semibold text-sm text-text-main dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                            Aplicar cupón
+                        </button>
+</div>
+</div>
+</div>
+<!-- Right Column: Cart Totals -->
+<div class="lg:col-span-4">
+<div class="sticky top-24 bg-white dark:bg-[#1e1b24] rounded-xl shadow-sm border border-[#e0dee3] dark:border-gray-700 overflow-hidden">
+<div class="p-6 border-b border-[#e0dee3] dark:border-gray-700 bg-gray-50 dark:bg-[#25222b]">
+<h3 class="text-lg font-bold text-text-main dark:text-white">TOTALES DEL CARRITO</h3>
+</div>
+<div class="p-6 space-y-4">
+<!-- Standard Totals -->
+<div class="flex justify-between items-center text-sm">
+<span class="text-text-muted dark:text-gray-400">Subtotal</span>
+<span class="font-medium text-text-main dark:text-white">95,00€</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-text-muted dark:text-gray-400">IVA (21%)</span>
+<span class="font-medium text-text-main dark:text-white">19,95€</span>
+</div>
+<!-- Special RE Row -->
+<div class="relative py-3 pl-3 -ml-3 border-l-4 border-primary bg-primary/5 dark:bg-primary/10 rounded-r-lg">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-1.5">
+<span class="text-sm font-semibold text-primary dark:text-primary-light">Recargo de Eq. (5,2%)</span>
+<div class="group relative">
+<span class="material-symbols-outlined text-[18px] text-primary cursor-help">info</span>
+<!-- Tooltip -->
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-3 bg-gray-900 text-white text-xs rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 pointer-events-none">
+                                            El Recargo de Equivalencia (5,2%) se aplica automáticamente a su cuenta por ser comerciante minorista acogido al régimen especial.
+                                            <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-gray-900"></div>
+</div>
+</div>
+</div>
+<span class="text-sm font-bold text-primary dark:text-primary-light">4,94€</span>
+</div>
+</div>
+<!-- Divider -->
+<div class="h-px bg-[#e0dee3] dark:bg-gray-700 my-4"></div>
+<!-- Total Final -->
+<div class="flex justify-between items-end">
+<span class="text-base font-bold text-text-main dark:text-white">TOTAL</span>
+<span class="text-2xl font-bold text-[#333] dark:text-white">119,89€</span>
+</div>
+<!-- Shipping Info Note -->
+<p class="text-xs text-text-muted dark:text-gray-500 mt-2">
+                            Los gastos de envío se calcularán en el siguiente paso.
+                        </p>
+<!-- CTA Button -->
+<button class="w-full mt-6 bg-primary hover:bg-primary-dark text-white font-bold py-3.5 px-4 rounded-lg shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 group">
+<span>Finalizar compra</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<!-- Secure Checkout Badges -->
+<div class="mt-6 pt-4 border-t border-dashed border-[#e0dee3] dark:border-gray-700 flex justify-center gap-4 text-gray-400">
+<span class="material-symbols-outlined text-[24px]" title="Pago Seguro">lock</span>
+<span class="material-symbols-outlined text-[24px]" title="Tarjeta de Crédito">credit_card</span>
+<span class="material-symbols-outlined text-[24px]" title="Envío Rápido">local_shipping</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Simple -->
+<footer class="mt-auto border-t border-[#e0dee3] dark:border-gray-700 bg-white dark:bg-[#1e1b24] py-8">
+<div class="max-w-7xl mx-auto px-6 text-center text-sm text-text-muted dark:text-gray-500">
+<p>© 2023 Tienda Mayorista S.L. Todos los derechos reservados.</p>
+</div>
+</footer>
+</body></html>

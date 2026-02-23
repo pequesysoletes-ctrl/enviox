@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BundlerPro Empty State</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#008060",
+                        "background-light": "#F6F6F7", 
+                        "background-dark": "#0f231e",
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#1a3b32",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden transition-colors duration-300">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-white/10 bg-surface-light dark:bg-surface-dark px-6 py-3 sticky top-0 z-50 shadow-sm">
+<div class="flex items-center gap-4">
+<div class="size-8 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">inventory_2</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">BundlerPro</h2>
+</div>
+<div class="flex flex-1 justify-end items-center gap-6">
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-lg h-9 px-4 hover:bg-slate-100 dark:hover:bg-white/10 text-slate-600 dark:text-slate-300 text-sm font-medium transition-colors">
+<span class="material-symbols-outlined text-[20px] mr-2">help</span>
+<span class="truncate">Get Help</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 border border-slate-200 dark:border-white/10 shadow-sm cursor-pointer" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuANUZ6NyjjrcN5S2fsKa9F_SkNcdGwLrpgquQSPDbUAywuBMHtoFQbZ6DL_CPgFqFhkEDtkomO1EPeEJ52ddHC2g-CTs9YgTEwuv8xeyayPwxaniBD5w5VSMa-pl-UwpFyJOwDDfK5cIdpaLW9Qzy9SVapS-Vvz9HDUuY63K-BYma4jM7Sg9xGv7COPbHy71rVY-j4RhI8ANEp_kRoa3SMq18CeAWYfZUleaLWfefEaPAwd9a81ijeiFLJXLC5BUydCRrq1t1OmBViM");'></div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col items-center justify-center p-6 w-full max-w-5xl mx-auto">
+<!-- Empty State Container -->
+<div class="w-full max-w-[600px] flex flex-col items-center animate-fade-in-up">
+<!-- Illustration Area -->
+<div class="relative mb-8 group cursor-default">
+<!-- Decorative background blob -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/5 dark:bg-primary/20 rounded-full blur-3xl -z-10"></div>
+<!-- Main Illustration -->
+<div class="w-64 h-48 relative flex items-center justify-center">
+<svg class="drop-shadow-sm text-slate-800 dark:text-slate-200" fill="none" height="180" viewbox="0 0 200 180" width="200" xmlns="http://www.w3.org/2000/svg">
+<!-- Box 1 Bottom -->
+<path class="dark:fill-surface-dark" d="M40 90L100 120L160 90V150C160 155.5 155.5 160 150 160H50C44.5 160 40 155.5 40 150V90Z" fill="white" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M100 120V160" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path class="dark:fill-primary/20" d="M40 90L100 60L160 90L100 120L40 90Z" fill="#F0FDF9" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<!-- Box 2 Top -->
+<path class="dark:fill-surface-dark" d="M70 50L100 65L130 50V90C130 92.7 127.8 95 125 95H75C72.2 95 70 92.7 70 90V50Z" fill="white" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M100 65V95" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path class="dark:fill-primary/20" d="M70 50L100 35L130 50L100 65L70 50Z" fill="#F0FDF9" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<!-- Sparkles -->
+<g class="text-primary animate-pulse">
+<path d="M170 40L174 30L178 40L188 44L178 48L174 58L170 48L160 44L170 40Z" fill="currentColor"></path>
+<path d="M30 60L32 55L34 60L39 62L34 64L32 69L30 64L25 62L30 60Z" fill="currentColor"></path>
+<path d="M140 20L142 15L144 20L149 22L144 24L142 29L140 24L135 22L140 20Z" fill="currentColor" opacity="0.6"></path>
+</g>
+</svg>
+</div>
+</div>
+<!-- Text Content -->
+<div class="flex flex-col items-center text-center gap-3 mb-10 max-w-[480px]">
+<h1 class="text-slate-900 dark:text-white text-2xl font-bold tracking-tight">
+                    No bundles yet
+                </h1>
+<p class="text-slate-500 dark:text-slate-400 text-base font-normal leading-relaxed">
+                    Start increasing your Average Order Value by creating bundles that your customers will love. Our AI can find the best opportunities for you!
+                </p>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto items-center justify-center mb-12">
+<button class="flex w-full sm:w-auto min-w-[200px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-11 px-6 bg-primary hover:bg-primary/90 text-white text-sm font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0">
+<span class="material-symbols-outlined text-[20px] mr-2">auto_awesome</span>
+<span class="truncate">Get AI Recommendations</span>
+</button>
+<button class="flex w-full sm:w-auto min-w-[200px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-11 px-6 bg-transparent border border-slate-300 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-500 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/5 text-sm font-bold transition-all">
+<span class="material-symbols-outlined text-[20px] mr-2">add</span>
+<span class="truncate">Create Bundle Manually</span>
+</button>
+</div>
+<!-- Social Proof Footer -->
+<div class="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 dark:bg-primary/10 border border-primary/10 dark:border-primary/20">
+<span class="material-symbols-outlined text-primary text-sm">trending_up</span>
+<p class="text-primary text-sm font-medium leading-normal text-center">
+                    Stores with bundles see an average 28% increase in AOV
+                </p>
+</div>
+</div>
+</main>
+</body></html>

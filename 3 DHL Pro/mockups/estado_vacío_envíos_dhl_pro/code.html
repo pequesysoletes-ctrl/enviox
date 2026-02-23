@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DHL Pro - Envíos Vacío</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e52210", // DHL Red approximation
+                        "dhl-yellow": "#FFCC00",
+                        "background-light": "#F6F6F7",
+                        "background-dark": "#221210",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark min-h-screen flex flex-col text-slate-900 dark:text-slate-100">
+<!-- Header -->
+<header class="flex items-center justify-between bg-white dark:bg-slate-900 p-4 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10">
+<div class="flex items-center">
+<button class="flex items-center justify-center p-2 -ml-2 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+</div>
+<h1 class="text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-8">Envíos</h1>
+<div class="w-8"></div> <!-- Spacer to balance back button -->
+</header>
+<!-- Main Content: Empty State -->
+<main class="flex-1 flex flex-col items-center justify-center px-6 py-8 w-full max-w-md mx-auto">
+<!-- Illustration Container -->
+<div class="mb-8 relative flex items-center justify-center">
+<!-- Abstract background shape for depth -->
+<div class="absolute inset-0 bg-dhl-yellow/10 rounded-full blur-2xl transform scale-150"></div>
+<!-- DHL Truck SVG Illustration -->
+<svg class="relative z-10 text-dhl-yellow" data-alt="Minimalist line art illustration of a delivery truck" fill="none" height="120" viewbox="0 0 200 120" width="180" xmlns="http://www.w3.org/2000/svg">
+<!-- Truck Body -->
+<path class="text-slate-800 dark:text-slate-200" d="M20 40H140V90H20V40Z" stroke="currentColor" stroke-linejoin="round" stroke-width="3"></path>
+<!-- Truck Cab -->
+<path class="text-slate-800 dark:text-slate-200" d="M140 60H170L180 90H140V60Z" stroke="currentColor" stroke-linejoin="round" stroke-width="3"></path>
+<!-- Wheels -->
+<circle class="text-slate-800 dark:text-slate-200" cx="50" cy="90" fill="#FFCC00" r="12" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-slate-800 dark:text-slate-200" cx="150" cy="90" fill="#FFCC00" r="12" stroke="currentColor" stroke-width="3"></circle>
+<!-- Speed Lines -->
+<path d="M10 50H-10" stroke="#FFCC00" stroke-linecap="round" stroke-width="3"></path>
+<path d="M10 65H-20" stroke="#FFCC00" stroke-linecap="round" stroke-width="3"></path>
+<path d="M10 80H0" stroke="#FFCC00" stroke-linecap="round" stroke-width="3"></path>
+<!-- Logo Box hint -->
+<rect fill="#FFCC00" fill-opacity="0.2" height="20" rx="2" stroke="#FFCC00" stroke-width="2" width="60" x="50" y="55"></rect>
+</svg>
+</div>
+<!-- Text Content -->
+<div class="text-center space-y-3 mb-10 max-w-xs">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white">
+                Aún no tienes envíos
+            </h2>
+<p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                Cuando se complete un pedido en tu tienda, los envíos se crearán automáticamente según tus reglas de enrutamiento. También puedes crear uno manualmente.
+            </p>
+</div>
+<!-- Actions -->
+<div class="w-full space-y-4">
+<button class="w-full flex items-center justify-center gap-2 bg-primary hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg shadow-sm transition-colors duration-200">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                Crear envío manual
+            </button>
+<button class="w-full text-primary hover:text-red-700 text-sm font-semibold py-2 transition-colors duration-200">
+                Configurar reglas de enrutamiento
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-6 py-2 safe-area-bottom">
+<div class="flex items-end justify-between">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-2xl mb-0.5 group-hover:scale-110 transition-transform">home</span>
+<span class="text-[10px] font-medium tracking-wide">Inicio</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<span class="material-symbols-outlined text-2xl mb-0.5 fill-current">inventory_2</span>
+<span class="text-[10px] font-medium tracking-wide">Envíos</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-2xl mb-0.5 group-hover:scale-110 transition-transform">map</span>
+<span class="text-[10px] font-medium tracking-wide">Rastreo</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-2xl mb-0.5 group-hover:scale-110 transition-transform">person</span>
+<span class="text-[10px] font-medium tracking-wide">Perfil</span>
+</a>
+</div>
+</nav>
+</body></html>

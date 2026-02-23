@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart Preorders - Productos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7c3bed",
+                        "background-light": "#f6f6f7", // Adjusted to match user request #F6F6F7
+                        "background-dark": "#171121",
+                        "slate-800": "#202223", // Polaris dark text
+                        "slate-500": "#6D7175", // Polaris subdued text
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-slate-800 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<div class="relative w-full border-b border-gray-200 bg-white dark:bg-background-dark dark:border-gray-800">
+<div class="layout-container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+<div class="flex items-center gap-4">
+<div class="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<h1 class="text-lg font-bold leading-tight tracking-tight text-slate-800 dark:text-white">Smart Preorders</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+<span class="material-symbols-outlined text-[18px]">help</span>
+<span class="hidden sm:inline">Ayuda</span>
+</div>
+<div class="size-9 overflow-hidden rounded-full bg-gray-200 bg-cover bg-center ring-2 ring-white dark:ring-gray-800" data-alt="User profile avatar gradient" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBYHbQes0htEzDr7Ir4FgGY1Z7EJ1_jyesb1QZuGJD1yuVnEbWnMwyOWPFNukVeD92B3_QMp6ndYauXEsiQBFC7Pr-zqoMVHOkgpc6VtTwhJm_qurlvFKVzKe-Kqrn7kfbLprEzZUJ3Y2OrZnUrmEGtw7UCLT8U_V_XnZtuKivxqEUqVp7yPvm2WqkT_29qjcv5KyERoqMTNNuYavsfgkKO-DCl5f-iI9Z6vVAEgwPUEkN_KvIEUrEnhNGKQ44W7zN_FAITsTJv1AgZ");'></div>
+</div>
+</div>
+</div>
+<!-- Main Content Area -->
+<main class="flex flex-1 flex-col items-center justify-center p-6 sm:p-12">
+<div class="w-full max-w-2xl">
+<!-- Header Section (Breadcrumb style or Page Title) -->
+<div class="mb-10 text-center sm:text-left w-full max-w-[500px] mx-auto">
+<h2 class="text-3xl font-black text-slate-800 dark:text-white mb-2">Productos</h2>
+<p class="text-slate-500 dark:text-slate-400">Gestiona tus productos en preventa.</p>
+</div>
+<!-- Empty State Card -->
+<div class="flex flex-col items-center rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm p-8 sm:p-16 text-center">
+<!-- Illustration -->
+<div class="mb-6 relative size-40 flex items-center justify-center">
+<!-- Custom SVG Illustration -->
+<svg fill="none" height="160" viewbox="0 0 160 160" width="160" xmlns="http://www.w3.org/2000/svg">
+<!-- Background Circle -->
+<circle class="fill-primary/5 dark:fill-primary/10" cx="80" cy="80" r="70"></circle>
+<!-- Box Back -->
+<path class="text-primary" d="M45 65L80 50L115 65V105L80 120L45 105V65Z" stroke="currentColor" stroke-width="2"></path>
+<!-- Box Front Left -->
+<path class="fill-primary/40 dark:fill-primary/30" d="M45 65L80 80V120L45 105V65Z"></path>
+<!-- Box Front Right -->
+<path class="fill-primary/60 dark:fill-primary/50" d="M115 65L80 80V120L115 105V65Z"></path>
+<!-- Box Top -->
+<path class="fill-primary/30 dark:fill-primary/20" d="M45 65L80 50L115 65L80 80L45 65Z"></path>
+<!-- Floating Clock Icon -->
+<g transform="translate(95, 25)">
+<circle class="fill-white dark:fill-gray-800 shadow-lg drop-shadow-sm" cx="24" cy="24" r="24"></circle>
+<circle class="text-primary" cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2"></circle>
+<!-- Clock Hands -->
+<path class="text-primary" d="M24 14V24L30 30" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</g>
+</svg>
+</div>
+<!-- Text Content -->
+<h3 class="mb-3 text-xl font-bold text-slate-800 dark:text-white">
+                    Aún no tienes productos en preventa
+                </h3>
+<p class="mb-8 max-w-[420px] text-base leading-relaxed text-slate-500 dark:text-slate-400">
+                    Marca tus productos agotados o próximos lanzamientos como preventa para empezar a ahorrar en envíos.
+                </p>
+<!-- Actions -->
+<div class="flex flex-col items-center gap-4">
+<button class="group flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-gray-900">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">add_circle</span>
+                        Añadir primer producto
+                    </button>
+<a class="group flex items-center gap-1.5 text-sm font-medium text-slate-500 transition-colors hover:text-primary dark:text-slate-400 dark:hover:text-primary/80" href="#">
+                        ¿Cómo funciona?
+                        <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-0.5">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Footer / Helper Note -->
+<div class="mt-8 flex justify-center">
+<div class="flex items-start gap-3 rounded-lg border border-dashed border-primary/20 bg-white p-4 dark:bg-gray-900/50 dark:border-gray-700 max-w-[500px] w-full shadow-sm">
+<div class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-[16px]">lightbulb</span>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-slate-800 dark:text-white">Tip Pro</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                            Puedes configurar reglas automáticas para activar la preventa cuando el stock llegue a cero.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

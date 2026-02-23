@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d42111",
+                        "background-light": "#f6f6f7",
+                        "background-dark": "#221210",
+                        "dhl-yellow": "#ffcc00",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<title>DHL Pro - Facturación</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen pb-20">
+<!-- Header Navigation -->
+<div class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">arrow_back</span>
+<h1 class="text-lg font-bold tracking-tight">Facturación y plan</h1>
+</div>
+<button class="p-1">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<main class="max-w-md mx-auto p-4 space-y-6">
+<!-- Section: Tu plan actual -->
+<section>
+<h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 px-1">Tu plan actual</h2>
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h3 class="text-xl font-bold">Plan Profesional</h3>
+<span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Activo</span>
+</div>
+<p class="text-2xl font-bold text-primary">49,00€<span class="text-sm font-normal text-slate-500">/mes</span></p>
+</div>
+<div class="bg-primary/10 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+</div>
+</div>
+<ul class="space-y-2 mb-6">
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-green-500 text-lg">check_circle</span>
+                            Envíos ilimitados
+                        </li>
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-green-500 text-lg">check_circle</span>
+                            Datos aduanas automáticos
+                        </li>
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-green-500 text-lg">check_circle</span>
+                            Soporte prioritario
+                        </li>
+</ul>
+<!-- Usage Breakdown -->
+<div class="space-y-4 mb-6 border-t border-slate-100 dark:border-slate-800 pt-4">
+<div>
+<div class="flex justify-between text-xs mb-1.5">
+<span class="font-medium">DHL Express: 156 envíos</span>
+<span class="text-slate-500">62%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-dhl-yellow h-full rounded-full" style="width: 62%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1.5">
+<span class="font-medium">eCommerce Ibérica: 96 envíos</span>
+<span class="text-slate-500">38%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 38%"></div>
+</div>
+</div>
+</div>
+<p class="text-xs text-slate-500 mb-6 italic">Renueva el 01/03/2026</p>
+<div class="flex flex-col gap-3">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg transition-colors">
+                            Cambiar plan
+                        </button>
+<button class="w-full text-primary text-sm font-medium py-1">
+                            Cancelar suscripción
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Pricing Tiers -->
+<section>
+<h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 px-1">Planes disponibles</h2>
+<div class="space-y-4">
+<!-- Starter -->
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="flex justify-between items-center mb-2">
+<h4 class="font-bold text-lg">Starter</h4>
+<p class="font-bold">29€<span class="text-xs font-normal text-slate-500">/mes</span></p>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">100 envíos/mes • Solo eCommerce Ibérica</p>
+<button class="w-full border border-slate-200 dark:border-slate-700 py-2 rounded-lg text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-800">
+                        Downgrade
+                    </button>
+</div>
+<!-- Profesional (Active) -->
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border-2 border-primary relative">
+<div class="absolute -top-3 right-4 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tight">Plan actual</div>
+<div class="flex justify-between items-center mb-2">
+<h4 class="font-bold text-lg">Profesional</h4>
+<p class="font-bold">49€<span class="text-xs font-normal text-slate-500">/mes</span></p>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Ilimitados • Express + eCommerce</p>
+<button class="w-full bg-slate-100 dark:bg-slate-800 text-slate-400 py-2 rounded-lg text-sm font-semibold cursor-not-allowed" disabled="">
+                        Suscrito
+                    </button>
+</div>
+<!-- Business -->
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="flex justify-between items-center mb-2">
+<h4 class="font-bold text-lg">Business</h4>
+<p class="font-bold">99€<span class="text-xs font-normal text-slate-500">/mes</span></p>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Ilimitados • Multi-cuenta • Soporte dedicado</p>
+<button class="w-full bg-primary text-white py-2 rounded-lg text-sm font-semibold hover:bg-primary/90">
+                        Upgrade
+                    </button>
+</div>
+</div>
+</section>
+<!-- Section: Billing History -->
+<section>
+<h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 px-1">Historial de facturación</h2>
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Item 1 -->
+<div class="p-4 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs text-slate-500">01/02/2026</span>
+<span class="text-sm font-semibold">Plan Profesional</span>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-sm font-bold">49,00€</span>
+<span class="bg-green-50 text-green-600 text-[10px] font-bold px-1.5 py-0.5 rounded">Pagado</span>
+</div>
+</div>
+<button class="flex items-center gap-1 text-primary text-sm font-medium">
+<span class="material-symbols-outlined text-lg">download</span>
+                        PDF
+                    </button>
+</div>
+<!-- Item 2 -->
+<div class="p-4 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs text-slate-500">01/01/2026</span>
+<span class="text-sm font-semibold">Plan Profesional</span>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-sm font-bold">49,00€</span>
+<span class="bg-green-50 text-green-600 text-[10px] font-bold px-1.5 py-0.5 rounded">Pagado</span>
+</div>
+</div>
+<button class="flex items-center gap-1 text-primary text-sm font-medium">
+<span class="material-symbols-outlined text-lg">download</span>
+                        PDF
+                    </button>
+</div>
+<!-- Item 3 -->
+<div class="p-4 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs text-slate-500">01/12/2025</span>
+<span class="text-sm font-semibold">Plan Starter</span>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-sm font-bold">29,00€</span>
+<span class="bg-green-50 text-green-600 text-[10px] font-bold px-1.5 py-0.5 rounded">Pagado</span>
+</div>
+</div>
+<button class="flex items-center gap-1 text-primary text-sm font-medium">
+<span class="material-symbols-outlined text-lg">download</span>
+                        PDF
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Nav Bar -->
+<nav class="fixed bottom-0 w-full bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-2 pb-safe">
+<div class="flex justify-around py-2">
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Inicio</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">package_2</span>
+<span class="text-[10px] font-medium">Envíos</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">payments</span>
+<span class="text-[10px] font-medium">Facturación</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Perfil</span>
+</a>
+</div>
+</nav>
+</body></html>

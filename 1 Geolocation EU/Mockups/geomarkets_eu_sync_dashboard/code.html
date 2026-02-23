@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GeoMarkets EU Sync Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#008060",
+                        "primary-hover": "#006e52",
+                        "surface": "#ffffff",
+                        "background-light": "#F6F6F7",
+                        "text-main": "#202223",
+                        "text-subdued": "#6D7175",
+                        "border-subdued": "#E1E3E5",
+                        "info-surface": "#ebf5fa",
+                        "info-text": "#2c6ecb",
+                        "info-border": "#b4e1fa",
+                        "success-surface": "#E3F1DF",
+                        "success-text": "#007F5F",
+                        "warning-surface": "#FFEA8A",
+                        "warning-text": "#5C4600",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                    },
+                    boxShadow: {
+                        "polaris": "0px 0px 5px 0px rgba(0, 0, 0, 0.05), 0px 1px 2px 0px rgba(0, 0, 0, 0.15)",
+                        "polaris-card": "0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15)",
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .polaris-shadow {
+            box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-background-light min-h-screen text-text-main font-display">
+<div class="max-w-[1048px] mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-6">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex flex-col gap-1">
+<h1 class="text-2xl font-bold text-text-main">Shopify Markets sincronizados</h1>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-success-surface text-success-text border border-transparent">
+<span class="material-symbols-outlined text-[16px] mr-1">check_circle</span>
+                        Sincronizado — hace 2 horas
+                    </span>
+</div>
+</div>
+<div>
+<button class="inline-flex items-center justify-center px-4 py-2 border border-border-subdued shadow-sm text-sm font-medium rounded-lg text-text-main bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors">
+<span class="material-symbols-outlined text-[18px] mr-2">sync</span>
+                    Sincronizar ahora
+                </button>
+</div>
+</header>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Left Column: Table & Info (Span 2) -->
+<div class="lg:col-span-2 flex flex-col gap-6">
+<!-- Table Card -->
+<div class="bg-surface rounded-xl polaris-shadow overflow-hidden">
+<div class="px-4 py-3 border-b border-border-subdued bg-surface flex justify-between items-center">
+<h2 class="text-sm font-semibold text-text-main">5 Mercados configurados</h2>
+<div class="flex gap-2">
+<button class="text-text-subdued hover:text-text-main">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+</button>
+<button class="text-text-subdued hover:text-text-main">
+<span class="material-symbols-outlined text-[20px]">sort</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="min-w-full divide-y divide-border-subdued">
+<thead class="bg-gray-50">
+<tr>
+<th class="px-4 py-3 text-left text-xs font-medium text-text-subdued uppercase tracking-wider w-8" scope="col">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox"/>
+</th>
+<th class="px-4 py-3 text-left text-xs font-semibold text-text-subdued" scope="col">Mercado</th>
+<th class="px-4 py-3 text-left text-xs font-semibold text-text-subdued" scope="col">Países</th>
+<th class="px-4 py-3 text-left text-xs font-semibold text-text-subdued" scope="col">Idioma</th>
+<th class="px-4 py-3 text-left text-xs font-semibold text-text-subdued" scope="col">Moneda</th>
+<th class="px-4 py-3 text-left text-xs font-semibold text-text-subdued" scope="col">URL</th>
+<th class="px-4 py-3 text-right text-xs font-semibold text-text-subdued" scope="col">Estado</th>
+</tr>
+</thead>
+<tbody class="bg-white divide-y divide-border-subdued">
+<!-- Row 1 -->
+<tr class="hover:bg-gray-50 transition-colors group">
+<td class="px-4 py-3 whitespace-nowrap">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-4 py-3 whitespace-nowrap">
+<div class="flex items-center">
+<span class="text-lg mr-2">🇪🇸</span>
+<span class="text-sm font-medium text-text-main">España</span>
+<span class="ml-2 inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-gray-100 text-gray-800">Primary</span>
+</div>
+</td>
+<td class="px-4 py-3 whitespace-nowrap text-sm text-text-subdued">ES</td>
+<td class="px-4 py-3 whitespace-nowrap text-sm text-text-subdued">Español</td>
+<td class="px-4 py-3 whitespace-nowrap text-sm text-text-subdued">EUR €</td>
+<td class="px-4 py-3 whitespace-nowrap text-sm text-text-subdued font-mono text-xs">/</td>
+<td class="px-4 py-3 whitespace-nowrap text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-success-surface text-success-text">Activo</span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-gray-50 transition-colors group">
+<td class="px-4 py-3 whitespace-nowrap">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-4 py-3 whitespace-nowrap">
+<div class="flex items-center">
+<span class="text-lg mr-2">🇫🇷</span>
+<span class="text-sm font-medium text-text-main">Francia</span>
+</div>
+</td>
+<td class="px-4 py-3 whitespace-nowrap text-sm text-text-subdued">FR</td>
+<td class="px-4 py-3 whitespace-nowrap text-sm text-text-subdued">Français</td>
+<td class="px-4 py-3 whitespace-nowrap text-sm text-text-subdued">EUR €</td>
+<td class="px-4 py-3 whitespace-nowrap text-sm text-text-subdued font-mono text-xs">/fr/</td>
+<td class="px-4 py-3 whitespace-nowrap text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-success-surface text-success-text">Activo</span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-gray-50 transition-colors group">
+<td class="px-4 py-3 whitespace-nowrap">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-4 py-3 whitespace-nowrap">
+<div class="flex items-center">
+<span class="text-lg mr-2">🇩🇪</span>
+<span class="text-sm font-medium text-text-main">Alemania</span>
+</div>
+</td>
+<td class="px-4 py-3 whitespace-nowrap text-sm text-text-subdued">DE, AT</td>
+<td class="px-4 py-3 whitespace-nowrap text-sm text-text-subdued">Deutsch</td>
+<td class="px-4 py-3 whitespace-nowrap text-sm text-text-subdued">EUR €</td>
+<td class="px-4 py-3 whitespace-nowrap text-sm text-text-subdued font-mono text-xs">/de/</td>
+<td class="px-4 py-3 whitespace-nowrap text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-success-surface text-success-text">Activo</span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-gray-50 transition-colors group">
+<td class="px-4 py-3 whitespace-nowrap">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-4 py-3 whitespace-nowrap">
+<div class="flex items-center">
+<span class="text-lg mr-2">🇬🇧</span>
+<span class="text-sm font-medium text-text-main">Reino Unido</span>
+</div>
+</td>
+<td class="px-4 py-3 whitespace-nowrap text-sm text-text-subdued">GB</td>
+<td class="px-4 py-3 whitespace-nowrap text-sm text-text-subdued">English</td>
+<td class="px-4 py-3 whitespace-nowrap text-sm text-text-subdued">GBP £</td>
+<td class="px-4 py-3 whitespace-nowrap text-sm text-text-subdued font-mono text-xs">/en-gb/</td>
+<td class="px-4 py-3 whitespace-nowrap text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-success-surface text-success-text">Activo</span>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-gray-50 transition-colors group">
+<td class="px-4 py-3 whitespace-nowrap">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-4 py-3 whitespace-nowrap">
+<div class="flex items-center">
+<span class="text-lg mr-2">🇮🇹</span>
+<span class="text-sm font-medium text-text-main">Italia</span>
+</div>
+</td>
+<td class="px-4 py-3 whitespace-nowrap text-sm text-text-subdued">IT</td>
+<td class="px-4 py-3 whitespace-nowrap text-sm text-text-subdued">Italiano</td>
+<td class="px-4 py-3 whitespace-nowrap text-sm text-text-subdued">EUR €</td>
+<td class="px-4 py-3 whitespace-nowrap text-sm text-text-subdued font-mono text-xs">/it/</td>
+<td class="px-4 py-3 whitespace-nowrap text-right">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-warning-surface text-warning-text border border-warning-text/20">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                                            Sin traducción
+                                        </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Info Banner -->
+<div class="rounded-xl border border-info-border bg-info-surface p-4 flex gap-3 items-start">
+<span class="material-symbols-outlined text-info-text shrink-0">info</span>
+<div class="flex-1">
+<p class="text-sm text-text-main leading-relaxed">
+                            Los mercados se configuran en <span class="font-semibold">Shopify Admin → Configuración → Markets</span>. GeoMarkets lee tu configuración y redirige visitantes al mercado correcto automáticamente.
+                        </p>
+<div class="mt-2">
+<a class="text-sm font-semibold text-primary hover:text-primary-hover inline-flex items-center" href="#">
+                                Ir a Shopify Markets
+                                <span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Stats (Span 1) -->
+<div class="lg:col-span-1 flex flex-col gap-6">
+<!-- Statistics Card -->
+<div class="bg-surface rounded-xl polaris-shadow p-5 flex flex-col h-fit">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-sm font-bold text-text-main uppercase tracking-wide">Estadísticas de Markets</h2>
+<span class="material-symbols-outlined text-text-subdued">analytics</span>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-start gap-3">
+<div class="p-2 rounded-lg bg-success-surface text-success-text shrink-0">
+<span class="material-symbols-outlined">public</span>
+</div>
+<div>
+<p class="text-2xl font-bold text-text-main">5</p>
+<p class="text-sm text-text-subdued">Mercados activos cubriendo 7 países</p>
+</div>
+</div>
+<div class="h-px bg-border-subdued w-full"></div>
+<div class="flex items-start gap-3">
+<div class="p-2 rounded-lg bg-gray-100 text-text-subdued shrink-0">
+<span class="material-symbols-outlined">map</span>
+</div>
+<div>
+<p class="text-2xl font-bold text-text-main">27</p>
+<p class="text-sm text-text-subdued">Países EU no cubiertos actualmente</p>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-border-subdued">
+<button class="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-lg text-primary bg-primary/10 hover:bg-primary/20 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors">
+                            Ver países sin cobertura
+                        </button>
+</div>
+</div>
+<!-- Support Card (Extra Context) -->
+<div class="bg-surface rounded-xl polaris-shadow p-5 flex flex-col gap-3">
+<h3 class="text-sm font-semibold text-text-main">¿Necesitas ayuda?</h3>
+<p class="text-sm text-text-subdued">Contacta con soporte si tienes problemas con la sincronización de precios o idiomas.</p>
+<a class="text-sm text-primary font-medium hover:underline" href="#">Contactar soporte</a>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-8 pb-8 text-text-subdued text-xs">
+<p>GeoMarkets EU App © 2023</p>
+</div>
+</div>
+</body></html>

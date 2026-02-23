@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MRW Pro - Envíos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0369a0",
+                        "background-light": "#f6f6f7",
+                        "background-dark": "#0f1c23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header / Top Navigation -->
+<header class="flex items-center justify-between border-b border-slate-200 bg-white px-6 py-3 dark:border-slate-800 dark:bg-slate-900 lg:px-10">
+<div class="flex items-center gap-4">
+<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined text-xl">package_2</span>
+</div>
+<h1 class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">MRW Pro</h1>
+</div>
+<nav class="hidden flex-1 justify-center gap-8 md:flex">
+<a class="text-sm font-semibold text-primary border-b-2 border-primary pb-1" href="#">Envíos</a>
+<a class="text-sm font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white" href="#">Pedidos</a>
+<a class="text-sm font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white" href="#">Clientes</a>
+<a class="text-sm font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white" href="#">Configuración</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 rounded-full bg-slate-200 bg-cover bg-center ring-2 ring-white dark:ring-slate-800" data-alt="User profile avatar photo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAEiARDOpR07A_Oe31nTbqYrnM6SEQZWKNCIs0-010caw5ODcOZrPCy4lfxBIUn9_a6p0GAODwpyv9ePV4r0oHeNNHRJ0fPM_OT3MBLla0-Z9dKdvkrRDyX8x2CzmaSBQCWDhIJDc8Vm_n98GHo1qanomLWvLU0dhf_IkzC8WySp8tM6f2EhkzL3NTr-gxaTKEvLWIa_-5uiba8jBPnEjOz2tOp_wBfPFZcJfWFfAWDwV0VOrGklFmD4Q-gm8me1lNLUDgHmo7ihLI");'>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex flex-1 flex-col">
+<!-- Page Title Bar -->
+<div class="mx-auto w-full max-w-[1200px] px-6 py-8 lg:px-10">
+<h2 class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">Envíos</h2>
+</div>
+<!-- Empty State Container -->
+<div class="flex flex-1 items-center justify-center px-6 pb-20">
+<div class="flex w-full max-w-[480px] flex-col items-center text-center">
+<!-- Minimal Line Illustration -->
+<div class="mb-8 flex h-48 w-48 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800/50">
+<div class="relative flex flex-col items-center">
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-700" style="font-size: 120px;">
+                                inventory_2
+                            </span>
+<div class="absolute -bottom-2 h-1 w-24 rounded-full bg-slate-200/50 dark:bg-slate-800 blur-sm"></div>
+</div>
+</div>
+<!-- Text Content -->
+<h3 class="mb-3 text-2xl font-bold text-slate-900 dark:text-white">
+                        Aún no tienes envíos
+                    </h3>
+<p class="mb-10 text-base leading-relaxed text-slate-500 dark:text-slate-400">
+                        Cuando se complete un pedido en tu tienda, los envíos aparecerán aquí automáticamente. También puedes crear uno manualmente.
+                    </p>
+<!-- Call to Action -->
+<div class="flex w-full flex-col items-center gap-6">
+<button class="flex h-12 w-full max-w-xs items-center justify-center rounded-lg bg-primary px-8 text-base font-bold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary/90 active:scale-[0.98]">
+<span class="material-symbols-outlined mr-2 text-xl">add</span>
+                            Crear envío manual
+                        </button>
+<a class="group flex items-center gap-1 text-sm font-medium text-primary hover:underline" href="#">
+                            Configurar envíos automáticos
+                            <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-0.5">chevron_right</span>
+</a>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer / Feedback (Optional) -->
+<footer class="border-t border-slate-200 py-6 dark:border-slate-800">
+<div class="mx-auto flex max-w-[1200px] flex-col items-center justify-between gap-4 px-6 md:flex-row lg:px-10">
+<p class="text-xs text-slate-400 dark:text-slate-500">© 2024 MRW Pro. Todos los derechos reservados.</p>
+<div class="flex gap-6">
+<a class="text-xs text-slate-400 hover:text-primary dark:text-slate-500" href="#">Ayuda</a>
+<a class="text-xs text-slate-400 hover:text-primary dark:text-slate-500" href="#">Privacidad</a>
+<a class="text-xs text-slate-400 hover:text-primary dark:text-slate-500" href="#">Términos</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

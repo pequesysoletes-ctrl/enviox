@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WooCommerce RE Plugin Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7F54B3", // WooCommerce Purple
+                        "wp-dark": "#23282D", // WP Sidebar Dark
+                        "wp-hover": "#191E23", // WP Sidebar Hover
+                        "wp-light-bg": "#F0F0F1", // WP Content BG
+                        "wp-blue": "#2271b1", // WP Link Blue
+                        "background-light": "#F0F0F1",
+                        "background-dark": "#19151d",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom WP-like toggle switch */
+        .wp-toggle-checkbox:checked {
+            right: 0;
+            border-color: #7F54B3;
+        }
+        .wp-toggle-checkbox:checked + .wp-toggle-label {
+            background-color: #7F54B3;
+        }
+        /* Custom WP Table styling */
+        .wp-list-table th {
+            font-weight: 600;
+            text-align: left;
+            padding: 8px 10px;
+            font-size: 14px;
+            color: #1d2327;
+        }
+        .wp-list-table td {
+            padding: 8px 10px;
+            font-size: 13px;
+            color: #50575e;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-[#3c434a]">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-[160px] flex-shrink-0 bg-wp-dark flex flex-col text-[#b3b3b3] text-[13px] font-normal z-20">
+<div class="h-[46px] w-full bg-wp-hover mb-2"></div> <!-- Admin Bar placeholder -->
+<nav class="flex-1 overflow-y-auto">
+<ul class="flex flex-col">
+<li class="group hover:bg-wp-hover hover:text-white cursor-pointer transition-colors relative">
+<div class="flex items-center py-2 px-3 gap-2">
+<span class="material-symbols-outlined text-[20px] opacity-70 group-hover:opacity-100">dashboard</span>
+<span>Escritorio</span>
+</div>
+</li>
+<li class="group hover:bg-wp-hover hover:text-white cursor-pointer transition-colors relative">
+<div class="flex items-center py-2 px-3 gap-2">
+<span class="material-symbols-outlined text-[20px] opacity-70 group-hover:opacity-100">push_pin</span>
+<span>Entradas</span>
+</div>
+</li>
+<li class="group hover:bg-wp-hover hover:text-white cursor-pointer transition-colors relative">
+<div class="flex items-center py-2 px-3 gap-2">
+<span class="material-symbols-outlined text-[20px] opacity-70 group-hover:opacity-100">image</span>
+<span>Medios</span>
+</div>
+</li>
+<li class="group hover:bg-wp-hover hover:text-white cursor-pointer transition-colors relative">
+<div class="flex items-center py-2 px-3 gap-2">
+<span class="material-symbols-outlined text-[20px] opacity-70 group-hover:opacity-100">description</span>
+<span>Páginas</span>
+</div>
+</li>
+<li class="group hover:bg-wp-hover hover:text-white cursor-pointer transition-colors relative">
+<div class="flex items-center py-2 px-3 gap-2">
+<span class="material-symbols-outlined text-[20px] opacity-70 group-hover:opacity-100">chat_bubble</span>
+<span>Comentarios</span>
+</div>
+</li>
+<!-- Active Menu Item -->
+<li class="bg-primary text-white cursor-pointer relative font-semibold">
+<div class="flex items-center py-2 px-3 gap-2">
+<span class="material-symbols-outlined text-[20px]">storefront</span>
+<span>WooCommerce</span>
+</div>
+<!-- Submenu indicator triangle -->
+<div class="absolute right-0 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[6px] border-r-wp-light-bg"></div>
+</li>
+<li class="group hover:bg-wp-hover hover:text-white cursor-pointer transition-colors relative">
+<div class="flex items-center py-2 px-3 gap-2">
+<span class="material-symbols-outlined text-[20px] opacity-70 group-hover:opacity-100">local_offer</span>
+<span>Productos</span>
+</div>
+</li>
+<li class="group hover:bg-wp-hover hover:text-white cursor-pointer transition-colors relative">
+<div class="flex items-center py-2 px-3 gap-2">
+<span class="material-symbols-outlined text-[20px] opacity-70 group-hover:opacity-100">analytics</span>
+<span>Análisis</span>
+</div>
+</li>
+<li class="group hover:bg-wp-hover hover:text-white cursor-pointer transition-colors relative">
+<div class="flex items-center py-2 px-3 gap-2">
+<span class="material-symbols-outlined text-[20px] opacity-70 group-hover:opacity-100">settings</span>
+<span>Ajustes</span>
+</div>
+</li>
+</ul>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-full overflow-y-auto bg-wp-light-bg">
+<!-- Top Bar -->
+<div class="h-[46px] w-full bg-white border-b border-[#c3c4c7] sticky top-0 z-10 flex items-center justify-between px-4">
+<div class="flex items-center gap-2">
+<span class="text-[13px] font-semibold text-[#1d2327]">Mi Tienda</span>
+<span class="material-symbols-outlined text-[16px] text-[#787c82]">open_in_new</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[13px] text-[#1d2327]">Hola, Admin</span>
+<div class="w-7 h-7 bg-gray-200 rounded-full bg-cover bg-center" data-alt="User Avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBNu5R-83k0QBCOsgW6qWJIYi36TX4Sg9wPMJ0VzhqENek8plIRznMT-WnIVkGFkFTc1sdcpm_oRhMILRZr5vrumv_h2m4ucZHxR2IAGybJGZsRNtnPTRQ3eGJSGc_1ii4BBUJQeI-HFF_8W1OLwTrusqzXvYj97r_3TrPLrjT89PpiI8wXAsPC0mEJvkejmZffWVy3VYt1sckcpjhUhlUnD0FeNsd8ORlRritQHMRMU18oc4_AjCMPICGehVG1kkIFwMX0Z2vktWY');"></div>
+</div>
+</div>
+<div class="p-5 max-w-[1200px] mx-auto w-full pb-20">
+<!-- Header -->
+<div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h1 class="text-[#1d2327] text-2xl font-normal leading-tight mb-2">Recargo de Equivalencia — Configuración</h1>
+<p class="text-[#50575e] text-[13px] leading-normal">Gestiona el recargo de equivalencia para comerciantes minoristas de forma automática.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-5 items-start">
+<!-- Left Column (Main Settings) -->
+<div class="lg:col-span-2 flex flex-col gap-5">
+<!-- Card 1: General Settings -->
+<div class="bg-white border border-[#c3c4c7] shadow-sm">
+<div class="h-2 w-full bg-primary"></div> <!-- Purple top border for WP card style -->
+<div class="p-4 border-b border-[#f0f0f1]">
+<h2 class="text-[#1d2327] text-[14px] font-semibold uppercase tracking-wide">Ajustes Generales</h2>
+</div>
+<div class="p-5">
+<div class="flex items-center justify-between mb-6">
+<div class="flex flex-col gap-1 pr-4">
+<label class="text-[#1d2327] text-[14px] font-semibold" for="enable_re">Activar Recargo de Equivalencia</label>
+<p class="text-[#646970] text-[13px]">Habilita el cálculo automático del R.E. en tu tienda.</p>
+</div>
+<!-- Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="enable_re" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/50 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Info Box -->
+<div class="flex gap-3 bg-[#e5f5fa] border-l-4 border-[#00a0d2] p-3 mb-6">
+<span class="material-symbols-outlined text-[#00a0d2] text-[20px] mt-0.5">info</span>
+<div>
+<p class="text-[#1d2327] text-[13px] font-semibold mb-1">Tipos de Recargo Vigentes</p>
+<p class="text-[#1d2327] text-[13px]">Los tipos aplicables son: 5.2% para el tipo general, 1.4% para el reducido y 0.5% para el superreducido.</p>
+</div>
+</div>
+<!-- Rates Table -->
+<div class="overflow-x-auto border border-[#c3c4c7]">
+<table class="w-full text-left border-collapse wp-list-table bg-white">
+<thead class="bg-[#f6f7f7] border-b border-[#c3c4c7]">
+<tr>
+<th class="text-[#1d2327]" scope="col">Tipo de IVA</th>
+<th class="text-[#1d2327]" scope="col">% IVA</th>
+<th class="text-[#1d2327]" scope="col">% R.E.</th>
+<th class="text-[#1d2327]" scope="col">Total</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#f0f0f1]">
+<tr class="hover:bg-[#f6f7f7]">
+<td class="font-medium text-primary">General</td>
+<td>21%</td>
+<td>5.2%</td>
+<td class="font-bold">26.2%</td>
+</tr>
+<tr class="hover:bg-[#f6f7f7]">
+<td class="font-medium text-primary">Reducido</td>
+<td>10%</td>
+<td>1.4%</td>
+<td class="font-bold">11.4%</td>
+</tr>
+<tr class="hover:bg-[#f6f7f7]">
+<td class="font-medium text-primary">Superreducido</td>
+<td>4%</td>
+<td>0.5%</td>
+<td class="font-bold">4.5%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Card 2: Behavior Logic -->
+<div class="bg-white border border-[#c3c4c7] shadow-sm">
+<div class="p-4 border-b border-[#f0f0f1]">
+<h2 class="text-[#1d2327] text-[14px] font-semibold uppercase tracking-wide">Comportamiento</h2>
+</div>
+<div class="p-5 flex flex-col gap-6">
+<div class="flex flex-col gap-3">
+<p class="text-[#1d2327] text-[14px] font-semibold">Lógica de aplicación</p>
+<div class="flex flex-col gap-2">
+<label class="flex items-start gap-3 cursor-pointer">
+<input checked="" class="mt-1 text-primary focus:ring-primary border-gray-300" name="re_logic" type="radio"/>
+<div class="text-[13px]">
+<span class="block text-[#1d2327] font-medium">Aplicar RE automáticamente según el NIF del cliente</span>
+<span class="block text-[#646970]">Detecta automáticamente si el NIF corresponde a un recargo.</span>
+</div>
+</label>
+<label class="flex items-start gap-3 cursor-pointer">
+<input class="mt-1 text-primary focus:ring-primary border-gray-300" name="re_logic" type="radio"/>
+<div class="text-[13px]">
+<span class="block text-[#1d2327] font-medium">Aplicar siempre a todos los clientes</span>
+<span class="block text-[#646970]">Útil para tiendas B2B exclusivas.</span>
+</div>
+</label>
+<label class="flex items-start gap-3 cursor-pointer">
+<input class="mt-1 text-primary focus:ring-primary border-gray-300" name="re_logic" type="radio"/>
+<div class="text-[13px]">
+<span class="block text-[#1d2327] font-medium">Selección manual en el checkout</span>
+<span class="block text-[#646970]">Añade una casilla de verificación en la página de pago.</span>
+</div>
+</label>
+</div>
+</div>
+<div class="h-px bg-[#f0f0f1] w-full"></div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex flex-col gap-0.5">
+<label class="text-[#1d2327] text-[13px] font-semibold" for="invoice_breakdown">Desglosar RE en facturas</label>
+<p class="text-[#646970] text-[12px]">Muestra una línea separada para el recargo en los emails.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="invoice_breakdown" type="checkbox" value=""/>
+<div class="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/50 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col gap-0.5">
+<label class="text-[#1d2327] text-[13px] font-semibold" for="cart_display">Mostrar RE en el carrito</label>
+<p class="text-[#646970] text-[12px]">El cliente verá el recargo antes de finalizar compra.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" id="cart_display" type="checkbox" value=""/>
+<div class="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/50 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column (Side Meta) -->
+<div class="lg:col-span-1 flex flex-col gap-5">
+<!-- Card 3: Fiscal Data -->
+<div class="bg-white border border-[#c3c4c7] shadow-sm sticky top-[70px]">
+<div class="p-4 border-b border-[#f0f0f1] bg-[#fcfcfc]">
+<h2 class="text-[#1d2327] text-[14px] font-semibold">Datos Fiscales</h2>
+</div>
+<div class="p-5 flex flex-col gap-4">
+<p class="text-[#646970] text-[12px] mb-2 italic">Estos datos aparecerán en las facturas generadas.</p>
+<div class="flex flex-col gap-1">
+<label class="text-[#1d2327] text-[13px] font-semibold" for="company_name">Nombre empresa</label>
+<input class="block w-full rounded-md border-[#8c8f94] shadow-sm focus:border-primary focus:ring focus:ring-primary/20 focus:ring-opacity-50 text-[13px] py-1.5 px-3" id="company_name" type="text" value="Mi Tienda S.L."/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[#1d2327] text-[13px] font-semibold" for="company_nif">NIF / CIF</label>
+<input class="block w-full rounded-md border-[#8c8f94] shadow-sm focus:border-primary focus:ring focus:ring-primary/20 focus:ring-opacity-50 text-[13px] py-1.5 px-3" id="company_nif" type="text" value="B12345678"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[#1d2327] text-[13px] font-semibold" for="company_address">Dirección fiscal</label>
+<textarea class="block w-full rounded-md border-[#8c8f94] shadow-sm focus:border-primary focus:ring focus:ring-primary/20 focus:ring-opacity-50 text-[13px] py-1.5 px-3" id="company_address" rows="3">C/ Ejemplo 123, 28001 Madrid</textarea>
+</div>
+<div class="mt-4 pt-4 border-t border-[#f0f0f1]">
+<button class="w-full bg-primary hover:bg-[#6c469a] text-white text-[13px] font-semibold py-2 px-4 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                                        Guardar cambios
+                                    </button>
+</div>
+</div>
+</div>
+<!-- Help Card -->
+<div class="bg-white border border-[#c3c4c7] shadow-sm">
+<div class="p-4 border-b border-[#f0f0f1] bg-[#fcfcfc]">
+<h2 class="text-[#1d2327] text-[14px] font-semibold">¿Necesitas ayuda?</h2>
+</div>
+<div class="p-5">
+<ul class="list-disc list-inside text-[13px] text-[#2271b1] space-y-2">
+<li><a class="hover:underline" href="#">Documentación oficial</a></li>
+<li><a class="hover:underline" href="#">Soporte técnico</a></li>
+<li><a class="hover:underline" href="#">Foro de la comunidad</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Notification (Toast) Simulation - Hidden by default but structure ready -->
+<div class="fixed bottom-5 right-5 bg-white border-l-4 border-[#46b450] shadow-md p-4 flex items-center gap-3 transform translate-y-20 transition-transform duration-300 opacity-0 pointer-events-none">
+<span class="material-symbols-outlined text-[#46b450]">check_circle</span>
+<span class="text-[13px] text-[#1d2327]">Ajustes guardados correctamente.</span>
+</div>
+</body></html>

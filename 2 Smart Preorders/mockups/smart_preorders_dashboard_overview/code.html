@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart Preorders Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7c3bed",
+                        "primary-content": "#ffffff",
+                        "background-light": "#f7f6f8", // Matches #F6F6F7 closely
+                        "background-dark": "#171121",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#231e33",
+                        "text-primary-light": "#130e1b",
+                        "text-secondary-light": "#616161",
+                        "text-primary-dark": "#f3f4f6",
+                        "text-secondary-dark": "#9ca3af",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar to match modern feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .sidebar-item-active {
+            background-color: #f1f0f5;
+            color: #7c3bed;
+            font-weight: 600;
+        }
+        .sidebar-item-active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 4px;
+            bottom: 4px;
+            width: 3px;
+            background-color: #7c3bed;
+            border-top-right-radius: 2px;
+            border-bottom-right-radius: 2px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-primary-light dark:text-text-primary-dark antialiased">
+<div class="flex h-screen w-full overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 flex-shrink-0 border-r border-slate-200 dark:border-slate-800 bg-surface-light dark:bg-surface-dark flex flex-col justify-between overflow-y-auto">
+<div class="flex flex-col gap-6 p-4">
+<!-- App Header -->
+<div class="flex items-center gap-3 px-2">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined text-[24px]">bolt</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-base font-bold leading-tight">Smart Preorders</h1>
+<span class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Admin</span>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="flex flex-col gap-1">
+<a class="sidebar-item-active group relative flex items-center gap-3 rounded-lg px-3 py-2 transition-colors" href="#">
+<span class="material-symbols-outlined filled">home</span>
+<span class="text-sm">Dashboard</span>
+</a>
+<a class="group relative flex items-center gap-3 rounded-lg px-3 py-2 text-text-secondary-light hover:bg-slate-50 hover:text-primary dark:text-text-secondary-dark dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-sm">Productos</span>
+</a>
+<a class="group relative flex items-center gap-3 rounded-lg px-3 py-2 text-text-secondary-light hover:bg-slate-50 hover:text-primary dark:text-text-secondary-dark dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="text-sm">Carrito mixto</span>
+</a>
+<a class="group relative flex items-center gap-3 rounded-lg px-3 py-2 text-text-secondary-light hover:bg-slate-50 hover:text-primary dark:text-text-secondary-dark dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-sm">Pedidos</span>
+</a>
+<a class="group relative flex items-center gap-3 rounded-lg px-3 py-2 text-text-secondary-light hover:bg-slate-50 hover:text-primary dark:text-text-secondary-dark dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">savings</span>
+<span class="text-sm">Ahorro</span>
+</a>
+<a class="group relative flex items-center gap-3 rounded-lg px-3 py-2 text-text-secondary-light hover:bg-slate-50 hover:text-primary dark:text-text-secondary-dark dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-sm">Plan</span>
+</a>
+<a class="group relative flex items-center gap-3 rounded-lg px-3 py-2 text-text-secondary-light hover:bg-slate-50 hover:text-primary dark:text-text-secondary-dark dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-sm">Ayuda</span>
+</a>
+</nav>
+</div>
+<div class="p-4 border-t border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer">
+<div class="h-8 w-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500 text-sm">person</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-medium">Tienda Demo</span>
+<span class="text-xs text-text-secondary-light">tienda.myshopify.com</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark p-6 lg:p-10">
+<div class="mx-auto max-w-[1200px] flex flex-col gap-8">
+<!-- Page Header -->
+<header class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="text-2xl font-bold text-text-primary-light dark:text-text-primary-dark">Dashboard Smart Preorders</h2>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm mt-1">Resumen de actividad y ahorro de envíos</p>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 dark:border-slate-700 dark:bg-surface-dark dark:text-slate-300 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                            Filtrar
+                        </button>
+<button class="flex items-center gap-2 rounded-lg bg-primary px-3 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary/90">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                            Nuevo Preorder
+                        </button>
+</div>
+</header>
+<!-- KPI Cards Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Card 1 -->
+<div class="rounded-lg bg-surface-light dark:bg-surface-dark p-5 shadow-sm border border-slate-200 dark:border-slate-800 hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-2">
+<p class="text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark">Preorders activos</p>
+<span class="material-symbols-outlined text-slate-400 text-[20px]">inventory</span>
+</div>
+<div class="flex items-end gap-2">
+<span class="text-2xl font-bold text-text-primary-light dark:text-text-primary-dark">12</span>
+<span class="inline-flex items-center rounded-full bg-purple-100 px-2 py-0.5 text-xs font-medium text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
+                                productos
+                            </span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="rounded-lg bg-surface-light dark:bg-surface-dark p-5 shadow-sm border border-slate-200 dark:border-slate-800 hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-2">
+<p class="text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark">Pedidos mixtos (mes)</p>
+<span class="material-symbols-outlined text-slate-400 text-[20px]">shopping_bag</span>
+</div>
+<div class="flex items-end gap-2">
+<span class="text-2xl font-bold text-text-primary-light dark:text-text-primary-dark">23</span>
+<span class="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
+<span class="material-symbols-outlined text-[14px] mr-1">warning</span>
+                                atención
+                            </span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="rounded-lg bg-surface-light dark:bg-surface-dark p-5 shadow-sm border border-slate-200 dark:border-slate-800 hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[80px]">savings</span>
+</div>
+<div class="flex items-center justify-between mb-2">
+<p class="text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark">💰 Ahorro estimado</p>
+</div>
+<div class="flex flex-col">
+<span class="text-2xl font-bold text-emerald-600 dark:text-emerald-400">€138</span>
+<span class="text-xs font-semibold text-emerald-700 dark:text-emerald-500 mt-1">7x ROI este mes</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="rounded-lg bg-surface-light dark:bg-surface-dark p-5 shadow-sm border border-slate-200 dark:border-slate-800 hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-2">
+<p class="text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark">Envíos pendientes</p>
+<span class="material-symbols-outlined text-slate-400 text-[20px]">local_shipping</span>
+</div>
+<div class="flex items-end gap-2">
+<span class="text-2xl font-bold text-text-primary-light dark:text-text-primary-dark">8</span>
+<span class="inline-flex items-center rounded-full bg-indigo-100 px-2 py-0.5 text-xs font-medium text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300">
+                                por enviar
+                            </span>
+</div>
+</div>
+</div>
+<!-- Chart Section -->
+<div class="w-full rounded-lg border border-slate-200 bg-surface-light p-6 shadow-sm dark:border-slate-800 dark:bg-surface-dark">
+<div class="mb-6 flex flex-wrap items-center justify-between gap-4">
+<div>
+<h3 class="text-lg font-semibold text-text-primary-light dark:text-text-primary-dark">Pedidos preorder por semana</h3>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Tendencia de los últimos 30 días</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="flex items-center gap-1 rounded bg-slate-100 px-2 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">
+<span class="h-2 w-2 rounded-full bg-primary"></span>
+                                Preorders
+                            </span>
+</div>
+</div>
+<!-- Chart Placeholder -->
+<div class="relative h-64 w-full">
+<!-- Y-Axis Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between text-xs text-slate-400">
+<div class="border-b border-slate-100 dark:border-slate-700/50 w-full h-0"></div>
+<div class="border-b border-slate-100 dark:border-slate-700/50 w-full h-0"></div>
+<div class="border-b border-slate-100 dark:border-slate-700/50 w-full h-0"></div>
+<div class="border-b border-slate-100 dark:border-slate-700/50 w-full h-0"></div>
+<div class="border-b border-slate-100 dark:border-slate-700/50 w-full h-0"></div>
+</div>
+<!-- Graph SVG -->
+<svg class="absolute inset-0 h-full w-full overflow-visible" preserveaspectratio="none" viewbox="0 0 100 100">
+<!-- Gradient Area -->
+<defs>
+<lineargradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#7c3bed" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#7c3bed" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,80 C20,75 25,60 50,40 C75,20 80,30 100,10 V100 H0 Z" fill="url(#gradient)" stroke="none"></path>
+<!-- Line -->
+<path d="M0,80 C20,75 25,60 50,40 C75,20 80,30 100,10" fill="none" stroke="#7c3bed" stroke-linecap="round" stroke-width="3" vector-effect="non-scaling-stroke"></path>
+<!-- Data Points -->
+<circle cx="0" cy="80" fill="#ffffff" r="1.5" stroke="#7c3bed" stroke-width="1" vector-effect="non-scaling-stroke"></circle>
+<circle cx="33" cy="55" fill="#ffffff" r="1.5" stroke="#7c3bed" stroke-width="1" vector-effect="non-scaling-stroke"></circle>
+<circle cx="66" cy="25" fill="#ffffff" r="1.5" stroke="#7c3bed" stroke-width="1" vector-effect="non-scaling-stroke"></circle>
+<circle cx="100" cy="10" fill="#ffffff" r="1.5" stroke="#7c3bed" stroke-width="1" vector-effect="non-scaling-stroke"></circle>
+</svg>
+<!-- X-Axis Labels -->
+<div class="absolute bottom-[-24px] left-0 right-0 flex justify-between text-xs text-slate-500 font-medium">
+<span>Sem 1</span>
+<span>Sem 2</span>
+<span>Sem 3</span>
+<span>Sem 4</span>
+</div>
+</div>
+</div>
+<!-- Bottom Section: List & Savings Card -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Left: Pending Shipments List (Span 2) -->
+<div class="lg:col-span-2 rounded-lg border border-slate-200 bg-surface-light shadow-sm dark:border-slate-800 dark:bg-surface-dark flex flex-col">
+<div class="flex items-center justify-between border-b border-slate-100 p-5 dark:border-slate-800">
+<h3 class="text-base font-semibold text-text-primary-light dark:text-text-primary-dark">Próximos envíos pendientes</h3>
+<a class="text-sm font-medium text-primary hover:text-primary/80" href="#">Ver todos</a>
+</div>
+<div class="flex flex-col divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Row 1 -->
+<div class="flex flex-col gap-2 p-4 sm:flex-row sm:items-center sm:justify-between hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined">image</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-text-primary-light dark:text-text-primary-dark">#1089 — Zapatillas Ltd Ed</span>
+<div class="flex items-center gap-2 text-xs text-text-secondary-light dark:text-text-secondary-dark">
+<span>est. 15/04/2026</span>
+<span class="h-1 w-1 rounded-full bg-slate-300"></span>
+<span>3 uds</span>
+</div>
+</div>
+</div>
+<span class="inline-flex w-fit items-center rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-medium text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
+                                    Pendiente
+                                </span>
+</div>
+<!-- Row 2 -->
+<div class="flex flex-col gap-2 p-4 sm:flex-row sm:items-center sm:justify-between hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined">image</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-text-primary-light dark:text-text-primary-dark">#1075 — Sudadera Drop 7</span>
+<div class="flex items-center gap-2 text-xs text-text-secondary-light dark:text-text-secondary-dark">
+<span>est. 22/04/2026</span>
+<span class="h-1 w-1 rounded-full bg-slate-300"></span>
+<span>1 ud</span>
+</div>
+</div>
+</div>
+<span class="inline-flex w-fit items-center rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-medium text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
+                                    Pendiente
+                                </span>
+</div>
+<!-- Row 3 -->
+<div class="flex flex-col gap-2 p-4 sm:flex-row sm:items-center sm:justify-between hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined">image</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-text-primary-light dark:text-text-primary-dark">#1071 — Gorra Vintage</span>
+<div class="flex items-center gap-2 text-xs text-text-secondary-light dark:text-text-secondary-dark">
+<span>Sin fecha estimada</span>
+<span class="h-1 w-1 rounded-full bg-slate-300"></span>
+<span>2 uds</span>
+</div>
+</div>
+</div>
+<span class="inline-flex w-fit items-center rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
+                                    Sin fecha
+                                </span>
+</div>
+</div>
+</div>
+<!-- Right: Savings Highlight Card (Span 1) -->
+<div class="rounded-lg border border-emerald-100 bg-emerald-50/50 p-6 shadow-sm dark:border-emerald-900/30 dark:bg-emerald-900/10 flex flex-col justify-between min-h-[240px]">
+<div class="flex items-start justify-between">
+<h3 class="text-lg font-bold text-emerald-900 dark:text-emerald-100">Tu ahorro</h3>
+<div class="rounded-full bg-white p-1.5 shadow-sm dark:bg-emerald-800">
+<span class="material-symbols-outlined text-emerald-600 dark:text-emerald-300">trending_up</span>
+</div>
+</div>
+<div class="mt-4 flex flex-col gap-1">
+<div class="flex items-baseline gap-1">
+<span class="text-4xl font-extrabold text-emerald-600 dark:text-emerald-400 tracking-tight">€138</span>
+</div>
+<p class="text-sm font-medium text-emerald-800 dark:text-emerald-200">
+                                ahorrados este mes en envíos dobles
+                            </p>
+</div>
+<div class="mt-6 border-t border-emerald-200 dark:border-emerald-800/50 pt-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-emerald-600 text-[18px]">account_balance_wallet</span>
+<p class="text-sm text-emerald-800 dark:text-emerald-200">
+                                    Total acumulado: <span class="font-bold">€847</span>
+</p>
+</div>
+<p class="text-xs text-emerald-700 dark:text-emerald-400">
+                                ✨ La app se ha pagado 7 veces este mes
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

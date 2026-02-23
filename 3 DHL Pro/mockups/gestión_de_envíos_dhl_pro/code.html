@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gestión de Envíos DHL Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d42111",
+                        "dhl-yellow": "#ffcc00",
+                        "background-light": "#f6f6f7",
+                        "background-dark": "#221210",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f6f6f7;
+        }
+        /* Custom scrollbar for horizontal table scrolling */
+        .hide-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+        .hide-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .hide-scroll::-webkit-scrollbar-thumb {
+            background-color: #e5e7eb;
+            border-radius: 20px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col text-slate-900 dark:text-slate-100 antialiased selection:bg-dhl-yellow selection:text-black">
+<!-- Header Section -->
+<header class="sticky top-0 z-20 bg-background-light dark:bg-background-dark border-b border-gray-200 dark:border-gray-800 px-4 py-3">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<button class="p-2 -ml-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">menu</span>
+</button>
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Envíos</h1>
+</div>
+<button class="flex items-center justify-center bg-primary hover:bg-red-700 text-white font-semibold text-sm px-4 py-2 rounded-lg shadow-sm transition-colors gap-2">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span class="hidden sm:inline">Crear envío manual</span>
+<span class="sm:hidden">Nuevo</span>
+</button>
+</div>
+<!-- Search and Filters -->
+<div class="flex flex-col gap-3">
+<div class="relative w-full">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2.5 border-none rounded-lg bg-white dark:bg-gray-800 text-sm shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:leading-6" placeholder="Buscar por pedido, cliente..." type="text"/>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-1 hide-scroll -mx-4 px-4 sm:mx-0 sm:px-0">
+<button class="flex shrink-0 items-center gap-2 px-3 py-1.5 rounded-lg border border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 shadow-sm whitespace-nowrap">
+                    Servicio
+                    <span class="material-symbols-outlined text-[18px] text-gray-500">keyboard_arrow_down</span>
+</button>
+<button class="flex shrink-0 items-center gap-2 px-3 py-1.5 rounded-lg border border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 shadow-sm whitespace-nowrap">
+                    Estado
+                    <span class="material-symbols-outlined text-[18px] text-gray-500">keyboard_arrow_down</span>
+</button>
+<button class="flex shrink-0 items-center gap-2 px-3 py-1.5 rounded-lg border border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 shadow-sm whitespace-nowrap">
+                    Fecha
+                    <span class="material-symbols-outlined text-[18px] text-gray-500">calendar_today</span>
+</button>
+<div class="w-px h-6 bg-gray-300 dark:bg-gray-600 mx-1 self-center"></div>
+<button class="flex shrink-0 items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium text-primary hover:bg-red-50 dark:hover:bg-red-900/20 whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                    Más filtros
+                </button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 px-4 py-4 overflow-hidden flex flex-col">
+<!-- Table Card -->
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col flex-1 overflow-hidden">
+<!-- Table Container for Horizontal Scrolling -->
+<div class="overflow-x-auto hide-scroll flex-1">
+<table class="min-w-[800px] w-full text-left border-collapse">
+<thead class="bg-gray-50 dark:bg-gray-900/50 sticky top-0 z-10">
+<tr>
+<th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider w-24" scope="col">Pedido</th>
+<th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider" scope="col">Cliente / Destino</th>
+<th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider" scope="col">Servicio DHL</th>
+<th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider" scope="col">Producto</th>
+<th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider" scope="col">Estado</th>
+<th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider text-right" scope="col">Fecha</th>
+<th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider w-10" scope="col"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100 dark:divide-gray-700 bg-white dark:bg-gray-800">
+<!-- Row 1 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors group">
+<td class="px-4 py-3 text-sm font-medium text-primary whitespace-nowrap">#2047</td>
+<td class="px-4 py-3 text-sm text-gray-900 dark:text-gray-100">
+<div class="font-medium">Sophie Laurent</div>
+<div class="text-xs text-gray-500">París, Francia</div>
+</td>
+<td class="px-4 py-3 whitespace-nowrap">
+<span class="inline-flex items-center rounded-full bg-dhl-yellow px-2.5 py-0.5 text-xs font-bold text-gray-900">
+                                    Express
+                                </span>
+</td>
+<td class="px-4 py-3 text-sm text-gray-600 dark:text-gray-300 whitespace-nowrap">Express WW</td>
+<td class="px-4 py-3 whitespace-nowrap">
+<span class="inline-flex items-center rounded-full bg-sky-100 text-sky-800 px-2.5 py-0.5 text-xs font-medium dark:bg-sky-900/30 dark:text-sky-300">
+<span class="w-1.5 h-1.5 rounded-full bg-sky-600 mr-1.5"></span>
+                                    Creado
+                                </span>
+</td>
+<td class="px-4 py-3 text-sm text-gray-500 text-right whitespace-nowrap">17/02</td>
+<td class="px-4 py-3 text-right">
+<button class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors group">
+<td class="px-4 py-3 text-sm font-medium text-primary whitespace-nowrap">#2046</td>
+<td class="px-4 py-3 text-sm text-gray-900 dark:text-gray-100">
+<div class="font-medium">Juan López</div>
+<div class="text-xs text-gray-500">Barcelona, España</div>
+</td>
+<td class="px-4 py-3 whitespace-nowrap">
+<span class="inline-flex items-center rounded-full bg-primary px-2.5 py-0.5 text-xs font-bold text-white">
+                                    eCommerce
+                                </span>
+</td>
+<td class="px-4 py-3 text-sm text-gray-600 dark:text-gray-300 whitespace-nowrap">Parcel Connect</td>
+<td class="px-4 py-3 whitespace-nowrap">
+<span class="inline-flex items-center rounded-full bg-amber-100 text-amber-800 px-2.5 py-0.5 text-xs font-medium dark:bg-amber-900/30 dark:text-amber-300">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600 mr-1.5"></span>
+                                    En tránsito
+                                </span>
+</td>
+<td class="px-4 py-3 text-sm text-gray-500 text-right whitespace-nowrap">16/02</td>
+<td class="px-4 py-3 text-right">
+<button class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors group">
+<td class="px-4 py-3 text-sm font-medium text-primary whitespace-nowrap">#2045</td>
+<td class="px-4 py-3 text-sm text-gray-900 dark:text-gray-100">
+<div class="font-medium">Hans Müller</div>
+<div class="text-xs text-gray-500">Berlín, Alemania</div>
+</td>
+<td class="px-4 py-3 whitespace-nowrap">
+<span class="inline-flex items-center rounded-full bg-dhl-yellow px-2.5 py-0.5 text-xs font-bold text-gray-900">
+                                    Express
+                                </span>
+</td>
+<td class="px-4 py-3 text-sm text-gray-600 dark:text-gray-300 whitespace-nowrap">Express 12:00</td>
+<td class="px-4 py-3 whitespace-nowrap">
+<span class="inline-flex items-center rounded-full bg-emerald-100 text-emerald-800 px-2.5 py-0.5 text-xs font-medium dark:bg-emerald-900/30 dark:text-emerald-300">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600 mr-1.5"></span>
+                                    Entregado
+                                </span>
+</td>
+<td class="px-4 py-3 text-sm text-gray-500 text-right whitespace-nowrap">16/02</td>
+<td class="px-4 py-3 text-right">
+<button class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors group">
+<td class="px-4 py-3 text-sm font-medium text-primary whitespace-nowrap">#2044</td>
+<td class="px-4 py-3 text-sm text-gray-900 dark:text-gray-100">
+<div class="font-medium">Ana Martín</div>
+<div class="text-xs text-gray-500">Valencia, España</div>
+</td>
+<td class="px-4 py-3 whitespace-nowrap">
+<span class="inline-flex items-center rounded-full bg-primary px-2.5 py-0.5 text-xs font-bold text-white">
+                                    eCommerce
+                                </span>
+</td>
+<td class="px-4 py-3 text-sm text-gray-600 dark:text-gray-300 whitespace-nowrap">Parcel Connect</td>
+<td class="px-4 py-3 whitespace-nowrap">
+<span class="inline-flex items-center rounded-full bg-emerald-100 text-emerald-800 px-2.5 py-0.5 text-xs font-medium dark:bg-emerald-900/30 dark:text-emerald-300">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600 mr-1.5"></span>
+                                    Entregado
+                                </span>
+</td>
+<td class="px-4 py-3 text-sm text-gray-500 text-right whitespace-nowrap">15/02</td>
+<td class="px-4 py-3 text-right">
+<button class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors group">
+<td class="px-4 py-3 text-sm font-medium text-primary whitespace-nowrap">#2043</td>
+<td class="px-4 py-3 text-sm text-gray-900 dark:text-gray-100">
+<div class="font-medium">Marco Rossi</div>
+<div class="text-xs text-gray-500">Milán, Italia</div>
+</td>
+<td class="px-4 py-3 whitespace-nowrap">
+<span class="inline-flex items-center rounded-full bg-dhl-yellow px-2.5 py-0.5 text-xs font-bold text-gray-900">
+                                    Express
+                                </span>
+</td>
+<td class="px-4 py-3 text-sm text-gray-600 dark:text-gray-300 whitespace-nowrap">Express WW</td>
+<td class="px-4 py-3 whitespace-nowrap">
+<span class="inline-flex items-center rounded-full bg-red-100 text-red-800 px-2.5 py-0.5 text-xs font-medium dark:bg-red-900/30 dark:text-red-300">
+<span class="w-1.5 h-1.5 rounded-full bg-red-600 mr-1.5"></span>
+                                    Incidencia
+                                </span>
+</td>
+<td class="px-4 py-3 text-sm text-gray-500 text-right whitespace-nowrap">15/02</td>
+<td class="px-4 py-3 text-right">
+<button class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors group">
+<td class="px-4 py-3 text-sm font-medium text-primary whitespace-nowrap">#2042</td>
+<td class="px-4 py-3 text-sm text-gray-900 dark:text-gray-100">
+<div class="font-medium">María García</div>
+<div class="text-xs text-gray-500">Sevilla, España</div>
+</td>
+<td class="px-4 py-3 whitespace-nowrap">
+<span class="inline-flex items-center rounded-full bg-primary px-2.5 py-0.5 text-xs font-bold text-white">
+                                    eCommerce
+                                </span>
+</td>
+<td class="px-4 py-3 text-sm text-gray-600 dark:text-gray-300 whitespace-nowrap">Parcel Iberia</td>
+<td class="px-4 py-3 whitespace-nowrap">
+<span class="inline-flex items-center rounded-full bg-amber-100 text-amber-800 px-2.5 py-0.5 text-xs font-medium dark:bg-amber-900/30 dark:text-amber-300">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600 mr-1.5"></span>
+                                    En tránsito
+                                </span>
+</td>
+<td class="px-4 py-3 text-sm text-gray-500 text-right whitespace-nowrap">14/02</td>
+<td class="px-4 py-3 text-right">
+<button class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors group">
+<td class="px-4 py-3 text-sm font-medium text-primary whitespace-nowrap">#2041</td>
+<td class="px-4 py-3 text-sm text-gray-900 dark:text-gray-100">
+<div class="font-medium">João Silva</div>
+<div class="text-xs text-gray-500">Lisboa, Portugal</div>
+</td>
+<td class="px-4 py-3 whitespace-nowrap">
+<span class="inline-flex items-center rounded-full bg-primary px-2.5 py-0.5 text-xs font-bold text-white">
+                                    eCommerce
+                                </span>
+</td>
+<td class="px-4 py-3 text-sm text-gray-600 dark:text-gray-300 whitespace-nowrap">Parcel Iberia</td>
+<td class="px-4 py-3 whitespace-nowrap">
+<span class="inline-flex items-center rounded-full bg-emerald-100 text-emerald-800 px-2.5 py-0.5 text-xs font-medium dark:bg-emerald-900/30 dark:text-emerald-300">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600 mr-1.5"></span>
+                                    Entregado
+                                </span>
+</td>
+<td class="px-4 py-3 text-sm text-gray-500 text-right whitespace-nowrap">14/02</td>
+<td class="px-4 py-3 text-right">
+<button class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 8 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors group">
+<td class="px-4 py-3 text-sm font-medium text-primary whitespace-nowrap">#2040</td>
+<td class="px-4 py-3 text-sm text-gray-900 dark:text-gray-100">
+<div class="font-medium">Li Wei</div>
+<div class="text-xs text-gray-500">Shanghái, China</div>
+</td>
+<td class="px-4 py-3 whitespace-nowrap">
+<span class="inline-flex items-center rounded-full bg-dhl-yellow px-2.5 py-0.5 text-xs font-bold text-gray-900">
+                                    Express
+                                </span>
+</td>
+<td class="px-4 py-3 text-sm text-gray-600 dark:text-gray-300 whitespace-nowrap">Express WW</td>
+<td class="px-4 py-3 whitespace-nowrap">
+<span class="inline-flex items-center rounded-full bg-red-800 text-white px-2.5 py-0.5 text-xs font-medium dark:bg-red-900/80 dark:text-red-100">
+<span class="w-1.5 h-1.5 rounded-full bg-white mr-1.5 opacity-50"></span>
+                                    Error aduanas
+                                </span>
+</td>
+<td class="px-4 py-3 text-sm text-gray-500 text-right whitespace-nowrap">13/02</td>
+<td class="px-4 py-3 text-right">
+<button class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Footer Pagination -->
+<div class="border-t border-gray-200 dark:border-gray-700 p-4 flex items-center justify-between bg-white dark:bg-gray-800 rounded-b-xl">
+<span class="text-sm text-gray-600 dark:text-gray-400">
+                    Mostrando <span class="font-semibold text-gray-900 dark:text-gray-100">1-8</span> de <span class="font-semibold text-gray-900 dark:text-gray-100">289</span> envíos
+                </span>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded-md text-gray-400 cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="p-1 rounded-md text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-200">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Based on provided component but simplified for context) -->
+<nav class="sticky bottom-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-800 px-4 pt-2 pb-5 z-20 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+<div class="flex justify-between items-center max-w-md mx-auto">
+<a class="flex flex-col items-center gap-1 group w-1/4" href="#">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary text-[24px]">home</span>
+<span class="text-[10px] font-medium text-gray-400 group-hover:text-primary">Inicio</span>
+</a>
+<a class="flex flex-col items-center gap-1 group w-1/4" href="#">
+<div class="bg-primary/10 rounded-full px-4 py-0.5 flex flex-col items-center">
+<span class="material-symbols-outlined text-primary text-[24px]">local_shipping</span>
+</div>
+<span class="text-[10px] font-bold text-primary">Envíos</span>
+</a>
+<a class="flex flex-col items-center gap-1 group w-1/4" href="#">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary text-[24px]">qr_code_scanner</span>
+<span class="text-[10px] font-medium text-gray-400 group-hover:text-primary">Escáner</span>
+</a>
+<a class="flex flex-col items-center gap-1 group w-1/4" href="#">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary text-[24px]">person</span>
+<span class="text-[10px] font-medium text-gray-400 group-hover:text-primary">Perfil</span>
+</a>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,18 @@
+api_version = "2025-01"
+
+[[extensions]]
+type = "theme"
+name = "GeoMarkets EU"
+handle = "geo-theme-extension"
+
+  [[extensions.blocks]]
+  name = "Country Selector"
+  handle = "country-selector"
+  type = "section"
+  target = "section"
+
+  [[extensions.blocks]]
+  name = "Floating Widget"
+  handle = "floating-widget"
+  type = "app-embed"
+  target = "body"

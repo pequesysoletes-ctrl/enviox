@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Plan y facturación GeoMarkets</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2563EB", 
+                        "shopify-surface": "#FFFFFF",
+                        "shopify-background": "#F6F6F7",
+                        "shopify-text": "#202223",
+                        "shopify-subtext": "#6D7175",
+                        "shopify-border": "#E1E3E5",
+                        "background-light": "#F6F6F7",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                    },
+                    boxShadow: {
+                        "card": "0px 0px 5px rgba(23, 24, 24, 0.05), 0px 1px 2px rgba(0, 0, 0, 0.15)",
+                        "card-hover": "0px 0px 5px rgba(23, 24, 24, 0.1), 0px 4px 12px rgba(0, 0, 0, 0.1)",
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F6F6F7;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light text-shopify-text antialiased min-h-screen flex flex-col">
+<!-- Top Navigation (Simplified for App Context) -->
+<header class="bg-white border-b border-shopify-border px-4 py-3 md:px-8">
+<div class="max-w-6xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center text-white shadow-sm">
+<span class="material-symbols-outlined text-[20px]">public</span>
+</div>
+<h1 class="text-sm font-semibold text-shopify-text tracking-tight">GeoMarkets EU</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-shopify-subtext hover:text-shopify-text transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-shopify-subtext font-bold text-xs">
+                   JD
+                </div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 px-4 py-8 md:px-8 md:py-12">
+<div class="max-w-6xl mx-auto space-y-8">
+<!-- Page Header -->
+<div class="text-center space-y-4 max-w-2xl mx-auto">
+<h2 class="text-3xl font-bold text-shopify-text tracking-tight">Plan y facturación</h2>
+<p class="text-shopify-subtext text-base">
+                    Elige el plan que mejor se adapte a las necesidades de tu tienda. 
+                    Puedes cambiar de plan en cualquier momento.
+                </p>
+</div>
+<!-- Pricing Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 items-start">
+<!-- Card 1: Basic -->
+<div class="group bg-white rounded-xl shadow-card hover:shadow-card-hover transition-all duration-300 border border-shopify-border overflow-hidden flex flex-col h-full">
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="text-lg font-semibold text-shopify-text mb-2">Basic</h3>
+<div class="flex items-baseline gap-1 mb-6">
+<span class="text-4xl font-bold text-shopify-text tracking-tight">9,99€</span>
+<span class="text-shopify-subtext font-medium">/mes</span>
+</div>
+<div class="space-y-4 mb-8 flex-1">
+<div class="flex items-start gap-3 text-sm text-shopify-text">
+<span class="material-symbols-outlined text-green-600 text-[20px]">check_circle</span>
+<span>3 mercados</span>
+</div>
+<div class="flex items-start gap-3 text-sm text-shopify-text">
+<span class="material-symbols-outlined text-green-600 text-[20px]">check_circle</span>
+<span>Redirect automático</span>
+</div>
+<div class="flex items-start gap-3 text-sm text-shopify-text">
+<span class="material-symbols-outlined text-green-600 text-[20px]">check_circle</span>
+<span>Selector básico</span>
+</div>
+<div class="flex items-start gap-3 text-sm text-shopify-text">
+<span class="material-symbols-outlined text-green-600 text-[20px]">check_circle</span>
+<span>Exclusión bots SEO</span>
+</div>
+<div class="flex items-start gap-3 text-sm text-shopify-subtext opacity-60">
+<span class="material-symbols-outlined text-red-400 text-[20px]">cancel</span>
+<span>Analytics</span>
+</div>
+<div class="flex items-start gap-3 text-sm text-shopify-subtext opacity-60">
+<span class="material-symbols-outlined text-red-400 text-[20px]">cancel</span>
+<span>CSS custom</span>
+</div>
+</div>
+<button class="w-full py-2.5 px-4 rounded-lg border border-shopify-border bg-white text-shopify-text font-semibold text-sm hover:bg-gray-50 transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2">
+                            Seleccionar
+                        </button>
+</div>
+</div>
+<!-- Card 2: Pro (Highlighted) -->
+<div class="relative group bg-white rounded-xl shadow-card hover:shadow-card-hover transition-all duration-300 border-2 border-primary overflow-visible flex flex-col h-full transform md:-translate-y-2 z-10">
+<!-- Badge -->
+<div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-blue-50 border border-blue-100 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide flex items-center gap-1 shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-[14px]">star</span>
+                        Popular
+                    </div>
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="text-lg font-bold text-primary mb-2">Pro</h3>
+<div class="flex items-baseline gap-1 mb-6">
+<span class="text-4xl font-bold text-shopify-text tracking-tight">19,99€</span>
+<span class="text-shopify-subtext font-medium">/mes</span>
+</div>
+<div class="space-y-4 mb-8 flex-1">
+<div class="flex items-start gap-3 text-sm text-shopify-text font-medium">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>Mercados ilimitados</span>
+</div>
+<div class="flex items-start gap-3 text-sm text-shopify-text">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>Redirect + banner</span>
+</div>
+<div class="flex items-start gap-3 text-sm text-shopify-text">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>CSS personalizable</span>
+</div>
+<div class="flex items-start gap-3 text-sm text-shopify-text">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>Analytics completos</span>
+</div>
+<div class="flex items-start gap-3 text-sm text-shopify-text">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>Banderas custom</span>
+</div>
+<div class="flex items-start gap-3 text-sm text-shopify-subtext opacity-60">
+<span class="material-symbols-outlined text-red-400 text-[20px]">cancel</span>
+<span>Multi-tienda</span>
+</div>
+</div>
+<button class="w-full py-2.5 px-4 rounded-lg bg-primary text-white font-semibold text-sm hover:bg-blue-700 transition-colors shadow-sm focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
+                            Seleccionar
+                        </button>
+</div>
+</div>
+<!-- Card 3: Agency -->
+<div class="group bg-white rounded-xl shadow-card hover:shadow-card-hover transition-all duration-300 border border-shopify-border overflow-hidden flex flex-col h-full">
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="text-lg font-semibold text-shopify-text mb-2">Agency</h3>
+<div class="flex items-baseline gap-1 mb-6">
+<span class="text-4xl font-bold text-shopify-text tracking-tight">29,99€</span>
+<span class="text-shopify-subtext font-medium">/mes</span>
+</div>
+<div class="space-y-4 mb-8 flex-1">
+<div class="flex items-start gap-3 text-sm text-shopify-text">
+<span class="material-symbols-outlined text-green-600 text-[20px]">check_circle</span>
+<span>Todo en Pro</span>
+</div>
+<div class="flex items-start gap-3 text-sm text-shopify-text">
+<span class="material-symbols-outlined text-green-600 text-[20px]">check_circle</span>
+<span>Multi-tienda</span>
+</div>
+<div class="flex items-start gap-3 text-sm text-shopify-text">
+<span class="material-symbols-outlined text-green-600 text-[20px]">check_circle</span>
+<span>API access</span>
+</div>
+<div class="flex items-start gap-3 text-sm text-shopify-text">
+<span class="material-symbols-outlined text-green-600 text-[20px]">check_circle</span>
+<span>Soporte prioritario</span>
+</div>
+<div class="flex items-start gap-3 text-sm text-shopify-text">
+<span class="material-symbols-outlined text-green-600 text-[20px]">check_circle</span>
+<span>White-label option</span>
+</div>
+</div>
+<button class="w-full py-2.5 px-4 rounded-lg border border-shopify-border bg-white text-shopify-text font-semibold text-sm hover:bg-gray-50 transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2">
+                            Seleccionar
+                        </button>
+</div>
+</div>
+</div>
+<!-- Footer Disclaimer -->
+<div class="text-center pt-8 pb-4">
+<div class="inline-flex items-center gap-2 bg-white/50 px-4 py-2 rounded-full border border-gray-200 shadow-sm">
+<span class="material-symbols-outlined text-shopify-subtext text-[18px]">lock</span>
+<p class="text-shopify-subtext text-xs font-medium">
+                        Los pagos se gestionan a través de Shopify. 7 días de prueba gratuita.
+                    </p>
+</div>
+</div>
+</div>
+</main>
+</body></html>

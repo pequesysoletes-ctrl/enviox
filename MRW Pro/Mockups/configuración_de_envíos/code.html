@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MRW Pro - Configuración de Envíos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0369a0",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1c23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0369a0;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0369a0;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 antialiased">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/80 backdrop-blur-md dark:border-slate-800 dark:bg-background-dark/80">
+<div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">MRW Pro</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-10 w-10 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
+<img alt="User Profile" data-alt="User profile avatar circle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsVw2qRfRM9V3PCvCKfL3J8xSZtS_uyWe0GEjAxNLpdmVH9Gl0j55m6AiNsh3OmNDvopjcCrTps5VjYq0sa75BpKTt5_kkTC0ZfxIOKt9qdZP1C3YsNb8qD0yhvQ4y1BjauOoR-_l64mGvewcxxTc5gggH0Goz3GYu_81DkXhQxelgrP5zbSypVIlNGeDMadsMSJpnGT_H1TnSe_vQUIUGnnhXqVhEkEt6N6taaImzTbjqM0E5DMPTVvq7dqqsAJZfB_IeLI-KDbI"/>
+</div>
+</div>
+</div>
+</header>
+<main class="mx-auto max-w-4xl px-6 py-10">
+<!-- Page Title -->
+<div class="mb-8">
+<h1 class="text-3xl font-black tracking-tight text-primary">Configuración de envíos</h1>
+<p class="mt-2 text-slate-500 dark:text-slate-400 text-sm">Administra las preferencias generales para tu logística y automatizaciones.</p>
+</div>
+<div class="space-y-6">
+<!-- Card 1: Servicio por defecto -->
+<section class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/50">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">layers</span>
+<h2 class="text-lg font-bold text-slate-900 dark:text-white">Servicio por defecto</h2>
+</div>
+<div class="max-w-md">
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2" for="service-select">Servicio de mensajería</label>
+<div class="relative">
+<select class="block w-full appearance-none rounded-lg border border-slate-300 bg-white px-4 py-3 pr-10 text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white leading-tight" id="service-select">
+<option value="urgente">MRW Urgente</option>
+<option selected="" value="express">MRW Express</option>
+<option value="economico">MRW Económico</option>
+<option value="bag">MRW Bag</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+<p class="mt-3 text-sm text-slate-500 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">info</span>
+                        Se usará para todos los envíos automáticos
+                    </p>
+</div>
+</section>
+<!-- Card 2: Peso y dimensiones -->
+<section class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/50">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">straighten</span>
+<h2 class="text-lg font-bold text-slate-900 dark:text-white">Peso y dimensiones por defecto</h2>
+</div>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-4">
+<div class="md:col-span-1">
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Peso por defecto (kg)</label>
+<input class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white" type="number" value="2"/>
+</div>
+<div class="md:col-span-3 grid grid-cols-3 gap-4">
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Largo (cm)</label>
+<input class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white" placeholder="0" type="number"/>
+</div>
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Ancho (cm)</label>
+<input class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white" placeholder="0" type="number"/>
+</div>
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Alto (cm)</label>
+<input class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white" placeholder="0" type="number"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Card 3: Automatización -->
+<section class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/50">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">bolt</span>
+<h2 class="text-lg font-bold text-slate-900 dark:text-white">Automatización</h2>
+</div>
+<div class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Toggle 1 -->
+<div class="flex items-center justify-between py-4">
+<div>
+<p class="font-medium text-slate-900 dark:text-white">Crear envío automáticamente al completar el pago</p>
+<p class="text-xs text-slate-500">Sincronización instantánea con tu pasarela de pago.</p>
+</div>
+<label class="relative inline-flex cursor-pointer items-center">
+<input checked="" class="peer sr-only" type="checkbox"/>
+<div class="h-6 w-11 rounded-full bg-slate-200 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none dark:bg-slate-700"></div>
+</label>
+</div>
+<!-- Toggle 2 -->
+<div class="flex items-center justify-between py-4">
+<div>
+<p class="font-medium text-slate-900 dark:text-white">Enviar email de tracking al cliente</p>
+<p class="text-xs text-slate-500">Notificaciones automáticas por correo electrónico.</p>
+</div>
+<label class="relative inline-flex cursor-pointer items-center">
+<input checked="" class="peer sr-only" type="checkbox"/>
+<div class="h-6 w-11 rounded-full bg-slate-200 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none dark:bg-slate-700"></div>
+</label>
+</div>
+<!-- Toggle 3 -->
+<div class="flex items-center justify-between py-4">
+<div>
+<p class="font-medium text-slate-900 dark:text-white">Enviar SMS de tracking al cliente</p>
+<p class="text-xs text-slate-500">Aviso por mensajería móvil (pueden aplicarse cargos adicionales).</p>
+</div>
+<label class="relative inline-flex cursor-pointer items-center">
+<input class="peer sr-only" type="checkbox"/>
+<div class="h-6 w-11 rounded-full bg-slate-200 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none dark:bg-slate-700"></div>
+</label>
+</div>
+</div>
+</section>
+</div>
+<!-- Submit Button Section -->
+<div class="mt-10 flex items-center justify-end border-t border-slate-200 pt-8 dark:border-slate-800">
+<button class="flex items-center gap-2 rounded-lg bg-primary px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all active:scale-95">
+<span class="material-symbols-outlined">save</span>
+                Guardar configuración
+            </button>
+</div>
+</main>
+<footer class="mx-auto max-w-4xl px-6 py-12 text-center text-slate-400">
+<p class="text-xs">© 2024 MRW Pro Shipping SaaS. Todos los derechos reservados.</p>
+</footer>
+</body></html>

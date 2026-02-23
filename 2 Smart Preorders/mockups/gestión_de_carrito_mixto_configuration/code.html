@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gestión de Carrito Mixto - Smart Preorders</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7c3bed",
+                        "primary-dark": "#6025c0",
+                        "shopify-green": "#008060",
+                        "shopify-green-hover": "#006e52",
+                        "background-light": "#f6f6f7",
+                        "background-dark": "#171121",
+                        "surface": "#ffffff",
+                        "border": "#e1e3e5",
+                        "text-main": "#202223",
+                        "text-subdued": "#6d7175",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                    },
+                    boxShadow: {
+                        "card": "0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f6f6f7;
+            color: #202223;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom radio style to match design */
+        input[type="radio"]:checked {
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='rgb(124,59,237)' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+            border-color: #7c3bed;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col">
+<!-- Top Navigation / Header -->
+<header class="bg-surface border-b border-border sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-14">
+<div class="flex items-center gap-3">
+<button class="text-text-subdued hover:bg-gray-100 p-1.5 rounded-md transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-gradient-to-br from-primary to-purple-600 rounded-lg flex items-center justify-center text-white shadow-sm">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+</div>
+<h1 class="font-semibold text-sm text-text-subdued">Smart Preorders</h1>
+<span class="text-text-subdued">/</span>
+<h2 class="font-semibold text-sm text-text-main">Configuración</h2>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="text-text-subdued hover:text-text-main text-sm font-medium px-3 py-1.5 rounded-md transition-colors">Cancelar</button>
+<button class="bg-shopify-green hover:bg-shopify-green-hover text-white text-sm font-semibold px-4 py-1.5 rounded-md shadow-sm transition-colors">Guardar</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow p-4 sm:p-8 max-w-7xl mx-auto w-full">
+<div class="mb-6">
+<h1 class="text-2xl font-bold text-text-main">Gestión de carrito mixto</h1>
+<p class="text-text-subdued mt-1">¿Qué hacer cuando un cliente mezcla productos en stock con preventas?</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Left Column: Settings -->
+<div class="lg:col-span-2 space-y-6">
+<!-- Card 1: Modo de gestión -->
+<section class="bg-surface rounded-lg shadow-card overflow-hidden">
+<div class="p-5 border-b border-border">
+<h3 class="text-base font-semibold text-text-main">Modo de gestión</h3>
+</div>
+<div class="p-5 space-y-4">
+<!-- Option 1: Selected -->
+<label class="relative flex cursor-pointer rounded-lg border-2 border-primary bg-primary/5 p-4 transition-all hover:bg-primary/10">
+<div class="flex items-start gap-3 w-full">
+<div class="flex h-6 items-center">
+<input aria-describedby="mode-extra-desc" aria-labelledby="mode-extra-label" checked="" class="h-5 w-5 border-gray-300 text-primary focus:ring-primary" id="mode-extra" name="management-mode" type="radio"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<span class="font-semibold text-text-main" id="mode-extra-label">💶 Cobrar envío extra</span>
+<span class="inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary ring-1 ring-inset ring-primary/20">
+                                            Requiere Shopify Functions
+                                        </span>
+</div>
+<p class="mt-1 text-sm text-text-subdued" id="mode-extra-desc">Añade automáticamente un cargo de "Envío dividido" al carrito.</p>
+</div>
+</div>
+</label>
+<!-- Option 2 -->
+<label class="relative flex cursor-pointer rounded-lg border border-border p-4 transition-all hover:bg-gray-50">
+<div class="flex items-start gap-3 w-full">
+<div class="flex h-6 items-center">
+<input aria-describedby="mode-block-desc" aria-labelledby="mode-block-label" class="h-5 w-5 border-gray-300 text-primary focus:ring-primary" id="mode-block" name="management-mode" type="radio"/>
+</div>
+<div class="flex-1">
+<span class="font-medium text-text-main" id="mode-block-label">🚫 Bloquear compra mixta</span>
+<p class="mt-1 text-sm text-text-subdued" id="mode-block-desc">Pide al cliente que haga 2 pedidos separados.</p>
+</div>
+</div>
+</label>
+<!-- Option 3 -->
+<label class="relative flex cursor-pointer rounded-lg border border-border p-4 transition-all hover:bg-gray-50">
+<div class="flex items-start gap-3 w-full">
+<div class="flex h-6 items-center">
+<input aria-describedby="mode-warn-desc" aria-labelledby="mode-warn-label" class="h-5 w-5 border-gray-300 text-primary focus:ring-primary" id="mode-warn" name="management-mode" type="radio"/>
+</div>
+<div class="flex-1">
+<span class="font-medium text-text-main" id="mode-warn-label">ℹ️ Solo avisar</span>
+<p class="mt-1 text-sm text-text-subdued" id="mode-warn-desc">Muestra un aviso pero permite checkout normal. Tú asumes el coste.</p>
+</div>
+</div>
+</label>
+</div>
+</section>
+<!-- Card 2: Configuración de envío extra -->
+<section class="bg-surface rounded-lg shadow-card overflow-hidden">
+<div class="p-5 border-b border-border">
+<h3 class="text-base font-semibold text-text-main">Configuración de envío extra</h3>
+</div>
+<div class="p-5 space-y-5">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-text-main" for="shipping-cost">Coste del envío extra</label>
+<div class="relative rounded-md shadow-sm">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="text-text-subdued sm:text-sm">€</span>
+</div>
+<input class="block w-full rounded-md border-border py-2 pl-7 pr-3 text-text-main placeholder:text-text-subdued focus:border-primary focus:ring-primary sm:text-sm" id="shipping-cost" name="shipping-cost" placeholder="0.00" type="text" value="6,00"/>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-text-main" for="checkout-text">Texto en checkout</label>
+<input class="block w-full rounded-md border-border py-2 px-3 text-text-main placeholder:text-text-subdued focus:border-primary focus:ring-primary sm:text-sm" id="checkout-text" name="checkout-text" type="text" value="Envío dividido (2 paquetes)"/>
+</div>
+</div>
+<div class="flex items-center justify-between py-3 border-t border-dashed border-border mt-2">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-text-main">Condición de cobro</span>
+<span class="text-sm text-text-subdued">Solo cobrar si el envío original es gratuito (&gt; 0€)</span>
+</div>
+<button aria-checked="true" class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-shopify-green focus:ring-offset-2 bg-shopify-green" role="switch" type="button">
+<span aria-hidden="true" class="translate-x-5 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+</div>
+</section>
+<!-- Card 3: Aviso en el carrito -->
+<section class="bg-surface rounded-lg shadow-card overflow-hidden">
+<div class="p-5 border-b border-border">
+<h3 class="text-base font-semibold text-text-main">Aviso en el carrito</h3>
+</div>
+<div class="p-5 space-y-5">
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-text-main" for="alert-text">Texto del aviso</label>
+<input class="block w-full rounded-md border-border py-2 px-3 text-text-main placeholder:text-text-subdued focus:border-primary focus:ring-primary sm:text-sm" id="alert-text" name="alert-text" type="text" value="⚠️ Tu pedido se enviará en 2 partes"/>
+</div>
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-text-main" for="alert-color">Color del aviso</label>
+<select class="block w-full rounded-md border-border py-2 pl-3 pr-10 text-text-main focus:border-primary focus:ring-primary sm:text-sm" id="alert-color" name="alert-color">
+<option selected="">Ámbar (advertencia)</option>
+<option>Rojo (error)</option>
+<option>Azul (info)</option>
+<option>Verde (éxito)</option>
+</select>
+</div>
+<div class="mt-4 p-4 bg-background-light rounded border border-dashed border-border">
+<span class="text-xs font-medium text-text-subdued uppercase tracking-wider block mb-2">Vista previa del banner</span>
+<div class="bg-amber-100 border-l-4 border-amber-500 text-amber-900 p-3 rounded text-sm flex items-start gap-2">
+<span class="material-symbols-outlined text-amber-600 text-lg">warning</span>
+<span class="font-medium">⚠️ Tu pedido se enviará en 2 partes</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Live Preview -->
+<div class="lg:col-span-1">
+<div class="sticky top-24 space-y-6">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-text-subdued text-lg">preview</span>
+<h3 class="text-sm font-semibold text-text-subdued uppercase tracking-wide">Vista previa del cliente</h3>
+</div>
+<!-- Cart Preview Card -->
+<div class="bg-surface rounded-xl shadow-lg border border-border overflow-hidden flex flex-col h-full">
+<div class="bg-background-light px-4 py-3 border-b border-border flex justify-between items-center">
+<span class="font-semibold text-text-main">Tu Carrito</span>
+<span class="text-xs text-text-subdued bg-white px-2 py-1 rounded border border-border">2 artículos</span>
+</div>
+<!-- Alert Banner In Context -->
+<div class="bg-amber-50 px-4 py-3 border-b border-amber-100 flex items-start gap-3">
+<span class="material-symbols-outlined text-amber-500 text-xl mt-0.5">warning</span>
+<p class="text-sm text-amber-900 font-medium leading-tight">⚠️ Tu pedido se enviará en 2 partes. Algunos productos son preventa.</p>
+</div>
+<div class="p-4 flex-1 space-y-6">
+<!-- Item 1 -->
+<div class="flex gap-4">
+<div class="h-16 w-16 flex-shrink-0 overflow-hidden rounded-md border border-border bg-gray-100 relative group">
+<div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200"></div>
+<span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-gray-400">checkroom</span>
+<img class="w-full h-full object-cover opacity-0" data-alt="White t-shirt product thumbnail" src=""/>
+</div>
+<div class="flex flex-1 flex-col">
+<div class="flex justify-between text-sm font-medium text-text-main">
+<h3>Camiseta Básica</h3>
+<p>25,00 €</p>
+</div>
+<p class="text-sm text-text-subdued">Blanco / M</p>
+<div class="mt-2">
+<span class="inline-flex items-center rounded-full bg-green-50 px-2 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                                            📦 Envío inmediato
+                                        </span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-4">
+<div class="h-16 w-16 flex-shrink-0 overflow-hidden rounded-md border border-border bg-gray-100 relative group">
+<div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200"></div>
+<span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-gray-400">do_not_step</span>
+<img class="w-full h-full object-cover opacity-0" data-alt="Sneakers product thumbnail" src=""/>
+</div>
+<div class="flex flex-1 flex-col">
+<div class="flex justify-between text-sm font-medium text-text-main">
+<h3>Zapatillas Runner</h3>
+<p>89,00 €</p>
+</div>
+<p class="text-sm text-text-subdued">Negro / 42</p>
+<div class="mt-2">
+<span class="inline-flex items-center rounded-full bg-purple-50 px-2 py-0.5 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/10">
+                                            ⏳ Preventa
+                                        </span>
+</div>
+</div>
+</div>
+<div class="border-t border-border pt-4 space-y-2">
+<div class="flex justify-between text-sm text-text-subdued">
+<p>Subtotal</p>
+<p>114,00 €</p>
+</div>
+<div class="flex justify-between text-sm text-text-subdued">
+<p>Envío estándar</p>
+<p>Gratis</p>
+</div>
+<!-- Extra Fee Highlight -->
+<div class="flex justify-between text-sm font-medium text-primary bg-primary/5 p-2 rounded -mx-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base">local_shipping</span>
+<p>Envío dividido (extra)</p>
+</div>
+<p>+6,00 €</p>
+</div>
+<div class="flex justify-between text-base font-bold text-text-main pt-2">
+<p>Total</p>
+<p>120,00 €</p>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 p-4 border-t border-border">
+<button class="w-full bg-black text-white py-3 rounded-lg font-bold text-sm shadow-sm opacity-90 cursor-not-allowed">
+                                Pagar ahora
+                            </button>
+</div>
+</div>
+<div class="text-center">
+<p class="text-xs text-text-subdued">Vista previa aproximada. El estilo final depende de tu tema.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

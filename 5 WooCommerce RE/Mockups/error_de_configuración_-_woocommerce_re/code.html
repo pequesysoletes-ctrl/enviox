@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Error de Configuración - WooCommerce RE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7b29e0",
+                        "background-light": "#f0f0f1", // WP Admin gray
+                        "background-dark": "#181121",
+                        "sidebar-dark": "#1d2327",
+                        "sidebar-hover": "#2c3338",
+                        "wp-error": "#d63638",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "system-ui", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Top Admin Bar -->
+<div class="h-[32px] w-full bg-[#1d2327] flex items-center justify-between px-4 fixed top-0 left-0 z-50 text-white text-sm">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[20px]">php</span>
+<div class="flex items-center gap-1 cursor-pointer hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">home</span>
+<span class="font-medium text-xs">Mi Sitio WordPress</span>
+</div>
+<div class="flex items-center gap-1 cursor-pointer hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">cached</span>
+<span class="font-medium text-xs">0</span>
+</div>
+<div class="flex items-center gap-1 cursor-pointer hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">comment</span>
+<span class="font-medium text-xs">0</span>
+</div>
+</div>
+<div class="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors">
+<span class="text-xs">Hola, admin</span>
+<div class="size-5 bg-cover bg-center rounded-sm" data-alt="Admin user avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBLKAA1yrjVtmLQJyWIC15btApAnv9h7ijGkJ6uifEDc6qnEKrpTQ0f7MW6AS81VMrL_ppHzXiVSuW4plRcV9YgMn0KRJVz-k1sx3tVqFO0VqREtEnz1g3qhJe4Qm1mZaQTUaJ3_KMuo-2TYlRTR3eMBYfMxVVx0mjoPQNEIp2axs1vTMF87axPgm2BjNxijpS1HVxHG7HMN0WBqS9Hqd3vTxXQT0EKIV0Cg3MBYyDuHmUhpC486s-BHFg6zKccgyfeipr7Uqwd98E");'></div>
+</div>
+</div>
+<!-- Main Layout -->
+<div class="flex flex-1 pt-[32px]">
+<!-- Sidebar Navigation -->
+<aside class="w-[160px] bg-sidebar-dark text-[#a7aaad] flex-shrink-0 min-h-[calc(100vh-32px)] hidden md:flex flex-col">
+<ul class="flex flex-col py-2 w-full">
+<li class="hover:bg-sidebar-hover hover:text-primary cursor-pointer px-3 py-2 flex items-center gap-2 group transition-colors">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary">speed</span>
+<span class="text-sm font-medium">Escritorio</span>
+</li>
+<li class="hover:bg-sidebar-hover hover:text-primary cursor-pointer px-3 py-2 flex items-center gap-2 group transition-colors">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary">push_pin</span>
+<span class="text-sm font-medium">Entradas</span>
+</li>
+<li class="hover:bg-sidebar-hover hover:text-primary cursor-pointer px-3 py-2 flex items-center gap-2 group transition-colors">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary">image</span>
+<span class="text-sm font-medium">Medios</span>
+</li>
+<li class="hover:bg-sidebar-hover hover:text-primary cursor-pointer px-3 py-2 flex items-center gap-2 group transition-colors">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary">description</span>
+<span class="text-sm font-medium">Páginas</span>
+</li>
+<li class="hover:bg-sidebar-hover hover:text-primary cursor-pointer px-3 py-2 flex items-center gap-2 group transition-colors">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary">forum</span>
+<span class="text-sm font-medium">Comentarios</span>
+</li>
+<li class="mt-2 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#646970]">Tienda</li>
+<li class="hover:bg-sidebar-hover hover:text-primary cursor-pointer px-3 py-2 flex items-center gap-2 group transition-colors">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary">storefront</span>
+<span class="text-sm font-medium">WooCommerce</span>
+</li>
+<li class="hover:bg-sidebar-hover hover:text-primary cursor-pointer px-3 py-2 flex items-center gap-2 group transition-colors">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary">inventory_2</span>
+<span class="text-sm font-medium">Productos</span>
+</li>
+<li class="hover:bg-sidebar-hover hover:text-primary cursor-pointer px-3 py-2 flex items-center gap-2 group transition-colors">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary">analytics</span>
+<span class="text-sm font-medium">Análisis</span>
+</li>
+<li class="mt-2 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#646970]">Configuración</li>
+<li class="bg-primary text-white cursor-pointer px-3 py-2 flex items-center gap-2 relative">
+<span class="material-symbols-outlined text-[20px]">settings_applications</span>
+<span class="text-sm font-bold">WooCommerce RE</span>
+<div class="absolute right-0 top-0 bottom-0 w-1 bg-white opacity-20"></div>
+</li>
+<li class="hover:bg-sidebar-hover hover:text-primary cursor-pointer px-3 py-2 flex items-center gap-2 group transition-colors">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary">settings</span>
+<span class="text-sm font-medium">Ajustes</span>
+</li>
+</ul>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 p-5 md:p-8 lg:px-12 bg-background-light dark:bg-background-dark overflow-y-auto">
+<div class="max-w-[1000px] mx-auto flex flex-col gap-6">
+<!-- Page Header -->
+<div class="flex items-center justify-between">
+<h1 class="text-2xl font-semibold text-[#1d2327] dark:text-white flex items-center gap-3">
+                        WooCommerce RE 
+                        <span class="text-sm font-normal px-2 py-0.5 rounded bg-white border border-gray-300 text-gray-500">v.1.4.2</span>
+</h1>
+<button class="text-primary border border-primary px-3 py-1.5 rounded text-sm font-medium hover:bg-primary hover:text-white transition-all">
+                        Documentación
+                    </button>
+</div>
+<!-- CRITICAL ERROR NOTICE -->
+<div class="bg-white dark:bg-[#1e1e1e] border-l-4 border-l-[#d63638] shadow-sm p-0 flex flex-col md:flex-row relative">
+<div class="p-4 md:p-6 flex flex-1 gap-4 items-start">
+<span class="material-symbols-outlined text-[#d63638] text-[28px] flex-shrink-0 mt-1">warning</span>
+<div class="flex flex-col gap-3">
+<h2 class="text-[#1d2327] dark:text-white font-bold text-lg leading-tight">
+                                Error de configuración: Los tipos de IVA en WooCommerce no coinciden con los tipos configurados en el plugin RE.
+                            </h2>
+<p class="text-[#50575e] dark:text-gray-300 text-[15px] leading-relaxed max-w-3xl">
+                                El tipo reducido (10%) no tiene un tipo de IVA correspondiente en 
+                                <strong class="font-semibold text-[#1d2327] dark:text-gray-100">WooCommerce &gt; Ajustes &gt; Impuestos</strong>. 
+                                Esto puede causar cálculos incorrectos del recargo de equivalencia en tus facturas y pedidos.
+                            </p>
+<div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center mt-2">
+<button class="bg-primary hover:bg-[#6822bd] text-white px-4 py-2 rounded font-semibold text-sm shadow-sm transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+                                    Verificar configuración
+                                </button>
+<a class="text-primary hover:underline text-sm font-medium flex items-center gap-1" href="#">
+                                    Ir a WooCommerce &gt; Ajustes &gt; Impuestos
+                                    <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Settings Content (Simulated Context) -->
+<div class="bg-white dark:bg-[#1e1e1e] border border-[#c3c4c7] dark:border-gray-700 shadow-sm p-0 rounded-sm mt-4 opacity-60 pointer-events-none grayscale-[0.5] select-none relative">
+<!-- Overlay to emphasize disabled state -->
+<div class="absolute inset-0 bg-white/40 z-10"></div>
+<!-- Header of settings box -->
+<div class="px-4 py-3 border-b border-[#c3c4c7] dark:border-gray-700 flex items-center justify-between">
+<h3 class="font-semibold text-lg text-[#1d2327] dark:text-white">Tipos de Recargo</h3>
+<span class="material-symbols-outlined text-gray-400">expand_less</span>
+</div>
+<!-- Form Content -->
+<div class="p-4 md:p-6 flex flex-col gap-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center border-b border-gray-100 pb-6">
+<div class="col-span-1">
+<label class="block text-[#1d2327] dark:text-gray-200 font-semibold mb-1">Tipo General (21%)</label>
+<p class="text-xs text-gray-500">Asigna el recargo para el IVA general.</p>
+</div>
+<div class="col-span-2 flex items-center gap-3">
+<input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 max-w-[120px]" readonly="" type="text" value="5.2%"/>
+<span class="text-green-600 flex items-center text-xs font-bold gap-1 bg-green-50 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[14px]">check</span> Correcto
+                                </span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center border-b border-gray-100 pb-6">
+<div class="col-span-1">
+<label class="block text-[#1d2327] dark:text-gray-200 font-semibold mb-1">Tipo Reducido (10%)</label>
+<p class="text-xs text-gray-500">Asigna el recargo para el IVA reducido.</p>
+</div>
+<div class="col-span-2 flex items-center gap-3">
+<input class="bg-red-50 border border-red-300 text-red-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 max-w-[120px]" readonly="" type="text" value="-"/>
+<span class="text-red-600 flex items-center text-xs font-bold gap-1 bg-red-50 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[14px]">close</span> Sin asignar
+                                </span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+<div class="col-span-1">
+<label class="block text-[#1d2327] dark:text-gray-200 font-semibold mb-1">Tipo Superreducido (4%)</label>
+<p class="text-xs text-gray-500">Asigna el recargo para el IVA superreducido.</p>
+</div>
+<div class="col-span-2 flex items-center gap-3">
+<input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 max-w-[120px]" readonly="" type="text" value="0.5%"/>
+<span class="text-green-600 flex items-center text-xs font-bold gap-1 bg-green-50 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[14px]">check</span> Correcto
+                                </span>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="bg-gray-50 px-4 py-3 border-t border-[#c3c4c7] dark:border-gray-700 flex justify-end">
+<button class="bg-primary opacity-50 text-white px-4 py-2 rounded font-medium text-sm" disabled="">
+                            Guardar cambios
+                        </button>
+</div>
+</div>
+<div class="text-center text-xs text-gray-400 mt-4">
+                    WooCommerce Recargo de Equivalencia v1.4.2 | <a class="hover:text-primary" href="#">Soporte</a> | <a class="hover:text-primary" href="#">Calificar plugin</a>
+</div>
+</div>
+</main>
+</div>
+</body></html>

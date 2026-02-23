@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Correos Pro - Credenciales</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d5361a",
+                        "secondary-express": "#1C4F8A",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211311",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased">
+<!-- Modal Overlay Backdrop -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
+<!-- Modal Container -->
+<div class="bg-white dark:bg-background-dark w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-xl shadow-2xl flex flex-col">
+<!-- Header -->
+<div class="p-6 border-b border-slate-100 dark:border-primary/10">
+<h1 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">
+                    ¿Dónde encuentro mis credenciales?
+                </h1>
+<p class="text-slate-500 dark:text-slate-400 mt-1 text-sm">
+                    Sigue los pasos según tu tipo de contrato con Correos Pro para obtener acceso a la API.
+                </p>
+</div>
+<!-- Content Body -->
+<div class="p-6 space-y-8">
+<!-- Sections Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Section 1: Correos Standard (Red Accent) -->
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-6">
+<div class="w-1.5 h-6 bg-primary rounded-full"></div>
+<h2 class="text-xl font-bold text-slate-900 dark:text-slate-100">Correos Standard</h2>
+</div>
+<div class="space-y-0">
+<!-- Step 1 -->
+<div class="grid grid-cols-[40px_1fr] gap-x-4">
+<div class="flex flex-col items-center">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-[20px]">public</span>
+</div>
+<div class="w-0.5 h-full bg-primary/20 min-h-[20px]"></div>
+</div>
+<div class="pb-6 pt-1">
+<p class="text-xs font-bold uppercase tracking-wider text-primary mb-1">Paso 1</p>
+<p class="text-slate-700 dark:text-slate-300 font-medium">Accede a <span class="text-primary hover:underline cursor-pointer">empresas.correos.es</span> &gt; Mi cuenta</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="grid grid-cols-[40px_1fr] gap-x-4">
+<div class="flex flex-col items-center">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</div>
+<div class="w-0.5 h-full bg-primary/20 min-h-[20px]"></div>
+</div>
+<div class="pb-6 pt-1">
+<p class="text-xs font-bold uppercase tracking-wider text-primary mb-1">Paso 2</p>
+<p class="text-slate-700 dark:text-slate-300 font-medium">Ve a Integraciones &gt; API Ecommerce</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="grid grid-cols-[40px_1fr] gap-x-4">
+<div class="flex flex-col items-center">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-[20px]">key</span>
+</div>
+</div>
+<div class="pt-1">
+<p class="text-xs font-bold uppercase tracking-wider text-primary mb-1">Paso 3</p>
+<p class="text-slate-700 dark:text-slate-300 font-medium">Tus credenciales están en el apartado de Pre-registro API</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 2: Correos Express (Blue Accent) -->
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-6">
+<div class="w-1.5 h-6 bg-secondary-express rounded-full"></div>
+<h2 class="text-xl font-bold text-slate-900 dark:text-slate-100">Correos Express</h2>
+</div>
+<div class="space-y-0">
+<!-- Step 1 -->
+<div class="grid grid-cols-[40px_1fr] gap-x-4">
+<div class="flex flex-col items-center">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-secondary-express/10 text-secondary-express">
+<span class="material-symbols-outlined text-[20px]">public</span>
+</div>
+<div class="w-0.5 h-full bg-secondary-express/20 min-h-[20px]"></div>
+</div>
+<div class="pb-6 pt-1">
+<p class="text-xs font-bold uppercase tracking-wider text-secondary-express mb-1">Paso 1</p>
+<p class="text-slate-700 dark:text-slate-300 font-medium">Accede a <span class="text-secondary-express hover:underline cursor-pointer">correosexpress.es</span> &gt; Área privada</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="grid grid-cols-[40px_1fr] gap-x-4">
+<div class="flex flex-col items-center">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-secondary-express/10 text-secondary-express">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</div>
+<div class="w-0.5 h-full bg-secondary-express/20 min-h-[20px]"></div>
+</div>
+<div class="pb-6 pt-1">
+<p class="text-xs font-bold uppercase tracking-wider text-secondary-express mb-1">Paso 2</p>
+<p class="text-slate-700 dark:text-slate-300 font-medium">Ve a Integraciones</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="grid grid-cols-[40px_1fr] gap-x-4">
+<div class="flex flex-col items-center">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-secondary-express/10 text-secondary-express">
+<span class="material-symbols-outlined text-[20px]">key</span>
+</div>
+</div>
+<div class="pt-1">
+<p class="text-xs font-bold uppercase tracking-wider text-secondary-express mb-1">Paso 3</p>
+<p class="text-slate-700 dark:text-slate-300 font-medium">Solicita las credenciales API a tu delegación Correos Express</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Info Box -->
+<div class="bg-slate-50 dark:bg-primary/5 rounded-xl p-5 border border-slate-200 dark:border-primary/20 flex gap-4">
+<span class="material-symbols-outlined text-slate-400 dark:text-primary/60 shrink-0">info</span>
+<div class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Si tienes contrato activo con Correos o Correos Express, las credenciales existen. 
+                        Si ya usaste la app oficial de Correos, tus credenciales son las mismas. 
+                        <span class="font-semibold text-slate-800 dark:text-slate-200">Contacta con tu gestor comercial si necesitas ayuda.</span>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="p-6 border-t border-slate-100 dark:border-primary/10 flex justify-end">
+<button class="bg-primary hover:bg-primary/90 text-white font-semibold py-2.5 px-8 rounded-lg transition-colors focus:ring-2 focus:ring-primary/40 focus:outline-none shadow-sm">
+                    Cerrar
+                </button>
+</div>
+</div>
+</div>
+</body></html>

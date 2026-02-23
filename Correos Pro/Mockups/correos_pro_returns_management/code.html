@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Correos Pro - Gestión de Devoluciones</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d4341c",
+                        "background-light": "#F6F6F7",
+                        "background-dark": "#211311",
+                        "correos-yellow": "#FFCD00",
+                        "correos-blue": "#002E6D",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 10px rgba(0, 0, 0, 0.03)',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display antialiased min-h-screen flex flex-col">
+<!-- Header / TopNavBar -->
+<header class="bg-white dark:bg-[#1a1a1a] border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<!-- Logo & Brand -->
+<div class="flex items-center gap-4">
+<div class="flex-shrink-0 flex items-center gap-2">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined text-3xl">markunread_mailbox</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Correos Pro</span>
+</div>
+<!-- Navigation -->
+<nav class="hidden md:flex ml-10 gap-8 h-full">
+<a class="inline-flex items-center px-1 pt-1 text-sm font-medium text-slate-500 hover:text-slate-900 border-b-2 border-transparent hover:border-slate-300 transition-colors" href="#">
+                            Envíos
+                        </a>
+<a class="inline-flex items-center px-1 pt-1 text-sm font-medium text-primary border-b-2 border-primary" href="#">
+                            Devoluciones
+                        </a>
+<a class="inline-flex items-center px-1 pt-1 text-sm font-medium text-slate-500 hover:text-slate-900 border-b-2 border-transparent hover:border-slate-300 transition-colors" href="#">
+                            Facturación
+                        </a>
+<a class="inline-flex items-center px-1 pt-1 text-sm font-medium text-slate-500 hover:text-slate-900 border-b-2 border-transparent hover:border-slate-300 transition-colors" href="#">
+                            Configuración
+                        </a>
+</nav>
+</div>
+<!-- User Profile -->
+<div class="flex items-center gap-4">
+<button class="p-1 rounded-full text-slate-400 hover:text-slate-500">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-px bg-slate-200 dark:bg-slate-700"></div>
+<button class="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-primary transition-colors">
+<div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-lg">person</span>
+</div>
+<span class="hidden sm:block">Mi Cuenta</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<!-- Page Header & Actions -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+<div>
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Devoluciones</h1>
+<p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Gestiona y supervisa todas las solicitudes de devolución activas.</p>
+</div>
+<button class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-primary hover:bg-[#b02a15] text-white text-sm font-semibold rounded-lg shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                Crear devolución
+            </button>
+</div>
+<!-- Filters Section -->
+<div class="bg-white dark:bg-[#1a1a1a] rounded-xl shadow-soft p-4 mb-6 border border-slate-100 dark:border-slate-800">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+<!-- Search -->
+<div class="md:col-span-5 relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2.5 border border-slate-200 dark:border-slate-700 rounded-lg leading-5 bg-white dark:bg-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm" placeholder="Buscar por pedido, cliente o email..." type="text"/>
+</div>
+<!-- Carrier Filter -->
+<div class="md:col-span-3">
+<div class="relative">
+<select class="block w-full pl-3 pr-10 py-2.5 text-base border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 appearance-none cursor-pointer">
+<option>Transportista: Todos</option>
+<option>Correos Standard</option>
+<option>Correos Express</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Status Filter -->
+<div class="md:col-span-3">
+<div class="relative">
+<select class="block w-full pl-3 pr-10 py-2.5 text-base border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 appearance-none cursor-pointer">
+<option>Estado: Todos</option>
+<option>Solicitada</option>
+<option>En tránsito</option>
+<option>Recibida</option>
+<option>Incidencia</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+<!-- More Filters Button -->
+<div class="md:col-span-1 flex justify-end">
+<button class="p-2.5 w-full md:w-auto border border-slate-200 dark:border-slate-700 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center justify-center transition-colors" title="Más filtros">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Data Table -->
+<div class="bg-white dark:bg-[#1a1a1a] rounded-xl shadow-soft border border-slate-100 dark:border-slate-800 overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="min-w-full divide-y divide-slate-200 dark:divide-slate-700">
+<thead class="bg-slate-50 dark:bg-slate-800/50">
+<tr>
+<th class="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider" scope="col">Pedido</th>
+<th class="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider" scope="col">Cliente</th>
+<th class="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider" scope="col">Transportista</th>
+<th class="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider" scope="col">Motivo</th>
+<th class="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider" scope="col">Estado</th>
+<th class="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider" scope="col">Fecha</th>
+<th class="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider" scope="col">Etiqueta</th>
+<th class="relative px-6 py-4" scope="col">
+<span class="sr-only">Acciones</span>
+</th>
+</tr>
+</thead>
+<tbody class="bg-white dark:bg-[#1a1a1a] divide-y divide-slate-200 dark:divide-slate-700">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900 dark:text-white">#2047</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-300">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-orange-100 text-orange-700 flex items-center justify-center text-xs font-bold">MG</div>
+<span>María García</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white border border-slate-200 text-slate-700">
+<span class="w-1.5 h-1.5 rounded-full bg-correos-yellow mr-1.5"></span>
+                                    Standard
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">Producto defectuoso</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
+                                    Solicitada
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">17 Feb, 2024</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+<a class="text-primary hover:text-[#b02a15] flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-base">download</span>
+                                    Descargar
+                                </a>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900 dark:text-white">#2043</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-300">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold">JL</div>
+<span>Juan López</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white border border-slate-200 text-slate-700">
+<span class="w-1.5 h-1.5 rounded-full bg-correos-blue mr-1.5"></span>
+                                    Express
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">Talla incorrecta</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300">
+                                    En tránsito
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">16 Feb, 2024</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+<a class="text-primary hover:text-[#b02a15] flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-base">download</span>
+                                    Descargar
+                                </a>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900 dark:text-white">#2040</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-300">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-xs font-bold">AM</div>
+<span>Ana Martín</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white border border-slate-200 text-slate-700">
+<span class="w-1.5 h-1.5 rounded-full bg-correos-yellow mr-1.5"></span>
+                                    Standard
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">Cambio de opinión</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-300">
+                                    Recibida
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">15 Feb, 2024</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+<a class="text-primary hover:text-[#b02a15] flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-base">download</span>
+                                    Descargar
+                                </a>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900 dark:text-white">#2038</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-300">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center text-xs font-bold">PR</div>
+<span>Pedro Ruiz</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white border border-slate-200 text-slate-700">
+<span class="w-1.5 h-1.5 rounded-full bg-correos-blue mr-1.5"></span>
+                                    Express
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">No corresponde</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-50 text-red-700 dark:bg-red-900/30 dark:text-red-300">
+                                    Incidencia
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">14 Feb, 2024</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+<a class="text-primary hover:text-[#b02a15] flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-base">download</span>
+                                    Descargar
+                                </a>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900 dark:text-white">#2035</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-300">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-pink-100 text-pink-700 flex items-center justify-center text-xs font-bold">LD</div>
+<span>Laura Díaz</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white border border-slate-200 text-slate-700">
+<span class="w-1.5 h-1.5 rounded-full bg-correos-yellow mr-1.5"></span>
+                                    Standard
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">Producto defectuoso</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-300">
+                                    Recibida
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">13 Feb, 2024</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+<a class="text-primary hover:text-[#b02a15] flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-base">download</span>
+                                    Descargar
+                                </a>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900 dark:text-white">#2033</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-300">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold">CS</div>
+<span>Carlos Sanz</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white border border-slate-200 text-slate-700">
+<span class="w-1.5 h-1.5 rounded-full bg-correos-yellow mr-1.5"></span>
+                                    Standard
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">Talla incorrecta</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300">
+                                    En tránsito
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">12 Feb, 2024</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+<a class="text-primary hover:text-[#b02a15] flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-base">download</span>
+                                    Descargar
+                                </a>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="bg-white dark:bg-[#1a1a1a] px-4 py-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between sm:px-6">
+<div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+<div>
+<p class="text-sm text-slate-700 dark:text-slate-400">
+                            Mostrando <span class="font-medium text-slate-900 dark:text-white">1</span>-<span class="font-medium text-slate-900 dark:text-white">6</span> de <span class="font-medium text-slate-900 dark:text-white">84</span> devoluciones
+                        </p>
+</div>
+<div>
+<nav aria-label="Pagination" class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px">
+<a class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm font-medium text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-700" href="#">
+<span class="sr-only">Anterior</span>
+<span class="material-symbols-outlined text-sm">arrow_back_ios_new</span>
+</a>
+<a aria-current="page" class="z-10 bg-primary/10 border-primary text-primary relative inline-flex items-center px-4 py-2 border text-sm font-medium" href="#">
+                                1
+                            </a>
+<a class="bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-700 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-700 relative inline-flex items-center px-4 py-2 border text-sm font-medium" href="#">
+                                2
+                            </a>
+<a class="bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-700 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-700 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium" href="#">
+                                3
+                            </a>
+<span class="relative inline-flex items-center px-4 py-2 border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm font-medium text-slate-700 dark:text-slate-400">
+                                ...
+                            </span>
+<a class="bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-700 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-700 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium" href="#">
+                                8
+                            </a>
+<a class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm font-medium text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-700" href="#">
+<span class="sr-only">Siguiente</span>
+<span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+</a>
+</nav>
+</div>
+</div>
+<!-- Mobile Pagination -->
+<div class="flex items-center justify-between sm:hidden w-full">
+<a class="relative inline-flex items-center px-4 py-2 border border-slate-300 dark:border-slate-700 text-sm font-medium rounded-md text-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700" href="#">
+                        Anterior
+                    </a>
+<span class="text-sm text-slate-700 dark:text-slate-400">Pag 1 de 8</span>
+<a class="ml-3 relative inline-flex items-center px-4 py-2 border border-slate-300 dark:border-slate-700 text-sm font-medium rounded-md text-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700" href="#">
+                        Siguiente
+                    </a>
+</div>
+</div>
+</div>
+</main>
+</body></html>

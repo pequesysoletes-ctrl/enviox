@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ayuda y FAQ GeoMarkets EU</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#008060", /* Shopify Green */
+                        "primary-hover": "#006e52",
+                        "action": "#2563EB", /* Blue for links/actions */
+                        "action-hover": "#1d4ed8",
+                        "background-light": "#f6f6f7", /* Polaris background */
+                        "background-dark": "#101522",
+                        "surface": "#ffffff",
+                        "text-main": "#202223",
+                        "text-subdued": "#6d7175",
+                        "border-subdued": "#e1e3e5",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                    },
+                    boxShadow: {
+                        "polaris": "0px 0px 5px 0px rgba(0, 0, 0, 0.05), 0px 1px 2px 0px rgba(0, 0, 0, 0.15)",
+                        "polaris-hover": "0px 0px 8px 0px rgba(0, 0, 0, 0.1), 0px 2px 4px 0px rgba(0, 0, 0, 0.2)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f6f6f7;
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8; 
+        }
+        
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary ~ * {
+            animation: sweep .3s ease-in-out;
+        }
+        @keyframes sweep {
+            0%    {opacity: 0; transform: translateY(-10px)}
+            100%  {opacity: 1; transform: translateY(0)}
+        }
+    </style>
+</head>
+<body class="bg-background-light text-text-main min-h-screen flex flex-col font-display">
+<!-- Top Navigation Bar -->
+<header class="bg-surface border-b border-border-subdued sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16 items-center">
+<div class="flex items-center gap-3">
+<div class="bg-primary/10 p-2 rounded-lg text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">public</span>
+</div>
+<div>
+<h1 class="text-text-main text-lg font-bold leading-tight">GeoMarkets EU</h1>
+<p class="text-text-subdued text-xs font-medium">Geolocation &amp; Redirects</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center size-10 rounded-lg hover:bg-background-light text-text-subdued transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-gradient-to-br from-primary to-action flex items-center justify-center text-white text-xs font-bold shadow-sm cursor-pointer">
+                        GM
+                    </div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<!-- Page Title -->
+<div class="mb-8">
+<div class="flex items-center gap-2 text-text-subdued text-sm mb-2">
+<span class="hover:underline cursor-pointer">Inicio</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-text-main font-medium">Soporte</span>
+</div>
+<h2 class="text-3xl font-bold text-text-main tracking-tight">Ayuda y preguntas frecuentes</h2>
+<p class="mt-2 text-text-subdued max-w-3xl">Encuentra respuestas rápidas sobre redirecciones, SEO y configuración de mercados.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+<!-- Left Column: FAQ Section (Takes up 2 columns on large screens) -->
+<div class="lg:col-span-2 space-y-6">
+<!-- FAQ Card -->
+<div class="bg-surface rounded-xl shadow-polaris border border-border-subdued overflow-hidden">
+<div class="p-6 border-b border-border-subdued bg-gray-50/50">
+<h3 class="text-lg font-semibold text-text-main flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">quiz</span>
+                            Preguntas frecuentes
+                        </h3>
+</div>
+<div class="divide-y divide-border-subdued">
+<!-- Item 1 (Open by default concept, using 'open' attribute) -->
+<details class="group p-4" open="">
+<summary class="flex cursor-pointer items-center justify-between font-medium text-text-main hover:text-action transition-colors select-none">
+<span class="text-base font-semibold">¿Afecta a mi SEO la redirección?</span>
+<span class="transition group-open:rotate-180">
+<span class="material-symbols-outlined text-text-subdued">expand_more</span>
+</span>
+</summary>
+<div class="mt-3 text-text-subdued text-sm leading-relaxed pl-1 pr-4 border-l-2 border-primary ml-1">
+<p class="mb-2">No. GeoMarkets nunca redirige a los bots de buscadores (Googlebot, Bingbot, etc.). Los rastreadores siempre ven tu página original.</p>
+<p>Además, usamos <span class="font-medium text-text-main">redirects 302 (temporales)</span> que no transfieren PageRank, asegurando que tu autoridad de dominio se mantenga intacta.</p>
+</div>
+</details>
+<!-- Item 2 -->
+<details class="group p-4">
+<summary class="flex cursor-pointer items-center justify-between font-medium text-text-main hover:text-action transition-colors select-none">
+<span class="text-base font-medium">¿Es compatible con RGPD?</span>
+<span class="transition group-open:rotate-180">
+<span class="material-symbols-outlined text-text-subdued">expand_more</span>
+</span>
+</summary>
+<div class="mt-3 text-text-subdued text-sm leading-relaxed pl-1 pr-4 border-l-2 border-primary ml-1">
+<p>Sí, GeoMarkets está diseñado para ser totalmente compatible con el RGPD. No almacenamos datos personales identificables de tus visitantes para realizar la geolocalización, y ofrecemos opciones para banners de consentimiento antes de la redirección.</p>
+</div>
+</details>
+<!-- Item 3 -->
+<details class="group p-4">
+<summary class="flex cursor-pointer items-center justify-between font-medium text-text-main hover:text-action transition-colors select-none">
+<span class="text-base font-medium">¿Funciona con todos los temas de Shopify?</span>
+<span class="transition group-open:rotate-180">
+<span class="material-symbols-outlined text-text-subdued">expand_more</span>
+</span>
+</summary>
+<div class="mt-3 text-text-subdued text-sm leading-relaxed pl-1 pr-4 border-l-2 border-primary ml-1">
+<p>Absolutamente. GeoMarkets se integra a nivel de tienda mediante App Embeds de Shopify 2.0, lo que garantiza compatibilidad con cualquier tema (gratuito o premium) sin necesidad de modificar el código liquid manualmente.</p>
+</div>
+</details>
+<!-- Item 4 -->
+<details class="group p-4">
+<summary class="flex cursor-pointer items-center justify-between font-medium text-text-main hover:text-action transition-colors select-none">
+<span class="text-base font-medium">¿Qué pasa si un visitante no quiere ser redirigido?</span>
+<span class="transition group-open:rotate-180">
+<span class="material-symbols-outlined text-text-subdued">expand_more</span>
+</span>
+</summary>
+<div class="mt-3 text-text-subdued text-sm leading-relaxed pl-1 pr-4 border-l-2 border-primary ml-1">
+<p>La aplicación incluye una "Barra de Anuncios" opcional que sugiere el cambio de país en lugar de forzarlo. Además, si un usuario cierra el popup o cambia manualmente de país/moneda, recordamos su preferencia mediante una cookie para no volver a molestarle.</p>
+</div>
+</details>
+<!-- Item 5 -->
+<details class="group p-4">
+<summary class="flex cursor-pointer items-center justify-between font-medium text-text-main hover:text-action transition-colors select-none">
+<span class="text-base font-medium">¿Cómo configuro Shopify Markets?</span>
+<span class="transition group-open:rotate-180">
+<span class="material-symbols-outlined text-text-subdued">expand_more</span>
+</span>
+</summary>
+<div class="mt-3 text-text-subdued text-sm leading-relaxed pl-1 pr-4 border-l-2 border-primary ml-1">
+<p>Shopify Markets se configura desde el panel de control de tu tienda. GeoMarkets lee automáticamente esta configuración. Una vez definidos tus mercados en Shopify, solo necesitas activar las reglas de redirección en nuestra app para que coincidan con tus mercados.</p>
+</div>
+</details>
+</div>
+<div class="p-4 bg-gray-50 border-t border-border-subdued flex justify-center">
+<button class="text-action hover:text-action-hover text-sm font-semibold flex items-center gap-1 transition-colors">
+                            Ver todas las preguntas frecuentes
+                            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Sidebar (Takes up 1 column on large screens) -->
+<div class="lg:col-span-1 space-y-6">
+<!-- Resources Card -->
+<div class="bg-surface rounded-xl shadow-polaris border border-border-subdued p-5">
+<h3 class="text-base font-bold text-text-main mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-text-subdued">library_books</span>
+                        Recursos
+                    </h3>
+<ul class="space-y-3">
+<li>
+<a class="group flex items-start gap-3 p-2 -mx-2 rounded-lg hover:bg-gray-50 transition-colors" href="#">
+<div class="mt-0.5 bg-blue-50 text-action p-1.5 rounded-md">
+<span class="material-symbols-outlined text-[20px]">description</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-text-main group-hover:text-action transition-colors">Documentación completa</p>
+<p class="text-xs text-text-subdued">Guías paso a paso de instalación</p>
+</div>
+</a>
+</li>
+<li>
+<a class="group flex items-start gap-3 p-2 -mx-2 rounded-lg hover:bg-gray-50 transition-colors" href="#">
+<div class="mt-0.5 bg-red-50 text-red-600 p-1.5 rounded-md">
+<span class="material-symbols-outlined text-[20px]">play_circle</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-text-main group-hover:text-action transition-colors">Video tutorial (3 min)</p>
+<p class="text-xs text-text-subdued">Aprende lo básico rápidamente</p>
+</div>
+</a>
+</li>
+<li>
+<a class="group flex items-start gap-3 p-2 -mx-2 rounded-lg hover:bg-gray-50 transition-colors relative" href="#">
+<div class="mt-0.5 bg-primary/10 text-primary p-1.5 rounded-md">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<p class="text-sm font-semibold text-text-main group-hover:text-action transition-colors">Contactar soporte</p>
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-1.5 py-0.5 rounded border border-primary/20">PRO</span>
+</div>
+<p class="text-xs text-text-subdued">Chat en vivo disponible</p>
+</div>
+</a>
+</li>
+</ul>
+</div>
+<!-- System Status Card -->
+<div class="bg-surface rounded-xl shadow-polaris border border-border-subdued p-5">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-base font-bold text-text-main flex items-center gap-2">
+<span class="material-symbols-outlined text-text-subdued">dns</span>
+                            Estado del servicio
+                        </h3>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+</span>
+<span class="text-sm font-medium text-text-main">Worker</span>
+</div>
+<span class="text-xs font-medium text-primary bg-primary/5 px-2 py-0.5 rounded">Operativo — 99.98%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="relative flex h-2.5 w-2.5">
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+</span>
+<span class="text-sm font-medium text-text-main">App Dashboard</span>
+</div>
+<span class="text-xs font-medium text-primary bg-primary/5 px-2 py-0.5 rounded">Operativo</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-border-subdued">
+<p class="text-xs text-text-subdued flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                            Última comprobación: hace 2 min
+                        </p>
+</div>
+</div>
+<!-- Promo Card (Optional filler to balance height if needed, keeping context) -->
+<div class="bg-gradient-to-br from-indigo-900 to-slate-900 rounded-xl shadow-polaris p-5 text-white relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="font-bold text-lg mb-1">Plan Agencia</h3>
+<p class="text-indigo-200 text-sm mb-4">Gestiona múltiples tiendas con un solo dashboard.</p>
+<button class="bg-white text-indigo-900 text-xs font-bold px-3 py-2 rounded shadow hover:bg-indigo-50 transition-colors">
+                            Mejorar plan
+                        </button>
+</div>
+<!-- decorative circle -->
+<div class="absolute -right-6 -bottom-10 w-32 h-32 bg-indigo-500/30 rounded-full blur-2xl"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full mt-auto">
+<div class="border-t border-border-subdued pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-xs text-text-subdued">© 2023 GeoMarkets EU. Todos los derechos reservados.</p>
+<div class="flex gap-4">
+<a class="text-xs text-text-subdued hover:text-action" href="#">Términos</a>
+<a class="text-xs text-text-subdued hover:text-action" href="#">Privacidad</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Correos PrestaShop - Devoluciones</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d4341c",
+                        "express": "#1c4f8a",
+                        "background-light": "#ebeff4",
+                        "background-dark": "#1a1616",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .ps-table-row:hover {
+            background-color: #f8f9fb;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-slate-900 dark:text-slate-100">
+<!-- Top Navigation Bar -->
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50">
+<div class="max-w-[1400px] mx-auto px-4 h-16 flex items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-1.5 rounded-lg text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">local_post_office</span>
+</div>
+<h1 class="text-lg font-bold tracking-tight text-slate-800 dark:text-white">Correos <span class="text-primary">PrestaShop</span></h1>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Pedidos</a>
+<a class="text-sm font-medium text-primary border-b-2 border-primary py-5" href="#">Devoluciones</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Configuración</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm w-64 focus:ring-2 focus:ring-primary/20" placeholder="Buscar pedido..." type="text"/>
+</div>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-slate-200 overflow-hidden border border-slate-300">
+<img class="w-full h-full object-cover" data-alt="Avatar de usuario administrador" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxNWS2PldVBraefI5fUaKzpM38QCk0H8XXZ5G7LPIO1O5edkNQOTnXZ8_zhm9xgqdgZmf2ujV-hmgMO9tTcfyk12cRNA_Ihk6fOiFauc0HCCe6pUf2jpTTTHSFdVtUeekEr0R_nzx5oimKsICAYWeABKTZNJU4Gc6vOjP4G48RiMq7Gm_69rRv_wQ5guduyEpcKNn91YsNufEZ45DQSgUHpODsjSrnm284MOP4apuAaIRBcvUCe5yvTLO7Z4hAI2ig-ENBPpOL9dY4"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-[1400px] mx-auto px-4 py-8">
+<!-- Header Actions -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div class="flex items-center gap-4">
+<h2 class="text-3xl font-extrabold text-slate-900 dark:text-white">Devoluciones</h2>
+<span class="px-2.5 py-0.5 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-xs font-bold rounded-full border border-green-200 dark:border-green-800 flex items-center gap-1.5">
+<span class="w-2 h-2 bg-green-500 rounded-full"></span> PRO
+                </span>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-lg font-bold text-sm transition-all shadow-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+                Crear devolución
+            </button>
+</div>
+<!-- Filter Bar -->
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-5 mb-6">
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 items-end">
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Buscar por ID/Pedido</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">tag</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" placeholder="Ej: #RT-1005" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Transportista</label>
+<select class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary">
+<option>Todos los transportistas</option>
+<option>Correos Standard</option>
+<option>Correos Express</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Estado</label>
+<select class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary">
+<option>Todos los estados</option>
+<option>Solicitada</option>
+<option>En tránsito</option>
+<option>Recibida</option>
+<option>Cancelada</option>
+</select>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-4 py-2 rounded-lg font-semibold text-sm hover:bg-slate-200 transition-colors border border-slate-200 dark:border-slate-700">
+                        Limpiar
+                    </button>
+<button class="p-2 text-primary hover:bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Data Table Container -->
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">ID</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Pedido</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Cliente</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-center">Transportista</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Estado</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Fecha</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Row 1 -->
+<tr class="ps-table-row transition-colors">
+<td class="px-6 py-4 font-bold text-primary text-sm">#RT-1005</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-600 dark:text-slate-300">#2045</td>
+<td class="px-6 py-4 text-sm font-semibold">Ana Martín</td>
+<td class="px-6 py-4 text-center">
+<span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-black uppercase rounded-full border border-primary/20">Standard</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-xs font-bold rounded">Solicitada</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">18/02</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="ps-table-row transition-colors">
+<td class="px-6 py-4 font-bold text-primary text-sm">#RT-1004</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-600 dark:text-slate-300">#2043</td>
+<td class="px-6 py-4 text-sm font-semibold">Laura Díaz</td>
+<td class="px-6 py-4 text-center">
+<span class="px-3 py-1 bg-express/10 text-express text-[10px] font-black uppercase rounded-full border border-express/20">Express</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-bold rounded">En tránsito</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">17/02</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="ps-table-row transition-colors">
+<td class="px-6 py-4 font-bold text-primary text-sm">#RT-1003</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-600 dark:text-slate-300">#2038</td>
+<td class="px-6 py-4 text-sm font-semibold">Luis Fernández</td>
+<td class="px-6 py-4 text-center">
+<span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-black uppercase rounded-full border border-primary/20">Standard</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-bold rounded">Recibida</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">16/02</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="ps-table-row transition-colors">
+<td class="px-6 py-4 font-bold text-primary text-sm">#RT-1002</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-600 dark:text-slate-300">#2035</td>
+<td class="px-6 py-4 text-sm font-semibold">Elena Vega</td>
+<td class="px-6 py-4 text-center">
+<span class="px-3 py-1 bg-express/10 text-express text-[10px] font-black uppercase rounded-full border border-express/20">Express</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-xs font-bold rounded">Cancelada</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">15/02</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="ps-table-row transition-colors">
+<td class="px-6 py-4 font-bold text-primary text-sm">#RT-1001</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-600 dark:text-slate-300">#2030</td>
+<td class="px-6 py-4 text-sm font-semibold">Carlos Sanz</td>
+<td class="px-6 py-4 text-center">
+<span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-black uppercase rounded-full border border-primary/20">Standard</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-bold rounded">Recibida</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">14/02</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+<span class="text-sm text-slate-500">Mostrando <span class="font-bold text-slate-900 dark:text-white">1-5</span> de <span class="font-bold text-slate-900 dark:text-white">24</span> devoluciones</span>
+<div class="flex items-center gap-1">
+<button class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-xl">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-lg bg-primary text-white font-bold text-sm">1</button>
+<button class="w-10 h-10 rounded-lg text-slate-600 dark:text-slate-400 font-bold text-sm hover:bg-slate-50 dark:hover:bg-slate-800">2</button>
+<button class="w-10 h-10 rounded-lg text-slate-600 dark:text-slate-400 font-bold text-sm hover:bg-slate-50 dark:hover:bg-slate-800">3</button>
+<span class="px-2 text-slate-400">...</span>
+<button class="w-10 h-10 rounded-lg text-slate-600 dark:text-slate-400 font-bold text-sm hover:bg-slate-50 dark:hover:bg-slate-800">5</button>
+<button class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer Help -->
+<footer class="mt-8 flex items-center justify-center gap-8 py-6 text-slate-400 text-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">help_outline</span>
+<a class="hover:text-primary" href="#">Centro de Ayuda</a>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">description</span>
+<a class="hover:text-primary" href="#">Documentación API</a>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">contact_support</span>
+<a class="hover:text-primary" href="#">Soporte Técnico</a>
+</div>
+</footer>
+</main>
+</body></html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shopify RE - Bienvenida</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#008060",
+                        "accent-purple": "#6B21A8",
+                        "background-light": "#F6F6F7",
+                        "background-dark": "#0f231e",
+                        "polaris-gray": "#ebebed",
+                        "polaris-text": "#202223",
+                        "polaris-subdued": "#6d7175"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F6F6F7;
+        }
+        .polaris-card {
+            box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15);
+        }
+        .step-active::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: #6B21A8;
+            border-radius: 3px 3px 0 0;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex items-center justify-center p-4">
+<!-- Main Container Card -->
+<div class="max-w-[640px] w-full bg-white dark:bg-slate-900 rounded-xl polaris-card overflow-hidden">
+<!-- Header Section -->
+<div class="p-8 text-center border-b border-slate-100 dark:border-slate-800">
+<div class="flex flex-col items-center gap-2">
+<h1 class="text-3xl font-bold text-accent-purple tracking-tight">Shopify RE</h1>
+<p class="text-polaris-text dark:text-slate-200 text-lg font-medium">
+                    Gestión automática del Recargo de Equivalencia
+                </p>
+</div>
+</div>
+<!-- Stepper Component -->
+<div class="px-8 pt-8 pb-4">
+<div class="flex justify-between items-center relative">
+<!-- Step 1: Active -->
+<div class="flex flex-col items-center gap-2 flex-1 relative step-active">
+<div class="size-8 rounded-full bg-accent-purple flex items-center justify-center text-white text-sm font-bold">
+                        1
+                    </div>
+<span class="text-xs font-bold text-accent-purple uppercase tracking-wider">Configura</span>
+</div>
+<!-- Connector -->
+<div class="h-px bg-slate-200 dark:bg-slate-700 flex-grow -mt-6"></div>
+<!-- Step 2: Inactive -->
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="size-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-polaris-subdued text-sm font-bold border border-slate-200 dark:border-slate-700">
+                        2
+                    </div>
+<span class="text-xs font-bold text-polaris-subdued uppercase tracking-wider">Clientes RE</span>
+</div>
+<!-- Connector -->
+<div class="h-px bg-slate-200 dark:bg-slate-700 flex-grow -mt-6"></div>
+<!-- Step 3: Inactive -->
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="size-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-polaris-subdued text-sm font-bold border border-slate-200 dark:border-slate-700">
+                        3
+                    </div>
+<span class="text-xs font-bold text-polaris-subdued uppercase tracking-wider">Factura</span>
+</div>
+</div>
+</div>
+<!-- Content Body -->
+<div class="p-8 space-y-6">
+<p class="text-polaris-subdued dark:text-slate-400 text-sm leading-relaxed">
+                El Recargo de Equivalencia es un régimen especial de IVA para comerciantes minoristas en España. Esta app lo gestiona automáticamente: identifica clientes RE, calcula el recargo y genera facturas con desglose.
+            </p>
+<!-- Data Table -->
+<div class="overflow-hidden rounded-lg border border-slate-200 dark:border-slate-700">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+<th class="px-4 py-3 text-xs font-bold text-polaris-text dark:text-slate-200 uppercase tracking-wider">Tipo IVA</th>
+<th class="px-4 py-3 text-xs font-bold text-polaris-text dark:text-slate-200 uppercase tracking-wider text-right">% IVA</th>
+<th class="px-4 py-3 text-xs font-bold text-polaris-text dark:text-slate-200 uppercase tracking-wider text-right">% RE</th>
+<th class="px-4 py-3 text-xs font-bold text-polaris-text dark:text-slate-200 uppercase tracking-wider text-right">Total</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-4 py-3 text-sm text-polaris-text dark:text-slate-300">General</td>
+<td class="px-4 py-3 text-sm text-polaris-subdued dark:text-slate-400 text-right">21%</td>
+<td class="px-4 py-3 text-sm text-polaris-subdued dark:text-slate-400 text-right">5.2%</td>
+<td class="px-4 py-3 text-sm font-semibold text-polaris-text dark:text-white text-right">26.2%</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-4 py-3 text-sm text-polaris-text dark:text-slate-300">Reducido</td>
+<td class="px-4 py-3 text-sm text-polaris-subdued dark:text-slate-400 text-right">10%</td>
+<td class="px-4 py-3 text-sm text-polaris-subdued dark:text-slate-400 text-right">1.4%</td>
+<td class="px-4 py-3 text-sm font-semibold text-polaris-text dark:text-white text-right">11.4%</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-4 py-3 text-sm text-polaris-text dark:text-slate-300">Superreducido</td>
+<td class="px-4 py-3 text-sm text-polaris-subdued dark:text-slate-400 text-right">4%</td>
+<td class="px-4 py-3 text-sm text-polaris-subdued dark:text-slate-400 text-right">0.5%</td>
+<td class="px-4 py-3 text-sm font-semibold text-polaris-text dark:text-white text-right">4.5%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- CTA Section -->
+<div class="flex flex-col items-center gap-4 pt-4">
+<button class="w-full bg-primary hover:bg-[#006e52] text-white font-bold py-3.5 px-6 rounded-lg transition-all shadow-md active:scale-[0.98]">
+                    Empezar configuración
+                </button>
+<a class="text-primary hover:underline text-sm font-medium flex items-center gap-1" href="#">
+                    ¿Qué es el Recargo de Equivalencia? <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Trust Badges Footer -->
+<div class="bg-slate-50 dark:bg-slate-800/50 px-8 py-4 border-t border-slate-100 dark:border-slate-800">
+<div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[11px] text-polaris-subdued dark:text-slate-500 font-medium uppercase tracking-widest">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] leading-none">lock</span>
+                    Datos encriptados
+                </div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] leading-none">assignment_turned_in</span>
+                    Cumple normativa AEAT
+                </div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] leading-none">public</span>
+                    🇪🇸 100% España
+                </div>
+</div>
+</div>
+</div>
+</body></html>

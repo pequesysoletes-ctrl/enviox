@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Clientes RE - Empty State</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#6a21a6",
+                        "primary-hover": "#561b87",
+                        "background-light": "#f1f2f4", // Adjusted to match Shopify Admin slightly better (Polaris uses #f1f2f4)
+                        "background-dark": "#1a1220",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'polaris': '0px 1px 0px 0px rgba(22, 29, 37, 0.05), 0px 0px 0px 1px rgba(22, 29, 37, 0.05), 0px 4px 12px 0px rgba(22, 29, 37, 0.02)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings:
+            'FILL' 1,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 bg-[#ebebed] dark:bg-[#2a2a2a] border-r border-[#d3d3d3] dark:border-[#333] hidden md:flex flex-col flex-shrink-0 h-screen sticky top-0">
+<!-- App Header in Sidebar -->
+<div class="px-4 py-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary flex items-center justify-center text-white font-bold text-xs shrink-0">
+                RE
+            </div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-slate-800 dark:text-slate-100 leading-tight">Gestor RE</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Shopify Admin</span>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="flex-1 px-2 py-4 flex flex-col gap-1 overflow-y-auto">
+<!-- Normal Item -->
+<a class="group flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-700 hover:shadow-sm transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">home</span>
+<span class="text-sm font-medium">Inicio</span>
+</a>
+<!-- Normal Item -->
+<a class="group flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-700 hover:shadow-sm transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+<span class="text-sm font-medium">Pedidos</span>
+</a>
+<!-- Active Item (Clientes RE) -->
+<a class="group flex items-center gap-3 px-3 py-2 rounded-lg bg-white dark:bg-slate-800 shadow-sm text-primary dark:text-primary-300 pointer-events-none" href="#">
+<span class="material-symbols-outlined filled text-[20px]">group</span>
+<span class="text-sm font-semibold">Clientes RE</span>
+</a>
+<!-- Normal Item -->
+<a class="group flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-700 hover:shadow-sm transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-sm font-medium">Configuración</span>
+</a>
+</nav>
+<!-- Sidebar Footer -->
+<div class="p-4 border-t border-[#d3d3d3] dark:border-[#333]">
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<span class="text-sm font-medium">Ayuda y Soporte</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 h-screen overflow-y-auto bg-background-light dark:bg-background-dark flex flex-col">
+<!-- Header Strip -->
+<header class="px-6 py-4 md:px-8 max-w-[1000px] mx-auto w-full">
+<h1 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Clientes RE</h1>
+</header>
+<!-- Content Container -->
+<div class="flex-1 px-6 md:px-8 pb-10 flex items-start justify-center">
+<div class="w-full max-w-[1000px]">
+<!-- Empty State Card -->
+<div class="bg-surface-light dark:bg-[#1e1e1e] rounded-xl shadow-polaris border border-gray-200 dark:border-gray-700 p-12 flex flex-col items-center text-center">
+<!-- Illustration -->
+<div class="mb-6 relative">
+<!-- Abstract Illustration combining Shop and Document -->
+<div class="w-48 h-32 relative">
+<!-- Background blobs/shapes -->
+<div class="absolute inset-0 bg-gradient-to-tr from-gray-100 to-gray-50 dark:from-slate-700 dark:to-slate-800 rounded-full opacity-50 blur-xl"></div>
+<!-- Main Icon Group -->
+<div class="relative z-10 flex items-center justify-center h-full">
+<svg class="text-slate-300 dark:text-slate-600" fill="none" height="120" viewbox="0 0 160 120" width="160" xmlns="http://www.w3.org/2000/svg">
+<!-- Simple Shop Icon Base -->
+<path d="M40 40H120V100C120 104.418 116.418 108 112 108H48C43.5817 108 40 104.418 40 100V40Z" fill="currentColor" fill-opacity="0.2"></path>
+<path d="M30 40L45 15H115L130 40" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<rect height="68" rx="2" stroke="currentColor" stroke-width="2" width="80" x="40" y="40"></rect>
+<!-- Door -->
+<path d="M70 108V70H90V108" stroke="currentColor" stroke-width="2"></path>
+<!-- Tax Document Overlay - Highlighted with Primary Color -->
+<g transform="translate(100, 50)">
+<rect class="dark:fill-slate-800" fill="white" height="50" rx="2" stroke="#6a21a6" stroke-width="2" width="40" x="0" y="0"></rect>
+<rect fill="#6a21a6" fill-opacity="0.4" height="2" rx="1" width="24" x="8" y="10"></rect>
+<rect fill="#6a21a6" fill-opacity="0.4" height="2" rx="1" width="24" x="8" y="16"></rect>
+<rect fill="#6a21a6" fill-opacity="0.4" height="2" rx="1" width="16" x="8" y="22"></rect>
+<!-- Checkmark Badge -->
+<circle cx="34" cy="44" fill="#6a21a6" r="10"></circle>
+<path d="M29 44L32.5 47.5L39 41" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</g>
+</svg>
+</div>
+</div>
+</div>
+<!-- Text Content -->
+<div class="max-w-md space-y-4">
+<h2 class="text-lg md:text-xl font-semibold text-slate-900 dark:text-white leading-snug">
+                            Aún no tienes clientes con Recargo de Equivalencia
+                        </h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                            Añade tus clientes mayoristas para que el RE se aplique automáticamente en sus pedidos y facturas.
+                        </p>
+</div>
+<!-- Actions -->
+<div class="mt-8 flex flex-col items-center gap-4">
+<button class="bg-primary hover:bg-primary-hover text-white font-medium text-sm px-5 py-2.5 rounded-lg shadow-sm transition-colors duration-200 flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                            Añadir primer cliente RE
+                        </button>
+<a class="text-primary hover:text-primary-hover text-sm font-medium hover:underline flex items-center gap-1 transition-colors" href="#">
+                            ¿Qué es el RE?
+                            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Footer Tip (Optional context for app) -->
+<div class="mt-6 flex justify-center">
+<div class="flex items-center gap-2 text-xs text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span>Configura tus reglas fiscales en <a class="underline hover:text-slate-500 dark:hover:text-slate-400" href="#">Configuración</a></span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

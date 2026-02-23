@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shopify Storefront Cart Split Shipping Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#008055",
+                        "background-light": "#f5f8f7",
+                        "background-dark": "#0f231c",
+                        "shopify-green": "#008060",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 antialiased min-h-screen flex flex-col">
+<!-- Navbar -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+<div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-shopify-green text-3xl">storefront</span>
+<span class="text-xl font-bold tracking-tight text-slate-900">Shopify Store</span>
+</div>
+<nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+<a class="hover:text-shopify-green transition-colors" href="#">Inicio</a>
+<a class="hover:text-shopify-green transition-colors" href="#">Catálogo</a>
+<a class="hover:text-shopify-green transition-colors" href="#">Ofertas</a>
+<a class="hover:text-shopify-green transition-colors" href="#">Contacto</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:text-slate-900">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-2 text-slate-500 hover:text-slate-900 relative">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-1 right-0 flex h-4 w-4 items-center justify-center rounded-full bg-shopify-green text-[10px] font-bold text-white">2</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow bg-[#f8fcfb]">
+<div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+<h1 class="mb-8 text-3xl font-bold tracking-tight text-slate-900">Tu carrito</h1>
+<div class="flex flex-col lg:flex-row gap-12">
+<!-- Cart Items Section -->
+<div class="flex-grow space-y-8">
+<!-- Cart Header (Desktop) -->
+<div class="hidden sm:grid grid-cols-12 gap-4 border-b border-slate-200 pb-4 text-sm font-medium text-slate-500">
+<div class="col-span-6">Producto</div>
+<div class="col-span-2 text-center">Cantidad</div>
+<div class="col-span-4 text-right">Total</div>
+</div>
+<!-- Item 1: In Stock -->
+<div class="group relative flex flex-col gap-6 border-b border-slate-100 pb-8 sm:grid sm:grid-cols-12 sm:items-center sm:gap-4 sm:border-b-0 sm:pb-0">
+<!-- Product Info -->
+<div class="col-span-6 flex items-start gap-4">
+<div class="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-lg bg-slate-100 border border-slate-200">
+<img alt="White organic cotton t-shirt on a hanger" class="h-full w-full object-cover object-center" data-alt="White organic cotton t-shirt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA502JNs875SdedwTijM32HOGAoRQoopZls3EnA77v6q51nhvqW9spETDWwx7KeDQI1fHab6uH9IoW1WM7gY7ZZeytezp9DxrERs_rdW0fhkXwHZll4bvKmpJd5lF4H7gd9dp46uGYOlqzk0Xv_2BVUNW3dlcaGMwX85moAqffiLbcM_A2ecz_EuFXoVqsZj3szr0uBmaqNlmNr2zyahIR2YV5cYuqvH280u3b2bbOnp3z2b5ASEv9pZFnTtt1VApgwq_yO3PKMYMO5"/>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-base font-semibold text-slate-900">
+<a href="#">Camiseta algodón orgánico</a>
+</h3>
+<p class="text-sm text-slate-500">Talla: M / Color: Blanco</p>
+<div class="mt-2 inline-flex items-center rounded-full bg-[#059669]/10 px-2.5 py-0.5 text-xs font-medium text-[#059669] ring-1 ring-inset ring-[#059669]/20 w-fit">
+<span class="mr-1">📦</span> Envío inmediato
+                                </div>
+</div>
+</div>
+<!-- Quantity -->
+<div class="col-span-2 flex items-center justify-center">
+<div class="flex items-center rounded-lg border border-slate-300 bg-white">
+<button class="flex h-8 w-8 items-center justify-center text-slate-500 hover:bg-slate-50 hover:text-slate-700 rounded-l-lg transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<input class="h-8 w-8 border-0 p-0 text-center text-sm font-medium text-slate-900 focus:ring-0 bg-transparent" readonly="" type="text" value="1"/>
+<button class="flex h-8 w-8 items-center justify-center text-slate-500 hover:bg-slate-50 hover:text-slate-700 rounded-r-lg transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Price & Remove -->
+<div class="col-span-4 flex flex-col items-end gap-2">
+<span class="text-lg font-medium text-slate-900">25,00€</span>
+<button class="text-sm text-slate-400 hover:text-red-600 hover:underline transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+                                Eliminar
+                            </button>
+</div>
+</div>
+<!-- Item 2: Preorder -->
+<div class="group relative flex flex-col gap-6 border-b border-slate-100 pb-8 sm:grid sm:grid-cols-12 sm:items-center sm:gap-4 sm:border-b-0 sm:pb-0">
+<!-- Product Info -->
+<div class="col-span-6 flex items-start gap-4">
+<div class="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-lg bg-slate-100 border border-slate-200">
+<img alt="Limited edition green athletic sneakers" class="h-full w-full object-cover object-center" data-alt="Green limited edition sneakers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEwHVmJjhDncwzXL5RlmWfbslEkTl2vzJSkGvGGgfTmoS5YDg-Z8BGdrKN5Ed1CwMaYGY9uHA8jTo_g8v73iml5sryhLPxnd_CUxRjfL4ngCJq8ATpuM4UA-1oLyAwclRUoJgas2luVbr00OWS8WzylYp_iu9FpMCrPLur8jQ1wBqsP9lETJRYKrrL4MsBCvotdbJfAaNS-x3NPeRmOC2UQcfetmMTcTtQHl85Yp-cq2h-7hPUFqQJoTT-CzzEjHEt2vZV3YTjf4N7"/>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-base font-semibold text-slate-900">
+<a href="#">Zapatillas Ltd Ed</a>
+</h3>
+<p class="text-sm text-slate-500">Talla: 42 / Color: Verde Neón</p>
+<div class="mt-2 inline-flex items-center rounded-full bg-[#7C3AED]/10 px-2.5 py-0.5 text-xs font-medium text-[#7C3AED] ring-1 ring-inset ring-[#7C3AED]/20 w-fit">
+<span class="mr-1">⏳</span> Preventa — est. 15/04/2026
+                                </div>
+</div>
+</div>
+<!-- Quantity -->
+<div class="col-span-2 flex items-center justify-center">
+<div class="flex items-center rounded-lg border border-slate-300 bg-white">
+<button class="flex h-8 w-8 items-center justify-center text-slate-500 hover:bg-slate-50 hover:text-slate-700 rounded-l-lg transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<input class="h-8 w-8 border-0 p-0 text-center text-sm font-medium text-slate-900 focus:ring-0 bg-transparent" readonly="" type="text" value="1"/>
+<button class="flex h-8 w-8 items-center justify-center text-slate-500 hover:bg-slate-50 hover:text-slate-700 rounded-r-lg transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Price & Remove -->
+<div class="col-span-4 flex flex-col items-end gap-2">
+<span class="text-lg font-medium text-slate-900">89,00€</span>
+<button class="text-sm text-slate-400 hover:text-red-600 hover:underline transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+                                Eliminar
+                            </button>
+</div>
+</div>
+<!-- Warning Banner -->
+<div class="mt-8 rounded-lg border border-[#F59E0B] bg-[#FEF3C7] p-5 shadow-sm">
+<div class="flex gap-3">
+<div class="flex-shrink-0">
+<span class="material-symbols-outlined text-[#B45309]">warning</span>
+</div>
+<div class="flex-1">
+<h3 class="text-sm font-semibold text-[#92400E]">⚠️ Tu pedido se enviará en 2 partes</h3>
+<div class="mt-2 text-sm text-[#92400E]">
+<ul class="list-disc space-y-1 pl-5" role="list">
+<li>📦 <span class="font-medium">Parte 1:</span> Camiseta algodón orgánico → Envío inmediato</li>
+<li>⏳ <span class="font-medium">Parte 2:</span> Zapatillas Ltd Ed → Envío est. 15/04/2026</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Order Summary Sidebar -->
+<div class="lg:w-[380px] flex-shrink-0">
+<div class="sticky top-24 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+<h2 class="text-lg font-bold text-slate-900 mb-6">Resumen del pedido</h2>
+<dl class="space-y-4 text-sm text-slate-600">
+<div class="flex justify-between">
+<dt>Subtotal</dt>
+<dd class="font-medium text-slate-900">114,00€</dd>
+</div>
+<div class="flex justify-between">
+<dt>Envío</dt>
+<dd class="font-medium text-slate-900">5,95€</dd>
+</div>
+<div class="flex justify-between items-center text-slate-600">
+<dt class="flex items-center gap-1.5">
+                                    Envío dividido
+                                    <div class="group relative flex items-center">
+<span class="material-symbols-outlined text-slate-400 text-[16px] cursor-help">info</span>
+<div class="absolute bottom-full left-1/2 mb-2 w-48 -translate-x-1/2 rounded bg-slate-800 p-2 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100 pointer-events-none">
+                                            Coste adicional por gestionar dos envíos separados.
+                                        </div>
+</div>
+</dt>
+<dd class="font-medium text-slate-900">+6,00€</dd>
+</div>
+<div class="border-t border-slate-200 pt-4 flex items-center justify-between">
+<dt class="text-base font-bold text-slate-900">Total</dt>
+<dd class="text-2xl font-bold text-slate-900">125,95€</dd>
+</div>
+<p class="text-xs text-slate-400 mt-1 text-right">Impuestos incluidos</p>
+</dl>
+<div class="mt-6 space-y-4">
+<button class="flex w-full items-center justify-center rounded-lg bg-shopify-green px-6 py-3.5 text-base font-bold text-white shadow-sm hover:bg-[#006e52] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-shopify-green transition-all duration-200" type="button">
+                                Finalizar compra
+                            </button>
+<div class="flex items-center justify-center gap-2 text-slate-400 mt-4">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+<span class="text-xs font-medium">Pago seguro garantizado</span>
+</div>
+</div>
+<!-- Payment methods icons mockup -->
+<div class="mt-6 flex justify-center gap-2 opacity-60 grayscale">
+<div class="h-6 w-10 bg-slate-200 rounded"></div>
+<div class="h-6 w-10 bg-slate-200 rounded"></div>
+<div class="h-6 w-10 bg-slate-200 rounded"></div>
+<div class="h-6 w-10 bg-slate-200 rounded"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="border-t border-slate-200 bg-white py-12">
+<div class="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+<p class="text-sm text-slate-500">© 2024 Shopify Store. Todos los derechos reservados.</p>
+</div>
+</footer>
+</body></html>

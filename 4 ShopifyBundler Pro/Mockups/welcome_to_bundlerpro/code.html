@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BundlerPro - Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#008060",
+                        "background-light": "#F6F6F7",
+                        "background-dark": "#0f231e",
+                        "border-subtle": "#e1e3e5",
+                        "text-muted": "#6d7175"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-active {
+            border-bottom: 3px solid #008060;
+            color: #008060;
+        }
+        .step-inactive {
+            border-bottom: 3px solid transparent;
+            color: #8C9196;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex items-center justify-center p-6">
+<!-- Main Onboarding Card -->
+<div class="max-w-[640px] w-full bg-white dark:bg-slate-900 shadow-sm border border-border-subtle dark:border-slate-800 rounded-lg overflow-hidden">
+<div class="p-8 md:p-12 flex flex-col items-center text-center">
+<!-- Logo Header -->
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-3xl">auto_awesome</span>
+<h1 class="text-primary text-3xl font-bold tracking-tight">BundlerPro</h1>
+</div>
+<!-- Tagline -->
+<h2 class="text-slate-900 dark:text-slate-100 text-2xl font-semibold mb-10">
+                AI-Powered Product Bundles That Sell
+            </h2>
+<!-- 3-Step Horizontal Stepper -->
+<div class="w-full flex items-center justify-between border-b border-border-subtle dark:border-slate-800 mb-8">
+<!-- Step 1: Analyze (Active) -->
+<div class="flex-1 flex flex-col items-center gap-2 pb-4 step-active">
+<span class="material-symbols-outlined">search</span>
+<span class="text-sm font-bold tracking-wide uppercase">Analyze</span>
+</div>
+<!-- Step 2: Create (Inactive) -->
+<div class="flex-1 flex flex-col items-center gap-2 pb-4 step-inactive">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="text-sm font-bold tracking-wide uppercase">Create</span>
+</div>
+<!-- Step 3: Optimize (Inactive) -->
+<div class="flex-1 flex flex-col items-center gap-2 pb-4 step-inactive">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="text-sm font-bold tracking-wide uppercase">Optimize</span>
+</div>
+</div>
+<!-- Subtitle/Description -->
+<p class="text-text-muted dark:text-slate-400 text-lg leading-relaxed mb-10 max-w-lg">
+                We'll analyze your last 90 days of orders to find products your customers already buy together, then help you create bundles that increase your <span class="text-slate-900 dark:text-slate-200 font-medium">Average Order Value</span>.
+            </p>
+<!-- Main Image / Placeholder Illustration -->
+<div class="w-full mb-10 rounded-xl overflow-hidden border border-border-subtle dark:border-slate-800">
+<div class="bg-slate-50 dark:bg-slate-800 aspect-[16/7] flex items-center justify-center">
+<div class="flex gap-4 items-center">
+<div class="size-16 rounded bg-white dark:bg-slate-700 shadow-sm border border-border-subtle dark:border-slate-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-300">inventory_2</span>
+</div>
+<span class="material-symbols-outlined text-primary text-2xl">add</span>
+<div class="size-16 rounded bg-white dark:bg-slate-700 shadow-sm border border-border-subtle dark:border-slate-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-300">inventory_2</span>
+</div>
+<span class="material-symbols-outlined text-primary text-2xl">arrow_forward</span>
+<div class="size-20 rounded bg-primary/10 border-2 border-dashed border-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">package_2</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary Action -->
+<div class="w-full space-y-4">
+<button class="w-full bg-primary hover:bg-[#006e52] text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors shadow-sm">
+                    Analyze My Store
+                </button>
+<a class="inline-block text-primary hover:underline text-sm font-medium" href="#">
+                    Skip to Dashboard →
+                </a>
+</div>
+<!-- Trust Badges Footer -->
+<div class="mt-12 pt-8 border-t border-border-subtle dark:border-slate-800 w-full">
+<div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 text-text-muted dark:text-slate-400 text-xs font-medium uppercase tracking-wider">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span>Read-only access</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span>1,234 stores trust us</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span>Takes ~30 seconds</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

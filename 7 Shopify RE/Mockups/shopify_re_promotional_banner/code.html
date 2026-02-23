@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shopify RE Banner</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#6a21a6",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#1a1220",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                    boxShadow: {
+                        'polaris': '0 1px 0 rgba(0,0,0,0.05)',
+                        'polaris-card': '0 0 0 1px rgba(63,63,68,0.05), 0 1px 3px 0 rgba(63,63,68,0.15)',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col items-center p-8">
+<!-- Mockup Context: A typical dashboard header to provide context for the banner -->
+<div class="w-full max-w-5xl mb-6 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<h1 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Orders</h1>
+<span class="bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Pro</span>
+</div>
+<div class="flex gap-3">
+<button class="px-3 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded shadow-sm text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">Export</button>
+<button class="px-3 py-2 bg-primary text-white rounded shadow-sm text-sm font-medium hover:bg-primary/90 transition-colors">Create order</button>
+</div>
+</div>
+<!-- The Requested Component: Shopify RE Promotional Banner -->
+<div class="w-full max-w-5xl animate-fade-in">
+<!-- Banner Container -->
+<div class="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white dark:bg-slate-800 rounded-lg shadow-polaris-card p-4 pl-5 overflow-hidden group">
+<!-- Accent Border -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<!-- Content Section -->
+<div class="flex items-start gap-3 flex-1">
+<div aria-label="Store" class="text-2xl select-none" role="img">🏪</div>
+<div class="flex flex-col gap-1">
+<p class="text-slate-700 dark:text-slate-200 text-[15px] leading-relaxed font-medium">
+                        ¿Vendes a comerciantes minoristas? <span class="text-slate-500 dark:text-slate-400 font-normal">Gestiona el Recargo de Equivalencia automáticamente con Shopify RE</span>
+</p>
+</div>
+</div>
+<!-- Actions Section -->
+<div class="flex items-center gap-4 w-full sm:w-auto justify-end sm:justify-start pl-10 sm:pl-0 mt-2 sm:mt-0">
+<!-- CTA Button -->
+<button class="group/btn relative flex items-center justify-center gap-2 px-4 py-2 rounded border border-primary/30 hover:border-primary text-primary dark:text-primary-300 hover:bg-primary/5 dark:hover:bg-primary/20 transition-all duration-200 text-sm font-semibold whitespace-nowrap">
+<span>Descubrir Shopify RE</span>
+<span class="material-symbols-outlined text-[18px] group-hover/btn:translate-x-0.5 transition-transform">arrow_forward</span>
+</button>
+<!-- Dismiss Button -->
+<button aria-label="Dismiss banner" class="text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Additional Context: Mock Content below banner -->
+<div class="w-full max-w-5xl mt-6">
+<div class="bg-white dark:bg-slate-800 rounded-lg shadow-polaris-card border border-slate-200 dark:border-slate-700 overflow-hidden">
+<div class="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 flex gap-4 text-sm font-medium text-slate-500 dark:text-slate-400">
+<div class="w-20">Order</div>
+<div class="w-32">Date</div>
+<div class="flex-1">Customer</div>
+<div class="w-24 text-right">Total</div>
+<div class="w-24 text-right">Status</div>
+</div>
+<!-- Row 1 -->
+<div class="px-4 py-3 border-b border-slate-100 dark:border-slate-700 flex gap-4 text-sm items-center hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer">
+<div class="w-20 font-semibold text-slate-900 dark:text-slate-100">#1024</div>
+<div class="w-32 text-slate-600 dark:text-slate-400">Today at 4:30 pm</div>
+<div class="flex-1 text-slate-900 dark:text-slate-100">Elena Rodriguez</div>
+<div class="w-24 text-right text-slate-900 dark:text-slate-100">€142.00</div>
+<div class="w-24 flex justify-end">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">Paid</span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="px-4 py-3 border-b border-slate-100 dark:border-slate-700 flex gap-4 text-sm items-center hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer">
+<div class="w-20 font-semibold text-slate-900 dark:text-slate-100">#1023</div>
+<div class="w-32 text-slate-600 dark:text-slate-400">Yesterday</div>
+<div class="flex-1 text-slate-900 dark:text-slate-100">Marco Polo Retail</div>
+<div class="w-24 text-right text-slate-900 dark:text-slate-100">€89.50</div>
+<div class="w-24 flex justify-end">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300">Pending</span>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="px-4 py-3 flex gap-4 text-sm items-center hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer">
+<div class="w-20 font-semibold text-slate-900 dark:text-slate-100">#1022</div>
+<div class="w-32 text-slate-600 dark:text-slate-400">Yesterday</div>
+<div class="flex-1 text-slate-900 dark:text-slate-100">Sofia Vergara</div>
+<div class="w-24 text-right text-slate-900 dark:text-slate-100">€210.00</div>
+<div class="w-24 flex justify-end">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">Paid</span>
+</div>
+</div>
+</div>
+</div>
+</body></html>

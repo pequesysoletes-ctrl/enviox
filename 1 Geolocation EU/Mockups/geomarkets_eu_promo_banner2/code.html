@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#008060",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f231e",
+                        "polaris-blue-light": "#EBF5FF",
+                        "polaris-blue-border": "#2563EB",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-3 lg:px-10">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-6 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-sm">local_shipping</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">Shipments</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Orders</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary py-1" href="#">Shipments</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Labels</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<div class="hidden sm:flex bg-slate-100 dark:bg-slate-800 rounded-lg px-3 py-1.5 items-center gap-2 border border-transparent focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-slate-400 text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 p-0 text-sm w-48 text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="Search orders..." type="text"/>
+</div>
+<button class="bg-primary hover:bg-opacity-90 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+<span>Create shipment</span>
+</button>
+<div class="size-8 rounded-full overflow-hidden border border-slate-200 dark:border-slate-700">
+<img alt="User avatar" data-alt="User profile avatar circle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfVrbEGSPiS9Ilgng-oZbNMItcLZuIfIsPFL1FEidqJ1JXL9Xv67UABzSUbCyokyy1Ye6Va_dFvUMDZA_f3clH2cOz4KizntVYTD9PrxahP4Fq3T_zGsqVC6PcJTc8c8rO22cpmZ7EtK_ZmRItVpzcZPpTfi8rVhvs3wSzieXfB2aDC_9Tm55q9Q-qVyfsTyyvthWxDKSBniD-RHAfTzGhKnhTfZDdLp-w3lccCcKDckObOk-Fr-ngkbrbI_0PTPY2hTYoF5K-c0Cx"/>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto w-full p-4 lg:p-8 space-y-6">
+<!-- Promotional Banner: GeoMarkets EU -->
+<div class="bg-polaris-blue-light border-l-4 border-polaris-blue-border rounded-r-lg shadow-sm flex items-start justify-between p-4 relative overflow-hidden">
+<div class="flex gap-4">
+<div class="pt-0.5">
+<span class="text-xl">🌍</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center gap-4">
+<p class="text-polaris-blue-border font-medium text-sm sm:text-base leading-relaxed">
+                                ¿Envías a Europa? Adapta tu tienda automáticamente con GeoMarkets EU — selector de país, redirección e idioma
+                            </p>
+<button class="whitespace-nowrap border border-polaris-blue-border text-polaris-blue-border hover:bg-polaris-blue-border hover:text-white transition-colors px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider">
+                                Instalar GeoMarkets →
+                            </button>
+</div>
+</div>
+<button class="text-slate-400 hover:text-slate-600 p-1 flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+<!-- Page Header & Stats -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+<div>
+<h1 class="text-3xl font-extrabold text-slate-900 dark:text-slate-100">Shipments</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Manage and track your MRW Pro and Correos Pro deliveries.</p>
+</div>
+<div class="flex gap-2">
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-2 shadow-sm text-center">
+<span class="block text-xs text-slate-400 uppercase font-bold tracking-widest">Pending</span>
+<span class="text-lg font-bold text-slate-900 dark:text-slate-100">12</span>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-2 shadow-sm text-center">
+<span class="block text-xs text-slate-400 uppercase font-bold tracking-widest">In Transit</span>
+<span class="text-lg font-bold text-slate-900 dark:text-slate-100">48</span>
+</div>
+</div>
+</div>
+<!-- Table Filters & Search -->
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="border-b border-slate-200 dark:border-slate-800 px-4">
+<div class="flex gap-6 overflow-x-auto scrollbar-hide">
+<button class="border-b-2 border-primary text-primary py-4 px-1 text-sm font-bold whitespace-nowrap">All shipments</button>
+<button class="border-b-2 border-transparent text-slate-500 hover:text-slate-700 py-4 px-1 text-sm font-medium whitespace-nowrap">Pending</button>
+<button class="border-b-2 border-transparent text-slate-500 hover:text-slate-700 py-4 px-1 text-sm font-medium whitespace-nowrap">Shipped</button>
+<button class="border-b-2 border-transparent text-slate-500 hover:text-slate-700 py-4 px-1 text-sm font-medium whitespace-nowrap">Delivered</button>
+<button class="border-b-2 border-transparent text-slate-500 hover:text-slate-700 py-4 px-1 text-sm font-medium whitespace-nowrap">Cancelled</button>
+</div>
+</div>
+<div class="p-4 flex flex-col md:flex-row gap-3">
+<div class="flex-1 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg pl-10 pr-4 py-2.5 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" placeholder="Filter by ID, customer, or tracking number" type="text"/>
+</div>
+<button class="flex items-center justify-center gap-2 border border-slate-200 dark:border-slate-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-lg">filter_list</span>
+                            More filters
+                        </button>
+<button class="flex items-center justify-center gap-2 border border-slate-200 dark:border-slate-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-lg">sort</span>
+                            Sort
+                        </button>
+</div>
+<!-- Shipments Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider">
+<th class="px-6 py-4 border-b border-slate-200 dark:border-slate-800">Shipment</th>
+<th class="px-6 py-4 border-b border-slate-200 dark:border-slate-800">Date</th>
+<th class="px-6 py-4 border-b border-slate-200 dark:border-slate-800">Customer</th>
+<th class="px-6 py-4 border-b border-slate-200 dark:border-slate-800">Carrier</th>
+<th class="px-6 py-4 border-b border-slate-200 dark:border-slate-800">Tracking Number</th>
+<th class="px-6 py-4 border-b border-slate-200 dark:border-slate-800">Status</th>
+<th class="px-6 py-4 border-b border-slate-200 dark:border-slate-800"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors cursor-pointer group">
+<td class="px-6 py-4 font-bold text-sm text-primary">#SHP-8291</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Hoy, 14:20</td>
+<td class="px-6 py-4 text-sm font-medium">Alejandro Sanz</td>
+<td class="px-6 py-4">
+<span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded font-bold text-slate-700 dark:text-slate-300">MRW PRO</span>
+</td>
+<td class="px-6 py-4 font-mono text-xs text-slate-500">MRW2938472910</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400">
+<span class="size-1.5 rounded-full bg-yellow-500"></span>
+                                            Pending
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-slate-400 group-hover:text-slate-600 transition-colors">more_horiz</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors cursor-pointer group">
+<td class="px-6 py-4 font-bold text-sm text-primary">#SHP-8290</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Ayer, 10:15</td>
+<td class="px-6 py-4 text-sm font-medium">Lucía Ramos</td>
+<td class="px-6 py-4">
+<span class="text-xs bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded font-bold text-blue-700 dark:text-blue-300">CORREOS PRO</span>
+</td>
+<td class="px-6 py-4 font-mono text-xs text-slate-500">COR7723199042</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
+<span class="size-1.5 rounded-full bg-blue-500"></span>
+                                            Shipped
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-slate-400 group-hover:text-slate-600 transition-colors">more_horiz</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors cursor-pointer group">
+<td class="px-6 py-4 font-bold text-sm text-primary">#SHP-8289</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">12 Oct, 09:30</td>
+<td class="px-6 py-4 text-sm font-medium">Marc Jové</td>
+<td class="px-6 py-4">
+<span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded font-bold text-slate-700 dark:text-slate-300">MRW PRO</span>
+</td>
+<td class="px-6 py-4 font-mono text-xs text-slate-500">MRW2938472855</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+<span class="size-1.5 rounded-full bg-green-500"></span>
+                                            Delivered
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-slate-400 group-hover:text-slate-600 transition-colors">more_horiz</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors cursor-pointer group">
+<td class="px-6 py-4 font-bold text-sm text-primary">#SHP-8288</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">11 Oct, 18:45</td>
+<td class="px-6 py-4 text-sm font-medium">Elena White</td>
+<td class="px-6 py-4">
+<span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded font-bold text-slate-700 dark:text-slate-300">MRW PRO</span>
+</td>
+<td class="px-6 py-4 font-mono text-xs text-slate-500">MRW2938472744</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+<span class="size-1.5 rounded-full bg-green-500"></span>
+                                            Delivered
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-slate-400 group-hover:text-slate-600 transition-colors">more_horiz</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<span class="text-xs text-slate-500 font-medium">Showing 1-4 of 124 shipments</span>
+<div class="flex gap-1">
+<button class="p-1 rounded border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-400">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="px-3 py-1 rounded border border-primary bg-primary/10 text-primary text-xs font-bold">1</button>
+<button class="px-3 py-1 rounded border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs text-slate-600 dark:text-slate-400 font-medium">2</button>
+<button class="px-3 py-1 rounded border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs text-slate-600 dark:text-slate-400 font-medium">3</button>
+<button class="p-1 rounded border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-400">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer Section -->
+<div class="pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-xs">
+<p>© 2024 Shipments MRW &amp; Correos App. All rights reserved.</p>
+<div class="flex gap-4">
+<a class="hover:underline" href="#">Terms of Service</a>
+<a class="hover:underline" href="#">Privacy Policy</a>
+<a class="hover:underline" href="#">Help Center</a>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

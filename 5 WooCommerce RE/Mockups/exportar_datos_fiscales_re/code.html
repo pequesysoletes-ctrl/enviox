@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Exportar Datos Fiscales RE - WordPress Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#8056b3",
+                        "primary-dark": "#694396",
+                        "background-light": "#f0f0f1", // WP Admin gray
+                        "background-dark": "#19151d",
+                        "wp-dark": "#1d2327",
+                        "wp-blue": "#2271b1",
+                        "success": "#00a32a",
+                        "success-bg": "#edfaef",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "system-ui", "sans-serif"],
+                        "body": ["Inter", "system-ui", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: #f0f0f1;
+        }
+        /* WP Admin Menu specific styles override */
+        .wp-menu-item:hover {
+            background-color: #191e23;
+            color: #72aee6;
+        }
+        .wp-menu-item.active {
+            background-color: #8056b3;
+            color: white;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex min-h-screen w-full flex-row overflow-hidden">
+<!-- Sidebar (WP Admin Style) -->
+<aside class="w-40 lg:w-48 bg-[#1d2327] text-white flex-shrink-0 flex flex-col min-h-screen z-20 hidden md:flex">
+<div class="h-12 flex items-center px-4 bg-[#000000] mb-2">
+<span class="material-symbols-outlined mr-2 text-[20px]">public</span>
+<span class="font-bold text-sm">My Site</span>
+</div>
+<nav class="flex-1 overflow-y-auto text-[13px]">
+<a class="wp-menu-item flex items-center px-3 py-2.5 text-gray-300 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined mr-2 text-[20px] text-gray-400">dashboard</span>
+                Dashboard
+            </a>
+<a class="wp-menu-item flex items-center px-3 py-2.5 text-gray-300 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined mr-2 text-[20px] text-gray-400">push_pin</span>
+                Posts
+            </a>
+<a class="wp-menu-item flex items-center px-3 py-2.5 text-gray-300 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined mr-2 text-[20px] text-gray-400">image</span>
+                Media
+            </a>
+<a class="wp-menu-item flex items-center px-3 py-2.5 text-gray-300 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined mr-2 text-[20px] text-gray-400">description</span>
+                Pages
+            </a>
+<a class="wp-menu-item flex items-center px-3 py-2.5 text-gray-300 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined mr-2 text-[20px] text-gray-400">comment</span>
+                Comments
+            </a>
+<div class="mt-2 mb-1 px-3 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Shop</div>
+<a class="wp-menu-item active flex items-center px-3 py-2.5 bg-primary text-white transition-colors relative" href="#">
+<span class="material-symbols-outlined mr-2 text-[20px] text-white">shopping_cart</span>
+                WooCommerce
+                <div class="absolute right-0 top-0 bottom-0 w-1 bg-white rounded-l"></div>
+</a>
+<a class="wp-menu-item flex items-center px-3 py-2.5 text-gray-300 hover:text-white transition-colors pl-9" href="#">
+                Home
+            </a>
+<a class="wp-menu-item flex items-center px-3 py-2.5 text-gray-300 hover:text-white transition-colors pl-9" href="#">
+                Orders
+            </a>
+<a class="wp-menu-item flex items-center px-3 py-2.5 text-gray-300 hover:text-white transition-colors pl-9" href="#">
+                Customers
+            </a>
+<a class="wp-menu-item flex items-center px-3 py-2.5 text-primary font-bold bg-[#2c3338] transition-colors pl-9 border-l-4 border-primary" href="#">
+                Exportación RE
+            </a>
+<a class="wp-menu-item flex items-center px-3 py-2.5 text-gray-300 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined mr-2 text-[20px] text-gray-400">inventory_2</span>
+                Products
+            </a>
+<a class="wp-menu-item flex items-center px-3 py-2.5 text-gray-300 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined mr-2 text-[20px] text-gray-400">analytics</span>
+                Analytics
+            </a>
+<a class="wp-menu-item flex items-center px-3 py-2.5 text-gray-300 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined mr-2 text-[20px] text-gray-400">campaign</span>
+                Marketing
+            </a>
+</nav>
+<div class="p-3">
+<button class="flex items-center text-gray-400 hover:text-white text-xs">
+<span class="material-symbols-outlined mr-1 text-[16px]">chevron_left</span>
+                Collapse Menu
+             </button>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col h-screen overflow-hidden">
+<!-- Top Admin Bar -->
+<header class="h-8 bg-[#1d2327] flex items-center justify-between px-4 text-white text-[13px] z-10 sticky top-0">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[18px]">php</span>
+<div class="flex items-center gap-1 cursor-pointer hover:text-blue-300">
+<span class="material-symbols-outlined text-[16px]">home</span>
+<span>My Site</span>
+</div>
+<div class="flex items-center gap-1 cursor-pointer hover:text-blue-300">
+<span class="material-symbols-outlined text-[16px]">cached</span>
+<span>0</span>
+</div>
+<div class="flex items-center gap-1 cursor-pointer hover:text-blue-300">
+<span class="material-symbols-outlined text-[16px]">comment</span>
+<span>0</span>
+</div>
+<div class="flex items-center gap-1 cursor-pointer hover:text-blue-300">
+<span>New</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 cursor-pointer hover:text-blue-300">
+<span>Howdy, Admin</span>
+<div class="w-6 h-6 rounded-sm bg-gray-600 overflow-hidden">
+<img alt="Admin Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWqsnF91EzjzL-_KwBGYM2Wpp5X29kiyQk6Z8seglsZ8o73EcvZ31PIqSWpY7-f9kFmmEo5gt4BTXMzQSb64zTJw8kpNpGIcY8QNztVF6jfamLdoxmyPQIPiAOpQs-EUeoqG0er8vifh6syOpAPk52D0Z7ygsL7SyyODtNRtsDI842pgMvp4fIPaCTdg0tCSjV0jzFA95wmjINcl4fmPva5_K2b3SBAibwfnnO0rgt2rUf3eVajIUyC5jsyzA1xKBe5g8ZdcVDTOY"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Workspace -->
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark p-4 md:p-8">
+<div class="max-w-6xl mx-auto space-y-6">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-2">
+<div>
+<div class="flex items-center gap-2 text-sm text-gray-500 mb-1">
+<span>WooCommerce</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span>Exportación RE</span>
+</div>
+<h1 class="text-2xl md:text-3xl font-bold text-slate-800 dark:text-white tracking-tight">Exportar datos fiscales RE</h1>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center justify-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-600 rounded text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">help</span>
+                            Ayuda
+                        </button>
+</div>
+</div>
+<!-- Alert/Notice Area -->
+<div class="bg-white dark:bg-slate-800 border-l-4 border-primary p-4 shadow-sm rounded-r-md flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-0.5">info</span>
+<div>
+<p class="text-sm text-slate-700 dark:text-slate-300">
+                            Este informe incluye todos los pedidos con Recargo de Equivalencia aplicable. Asegúrate de que tus tipos impositivos estén actualizados en <a class="text-primary hover:underline font-medium" href="#">Ajustes de Impuestos</a>.
+                        </p>
+</div>
+</div>
+<!-- Configuration Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Card 1: Período -->
+<div class="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 p-5 flex flex-col h-full">
+<div class="flex items-center gap-2 mb-4 border-b border-gray-100 dark:border-slate-700 pb-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+</div>
+<h2 class="text-lg font-semibold text-slate-800 dark:text-white">Período de exportación</h2>
+</div>
+<div class="space-y-3 flex-1">
+<label class="flex items-start gap-3 p-3 rounded-md border border-primary bg-primary/5 cursor-pointer transition-all">
+<input checked="" class="mt-1 w-4 h-4 text-primary border-gray-300 focus:ring-primary" name="period" type="radio"/>
+<div>
+<span class="block text-sm font-medium text-slate-900 dark:text-white">Trimestre actual</span>
+<span class="block text-xs text-slate-500 mt-1">Q1 2026: Enero - Marzo</span>
+</div>
+</label>
+<label class="flex items-start gap-3 p-3 rounded-md border border-gray-200 dark:border-slate-600 hover:bg-gray-50 dark:hover:bg-slate-700/50 cursor-pointer transition-all">
+<input class="mt-1 w-4 h-4 text-primary border-gray-300 focus:ring-primary" name="period" type="radio"/>
+<div>
+<span class="block text-sm font-medium text-slate-900 dark:text-white">Trimestre anterior</span>
+<span class="block text-xs text-slate-500 mt-1">Q4 2025: Oct - Dic</span>
+</div>
+</label>
+<label class="flex items-start gap-3 p-3 rounded-md border border-gray-200 dark:border-slate-600 hover:bg-gray-50 dark:hover:bg-slate-700/50 cursor-pointer transition-all">
+<input class="mt-1 w-4 h-4 text-primary border-gray-300 focus:ring-primary" name="period" type="radio"/>
+<div>
+<span class="block text-sm font-medium text-slate-900 dark:text-white">Rango personalizado</span>
+<div class="mt-2 grid grid-cols-2 gap-2">
+<input class="block w-full rounded border-gray-300 text-xs shadow-sm focus:border-primary focus:ring focus:ring-primary/50 disabled:bg-gray-100 disabled:text-gray-400" disabled="" type="date"/>
+<input class="block w-full rounded border-gray-300 text-xs shadow-sm focus:border-primary focus:ring focus:ring-primary/50 disabled:bg-gray-100 disabled:text-gray-400" disabled="" type="date"/>
+</div>
+</div>
+</label>
+</div>
+</div>
+<!-- Card 2: Datos a incluir -->
+<div class="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 p-5 flex flex-col h-full lg:col-span-2">
+<div class="flex items-center justify-between gap-2 mb-4 border-b border-gray-100 dark:border-slate-700 pb-3">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">list_alt</span>
+</div>
+<h2 class="text-lg font-semibold text-slate-800 dark:text-white">Datos a incluir</h2>
+</div>
+<button class="text-xs font-medium text-primary hover:text-primary-dark">Seleccionar todo</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 flex-1 content-start">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="text-sm text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">Datos del pedido</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="text-sm text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">Datos del cliente RE</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="text-sm text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">NIF/CIF Cliente</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="text-sm text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">Desglose IVA</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="text-sm text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">Desglose RE</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="text-sm text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">Base Imponible</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="text-sm text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">Totales</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="text-sm text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">Resumen trimestral</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="text-sm text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">Método de pago</span>
+</label>
+</div>
+<div class="mt-6 pt-4 border-t border-gray-100 dark:border-slate-700">
+<h3 class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">Formato de exportación</h3>
+<div class="flex gap-4">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="text-primary focus:ring-primary border-gray-300" name="format" type="radio"/>
+<span class="text-sm font-medium text-slate-800 dark:text-slate-200">CSV (Excel)</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="text-primary focus:ring-primary border-gray-300" name="format" type="radio"/>
+<span class="text-sm font-medium text-slate-800 dark:text-slate-200">PDF</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="text-primary focus:ring-primary border-gray-300" name="format" type="radio"/>
+<span class="text-sm font-medium text-slate-800 dark:text-slate-200">XML</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Preview Section -->
+<div class="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 flex flex-col">
+<div class="p-5 border-b border-gray-200 dark:border-slate-700 flex justify-between items-center bg-gray-50/50 dark:bg-slate-800">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-500">visibility</span>
+<h2 class="text-lg font-semibold text-slate-800 dark:text-white">Vista previa de datos</h2>
+</div>
+<span class="text-xs text-slate-500 bg-white dark:bg-slate-700 px-2 py-1 rounded border border-gray-200 dark:border-slate-600">Mostrando 5 de 38 registros</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse text-sm">
+<thead class="bg-gray-50 dark:bg-slate-700/50 text-slate-600 dark:text-slate-400 font-medium">
+<tr>
+<th class="p-4 border-b border-gray-200 dark:border-slate-700 w-24">Pedido</th>
+<th class="p-4 border-b border-gray-200 dark:border-slate-700 w-32">Fecha</th>
+<th class="p-4 border-b border-gray-200 dark:border-slate-700">Cliente</th>
+<th class="p-4 border-b border-gray-200 dark:border-slate-700 w-32">NIF</th>
+<th class="p-4 border-b border-gray-200 dark:border-slate-700 text-right w-28">Base</th>
+<th class="p-4 border-b border-gray-200 dark:border-slate-700 text-right w-20">IVA %</th>
+<th class="p-4 border-b border-gray-200 dark:border-slate-700 text-right w-24">IVA €</th>
+<th class="p-4 border-b border-gray-200 dark:border-slate-700 text-right w-20">RE %</th>
+<th class="p-4 border-b border-gray-200 dark:border-slate-700 text-right w-24">RE €</th>
+<th class="p-4 border-b border-gray-200 dark:border-slate-700 text-right w-28">Total</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100 dark:divide-slate-700 text-slate-700 dark:text-slate-300">
+<tr class="hover:bg-gray-50 dark:hover:bg-slate-700/30 transition-colors">
+<td class="p-4 text-primary font-medium">#4201</td>
+<td class="p-4 text-slate-500">01/03/2026</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-purple-100 text-primary flex items-center justify-center text-xs font-bold">M</div>
+                                            María García
+                                        </div>
+</td>
+<td class="p-4 font-mono text-xs">12345678Z</td>
+<td class="p-4 text-right">€120,00</td>
+<td class="p-4 text-right text-slate-500">21%</td>
+<td class="p-4 text-right">€25,20</td>
+<td class="p-4 text-right text-slate-500">5.2%</td>
+<td class="p-4 text-right">€6,24</td>
+<td class="p-4 text-right font-medium">€151,44</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-slate-700/30 transition-colors">
+<td class="p-4 text-primary font-medium">#4205</td>
+<td class="p-4 text-slate-500">03/03/2026</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">J</div>
+                                            Juan Pérez
+                                        </div>
+</td>
+<td class="p-4 font-mono text-xs">87654321A</td>
+<td class="p-4 text-right">€450,50</td>
+<td class="p-4 text-right text-slate-500">21%</td>
+<td class="p-4 text-right">€94,61</td>
+<td class="p-4 text-right text-slate-500">5.2%</td>
+<td class="p-4 text-right">€23,43</td>
+<td class="p-4 text-right font-medium">€568,54</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-slate-700/30 transition-colors">
+<td class="p-4 text-primary font-medium">#4212</td>
+<td class="p-4 text-slate-500">10/03/2026</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs font-bold">E</div>
+                                            Empresa SL
+                                        </div>
+</td>
+<td class="p-4 font-mono text-xs">B12345678</td>
+<td class="p-4 text-right">€2.100,00</td>
+<td class="p-4 text-right text-slate-500">21%</td>
+<td class="p-4 text-right">€441,00</td>
+<td class="p-4 text-right text-slate-500">5.2%</td>
+<td class="p-4 text-right">€109,20</td>
+<td class="p-4 text-right font-medium">€2.650,20</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Summary Widget -->
+<div class="p-5 bg-success-bg border-t border-success/30">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-success text-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<div>
+<h3 class="text-sm font-bold text-slate-800">Resumen Q1 2026</h3>
+<p class="text-xs text-slate-600">38 pedidos procesados correctamente</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 sm:gap-8">
+<div class="flex flex-col items-end">
+<span class="text-xs text-slate-500 uppercase tracking-wide">Base total</span>
+<span class="text-lg font-bold text-slate-800">€4.850,00</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-xs text-slate-500 uppercase tracking-wide">IVA total</span>
+<span class="text-lg font-bold text-slate-800">€1.018,50</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-xs text-success uppercase tracking-wide font-bold">RE total</span>
+<span class="text-lg font-bold text-success">€252,20</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="flex flex-col-reverse sm:flex-row justify-end items-center gap-4 pt-4 border-t border-gray-200 dark:border-slate-700">
+<button class="w-full sm:w-auto px-6 py-2.5 rounded-lg border border-gray-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 font-medium hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">email</span>
+                        Enviar por email
+                    </button>
+<button class="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-primary hover:bg-primary-dark text-white font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                        Descargar exportación
+                    </button>
+</div>
+<div class="text-center text-xs text-gray-400 mt-8 pb-8">
+                    WooCommerce RE Exporter Plugin v2.4.1 • <a class="hover:underline" href="#">Documentación</a> • <a class="hover:underline" href="#">Soporte</a>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

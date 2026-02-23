@@ -1,0 +1,146 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:dev.sqlite"
+}
+
+model Session {
+  id                  String    @id
+  shop                String
+  state               String
+  isOnline            Boolean   @default(false)
+  scope               String?
+  expires             DateTime?
+  accessToken         String
+  userId              BigInt?
+  firstName           String?
+  lastName            String?
+  email               String?
+  accountOwner        Boolean   @default(false)
+  locale              String?
+  collaborator        Boolean?  @default(false)
+  emailVerified       Boolean?  @default(false)
+  refreshToken        String?
+  refreshTokenExpires DateTime?
+}
+
+// ─── MRW Pro Models ────────────────────────────────────
+
+model MrwCredentials {
+  id                  String   @id @default(cuid())
+  shop                String   @unique
+  codigoFranquicia    String
+  codigoAbonado       String
+  codigoDepartamento  String   @default("")
+  username            String
+  password            String
+  verified            Boolean  @default(false)
+  verifiedAt          DateTime?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model ShippingConfig {
+  id                  String   @id @default(cuid())
+  shop                String   @unique
+  defaultService      String   @default("0800")
+  defaultWeight       Int      @default(2)
+  defaultLength       Int      @default(30)
+  defaultWidth        Int      @default(20)
+  defaultHeight       Int      @default(15)
+  autoCreateShipment  Boolean  @default(true)
+  sendTrackingEmail   Boolean  @default(true)
+  sendTrackingSms     Boolean  @default(false)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model Shipment {
+  id                   String          @id @default(cuid())
+  shop                 String
+  shopifyOrderId       String
+  shopifyOrderName     String
+  shopifyFulfillmentId String?
+  customerName         String
+  customerPhone        String          @default("")
+  destinationAddress   String
+  destinationCity      String
+  destinationZip       String
+  destinationProvince  String          @default("")
+  mrwTrackingNumber    String?
+  mrwServiceCode       String          @default("0800")
+  weight               Int             @default(1)
+  packages             Int             @default(1)
+  status               String          @default("PENDING")
+  labelPdf             String?
+  reference            String?
+  observations         String          @default("")
+  error                String?
+  createdAt            DateTime        @default(now())
+  updatedAt            DateTime        @updatedAt
+
+  events               ShipmentEvent[]
+
+  @@index([shop])
+  @@index([shopifyOrderId])
+  @@index([mrwTrackingNumber])
+  @@index([status])
+}
+
+model ShipmentEvent {
+  id            String   @id @default(cuid())
+  shipmentId    String
+  shipment      Shipment @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+  status        String
+  description   String
+  location      String   @default("")
+  eventDate     DateTime
+  createdAt     DateTime @default(now())
+
+  @@index([shipmentId])
+}
+
+model Pickup {
+  id            String   @id @default(cuid())
+  shop          String
+  date          DateTime
+  timeSlot      String
+  packages      Int      @default(1)
+  notes         String   @default("")
+  status        String   @default("PENDING")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([shop])
+}
+
+model ReturnShipment {
+  id                  String   @id @default(cuid())
+  shop                String
+  originalShipmentId  String?
+  shopifyOrderId      String   @default("")
+  shopifyOrderName    String   @default("")
+  customerName        String
+  customerPhone       String   @default("")
+  pickupAddress       String
+  pickupCity          String
+  pickupZip           String
+  pickupProvince      String   @default("")
+  mrwTrackingNumber   String?
+  mrwServiceCode      String   @default("0800")
+  reason              String   @default("")
+  status              String   @default("PENDING")
+  error               String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@index([shop])
+  @@index([originalShipmentId])
+  @@index([status])
+}

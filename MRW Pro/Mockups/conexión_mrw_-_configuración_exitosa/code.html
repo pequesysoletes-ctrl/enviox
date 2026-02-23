@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Conexión MRW - Configuración Exitosa</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0369a0",
+                        "primary-dark": "#02527d",
+                        "background-light": "#F6F6F7",
+                        "background-dark": "#0f1c23",
+                        "slate-dark": "#111618",
+                        "slate-light": "#5f7c8c"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen text-slate-dark dark:text-white antialiased">
+<div class="flex flex-col min-h-screen items-center justify-start pt-10 pb-20 px-4 sm:px-6">
+<!-- Main Container -->
+<div class="w-full max-w-[640px] flex flex-col gap-6">
+<!-- Header Section -->
+<div class="flex flex-col gap-1">
+<h1 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Conexión MRW</h1>
+<p class="text-slate-500 dark:text-slate-400">Configura tu acceso a la API para sincronizar envíos automáticamente.</p>
+</div>
+<!-- Warning Banner -->
+<div class="flex items-start gap-3 rounded-lg border border-amber-600/30 bg-amber-100 p-4 dark:bg-amber-900/20 dark:border-amber-500/30">
+<span class="material-symbols-outlined text-amber-600 dark:text-amber-500 mt-0.5">warning</span>
+<div class="flex flex-col">
+<p class="text-sm font-medium text-amber-800 dark:text-amber-400">
+<span class="font-bold">Requisito obligatorio</span> — Esta app requiere un contrato MRW activo con acceso a MRWLink API.
+                    </p>
+</div>
+</div>
+<!-- Configuration Card -->
+<div class="bg-white dark:bg-[#1a2634] rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+<div class="p-6 sm:p-8 flex flex-col gap-6">
+<!-- Form Group -->
+<div class="flex flex-col gap-5">
+<!-- Row 1: Código Cliente -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="client-code">
+                                Código de cliente MRW <span class="text-red-500">*</span>
+</label>
+<input class="form-input w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-primary focus:ring-primary h-12 px-4 shadow-sm" id="client-code" placeholder="Ej. 00000" type="text" value="02888"/>
+</div>
+<!-- Row 2: Franquicia -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="franchise">
+                                Franquicia MRW asignada <span class="text-red-500">*</span>
+</label>
+<input class="form-input w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-primary focus:ring-primary h-12 px-4 shadow-sm" id="franchise" placeholder="Ej. 01000" type="text" value="03560"/>
+</div>
+<!-- Row 3: Password API -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="api-password">
+                                Password API MRW <span class="text-red-500">*</span>
+</label>
+<div class="relative flex items-center">
+<input class="form-input w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-primary focus:ring-primary h-12 pl-4 pr-12 shadow-sm" id="api-password" placeholder="••••••••••••" type="password" value="mypassword123"/>
+<button class="absolute right-0 top-0 bottom-0 px-3 flex items-center justify-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<!-- Row 4: Contrato (Opcional) -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="contract-number">
+                                Número de contrato <span class="text-slate-400 font-normal">(opcional)</span>
+</label>
+<input class="form-input w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-primary focus:ring-primary h-12 px-4 shadow-sm" id="contract-number" placeholder="" type="text"/>
+</div>
+</div>
+<!-- Action Button -->
+<div class="pt-2">
+<button class="w-full h-12 bg-primary hover:bg-primary-dark text-white font-medium rounded-lg shadow-sm transition-colors flex items-center justify-center gap-2">
+<span>Verificar conexión</span>
+</button>
+</div>
+<!-- Success Banner -->
+<div class="flex items-start gap-3 rounded-lg border border-emerald-600/30 bg-emerald-50 p-4 dark:bg-emerald-900/20 dark:border-emerald-500/30 animate-fade-in">
+<span class="material-symbols-outlined text-emerald-600 dark:text-emerald-500 mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<p class="text-sm font-medium text-emerald-800 dark:text-emerald-400">
+                                Conexión verificada correctamente. Ya puedes configurar tus envíos.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Help Link -->
+<div class="flex justify-center">
+<a class="text-sm text-primary hover:text-primary-dark hover:underline font-medium flex items-center gap-1 transition-colors" href="#">
+                    ¿Dónde encuentro mis credenciales MRW?
+                    <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+</body></html>

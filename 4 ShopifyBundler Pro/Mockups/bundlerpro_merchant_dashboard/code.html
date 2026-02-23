@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BundlerPro Merchant Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#008060",
+                        "primary-hover": "#006e52",
+                        "background-light": "#f6f6f7",
+                        "background-dark": "#202123", // Darker sidebar background
+                        "surface": "#ffffff",
+                        "text-main": "#202223",
+                        "text-subdued": "#6d7175",
+                        "border-subdued": "#e1e3e5",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                    },
+                    boxShadow: {
+                        'card': '0px 1px 0px rgba(0, 0, 0, 0.05)',
+                        'popover': '0px 4px 8px rgba(0, 0, 0, 0.05)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f6f6f7;
+        }
+        .sidebar-link.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .sidebar-link:hover:not(.active) {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #e3e3e3;
+        }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="bg-background-light text-text-main h-screen flex overflow-hidden">
+<!-- Left Sidebar -->
+<aside class="w-64 bg-[#1a1c1e] text-[#aeb4b9] flex flex-col h-full border-r border-gray-800 flex-shrink-0">
+<!-- Logo Area -->
+<div class="h-16 flex items-center px-4 border-b border-gray-800/50">
+<div class="flex items-center gap-2 text-white">
+<span class="material-symbols-outlined text-yellow-400">auto_awesome</span>
+<span class="font-bold text-lg tracking-tight">BundlerPro</span>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="flex-1 overflow-y-auto py-4 px-2 space-y-1">
+<a class="sidebar-link active flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="sidebar-link flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+<span>Bundles</span>
+</a>
+<a class="sidebar-link flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+<span>AI Recommendations</span>
+</a>
+<a class="sidebar-link flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">bar_chart</span>
+<span>Analytics</span>
+</a>
+<a class="sidebar-link flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">science</span>
+<span>A/B Tests</span>
+</a>
+<a class="sidebar-link flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<!-- Bottom Actions -->
+<div class="p-4 border-t border-gray-800/50">
+<div class="bg-gray-800/40 rounded-lg p-3">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-semibold text-white uppercase tracking-wider">Free Plan</span>
+<span class="h-2 w-2 rounded-full bg-green-500"></span>
+</div>
+<p class="text-xs text-gray-400 mb-3">You're on the starter tier.</p>
+<button class="w-full flex items-center justify-center gap-1 text-xs font-bold text-primary hover:text-white transition-colors">
+                    Upgrade Plan <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<div class="mt-4 flex items-center gap-3 px-1">
+<div class="h-8 w-8 rounded-full bg-gray-700 flex items-center justify-center text-white text-xs font-bold">JD</div>
+<div class="flex flex-col">
+<span class="text-xs font-medium text-white">John Doe</span>
+<span class="text-[10px] text-gray-500">john@store.com</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-full overflow-hidden relative">
+<!-- Top Header -->
+<header class="h-16 bg-background-light flex items-center justify-between px-8 border-b border-gray-200 flex-shrink-0">
+<h1 class="text-xl font-bold text-text-main">Dashboard</h1>
+<div class="flex items-center gap-4">
+<button class="p-2 text-text-subdued hover:bg-gray-200 rounded-lg transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-sm transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Create Bundle
+                </button>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto p-8 space-y-6">
+<!-- Stats Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Card 1 -->
+<div class="bg-surface p-5 rounded-lg border border-border-subdued shadow-card">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-sm font-medium text-text-subdued mb-1">Avg Order Value</p>
+<h3 class="text-2xl font-bold text-text-main">$73.50</h3>
+</div>
+<div class="bg-green-100 text-green-800 text-xs font-semibold px-2 py-0.5 rounded flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">trending_up</span>
+                            35%
+                        </div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface p-5 rounded-lg border border-border-subdued shadow-card">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-sm font-medium text-text-subdued mb-1">Bundle Revenue</p>
+<h3 class="text-2xl font-bold text-text-main">$15,450</h3>
+</div>
+<div class="bg-green-100 text-green-800 text-xs font-semibold px-2 py-0.5 rounded flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">trending_up</span>
+                            12%
+                        </div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface p-5 rounded-lg border border-border-subdued shadow-card">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-sm font-medium text-text-subdued mb-1">Active Bundles</p>
+<h3 class="text-2xl font-bold text-text-main">38</h3>
+</div>
+<span class="text-xs text-text-subdued font-medium bg-gray-100 px-2 py-0.5 rounded">+3 this week</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface p-5 rounded-lg border border-border-subdued shadow-card">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-sm font-medium text-text-subdued mb-1">Conversion Rate</p>
+<h3 class="text-2xl font-bold text-text-main">7.2%</h3>
+</div>
+<div class="bg-green-100 text-green-800 text-xs font-semibold px-2 py-0.5 rounded flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">trending_up</span>
+                            1.1%
+                        </div>
+</div>
+</div>
+</div>
+<!-- AI Recommendations Section -->
+<div class="bg-surface rounded-lg border border-purple-200 shadow-card relative overflow-hidden">
+<!-- Decorative background gradient -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-purple-50 to-transparent opacity-50 pointer-events-none"></div>
+<div class="p-5 border-b border-border-subdued flex items-center justify-between relative z-10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-purple-600">smart_toy</span>
+<h2 class="text-base font-semibold text-text-main">AI Recommendations <span class="text-text-subdued font-normal text-sm ml-1">(3 new)</span></h2>
+</div>
+<button class="text-sm text-primary font-medium hover:underline">View All →</button>
+</div>
+<div class="divide-y divide-border-subdued relative z-10">
+<!-- Recommendation Item 1 -->
+<div class="p-5 flex flex-col md:flex-row md:items-center gap-6 hover:bg-gray-50 transition-colors">
+<div class="flex -space-x-3 overflow-hidden">
+<div class="inline-block h-12 w-12 rounded-lg ring-2 ring-white bg-gray-200 bg-cover bg-center" data-alt="product thumbnail sunscreen bottle" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCEJNSUcnP2lNJpRZ2ytP99qQSa08oVXpV3vd-xQuBWyztuHc-0Lhda0MabktL9G5CSD3jkEYyqTOr3vNVYCVhyr5NxbsX040m60M6QCspVaajwPh27aJ5qxjgeHLvK9kwPZomNk0n9xd5Lb9A-EwvixP5LOHipZt0fAPZ1OK2cq0G0RghCpxHn9tnl-84fjb1dMoRqKi-ycTm9Wh78KumHRH1T__YkPsIiUROyiw7ag8Yp9RfC5kslo6ii6qMomSM05JcEfUYU4G1t');"></div>
+<div class="inline-block h-12 w-12 rounded-lg ring-2 ring-white bg-gray-200 bg-cover bg-center" data-alt="product thumbnail sunglasses" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJyiep4deW3l4T3ue2_OngkJNac2ThYkhRbXG5MT4APzsi7GsAzNTmo0_JRuzjOSeV-5een8llJHEoigKRhx1xT4BKhxIyJgkDVWH-17GnlqtRdhyRG-2XTk_QJ9gJJi8pljxwqk-VdrMSACE-Ia4TKrET8TQb1GXs1yJGAzhOUL3BTrMNVJA63JU195PPXSyzOyH3ewBZaicBLpGuA0UtVLRkfhlI-KPXIaemTDnE8s8eNZtUH11isX-44tZ1tBP8n-5FRcnV0BG4');"></div>
+<div class="inline-block h-12 w-12 rounded-lg ring-2 ring-white bg-gray-200 bg-cover bg-center" data-alt="product thumbnail beach towel" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDzEVUnQ0rJTc89tTRLjpE6xUypX1dGclmDhcDlvgDsGuOFMpIqeEzKKaXEJeaGMiD0LKjfDon9tQN-R9fCGAQ0I2KITyDEV6AJC6Yc94lpo5QLUjClhMKV3-_WAf9kWg7Uoyddb301oKxragss0rM7TMuEjZfgo1IKJVq-Y4X4v9rlwcDbAfN1BFblo-S3l6qrAToGf0aA7kYT_SYU1ZRDdF7c-xTRWvWmjePOTLmCPvikG5sfw8-Qcw120r8vp6nvSINvZV3kuJ9l');"></div>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<h3 class="font-semibold text-text-main">Summer Essentials Kit</h3>
+<span class="bg-purple-100 text-purple-800 text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wide">High Confidence</span>
+</div>
+<p class="text-sm text-text-subdued">
+                                Confidence: <span class="font-medium text-text-main">87%</span> | Est. AOV Increase: <span class="text-green-600 font-medium">+$15 (28%)</span>
+</p>
+</div>
+<div class="flex items-center gap-3 mt-4 md:mt-0">
+<button class="text-sm text-text-subdued hover:text-text-main font-medium px-3 py-2">Dismiss</button>
+<button class="bg-white border border-border-subdued hover:bg-gray-50 text-text-main px-4 py-2 rounded-lg text-sm font-semibold shadow-sm transition-colors">
+                                Preview
+                            </button>
+<button class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-sm transition-colors">
+                                Create Bundle
+                            </button>
+</div>
+</div>
+<!-- Recommendation Item 2 -->
+<div class="p-5 flex flex-col md:flex-row md:items-center gap-6 hover:bg-gray-50 transition-colors">
+<div class="flex -space-x-3 overflow-hidden">
+<div class="inline-block h-12 w-12 rounded-lg ring-2 ring-white bg-gray-200 bg-cover bg-center" data-alt="product thumbnail face cream" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAMsUI5ruutPXu-jzN2TjeXicBL4eJmN7Pt92GmxQB3hL9w-lLW6sLACii3IsK8i99VtwUjBQCgGjsTV0W4h_SrTppsvWbO9dmCGMGpXhtKk90MIKTr5pnGiCcPFvgxclchqG3wtR1bFKmLqk1afehR2IzFoxAVbzwTi4lbwfTnWJrDLPhKTRUdIdfKcmm782Cu4EEKklg_1ddwQcz7YbpvzMO_TdxGNKYCcguWJYqrtZYppcRNWqD2IqvYU5uTBuItXWZryTEZRLHY');"></div>
+<div class="inline-block h-12 w-12 rounded-lg ring-2 ring-white bg-gray-200 bg-cover bg-center" data-alt="product thumbnail serum bottle" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAKtpBvtIHDMr-_E-Q8TorNmQ_T-dLpguRngFtWUZW0UWtRRtDuutatAsCRJ9dYC-LzV0WvZk1WIscOzKQBn3gSZupnfmlJ_-xFCYxyJpe86TtbSQKIpGNOYDaKpYq3QBdzAGG4903bBS2nf3_DYKhRlMTqxQyqWYW1qAkF28iRcC6Li4rdtl98I0JP_QnpqGWOv-CF1atDDaRAudI0GZIASzv5WOHgUKQzh9jADFfyMVGUXk7Ei27XyXxkg-P7rZIrMEp-IBb5CHDJ');"></div>
+<div class="inline-block h-12 w-12 rounded-lg ring-2 ring-white bg-gray-200 bg-cover bg-center" data-alt="product thumbnail face roller" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBpTbLHGDsk1tU3VQLUegZpSaiVvboEzoZ7mDUInFmb5SLg39nNI56S1Frta4vYyQqH7V-z4gdGTF49yxAhWCPCbRIo387wfxfjFwwPCiIGGsB8uM5PompAVHIucheVcwubKgUWajnmu4l8wXIQnGr89EIrzjAzAloclazVCCUOY4FIB3ffTR2h1Pk5u3Hk6WdHusf94c5UzrZ3kIytBWwgNa6cGSkFKf2uzWaPkltecCDkIKYwU6LpBeRWIq2ZDRAr0z2gvW3Wrme6');"></div>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<h3 class="font-semibold text-text-main">Complete Skincare Routine</h3>
+<span class="bg-purple-100 text-purple-800 text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wide">High Confidence</span>
+</div>
+<p class="text-sm text-text-subdued">
+                                Confidence: <span class="font-medium text-text-main">92%</span> | Est. AOV Increase: <span class="text-green-600 font-medium">+$22 (35%)</span>
+</p>
+</div>
+<div class="flex items-center gap-3 mt-4 md:mt-0">
+<button class="text-sm text-text-subdued hover:text-text-main font-medium px-3 py-2">Dismiss</button>
+<button class="bg-white border border-border-subdued hover:bg-gray-50 text-text-main px-4 py-2 rounded-lg text-sm font-semibold shadow-sm transition-colors">
+                                Preview
+                            </button>
+<button class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-sm transition-colors">
+                                Create Bundle
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Active Bundles Table -->
+<div class="bg-surface rounded-lg border border-border-subdued shadow-card">
+<div class="p-4 border-b border-border-subdued flex items-center justify-between">
+<h2 class="text-base font-semibold text-text-main">Your Bundles</h2>
+<div class="flex items-center gap-2">
+<button class="p-2 text-text-subdued hover:bg-gray-100 rounded-lg">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+</button>
+<button class="p-2 text-text-subdued hover:bg-gray-100 rounded-lg">
+<span class="material-symbols-outlined text-[20px]">sort</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead class="bg-gray-50 text-text-subdued font-medium border-b border-border-subdued">
+<tr>
+<th class="px-6 py-3">Title</th>
+<th class="px-6 py-3">Status</th>
+<th class="px-6 py-3 text-right">Views</th>
+<th class="px-6 py-3 text-right">Purchases</th>
+<th class="px-6 py-3 text-right">Conv. %</th>
+<th class="px-6 py-3 text-right">Revenue</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subdued">
+<tr class="hover:bg-gray-50 group transition-colors">
+<td class="px-6 py-4 font-medium text-text-main">Summer Essentials</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                        Active
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right text-text-subdued">1,234</td>
+<td class="px-6 py-4 text-right text-text-subdued">142</td>
+<td class="px-6 py-4 text-right text-text-main">11.5%</td>
+<td class="px-6 py-4 text-right font-medium text-text-main">$4,250</td>
+</tr>
+<tr class="hover:bg-gray-50 group transition-colors">
+<td class="px-6 py-4 font-medium text-text-main">Skincare Routine</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                        Active
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right text-text-subdued">890</td>
+<td class="px-6 py-4 text-right text-text-subdued">98</td>
+<td class="px-6 py-4 text-right text-text-main">11.0%</td>
+<td class="px-6 py-4 text-right font-medium text-text-main">$3,120</td>
+</tr>
+<tr class="hover:bg-gray-50 group transition-colors">
+<td class="px-6 py-4 font-medium text-text-main">Workout Bundle</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                        Paused
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right text-text-subdued">450</td>
+<td class="px-6 py-4 text-right text-text-subdued">22</td>
+<td class="px-6 py-4 text-right text-text-main">4.8%</td>
+<td class="px-6 py-4 text-right font-medium text-text-main">$890</td>
+</tr>
+<tr class="hover:bg-gray-50 group transition-colors">
+<td class="px-6 py-4 font-medium text-text-main">Winter Sale Pack</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                        Active
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right text-text-subdued">2,100</td>
+<td class="px-6 py-4 text-right text-text-subdued">310</td>
+<td class="px-6 py-4 text-right text-text-main">14.7%</td>
+<td class="px-6 py-4 text-right font-medium text-text-main">$7,190</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-border-subdued flex justify-center">
+<a class="text-sm font-medium text-text-subdued hover:text-primary transition-colors" href="#">View all bundles →</a>
+</div>
+</div>
+<div class="h-8"><!-- Spacer for bottom --></div>
+</div>
+</main>
+</body></html>

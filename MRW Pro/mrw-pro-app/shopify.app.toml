@@ -1,0 +1,26 @@
+name = "MRW Pro"
+client_id = "51105beafb70d594524ceb9f2b99db5d"
+application_url = "https://mrw.enviox.es"
+embedded = true
+
+[access_scopes]
+scopes = "write_orders,read_orders,write_fulfillments,read_fulfillments,read_shipping,write_shipping"
+
+[auth]
+redirect_urls = [ "https://mrw.enviox.es/auth/callback" ]
+
+[webhooks]
+api_version = "2024-10"
+
+  [[webhooks.subscriptions]]
+  topics = ["app/uninstalled"]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = ["app/scopes_update"]
+  uri = "/webhooks/app/scopes_update"
+
+  # NOTA: Requiere "Protected customer data" aprobado para deploy a producción
+  [[webhooks.subscriptions]]
+  topics = ["orders/create"]
+  uri = "/webhooks/orders/create"
